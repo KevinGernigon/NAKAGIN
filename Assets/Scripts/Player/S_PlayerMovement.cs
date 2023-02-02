@@ -5,7 +5,7 @@ using UnityEngine;
 public class S_PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
-    private float _moveSpeed;
+    public float _moveSpeed;
     //[SerializeField] private float _sprintSpeed;
     [SerializeField] private float _walkSpeed;
     [SerializeField] private float _slideSpeed;
@@ -73,7 +73,7 @@ public class S_PlayerMovement : MonoBehaviour
     [SerializeField] private float _valueRaycast;
     float _horizontalInput;
     float _verticalInput;
-    
+
 
     Vector3 _moveDirection;
 
@@ -153,7 +153,7 @@ public class S_PlayerMovement : MonoBehaviour
             _desiredMoveSpeed = _airSpeed;
         }
 
-        if(state != MovementState.air && state != MovementState.dashing) //limit dash in air
+        if (state != MovementState.air && state != MovementState.dashing) //limit dash in air
         {
             ScriptDash._limitDash = 1;
         }
@@ -163,7 +163,7 @@ public class S_PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         MovingPlayer();
-        
+
         if (_lastState != MovementState.dashing)
         {
             rb.velocity += Vector3.up * Physics.gravity.y * _fallMultiplier * Time.deltaTime;
@@ -196,9 +196,9 @@ public class S_PlayerMovement : MonoBehaviour
             canJumpLedge = false;
             Invoke(nameof(ResetJump), _jumpCooldown);
 
-            
+
         }
-            //When crouch
+        //When crouch
 
         if (Input.GetKeyDown(_crouchKey))
         {
@@ -209,7 +209,7 @@ public class S_PlayerMovement : MonoBehaviour
 
         if (Input.GetKeyUp(_crouchKey))
         {
-             transform.localScale = new Vector3(transform.localScale.x, _startYScale, transform.localScale.z);
+            transform.localScale = new Vector3(transform.localScale.x, _startYScale, transform.localScale.z);
         }
     }
 
@@ -258,7 +258,7 @@ public class S_PlayerMovement : MonoBehaviour
             }
         }
         //Mode - Crouch 
-        else if(Input.GetKey(_crouchKey))
+        else if (Input.GetKey(_crouchKey))
         {
             state = MovementState.crouching;
             _desiredMoveSpeed = _crouchSpeed;
@@ -334,7 +334,7 @@ public class S_PlayerMovement : MonoBehaviour
             else
                 _time += Time.deltaTime * boostFactor;
 
-                yield return null;
+            yield return null;
         }
 
         _moveSpeed = _desiredMoveSpeed;
@@ -363,7 +363,7 @@ public class S_PlayerMovement : MonoBehaviour
                 rb.AddForce(_moveDirection.normalized * _moveSpeed * 10f * _upgradeSpeedValue, ForceMode.Force);
         }
 
-        else if (_isGrounded) 
+        else if (_isGrounded)
         {
             rb.AddForce(_moveDirection.normalized * _moveSpeed * 10f * _upgradeSpeedValue, ForceMode.Force);
         }
@@ -384,35 +384,42 @@ public class S_PlayerMovement : MonoBehaviour
         if (_isGrappleActive) return;
 
         //limiting speed on slope
-        if (OnSlope() && !_exitingSlope) 
+        if (OnSlope() && !_exitingSlope)
         {
-            if(rb.velocity.magnitude > _moveSpeed)
+            if (rb.velocity.magnitude > _moveSpeed)
             {
                 rb.velocity = rb.velocity.normalized * _moveSpeed;
             }
         }
         else
         {
-            
+
             Vector3 _flatVelocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
 
-             // limit velocity if needed
-             if (_flatVelocity.magnitude > _moveSpeed)
-             {
-                    Vector3 _limitedVelocity = _flatVelocity.normalized * _moveSpeed;
-                    rb.velocity = new Vector3(_limitedVelocity.x, rb.velocity.y, _limitedVelocity.z);
-             }
+            // limit velocity if needed
+            if (_flatVelocity.magnitude > _moveSpeed)
+            {
+                Vector3 _limitedVelocity = _flatVelocity.normalized * _moveSpeed;
+                rb.velocity = new Vector3(_limitedVelocity.x, rb.velocity.y, _limitedVelocity.z);
+            }
         }
- 
+
     }
     private void Jump()
     {
-        _exitingSlope = true;
-        _readyToJump = false;
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        //rb.velocity = new Vector3(rb.velocity.x, ??, rb.velocity.z);
+        if (!canJumpLedge)
+        {
+            _exitingSlope = true;
+            _readyToJump = false;
+            rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+            //rb.velocity = new Vector3(rb.velocity.x, ??, rb.velocity.z);
 
-        rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
+            rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
+        }
+        else
+        {
+            rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
+        }
 
     }
 
@@ -430,7 +437,7 @@ public class S_PlayerMovement : MonoBehaviour
         //rb.velocity = CalculateJumpVelocity(transform.position, targetPosition, trajectoryHeight);
         Invoke(nameof(SetVelocity), 0.1f);
 
-        Invoke(nameof(ResetRestrictions), 3f);
+        Invoke(nameof(ResetRestrictions), 1f);
     }
 
     private Vector3 velocityToSet;
@@ -457,7 +464,7 @@ public class S_PlayerMovement : MonoBehaviour
 
     public bool OnSlope()
     {
-        if(Physics.Raycast(transform.position, Vector3.down, out _slopeHit, _playerHeight * 0.5f  + 0.3f))
+        if (Physics.Raycast(transform.position, Vector3.down, out _slopeHit, _playerHeight * 0.5f + 0.3f))
         {
             float _angle = Vector3.Angle(Vector3.up, _slopeHit.normal);
             return _angle < _maxSlopeAngle && _angle != 0;
@@ -480,16 +487,45 @@ public class S_PlayerMovement : MonoBehaviour
         Vector3 displacementXZ = new Vector3(displacementX, 0f, displacementZ);
 
 
-        if(Mathf.Abs(displacementX) < 20 && Mathf.Abs(displacementZ) < 20)
+
+        if (Mathf.Abs(displacementX) >= 40 || Mathf.Abs(displacementZ) >= 40)
         {
-            _wantedSpeedGrappling = 5f;
-            _wantedHeightGrappling = 2.5f;
+            _wantedSpeedGrappling = 3f;
+            _wantedHeightGrappling = 1.80f;
+        }
+        else if (Mathf.Abs(displacementX) >= 30 || Mathf.Abs(displacementZ) >= 30)
+        {
+            _wantedSpeedGrappling = 3.25f;
+            _wantedHeightGrappling = 1.75f;
+        }
+        else if (Mathf.Abs(displacementX) >= 20 || Mathf.Abs(displacementZ) >= 20)
+        {
+            _wantedSpeedGrappling = 3.50f;
+            _wantedHeightGrappling = 2f;
+        }
+        else if (Mathf.Abs(displacementX) >= 10 || Mathf.Abs(displacementZ) >= 10)
+        {
+            _wantedSpeedGrappling = 3.75f;
+            _wantedHeightGrappling = 2f;
+        }
+        else if (Mathf.Abs(displacementX) >= 0 || Mathf.Abs(displacementZ) >= 0)
+        {
+            _wantedSpeedGrappling = 4f;
+            _wantedHeightGrappling = 2f;
+        }
+
+
+
+        /*if (Mathf.Abs(displacementX) < 20 && Mathf.Abs(displacementZ) < 20)
+        {
+            _wantedSpeedGrappling = 4f;
+            _wantedHeightGrappling = 2f;
         }
         else
         {
             _wantedSpeedGrappling = 3f;
-            _wantedHeightGrappling = 1.75f;
-        }
+            _wantedHeightGrappling = 1.5f;
+        }*/
 
 
         Vector3 velocityY = Vector3.up * Mathf.Sqrt(-2 * trajectoryHeight * gravity) * _wantedHeightGrappling;
@@ -502,12 +538,12 @@ public class S_PlayerMovement : MonoBehaviour
     {
         _ReachUpgradeBool = true;
 
-        if(_ReachUpgradeBool)
+        if (_ReachUpgradeBool)
         {
             _upgradeSpeedValue += 2.5f;
             _dashSpeed += 15;
-            StartCoroutine(upgradeSpeed());  
-        }       
+            StartCoroutine(upgradeSpeed());
+        }
     }
 
     IEnumerator upgradeSpeed()
@@ -515,7 +551,7 @@ public class S_PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(2f);
         _ReachUpgradeBool = false;
     }
-    
+
     IEnumerator leaveGround()
     {
         yield return new WaitForSeconds(0.1f);
