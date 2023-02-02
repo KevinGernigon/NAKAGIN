@@ -30,6 +30,8 @@ public class S_Sliding : MonoBehaviour
     private float _horizontalInput;
     private float _verticalInput;
 
+    [Header("Bool")]
+    public bool _isTrue;
 
     private void Start()
     {
@@ -41,28 +43,41 @@ public class S_Sliding : MonoBehaviour
 
     private void Update()
     {
-        _horizontalInput = Input.GetAxisRaw("Horizontal");
-        _verticalInput = Input.GetAxisRaw("Vertical");
+        if (Input.GetKeyDown(_slideKey))
+        {
+            _isTrue = true;
+        }
+        else if(Input.GetKeyUp(_slideKey))
+        {
+            _isTrue = false;
+        }
 
         if(Input.GetKeyDown(_slideKey) && (_horizontalInput != 0 || _verticalInput != 0))
         {
             StartSlide();
         }
 
-        if(Input.GetKeyDown(_slideKey) && (_horizontalInput != 0 || _verticalInput != 0) && !_pm._isGrounded)
+        if (Input.GetKeyDown(_slideKey) && (_horizontalInput != 0 || _verticalInput != 0) && !_pm._isGrounded)
         {
             StartCoroutine(waitForGround());
         }
+        if (!_isTrue)
+            StopAllCoroutines();
 
         if(Input.GetKeyUp(_slideKey) && _pm._isSliding)
         {
             StopSlide();
             _pm._ReachUpgradeBool = false;
         }
+
+
     }
 
     private void FixedUpdate()
     {
+        _horizontalInput = Input.GetAxisRaw("Horizontal");
+        _verticalInput = Input.GetAxisRaw("Vertical");
+
         if (_pm._isSliding)
         {
             SlidingMovement();
@@ -132,6 +147,7 @@ public class S_Sliding : MonoBehaviour
 
     IEnumerator waitForGround()
     {
+        //yield return new WaitUntil(() => _pm._isGrounded);
         yield return new WaitUntil(() => _pm._isGrounded);
         StartSlide();
     }

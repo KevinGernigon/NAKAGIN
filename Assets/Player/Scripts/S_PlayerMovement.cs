@@ -407,12 +407,19 @@ public class S_PlayerMovement : MonoBehaviour
     }
     private void Jump()
     {
-        _exitingSlope = true;
-        _readyToJump = false;
-        rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
-        //rb.velocity = new Vector3(rb.velocity.x, ??, rb.velocity.z);
+        if (!canJumpLedge)
+        {
+            _exitingSlope = true;
+            _readyToJump = false;
+            rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
+            //rb.velocity = new Vector3(rb.velocity.x, ??, rb.velocity.z);
 
-        rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
+            rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
+        }
+        else
+        {
+            rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
+        }
 
     }
 
@@ -430,7 +437,7 @@ public class S_PlayerMovement : MonoBehaviour
         //rb.velocity = CalculateJumpVelocity(transform.position, targetPosition, trajectoryHeight);
         Invoke(nameof(SetVelocity), 0.1f);
 
-        Invoke(nameof(ResetRestrictions), 3f);
+        Invoke(nameof(ResetRestrictions), 1f);
     }
 
     private Vector3 velocityToSet;
@@ -480,7 +487,36 @@ public class S_PlayerMovement : MonoBehaviour
         Vector3 displacementXZ = new Vector3(displacementX, 0f, displacementZ);
 
 
-        if(Mathf.Abs(displacementX) < 20 && Mathf.Abs(displacementZ) < 20)
+
+        if (Mathf.Abs(displacementX) >= 40 || Mathf.Abs(displacementZ) >= 40)
+        {
+            _wantedSpeedGrappling = 3f;
+            _wantedHeightGrappling = 1.80f;
+        }
+        else if (Mathf.Abs(displacementX) >= 30 || Mathf.Abs(displacementZ) >= 30)
+        {
+            _wantedSpeedGrappling = 3.25f;
+            _wantedHeightGrappling = 1.75f;
+        }
+        else if (Mathf.Abs(displacementX) >= 20 || Mathf.Abs(displacementZ) >= 20)
+        {
+            _wantedSpeedGrappling = 3.50f;
+            _wantedHeightGrappling = 2f;
+        }
+        else if(Mathf.Abs(displacementX) >= 10 || Mathf.Abs(displacementZ) >= 10)
+        {
+            _wantedSpeedGrappling = 3.75f;
+            _wantedHeightGrappling = 2f;
+        }
+        else if(Mathf.Abs(displacementX) >= 0 || Mathf.Abs(displacementZ) >= 0)
+        {
+            _wantedSpeedGrappling = 4f;
+            _wantedHeightGrappling = 2f;
+        }
+
+
+
+        /*if (Mathf.Abs(displacementX) < 20 && Mathf.Abs(displacementZ) < 20)
         {
             _wantedSpeedGrappling = 4f;
             _wantedHeightGrappling = 2f;
@@ -489,7 +525,7 @@ public class S_PlayerMovement : MonoBehaviour
         {
             _wantedSpeedGrappling = 3f;
             _wantedHeightGrappling = 1.5f;
-        }
+        }*/
 
 
         Vector3 velocityY = Vector3.up * Mathf.Sqrt(-2 * trajectoryHeight * gravity) * _wantedHeightGrappling;
