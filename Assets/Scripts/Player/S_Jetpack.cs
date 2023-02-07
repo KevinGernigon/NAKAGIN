@@ -9,15 +9,19 @@ public class S_Jetpack : MonoBehaviour
     public Transform playerCam;
     private Rigidbody _rb;
     private S_PlayerMovement _pm;
+    private S_Dash ScriptDash;
     [SerializeField] private S_BatteryManager ScriptBatteryManager;
 
     [Header("Jetpack")]
     [SerializeField] private float _jetpackForce;
     [SerializeField] private float _jetpackUpwardForce;
     [SerializeField] private float _dividePer;
+    [SerializeField] private bool _jetPackSave;
     private bool _isGravityDisable;
 
-
+    [Header("Time Value")]
+    [SerializeField] private float _timerCd;
+    [SerializeField] private float _timerMaxCd;
     private Vector3 saveForceToApplyInAir;
     private Vector3 saveForceToApplyOnGround;
 
@@ -29,6 +33,7 @@ public class S_Jetpack : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _pm = GetComponent<S_PlayerMovement>();
+        ScriptDash = GetComponent<S_Dash>();
         _isJetpackAvaible = true;
     }
 
@@ -36,25 +41,41 @@ public class S_Jetpack : MonoBehaviour
     void Update()
     {
         if (Input.GetButtonDown("Jetpack") && _isJetpackAvaible)
-            JetpackFunction();
-
+            JetpackFunction();    
     }
-
+    private void FixedUpdate()
+    {
+        if (_isTriggerBoxTrue)
+        {
+            _isJetpackAvaible = true;
+            ScriptDash._limitDash = 0;
+            if (ScriptBatteryManager._nbrBattery >= 1)
+            {
+                _timerCd += Time.deltaTime;
+                if (_timerCd < _timerMaxCd)
+                {
+                    Time.timeScale = 0.2f;
+                }
+                else
+                {
+                    Time.timeScale = 1f;
+                }
+            }
+        }
+        else if (!_isTriggerBoxTrue)
+        {
+            _timerCd = 0;
+            Time.timeScale = 1f;
+        }
+    }
     public void JetpackFunction()
     {
         if(_isTriggerBoxTrue)
         {
-            if(!ScriptBatteryManager._overdrive)
-            {
-                ScriptBatteryManager.UseThreeBattery();
+                ScriptBatteryManager.UseOneBattery();
                 JetPackUsage();
-            }
-            else if(ScriptBatteryManager._overdrive)
-            {
-                ScriptBatteryManager._overdrive = false;
-                JetPackUsage();
-            }
         }
+
 
         if (!_isTriggerBoxTrue && !_isMaxForce && ScriptBatteryManager._nbrBattery >= 1)
             {
@@ -75,43 +96,50 @@ public class S_Jetpack : MonoBehaviour
         Transform forwardT;
 
         forwardT = orientation;
+        float i;
 
 
-        if (_isTriggerBoxTrue)
-        {
-            _isMaxForce = true;
-            Vector3 forceToApply = forwardT.forward * _jetpackForce + forwardT.up * _jetpackUpwardForce;
-            saveForceToApplyInAir = forceToApply;
-        }
-        else
-        {
-            Vector3 forceToApply = (forwardT.forward * _jetpackForce)/_dividePer + (forwardT.up * _jetpackUpwardForce)/ _dividePer;
+            if (Mathf.Abs(_rb.velocity.y) <= 20)
+                {
+                    i = 25;
+                }
+            /*else if (Mathf.Abs(_rb.velocity.y) <= 40 && (Mathf.Abs(_rb.velocity.y) >= 20))
+                {
+                    i = 60;
+                }
+
+            else if (Mathf.Abs(_rb.velocity.y) <= 60 && (Mathf.Abs(_rb.velocity.y) >= 40))
+                {
+                    i = 100;
+                }*/
+            else
+                {
+                    i = Mathf.Abs(_rb.velocity.y) * 1.2f;
+                }
+
+            Vector3 forceToApply = (forwardT.forward * _jetpackForce) / _dividePer + (forwardT.up * _jetpackUpwardForce) / _dividePer * i / 20f;
             saveForceToApplyOnGround = forceToApply;
-        }
 
-        StartCoroutine(waitForBoolean());
-        Invoke(nameof(DelayedJetpackForce), 0.025f);
+            StartCoroutine(waitForBoolean());
+            Invoke(nameof(DelayedJetpackForce), 0.025f);
     }
-
 
     private void DelayedJetpackForce() 
     {
-        if(_isMaxForce)
-        _rb.AddForce(saveForceToApplyInAir, ForceMode.Impulse);
-        else
         _rb.AddForce(saveForceToApplyOnGround, ForceMode.Impulse);
         _isJetpackAvaible = false;
 
         ResetJetpack();
+        ScriptDash._limitDash += 1;
+        _isTriggerBoxTrue = false;
     }
 
     public void BooleanTriggerBoxEnter()
     {
-        if(ScriptBatteryManager._nbrBattery >= 3 || ScriptBatteryManager._overdrive)
-        {
-            _isTriggerBoxTrue = true;
-            JetpackFunction();
-        }
+        _isTriggerBoxTrue = true;
+            if (Input.GetButtonDown("Jetpack"))
+                JetpackFunction();
+
     }
 
     public void BooleanTriggerBoxExit()
@@ -130,7 +158,6 @@ public class S_Jetpack : MonoBehaviour
     }
     IEnumerator waitForJetpack()
     {
-        Debug.Log("Enum");
         yield return new WaitForSeconds(5f);
         _isJetpackAvaible = true;
     }

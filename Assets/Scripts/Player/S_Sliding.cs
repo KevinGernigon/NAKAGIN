@@ -127,7 +127,7 @@ public class S_Sliding : MonoBehaviour
             rb.AddForce(_pm.GetSlopeMoveDirection(_inputDirection) * _slideForce, ForceMode.Force);
         }
 
-        if (_slideTimer <= 0)
+        if (_slideTimer <= 0 || !_pm._isGrounded)
         {
             StopSlide();
         }

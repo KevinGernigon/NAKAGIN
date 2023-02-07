@@ -38,7 +38,7 @@ public class S_GrappinV2 : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A))
+        if (Input.GetKeyDown(KeyCode.A) && !_isGrappling)
             StartGrapple();
 
         if (_grapplingCdTimer > 0)

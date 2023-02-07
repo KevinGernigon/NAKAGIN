@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8006204087764881172}
   - component: {fileID: 8006204087764881173}
   - component: {fileID: 8006204087764881178}
-  m_Layer: 10
+  m_Layer: 0
   m_Name: PFB_DeathArea
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -68,4 +68,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _player: {fileID: 0}
+  _rbplayer: {fileID: 0}
   _respawnplayer: {fileID: 0}
+  _camera: {fileID: 0}

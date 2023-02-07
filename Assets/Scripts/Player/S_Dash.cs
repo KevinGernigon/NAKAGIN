@@ -119,6 +119,10 @@ public class S_Dash : MonoBehaviour
     private Vector3 delayedForceToApply;
     private void DelayedDashForce()
     {
+        /*if (_pm.OnSlope())
+        {
+            StartCoroutine(untilDashIsFalse());
+        }*/
         if (_isResettingVel)
         {
             _rb.velocity = Vector3.zero;
@@ -159,5 +163,9 @@ public class S_Dash : MonoBehaviour
         }
         return direction.normalized;
     }
-            
+    
+    /*IEnumerator untilDashIsFalse()
+    {
+        yield return new WaitUntil(() => !_pm._isDashing);
+    }*/
 }
