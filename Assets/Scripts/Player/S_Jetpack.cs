@@ -70,7 +70,7 @@ public class S_Jetpack : MonoBehaviour
     }
     public void JetpackFunction()
     {
-        if(_isTriggerBoxTrue)
+        if(_isTriggerBoxTrue && ScriptBatteryManager._nbrBattery >= 1)
         {
                 ScriptBatteryManager.UseOneBattery();
                 JetPackUsage();
@@ -83,12 +83,9 @@ public class S_Jetpack : MonoBehaviour
                     JetPackUsage();
 
             }
-            else
-            {
-                    //Son effect + UI
-            }
-            if (_isGravityDisable)
-            _rb.useGravity = false;
+
+        if (_isGravityDisable)
+             _rb.useGravity = false;
     }
 
     private void JetPackUsage()
