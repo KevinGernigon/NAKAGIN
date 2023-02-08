@@ -112,6 +112,7 @@ public class S_PlayerMovement : MonoBehaviour
     private float _saveWalkSpeed;
     private bool canJumpLedge;
     private float _timerJump;
+    public bool _isButtonEnabled;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -120,15 +121,11 @@ public class S_PlayerMovement : MonoBehaviour
         _saveWalkSpeed = _walkSpeed;
         _startYScale = transform.localScale.y;
         _upgradeSpeedValue = 1;
+        _isButtonEnabled = true;
     }
 
     private void Update()
     {
-
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            
-        }
         //Ground Check
         _isGrounded = Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsGround);
         //_isGrounded = Physics.BoxCast(transform.position, Vector3.one, Vector3.down, Quaternion.identity, _playerHeight * 0.5f + _valueRaycast, _whatIsGround);
@@ -142,8 +139,13 @@ public class S_PlayerMovement : MonoBehaviour
             SpeedValueUpgrade();
         }
 
+
         //handle drag
-        if (state == MovementState.walking || state == MovementState.sprinting || state == MovementState.crouching && !_isGrappleActive)
+        if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && state == MovementState.walking)
+        {
+            rb.drag = _groundDrag + 10;
+        }
+        else if (state == MovementState.walking || state == MovementState.sprinting || state == MovementState.crouching && !_isGrappleActive)
         {
             rb.drag = _groundDrag;
         }
@@ -211,8 +213,10 @@ public class S_PlayerMovement : MonoBehaviour
 
     private void InputCommand()
     {
+
         _horizontalInput = Input.GetAxisRaw("Horizontal");
         _verticalInput = Input.GetAxisRaw("Vertical");
+
 
         //when to jump
         if (Input.GetButtonDown("Jump") && _readyToJump && _isGrounded || (Input.GetButtonDown("Jump") && canJumpLedge))
@@ -402,10 +406,12 @@ public class S_PlayerMovement : MonoBehaviour
             rb.AddForce(_moveDirection.normalized * _moveSpeed * 10f * _upgradeSpeedValue, ForceMode.Force);
         }
 
-        else if (!_isGrounded)
+        else if (!_isGrounded || (!_isGrounded && _isGrappleActive))
         {
-            rb.AddForce(_moveDirection.normalized * _moveSpeed * _AerialSpeed * _airMultiplier * _upgradeSpeedValue, ForceMode.Force);
+            rb.AddForce(_moveDirection.normalized * _moveSpeed * _AerialSpeed * _airMultiplier, ForceMode.Force);
+            
         }
+
 
         if (!_isWallRunning)
         {
@@ -442,9 +448,19 @@ public class S_PlayerMovement : MonoBehaviour
     }
     private void Jump()
     {
+        if (rb.drag >= 20)
+        {
+            rb.AddForce(transform.up * _jumpForce * 2f, ForceMode.Impulse);
+            return;
+        }
+        
         if (_isSliding && !OnSlope())
         {
             rb.AddForce(transform.up * _jumpForce * 0.8f, ForceMode.Impulse);
+        }
+        else if (_isDashing)
+        {
+            rb.AddForce(transform.up * _jumpForce * (0.8f-ScriptDash._dashDuration), ForceMode.Impulse);
         }
         else if (GetSlopeMoveDirection(_moveDirection).y > 0)
         {
@@ -592,10 +608,5 @@ public class S_PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         _ReachUpgradeBool = false;
-    }
-
-    IEnumerator leaveGround()
-    {
-        yield return new WaitForSeconds(0.1f);
-    }
+    } 
 }

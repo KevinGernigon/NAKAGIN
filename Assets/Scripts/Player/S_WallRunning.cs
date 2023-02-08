@@ -160,7 +160,7 @@ public class S_WallRunning : MonoBehaviour
         if ((_isWallLeft || _isWallRight) && _verticalInput > 0 && AboveGround() && !_isExitingWall)
         {
             //start wallrun
-            if (!pm._isWallRunning)
+            if (!pm._isWallRunning && !pm._isGrounded)
             {
                 StartWallRun();
                
