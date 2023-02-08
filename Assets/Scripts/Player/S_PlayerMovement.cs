@@ -141,11 +141,11 @@ public class S_PlayerMovement : MonoBehaviour
 
 
         //handle drag
-        if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && state == MovementState.walking)
+        if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && state == MovementState.walking && !Input.GetButton("Jump"))
         {
             rb.drag = _groundDrag + 10;
         }
-        else if (state == MovementState.walking || state == MovementState.sprinting || state == MovementState.crouching && !_isGrappleActive)
+        else if (state == MovementState.walking && !_isGrappleActive)
         {
             rb.drag = _groundDrag;
         }
@@ -225,8 +225,6 @@ public class S_PlayerMovement : MonoBehaviour
             Jump();
             canJumpLedge = false;
             Invoke(nameof(ResetJump), _jumpCooldown);
-
-
         }
         //When crouch
 
@@ -448,12 +446,15 @@ public class S_PlayerMovement : MonoBehaviour
     }
     private void Jump()
     {
-        if (rb.drag >= 20)
+        if (state == MovementState.air) return;
+
+        Debug.Log(rb.drag);
+        /*if (rb.drag >= 20)
         {
             rb.AddForce(transform.up * _jumpForce * 2f, ForceMode.Impulse);
             return;
-        }
-        
+        }*/
+
         if (_isSliding && !OnSlope())
         {
             rb.AddForce(transform.up * _jumpForce * 0.8f, ForceMode.Impulse);
@@ -476,7 +477,8 @@ public class S_PlayerMovement : MonoBehaviour
         }
         else
         {
-            rb.AddForce(transform.up * _jumpForce*0.8f, ForceMode.Impulse);
+            rb.AddForce(transform.up * _jumpForce * 0.8f, ForceMode.Impulse);
+            return;
         }
 
     }
@@ -609,4 +611,5 @@ public class S_PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(2f);
         _ReachUpgradeBool = false;
     } 
+
 }
