@@ -65,11 +65,12 @@ public class S_Climbing : MonoBehaviour
     private void StateMachine()
     {
         //State 1 - Climbing
-        if (_isWallFront && Input.GetKey(KeyCode.Z) && _wallLookAngle < _maxWallLookAngle)
+        //if (_isWallFront && Input.GetKey(KeyCode.Z) && _wallLookAngle < _maxWallLookAngle)
+        if ((Input.GetButton("Vertical") || Input.GetButton("Jump")) && (_isWallFront  && _wallLookAngle < _maxWallLookAngle))     
         {
             if (!_isClimbing && _climbTimer > 0)
             {
-                StartClimbing();
+                StartClimbing();       
             }
 
             if (_climbTimer > 0)
@@ -104,10 +105,10 @@ public class S_Climbing : MonoBehaviour
         }
 
 
-        if (_isWallFront && Input.GetKeyDown(jumpKey) && _climbJumpsLeft > 0)
+        /*if (_isWallFront && Input.GetKeyDown(jumpKey) && _climbJumpsLeft > 0)
         {
             ClimbJump();
-        }
+        }*/
     }
     private void WallCheck()
     {
@@ -151,7 +152,7 @@ public class S_Climbing : MonoBehaviour
         pm._isClimbing = false;
     }
 
-    private void ClimbJump()
+    /*private void ClimbJump()
     {
         _isExitingWall = true;
         _exitingWallTimer = _exitWallTime;
@@ -161,7 +162,7 @@ public class S_Climbing : MonoBehaviour
         rb.AddForce(forceToApply, ForceMode.Impulse);
 
         _climbJumpsLeft--;
-    }
+    }*/
 
     IEnumerator counterJumpAdjustment()
     {
