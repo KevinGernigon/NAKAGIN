@@ -76,8 +76,8 @@ public class S_PlayerMovement : MonoBehaviour
 
     [Header("Raycast")]
     [SerializeField] private float _valueRaycast;
-    float _horizontalInput;
-    float _verticalInput;
+    public float _horizontalInput;
+    public float _verticalInput;
 
 
     Vector3 _moveDirection;
@@ -398,7 +398,6 @@ public class S_PlayerMovement : MonoBehaviour
                 rb.AddForce(GetSlopeMoveDirection(_moveDirection).normalized * _moveSpeed * 15f, ForceMode.Force);
                 //rb.AddForce(_moveDirection.normalized * _moveSpeed * 20f * _upgradeSpeedValue, ForceMode.Force);
         }
-
         else if (_isGrounded)
         {
             rb.AddForce(_moveDirection.normalized * _moveSpeed * 10f * _upgradeSpeedValue, ForceMode.Force);
@@ -611,5 +610,4 @@ public class S_PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(2f);
         _ReachUpgradeBool = false;
     } 
-
 }

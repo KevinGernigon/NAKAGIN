@@ -142,7 +142,7 @@ public class S_Dash : MonoBehaviour
         }
     }
 
-    private Vector3 GetDirection(Transform forwardT)
+    public Vector3 GetDirection(Transform forwardT)
     {
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");
