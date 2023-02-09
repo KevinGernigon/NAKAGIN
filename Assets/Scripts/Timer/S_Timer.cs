@@ -6,14 +6,12 @@ using TMPro;
 
 public class S_Timer : MonoBehaviour
 {
-    [SerializeField]
+    private S_ReferenceInterface _referenceInterface;
+    private GameObject _TimerAffichage;
     private TMP_Text _textTimer;
 
     private float _timeReflevel1 = 0f;
     private float _timeReflevel2 = 0f;
-
-    /*private float _bestTime = 1000f ;
-    private float _timeBattlehours, _timeBattleminutes, _timeBattleseconds, _timeBattlemilliseconds;*/
 
 
     public float _hours, _minutes, _seconds, _milliseconds;
@@ -22,6 +20,17 @@ public class S_Timer : MonoBehaviour
     public float _startTime, _stopTime;
 
     private bool _timerPlay = false;
+
+
+
+    private void Awake()
+    {
+         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
+         _textTimer = _referenceInterface._timerText;
+
+    }
+
+
 
     private void Start()
     {
@@ -92,7 +101,7 @@ public class S_Timer : MonoBehaviour
         if (!_timerPlay)
         {
 
-            //Debug.Log("StartTimer");
+            
             _timerPlay = true;
             _startTime = Time.time;
 
@@ -103,7 +112,7 @@ public class S_Timer : MonoBehaviour
     {
         if (_timerPlay)
         {
-            //Debug.Log("StopTimer : " +_timerTime );
+            
             _timerPlay = false;
             _stopTime = _timerTime;
 
@@ -114,14 +123,12 @@ public class S_Timer : MonoBehaviour
     }
     public void TimerReset()
     {
-        //Debug.Log("ResetTimer");
-
-        //TimerStop();
+        
         _timerPlay = false;
         _stopTime = _timerTime;
 
         _textTimer.text = "";
-        //_textTimer.text = "00:00:000";
+       
         _startTime = Time.time;
         _stopTime = 0f;
 
@@ -133,15 +140,7 @@ public class S_Timer : MonoBehaviour
         _timeReflevel1 = TimerLevel1;
         _timeReflevel2 = TimerLevel2;
 
-        /*
-        _timeBattlehours = (int)(_timeRef / 3600f);
-        _timeBattleminutes = (int)(_timeRef / 60f) % 60;
-        _timeBattleseconds = (int)(_timeRef % 60f);
-        _timeBattlemilliseconds = (int)(_timeRef * 1000f) % 1000;
         
-
-        Debug.Log("TimerBattle : " + _timeBattlehours + "h : " + _timeBattleminutes + "min : " + _timeBattleseconds + "Sec :  " + _timeBattlemilliseconds + "mill");
-        */
     }
 
 }

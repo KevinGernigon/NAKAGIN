@@ -16,7 +16,7 @@ public class S_PlayerCam : MonoBehaviour
     public S_GrappinV2 GrapplingHookScript;
     public Transform _orientation;
     public Transform player;
-    public Transform respawnPoint;
+    //public Transform respawnPoint;
 
     public float _xRotation;
     public float _yRotation;
@@ -173,16 +173,16 @@ public class S_PlayerCam : MonoBehaviour
             _isAxisYInverted = false;
     }
 
-    public void CameraReset()
+    public void CameraReset(float x, float y)
     {
-        StartCoroutine(resetcam());      
+        StartCoroutine(resetcam(x,y));      
     }
 
-    IEnumerator resetcam()
+    IEnumerator resetcam(float x, float y)
     {
         _isActive = false;
-        _xRotation = respawnPoint.rotation.eulerAngles.x;
-        _yRotation = respawnPoint.rotation.eulerAngles.y;
+        _xRotation = x;
+        _yRotation = y;
         Camera.main.transform.rotation = Quaternion.identity;
         yield return new WaitForSeconds(0.01f);
         _isActive = true;
