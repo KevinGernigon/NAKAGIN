@@ -26,6 +26,7 @@ public class S_GrappinV2 : MonoBehaviour
     [Header("Boolean")]
     public bool _isGrappling;
     public bool isIncreaseFOV;
+    public bool _isDecreaseRbDrag;
 
     public System.Action updateAction;
 
@@ -39,7 +40,10 @@ public class S_GrappinV2 : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.A) && !_isGrappling)
-            StartGrapple();
+        {
+                StartGrapple();
+        }
+            
 
         if (_grapplingCdTimer > 0)
             _grapplingCdTimer -= Time.deltaTime;
@@ -65,6 +69,8 @@ public class S_GrappinV2 : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(_camera.position, _camera.forward, out hit, _maxGrappleDistance, _whatIsTarget))
         {
+            _isDecreaseRbDrag = true;
+            _pm.Jump();
             grapplePoint = hit.point;
             Invoke(nameof(ExecuteGrapple), _grappleDelayTime);
         }
@@ -116,6 +122,8 @@ public class S_GrappinV2 : MonoBehaviour
 
     public void StopGrapple()
     {
+        _pm._readyToJump = true;
+
         _pm._isFreezing = false;
 
         _isGrappling = false;
@@ -125,6 +133,8 @@ public class S_GrappinV2 : MonoBehaviour
         lr.enabled = false;
 
         isIncreaseFOV = false;
+
+        _isDecreaseRbDrag = false;
 
     }
 }

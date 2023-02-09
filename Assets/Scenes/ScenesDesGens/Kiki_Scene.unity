@@ -4099,7 +4099,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bae706b9a82cb354e94bdc731c4c92f4, type: 3}
       propertyPath: m_LocalScale.z
-      value: 3.6521
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: bae706b9a82cb354e94bdc731c4c92f4, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5424,6 +5424,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2963291363101779843, guid: 4fe81b30d05e171408d89634d43f249c, type: 3}
   m_PrefabInstance: {fileID: 2963291362152894785}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1219589827 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2963291363101779963, guid: 4fe81b30d05e171408d89634d43f249c, type: 3}
+  m_PrefabInstance: {fileID: 2963291362152894785}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1219589816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc2027de4281414b9f948ce679a52ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1222393621 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: b0d9c79a5aac7684c899e68dbeb7337a, type: 3}
@@ -19256,6 +19267,26 @@ PrefabInstance:
       propertyPath: BoxList.Array.data[0]._boxUse.Array.data[2]
       value: 
       objectReference: {fileID: 2945870541453803165}
+    - target: {fileID: 2963291363101779840, guid: 4fe81b30d05e171408d89634d43f249c, type: 3}
+      propertyPath: _maxWalkSpeed
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963291363101779840, guid: 4fe81b30d05e171408d89634d43f249c, type: 3}
+      propertyPath: GrapplingScript
+      value: 
+      objectReference: {fileID: 1219589827}
+    - target: {fileID: 2963291363101779840, guid: 4fe81b30d05e171408d89634d43f249c, type: 3}
+      propertyPath: _incrementValMaxSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963291363101779840, guid: 4fe81b30d05e171408d89634d43f249c, type: 3}
+      propertyPath: _maxSpeedReachCooldown
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2963291363101779964, guid: 4fe81b30d05e171408d89634d43f249c, type: 3}
+      propertyPath: _dashUpwardForce
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6447529859060838225, guid: 4fe81b30d05e171408d89634d43f249c, type: 3}
       propertyPath: m_Name
       value: --------COMMUN--------
@@ -49497,9 +49528,17 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Platform_H2Hub_02
       objectReference: {fileID: 0}
+    - target: {fileID: 7070705157900656031, guid: 75d777a613188cd498202c2c4c4d4144, type: 3}
+      propertyPath: m_Layer
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7070705159061325809, guid: 75d777a613188cd498202c2c4c4d4144, type: 3}
       propertyPath: m_Name
       value: OBJ_Platform_H2Hub_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 7070705159061325809, guid: 75d777a613188cd498202c2c4c4d4144, type: 3}
+      propertyPath: m_Layer
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 7596411820399691557, guid: 75d777a613188cd498202c2c4c4d4144, type: 3}
       propertyPath: m_LocalScale.z
