@@ -15,9 +15,12 @@ public class S_RotationPlatformes : MonoBehaviour
     private bool _startMoving = false;
     private Vector3 _initialRotation;
 
+
+    
+
     void Start()
     {
-
+        
     }
 
     void Update()
