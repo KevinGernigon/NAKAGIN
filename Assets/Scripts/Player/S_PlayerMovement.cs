@@ -174,10 +174,10 @@ public class S_PlayerMovement : MonoBehaviour
             _desiredMoveSpeed = _airSpeed;
         }
 
-        if (state != MovementState.air && state != MovementState.dashing) //limit dash in air
+        /*if (state != MovementState.air && state != MovementState.dashing) //limit dash in air
         {
-            ScriptDash._limitDash = 1;
-        }
+            ScriptDash._limitDash = 3;
+        }*/
 
         if (OnSlope())
             _player.GetComponent<CapsuleCollider>().material.dynamicFriction = 2f;

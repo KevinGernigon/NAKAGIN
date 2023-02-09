@@ -17,7 +17,7 @@ public class S_Dash : MonoBehaviour
     [SerializeField] public float _dashDuration;
     public float _dashUpgradeForce;
     private float lastPressTime;
-    public float _limitDash = 1;
+    public float _limitDash = 3;
 
     [Header("Settings")]
     [SerializeField] private bool _isUsingCameraForward = true;
@@ -28,6 +28,8 @@ public class S_Dash : MonoBehaviour
     [Header("Cooldown")]
     [SerializeField] private float _dashCd;
     [SerializeField] private float _dashCdTimer;
+    [SerializeField] private float _dashGain;
+    [SerializeField] private float _dashGainTimer;
 
     [Header("Input")]
     public KeyCode dashKey = KeyCode.E;
@@ -49,6 +51,21 @@ public class S_Dash : MonoBehaviour
 
         if (_dashCdTimer > 0)
             _dashCdTimer -= Time.deltaTime;
+
+        if (_limitDash > 3)
+            _limitDash = 3;
+        else if (_limitDash < 3)
+        {
+            if (_dashGainTimer > 0)
+            {
+                _dashGainTimer -= Time.deltaTime;
+            }  
+            else if(_dashGainTimer <= 0)
+            {
+                _limitDash++;
+                _dashGainTimer = _dashGain;
+            }
+        }
     }
 
     public void ButtonAxel()
