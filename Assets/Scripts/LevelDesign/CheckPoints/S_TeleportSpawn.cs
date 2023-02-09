@@ -4,9 +4,19 @@ using UnityEngine;
 
 public class S_TeleportSpawn : MonoBehaviour
 {
-    [SerializeField] private Transform _player;
-    [SerializeField] private Rigidbody _rbplayer;
+    private S_ReferenceInterface _referenceInterface;
+
+    private Rigidbody _rbplayer;
+    private Transform _playerContent;
+
     public Transform _respawnplayer;
+
+    private void Awake()
+    {
+        _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
+        _playerContent = _referenceInterface._playerTransform;
+        _rbplayer = _referenceInterface._playerRigidbody;
+    }
 
 
     private void OnTriggerEnter(Collider other)
@@ -14,7 +24,7 @@ public class S_TeleportSpawn : MonoBehaviour
         if (other.CompareTag("Player"))
         {
 
-            _player.transform.position = _respawnplayer.transform.position;
+            _playerContent.position = _respawnplayer.transform.position;
             _rbplayer.velocity = new Vector3(0, 0, 0);
 
             Physics.SyncTransforms();

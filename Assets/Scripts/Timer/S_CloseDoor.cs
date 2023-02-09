@@ -5,9 +5,6 @@ using UnityEngine;
 public class S_CloseDoor : MonoBehaviour
 {
 
-
-
-
     [Header("References")]
     [SerializeField] private S_InfoScore ScriptInfoScore;
     [SerializeField] private S_Timer ScriptTimer;

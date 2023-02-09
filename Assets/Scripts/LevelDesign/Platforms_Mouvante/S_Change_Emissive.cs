@@ -4,17 +4,26 @@ using UnityEngine;
 
 public class S_Change_Emissive : MonoBehaviour
 {
+    private S_ReferenceInterface _referenceInterface;
 
     [SerializeField]
     private List<GameObject> _lumiere;
     private Material[]_materials;
 
-    [SerializeField]
-    private GameObject _player;
+   
+    private GameObject _playerContent;
+
+    private void Awake()
+    {
+        _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
+        _playerContent = _referenceInterface._playerGameObject;
+        _playerContent.GetComponent<S_Bras_Animation>();
+    }
+
 
     private void Start()
     {
-        _player.GetComponent<S_Bras_Animation>();
+        
         for (int i = 0; i < _lumiere.Count; i++)
         {
             _materials = _lumiere[i].GetComponent<MeshRenderer>().materials;
