@@ -14,7 +14,7 @@ public class S_Dash : MonoBehaviour
     [Header("Dashing")]
     [SerializeField] private float _dashForce;
     [SerializeField] private float _dashUpwardForce;
-    [SerializeField] private float _dashDuration;
+    [SerializeField] public float _dashDuration;
     public float _dashUpgradeForce;
     private float lastPressTime;
     public float _limitDash = 1;
@@ -92,9 +92,9 @@ public class S_Dash : MonoBehaviour
 
         _limitDash--;
         _pm._isDashing = true;
-        _pm._readyToJump = false;
+        //_pm._readyToJump = false;
         Transform forwardT;
-
+        
         if (_isUsingCameraForward)
             forwardT = playerCam;
         else
@@ -119,6 +119,10 @@ public class S_Dash : MonoBehaviour
     private Vector3 delayedForceToApply;
     private void DelayedDashForce()
     {
+        /*if (_pm.OnSlope())
+        {
+            StartCoroutine(untilDashIsFalse());
+        }*/
         if (_isResettingVel)
         {
             _rb.velocity = Vector3.zero;
@@ -131,7 +135,7 @@ public class S_Dash : MonoBehaviour
     {
         _pm._isDashing = false;
         _pm._ReachUpgradeBool = false;
-        _pm._readyToJump = true;
+        
         if (_isDisablingGravity)
         {
             _rb.useGravity = true;
@@ -159,5 +163,10 @@ public class S_Dash : MonoBehaviour
         }
         return direction.normalized;
     }
-            
+    
+    /*IEnumerator untilDashIsFalse()
+    {
+        yield return new WaitUntil(() => !_pm._isDashing);
+    }*/
+
 }
