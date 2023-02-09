@@ -8,6 +8,8 @@ public class S_PlayerMovement : MonoBehaviour
     public float _moveSpeed;
     //[SerializeField] private float _sprintSpeed;
     [SerializeField] private float _walkSpeed;
+    [SerializeField] private float _timerMaxSpeed;
+    [SerializeField] private float _maxSpeedReachCooldown;
     [SerializeField] private float _slideSpeed;
     [SerializeField] private float _wallRunSpeed;
     [SerializeField] private float _climbUpSpeed;
@@ -18,6 +20,7 @@ public class S_PlayerMovement : MonoBehaviour
     private float _lastDesiredMoveSpeed;
     private float _speedChangeFactor;
     public float _fallMultiplier;
+    public bool _isMaxSpeed;
 
     public MovementState _lastState;
     private bool _isKeepingMomentum;
@@ -53,6 +56,7 @@ public class S_PlayerMovement : MonoBehaviour
     [SerializeField] private float _maxSlopeAngle;
     private RaycastHit _slopeHit;
     private bool _exitingSlope;
+    [SerializeField] private float _slopeVectorDownValue;
 
     [Header("Grappling")]
     [SerializeField] public float _wantedSpeedGrappling = 2;
@@ -67,6 +71,7 @@ public class S_PlayerMovement : MonoBehaviour
     [SerializeField] private S_Dash ScriptDash;
     [SerializeField] private S_WallRunning ScriptWallRun;
     [SerializeField] private Transform _orientation;
+    [SerializeField] private GameObject _player;
 
 
     [Header("Raycast")]
@@ -107,6 +112,7 @@ public class S_PlayerMovement : MonoBehaviour
     private float _saveWalkSpeed;
     private bool canJumpLedge;
     private float _timerJump;
+    public bool _isButtonEnabled;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -115,6 +121,7 @@ public class S_PlayerMovement : MonoBehaviour
         _saveWalkSpeed = _walkSpeed;
         _startYScale = transform.localScale.y;
         _upgradeSpeedValue = 1;
+        _isButtonEnabled = true;
     }
 
     private void Update()
@@ -132,8 +139,13 @@ public class S_PlayerMovement : MonoBehaviour
             SpeedValueUpgrade();
         }
 
+
         //handle drag
-        if (state == MovementState.walking || state == MovementState.sprinting || state == MovementState.crouching && !_isGrappleActive)
+        if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && state == MovementState.walking)
+        {
+            rb.drag = _groundDrag + 10;
+        }
+        else if (state == MovementState.walking || state == MovementState.sprinting || state == MovementState.crouching && !_isGrappleActive)
         {
             rb.drag = _groundDrag;
         }
@@ -158,6 +170,11 @@ public class S_PlayerMovement : MonoBehaviour
             ScriptDash._limitDash = 1;
         }
 
+        if (OnSlope())
+            _player.GetComponent<CapsuleCollider>().material.dynamicFriction = 2f;
+        else
+            _player.GetComponent<CapsuleCollider>().material.dynamicFriction = 0f;
+
     }
 
     private void FixedUpdate()
@@ -181,12 +198,25 @@ public class S_PlayerMovement : MonoBehaviour
 
         }
         else _timerJump = 0f;
+
+        if (Input.GetButton("Vertical"))
+        {
+            _timerMaxSpeed += Time.deltaTime;
+            if (_timerMaxSpeed >= _maxSpeedReachCooldown)
+            {
+                _isMaxSpeed = true;
+            }
+            else _isMaxSpeed = false;
+        }
+        else _timerMaxSpeed = 0f;
     }
 
     private void InputCommand()
     {
+
         _horizontalInput = Input.GetAxisRaw("Horizontal");
         _verticalInput = Input.GetAxisRaw("Vertical");
+
 
         //when to jump
         if (Input.GetButtonDown("Jump") && _readyToJump && _isGrounded || (Input.GetButtonDown("Jump") && canJumpLedge))
@@ -348,19 +378,27 @@ public class S_PlayerMovement : MonoBehaviour
 
         if (state == MovementState.dashing) return;
         if (ClimbingScript._isExitingWall) return;
+
+        if (_isMaxSpeed)
+        {
+            _walkSpeed = 50f;
+        }
+        else _walkSpeed = 45f;
+
         //calculate movement direction 
         _moveDirection = _orientation.forward * _verticalInput + _orientation.right * _horizontalInput;
 
         //on slope
         if (OnSlope() && !_exitingSlope)
         {
-            rb.AddForce(Vector3.down * 80f, ForceMode.Force);
+            rb.AddForce(Vector3.down * _slopeVectorDownValue, ForceMode.Force);
             if (rb.velocity.y > 0 && _isSliding)
             {
                 rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 20f, ForceMode.Force);
             }
             else
-                rb.AddForce(_moveDirection.normalized * _moveSpeed * 10f * _upgradeSpeedValue, ForceMode.Force);
+                rb.AddForce(GetSlopeMoveDirection(_moveDirection).normalized * _moveSpeed * 15f, ForceMode.Force);
+                //rb.AddForce(_moveDirection.normalized * _moveSpeed * 20f * _upgradeSpeedValue, ForceMode.Force);
         }
 
         else if (_isGrounded)
@@ -368,10 +406,12 @@ public class S_PlayerMovement : MonoBehaviour
             rb.AddForce(_moveDirection.normalized * _moveSpeed * 10f * _upgradeSpeedValue, ForceMode.Force);
         }
 
-        else if (!_isGrounded)
+        else if (!_isGrounded || (!_isGrounded && _isGrappleActive))
         {
-            rb.AddForce(_moveDirection.normalized * _moveSpeed * _AerialSpeed * _airMultiplier * _upgradeSpeedValue, ForceMode.Force);
+            rb.AddForce(_moveDirection.normalized * _moveSpeed * _AerialSpeed * _airMultiplier, ForceMode.Force);
+            
         }
+
 
         if (!_isWallRunning)
         {
@@ -384,12 +424,13 @@ public class S_PlayerMovement : MonoBehaviour
         if (_isGrappleActive) return;
 
         //limiting speed on slope
-        if (OnSlope() && !_exitingSlope)
+        if (OnSlope() && !_exitingSlope && !_isGrounded)
         {
-            if (rb.velocity.magnitude > _moveSpeed)
-            {
-                rb.velocity = rb.velocity.normalized * _moveSpeed;
-            }
+                if (rb.velocity.magnitude > _moveSpeed)
+                {
+                //rb.velocity = rb.velocity.normalized * _moveSpeed;
+                rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, rb.velocity.z);
+            }   
         }
         else
         {
@@ -407,18 +448,35 @@ public class S_PlayerMovement : MonoBehaviour
     }
     private void Jump()
     {
-        if (!canJumpLedge)
+        if (rb.drag >= 20)
+        {
+            rb.AddForce(transform.up * _jumpForce * 2f, ForceMode.Impulse);
+            return;
+        }
+        
+        if (_isSliding && !OnSlope())
+        {
+            rb.AddForce(transform.up * _jumpForce * 0.8f, ForceMode.Impulse);
+        }
+        else if (_isDashing)
+        {
+            rb.AddForce(transform.up * _jumpForce * (0.8f-ScriptDash._dashDuration), ForceMode.Impulse);
+        }
+        else if (GetSlopeMoveDirection(_moveDirection).y > 0)
+        {
+            rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
+        }
+        else if (!canJumpLedge)
         {
             _exitingSlope = true;
             _readyToJump = false;
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
             //rb.velocity = new Vector3(rb.velocity.x, ??, rb.velocity.z);
-
             rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
         }
         else
         {
-            rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
+            rb.AddForce(transform.up * _jumpForce*0.8f, ForceMode.Impulse);
         }
 
     }
@@ -469,7 +527,7 @@ public class S_PlayerMovement : MonoBehaviour
             float _angle = Vector3.Angle(Vector3.up, _slopeHit.normal);
             return _angle < _maxSlopeAngle && _angle != 0;
         }
-
+        
         return false;
     }
 
@@ -550,10 +608,5 @@ public class S_PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         _ReachUpgradeBool = false;
-    }
-
-    IEnumerator leaveGround()
-    {
-        yield return new WaitForSeconds(0.1f);
-    }
+    } 
 }
