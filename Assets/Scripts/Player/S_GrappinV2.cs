@@ -71,7 +71,8 @@ public class S_GrappinV2 : MonoBehaviour
         {
             _isDecreaseRbDrag = true;
             _pm.Jump();
-            grapplePoint = hit.point;
+            //grapplePoint = hit.point;
+            grapplePoint = hit.transform.position;
             Invoke(nameof(ExecuteGrapple), _grappleDelayTime);
         }
         else
@@ -82,7 +83,7 @@ public class S_GrappinV2 : MonoBehaviour
 
         lr.enabled = true;
         lr.SetPosition(1, grapplePoint);
-        var finalPosion = grapplePoint;
+        var finalPosition = grapplePoint;
         /*SetGraplin(finalPosion);
         updateAction = () => SetGraplin(finalPosion);*/
     }
