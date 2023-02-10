@@ -5,13 +5,19 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/Scenes/MAIN_Vertical_Slice.unity
-    guid: 5a99acc07e2da434eb92c4823beb8771
+  - enabled: 1
+    path: Assets/Scenes/Manager_Scene.unity
+    guid: b1926ac1beec1294ea58ea3d620dc819
   - enabled: 1
     path: Assets/Scenes/Playtest_Scene.unity
     guid: ddf8ec83a398b1e4ebbbc7316f5758af
   - enabled: 1
+    path: Assets/Scenes/Assets_Scene.unity
+    guid: f636f0ad4ca7c8542aae8772eef55847
+  - enabled: 0
     path: Assets/Scenes/ScenesDesGens/Corentin_Scene.unity
     guid: 57411c8e27963b04c96d6291418c4118
+  - enabled: 0
+    path: Assets/Scenes/MAIN_Vertical_Slice.unity
+    guid: 5a99acc07e2da434eb92c4823beb8771
   m_configObjects: {}
