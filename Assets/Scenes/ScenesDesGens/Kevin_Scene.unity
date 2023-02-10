@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: bb8c9fa974bee0a43a4b7e01272fd4d0, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.017759612, g: 0.017220534, b: 0.017759612, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2383,7 +2383,7 @@ MonoBehaviour:
   - {fileID: 1359350417}
   - {fileID: 824201576}
   - {fileID: 1815711560}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &69268118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8457,7 +8457,7 @@ MonoBehaviour:
   - {fileID: 967140309}
   - {fileID: 1701683058}
   - {fileID: 1584075311}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &225809550
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10066,7 +10066,7 @@ MonoBehaviour:
   - {fileID: 967140309}
   - {fileID: 1701683058}
   - {fileID: 1584075311}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &255360498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12478,7 +12478,7 @@ MonoBehaviour:
   _lumiere:
   - {fileID: 287294593}
   - {fileID: 287294592}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &287294597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12494,7 +12494,7 @@ MonoBehaviour:
   _lumiere:
   - {fileID: 287294593}
   - {fileID: 287294592}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!1001 &292758754
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13214,7 +13214,7 @@ MonoBehaviour:
   _lumiere:
   - {fileID: 1029340032}
   - {fileID: 1453335167}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &295965850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15952,7 +15952,7 @@ MonoBehaviour:
   - {fileID: 1832316398}
   - {fileID: 905042362}
   - {fileID: 79717657}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &358715294
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19873,16 +19873,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42c0112cd86e41459f130da042a1b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &430208012 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 2963291363101779841, guid: 4fe81b30d05e171408d89634d43f249c, type: 3}
-  m_PrefabInstance: {fileID: 430208005}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &430208013 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2963291363101779843, guid: 4fe81b30d05e171408d89634d43f249c, type: 3}
-  m_PrefabInstance: {fileID: 430208005}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &430208014 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2963291361792359791, guid: 4fe81b30d05e171408d89634d43f249c, type: 3}
@@ -20483,7 +20473,7 @@ MonoBehaviour:
   - {fileID: 1624352961}
   - {fileID: 1123600711}
   - {fileID: 559277825}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &440027413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20699,7 +20689,7 @@ MonoBehaviour:
   - {fileID: 39462981}
   - {fileID: 883654229}
   - {fileID: 2081544732}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &440836412
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28213,7 +28203,7 @@ MonoBehaviour:
   - {fileID: 2051141325}
   - {fileID: 1998297278}
   - {fileID: 1596406945}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &605673475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29338,7 +29328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScriptTimer: {fileID: 430208015}
-  _player: {fileID: 430208013}
+  _player: {fileID: 0}
   _respawnplayer: {fileID: 430208009}
   _runStart: 0
   _Lvl2Win: 0
@@ -34418,7 +34408,7 @@ MonoBehaviour:
   _lumiere:
   - {fileID: 2067181596}
   - {fileID: 718142066}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &744618702
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34625,7 +34615,7 @@ MonoBehaviour:
   - {fileID: 980648816}
   - {fileID: 541718777}
   - {fileID: 1864280031}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &745373611
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34849,7 +34839,7 @@ PrefabInstance:
     - target: {fileID: 7928853525123080072, guid: 92be74a16763d73438c3be614befe493, type: 3}
       propertyPath: _player
       value: 
-      objectReference: {fileID: 430208008}
+      objectReference: {fileID: 2963291362716888634}
     - target: {fileID: 7928853525123080072, guid: 92be74a16763d73438c3be614befe493, type: 3}
       propertyPath: _lumiere.Array.size
       value: 8
@@ -35101,7 +35091,7 @@ PrefabInstance:
     - target: {fileID: 7928853525754946789, guid: 92be74a16763d73438c3be614befe493, type: 3}
       propertyPath: _player
       value: 
-      objectReference: {fileID: 430208008}
+      objectReference: {fileID: 2963291362716888634}
     - target: {fileID: 7928853525754946789, guid: 92be74a16763d73438c3be614befe493, type: 3}
       propertyPath: _lumiere.Array.size
       value: 8
@@ -42947,8 +42937,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21c72e3e7d72b2749995cb0c5397c966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 430208013}
-  _rbplayer: {fileID: 430208012}
+  _player: {fileID: 2963291362716888640}
+  _rbplayer: {fileID: 2963291362716888642}
   _respawnplayer: {fileID: 430208014}
 --- !u!114 &977458502
 MonoBehaviour:
@@ -44275,7 +44265,7 @@ MonoBehaviour:
   _lumiere:
   - {fileID: 1156783086}
   - {fileID: 298724896}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &1003865558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47080,7 +47070,7 @@ MonoBehaviour:
   - {fileID: 419489154}
   - {fileID: 77501365}
   - {fileID: 1391062337}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &1081775354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52774,7 +52764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScriptTimer: {fileID: 430208015}
-  _player: {fileID: 430208013}
+  _player: {fileID: 0}
   _respawnplayer: {fileID: 430208009}
   _runStart: 0
   _Lvl2Win: 0
@@ -53184,8 +53174,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21c72e3e7d72b2749995cb0c5397c966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 430208013}
-  _rbplayer: {fileID: 430208012}
+  _player: {fileID: 2963291362716888640}
+  _rbplayer: {fileID: 2963291362716888642}
   _respawnplayer: {fileID: 430208014}
 --- !u!114 &1224314994
 MonoBehaviour:
@@ -53291,7 +53281,7 @@ MonoBehaviour:
   - {fileID: 39462981}
   - {fileID: 883654229}
   - {fileID: 2081544732}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &1225632311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -54917,7 +54907,7 @@ MonoBehaviour:
   - {fileID: 94153542}
   - {fileID: 368641952}
   - {fileID: 1579797378}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &1296169953
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55390,7 +55380,7 @@ MonoBehaviour:
   - {fileID: 1359350417}
   - {fileID: 824201576}
   - {fileID: 1815711560}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &1316369230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -55913,7 +55903,7 @@ MonoBehaviour:
   - {fileID: 1832316398}
   - {fileID: 905042362}
   - {fileID: 79717657}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &1331839495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -58036,7 +58026,7 @@ MonoBehaviour:
   - {fileID: 2051141325}
   - {fileID: 1998297278}
   - {fileID: 1596406945}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &1364943715
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61783,7 +61773,7 @@ MonoBehaviour:
   - {fileID: 2135822636}
   - {fileID: 951447982}
   - {fileID: 1767634329}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &1469444065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -62989,7 +62979,7 @@ MonoBehaviour:
   - {fileID: 1810480038}
   - {fileID: 1838009716}
   - {fileID: 738625765}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &1499740247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67346,7 +67336,7 @@ MonoBehaviour:
   - {fileID: 94153542}
   - {fileID: 368641952}
   - {fileID: 1579797378}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &1623305027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -67842,7 +67832,7 @@ MonoBehaviour:
   _lumiere:
   - {fileID: 2067181596}
   - {fileID: 718142066}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &1645807886
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70772,7 +70762,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScriptTimer: {fileID: 430208015}
-  _player: {fileID: 430208013}
+  _player: {fileID: 0}
   _respawnplayer: {fileID: 430208009}
   _runStart: 0
   _Lvl2Win: 0
@@ -71677,7 +71667,7 @@ MonoBehaviour:
   _lumiere:
   - {fileID: 1156783086}
   - {fileID: 298724896}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &1738903205
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76010,7 +76000,7 @@ MonoBehaviour:
   - {fileID: 2135822636}
   - {fileID: 951447982}
   - {fileID: 1767634329}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &1847197288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76502,7 +76492,7 @@ MonoBehaviour:
   _lumiere:
   - {fileID: 85090479}
   - {fileID: 1595638153}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &1854151570
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79492,8 +79482,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21c72e3e7d72b2749995cb0c5397c966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 430208013}
-  _rbplayer: {fileID: 430208012}
+  _player: {fileID: 2963291362716888640}
+  _rbplayer: {fileID: 2963291362716888642}
   _respawnplayer: {fileID: 430208014}
 --- !u!114 &1927399950
 MonoBehaviour:
@@ -80589,7 +80579,7 @@ MonoBehaviour:
   - {fileID: 1810480038}
   - {fileID: 1838009716}
   - {fileID: 738625765}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &1967280337
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -81955,7 +81945,7 @@ MonoBehaviour:
   - {fileID: 1624352961}
   - {fileID: 1123600711}
   - {fileID: 559277825}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &2009100430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -82073,7 +82063,7 @@ MonoBehaviour:
   _lumiere:
   - {fileID: 85090479}
   - {fileID: 1595638153}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &2021989163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84225,7 +84215,7 @@ MonoBehaviour:
   - {fileID: 419489154}
   - {fileID: 77501365}
   - {fileID: 1391062337}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &2054680265
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -86217,7 +86207,7 @@ MonoBehaviour:
   - {fileID: 980648816}
   - {fileID: 541718777}
   - {fileID: 1864280031}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &2119395602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88109,7 +88099,7 @@ MonoBehaviour:
   _lumiere:
   - {fileID: 1029340032}
   - {fileID: 1453335167}
-  _player: {fileID: 430208008}
+  _player: {fileID: 2963291362716888634}
 --- !u!114 &2144138904
 MonoBehaviour:
   m_ObjectHideFlags: 0
