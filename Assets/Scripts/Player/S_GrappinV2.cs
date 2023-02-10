@@ -11,6 +11,8 @@ public class S_GrappinV2 : MonoBehaviour
     [SerializeField] private LineRenderer lr;
     [Header("Layer")]
     [SerializeField] private LayerMask _whatIsTarget;
+    [SerializeField] private LayerMask _whatIsWall;
+    [SerializeField] private LayerMask _whatIsGround;
 
     [Header("Grappling Hook Ref")]
     [SerializeField] private float _maxGrappleDistance;
@@ -61,6 +63,9 @@ public class S_GrappinV2 : MonoBehaviour
     private void StartGrapple()
     {
         if (_grapplingCdTimer > 0) return;
+        RaycastHit blockHit;
+        if (Physics.Raycast(_camera.position, _camera.forward, out blockHit, _maxGrappleDistance, ~(_whatIsTarget))) return;
+  
 
         _isGrappling = true;
 
