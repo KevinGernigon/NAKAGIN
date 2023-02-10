@@ -73,6 +73,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_cfe3ea8601e24ee680ec95a039ab3be2_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 41320bf3411c1ca4c888ea811379e78d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -91,6 +95,8 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _Activate_FBP: 1
+    - _Activate_SpeedLines: 0
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -104,6 +110,13 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
+    - _FBP_CenterMaskEdge: 0.26
+    - _FBP_CenterMaskSize: 0.0625
+    - _FBP_FrameRate: 19.8
+    - _FBP_LineDensity: 0.51
+    - _FBP_LineFallOff: 2.32
+    - _FBP_LinesAmount: 0
+    - _FBP_Speed: 0.25
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -116,6 +129,13 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
+    - _SL_CenterMaskEdge: 0.5
+    - _SL_CenterMaskSize: 0.0625
+    - _SL_FrameRate: 20
+    - _SL_LineDensity: 0.5
+    - _SL_LineFallOff: 0.25
+    - _SL_LinesAmount: 15
+    - _SL_Speed: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
@@ -127,6 +147,10 @@ Material:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _FBP_Center: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _FBP_LineColor: {r: 0, g: 0.15649293, b: 0.8867924, a: 0}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
+    - _SL_Center: {r: 0.5, g: 0.5, b: 0, a: 0}
+    - _SL_Color: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
