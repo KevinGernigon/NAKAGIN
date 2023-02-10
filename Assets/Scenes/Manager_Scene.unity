@@ -185,6 +185,17 @@ MonoBehaviour:
   updateEvent:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1224282549 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5482668411544585585, guid: a3ab48b015357004b94edb5870dd5d7d, type: 3}
+  m_PrefabInstance: {fileID: 8859059210390342391}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc2027de4281414b9f948ce679a52ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7675437208059186813 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1185873951395873930, guid: a3ab48b015357004b94edb5870dd5d7d, type: 3}
@@ -203,6 +214,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5482668411544585482, guid: a3ab48b015357004b94edb5870dd5d7d, type: 3}
+      propertyPath: _maxWalkSpeed
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482668411544585482, guid: a3ab48b015357004b94edb5870dd5d7d, type: 3}
+      propertyPath: GrapplingScript
+      value: 
+      objectReference: {fileID: 1224282549}
+    - target: {fileID: 5482668411544585482, guid: a3ab48b015357004b94edb5870dd5d7d, type: 3}
+      propertyPath: _incrementValMaxSpeed
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482668411544585586, guid: a3ab48b015357004b94edb5870dd5d7d, type: 3}
+      propertyPath: _whatIsWall.m_Bits
+      value: 2048
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482668412102956010, guid: a3ab48b015357004b94edb5870dd5d7d, type: 3}
+      propertyPath: _headBobbing
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482668412102956010, guid: a3ab48b015357004b94edb5870dd5d7d, type: 3}
+      propertyPath: _resetFovTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 5482668412102956010, guid: a3ab48b015357004b94edb5870dd5d7d, type: 3}
+      propertyPath: _speedBobbing
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7651365483672998276, guid: a3ab48b015357004b94edb5870dd5d7d, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

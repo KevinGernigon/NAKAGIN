@@ -39,6 +39,14 @@ public class S_PlayerCam : MonoBehaviour
     [SerializeField] private float _dashFov;
     [SerializeField] private float _dashFovTime;
     [SerializeField] private float _resetFovTime;
+
+    [Header("Head Bobbing")]
+    [SerializeField] private float _headBobbing;
+    [SerializeField] private float _speedBobbing;
+
+
+
+
     public bool _isAxisXInverted;
     public bool _isAxisYInverted;
     public bool _isActive;
@@ -68,6 +76,13 @@ public class S_PlayerCam : MonoBehaviour
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, _fov, _resetFovTime * Time.deltaTime);
             tilt = Mathf.Lerp(tilt, 0, _camTiltTime * Time.deltaTime);
         }
+        if (pm._isMoving)
+        {
+            float temps = Mathf.PingPong(Time.time * _speedBobbing, 1);
+            tilt = Mathf.Lerp(-_headBobbing, _headBobbing, temps);
+        }
+
+
     }
     // Update is called once per frame
     private void Update()
@@ -77,6 +92,8 @@ public class S_PlayerCam : MonoBehaviour
         CameraTiltSlide();
         CameraTiltClimb();
         CameraFOVGrapplingHook();
+
+
         if (_isActive && !_eventSystem.GetComponent<S_PauseMenuV2>()._isPaused)
         {
             // Mouse Input //
@@ -91,20 +108,21 @@ public class S_PlayerCam : MonoBehaviour
                 _mouseY = Input.GetAxisRaw("Mouse Y") * -_sensY * _sensiSlider.value;
             ////////////////
             ///
-            
-                _yRotation += _mouseX;
-                _xRotation -= _mouseY;
-                _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
 
-                transform.rotation = Quaternion.Euler(_xRotation, _yRotation, tilt);
-                _orientation.rotation = Quaternion.Euler(0, _yRotation, 0);
+            _yRotation += _mouseX;
+            _xRotation -= _mouseY;
+            _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
+
+            transform.rotation = Quaternion.Euler(_xRotation, _yRotation, tilt);
+            _orientation.rotation = Quaternion.Euler(0, _yRotation, 0);
         }
 
-        if(!pm._isWallRunning && !pm._isSliding && !ClimbingScript._isAchievedClimb && !GrapplingHookScript.isIncreaseFOV && !pm._isDashing)
+        if (!pm._isWallRunning && !pm._isSliding && !ClimbingScript._isAchievedClimb && !GrapplingHookScript.isIncreaseFOV && !pm._isDashing && !pm._isMoving)
         {
             boolChangement = false;
         }
     }
+
 
     private void CameraTiltWallRunFPS()
     {

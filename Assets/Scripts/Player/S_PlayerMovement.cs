@@ -121,6 +121,7 @@ public class S_PlayerMovement : MonoBehaviour
     public bool _isButtonEnabled;
     public bool _isSlopePositive;
     public bool _isMoving;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -134,7 +135,6 @@ public class S_PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-
         //Debug.Log(GetSlopeMoveDirection(_moveDirection));
         if (GetSlopeMoveDirection(_moveDirection).y >= 0f && OnSlope())
         {
@@ -161,14 +161,17 @@ public class S_PlayerMovement : MonoBehaviour
         if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && state == MovementState.walking && !Input.GetButton("Jump") && !GrapplingScript._isDecreaseRbDrag)
         {
             rb.drag = _groundDrag + 10;
+            _isMoving = false;
         }
         else if (state == MovementState.walking && !GrapplingScript._isDecreaseRbDrag)
         {
             rb.drag = _groundDrag;
+            _isMoving = true;
         }
         else
         {
             rb.drag = 0;
+            _isMoving = false;
         }
 
         if (state == MovementState.air)
@@ -417,14 +420,13 @@ public class S_PlayerMovement : MonoBehaviour
         else if (!_isGrounded || (!_isGrounded && _isGrappleActive))
         {
             rb.AddForce(_moveDirection.normalized * _moveSpeed * _AerialSpeed * _airMultiplier, ForceMode.Force);
-            
         }
-
 
         if (!_isWallRunning)
         {
             rb.useGravity = !OnSlope();
         }
+
     }
 
     private void SpeedControl()
