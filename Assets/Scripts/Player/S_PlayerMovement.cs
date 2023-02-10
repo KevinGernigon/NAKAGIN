@@ -16,6 +16,8 @@ public class S_PlayerMovement : MonoBehaviour
     [SerializeField] private float _dashSpeed;
     [SerializeField] private float _dashSpeedChangeFactor;
     [SerializeField] private float _AerialSpeed;
+    [SerializeField] private float _maxWalkSpeed;
+    [SerializeField] private float _incrementValMaxSpeed;
     private float _desiredMoveSpeed;
     private float _lastDesiredMoveSpeed;
     private float _speedChangeFactor;
@@ -27,7 +29,7 @@ public class S_PlayerMovement : MonoBehaviour
 
     private float _speedIncreaseMultiplier;
     private float _slopeIncreaseMultiplier;
-    [SerializeField] private float _groundDrag;
+    [SerializeField] public float _groundDrag;
     [SerializeField] private float _airSpeed;
 
 
@@ -57,10 +59,12 @@ public class S_PlayerMovement : MonoBehaviour
     private RaycastHit _slopeHit;
     private bool _exitingSlope;
     [SerializeField] private float _slopeVectorDownValue;
+    [SerializeField] public float _actualSlopeAngle;
 
     [Header("Grappling")]
     [SerializeField] public float _wantedSpeedGrappling = 2;
     [SerializeField] public float _wantedHeightGrappling = 2;
+    [SerializeField] public float _keepValueOfSlope;
     [Header("Upgrade values")]
     private float _upgradeSpeedValue;
     private float _upgradeDashSpeed;
@@ -70,17 +74,19 @@ public class S_PlayerMovement : MonoBehaviour
     [SerializeField] private S_Climbing ClimbingScript;
     [SerializeField] private S_Dash ScriptDash;
     [SerializeField] private S_WallRunning ScriptWallRun;
+    [SerializeField] private S_GrappinV2 GrapplingScript;
     [SerializeField] private Transform _orientation;
     [SerializeField] private GameObject _player;
 
 
     [Header("Raycast")]
     [SerializeField] private float _valueRaycast;
-    float _horizontalInput;
-    float _verticalInput;
+    public float _horizontalInput;
+    public float _verticalInput;
 
 
     Vector3 _moveDirection;
+    Vector3 _angleInclinaison;
 
     Rigidbody rb;
 
@@ -113,6 +119,8 @@ public class S_PlayerMovement : MonoBehaviour
     private bool canJumpLedge;
     private float _timerJump;
     public bool _isButtonEnabled;
+    public bool _isSlopePositive;
+    public bool _isMoving;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -126,6 +134,16 @@ public class S_PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+
+        //Debug.Log(GetSlopeMoveDirection(_moveDirection));
+        if (GetSlopeMoveDirection(_moveDirection).y >= 0f && OnSlope())
+        {
+            _isSlopePositive = true;
+            Debug.Log(_actualSlopeAngle);
+        }
+        else
+            _isSlopePositive = false;
+
         //Ground Check
         _isGrounded = Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsGround);
         //_isGrounded = Physics.BoxCast(transform.position, Vector3.one, Vector3.down, Quaternion.identity, _playerHeight * 0.5f + _valueRaycast, _whatIsGround);
@@ -139,13 +157,12 @@ public class S_PlayerMovement : MonoBehaviour
             SpeedValueUpgrade();
         }
 
-
         //handle drag
-        if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && state == MovementState.walking)
+        if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && state == MovementState.walking && !Input.GetButton("Jump") && !GrapplingScript._isDecreaseRbDrag)
         {
             rb.drag = _groundDrag + 10;
         }
-        else if (state == MovementState.walking || state == MovementState.sprinting || state == MovementState.crouching && !_isGrappleActive)
+        else if (state == MovementState.walking && !GrapplingScript._isDecreaseRbDrag)
         {
             rb.drag = _groundDrag;
         }
@@ -154,21 +171,15 @@ public class S_PlayerMovement : MonoBehaviour
             rb.drag = 0;
         }
 
-        if (_ReachUpgradeBool == false)
-        {
-            _dashSpeed = 25;
-            _upgradeSpeedValue = 1;
-        }
-
         if (state == MovementState.air)
         {
             _desiredMoveSpeed = _airSpeed;
         }
 
-        if (state != MovementState.air && state != MovementState.dashing) //limit dash in air
+        /*if (state != MovementState.air && state != MovementState.dashing) //limit dash in air
         {
-            ScriptDash._limitDash = 1;
-        }
+            ScriptDash._limitDash = 3;
+        }*/
 
         if (OnSlope())
             _player.GetComponent<CapsuleCollider>().material.dynamicFriction = 2f;
@@ -180,7 +191,6 @@ public class S_PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         MovingPlayer();
-
         if (_lastState != MovementState.dashing)
         {
             rb.velocity += Vector3.up * Physics.gravity.y * _fallMultiplier * Time.deltaTime;
@@ -225,8 +235,6 @@ public class S_PlayerMovement : MonoBehaviour
             Jump();
             canJumpLedge = false;
             Invoke(nameof(ResetJump), _jumpCooldown);
-
-
         }
         //When crouch
 
@@ -381,7 +389,8 @@ public class S_PlayerMovement : MonoBehaviour
 
         if (_isMaxSpeed)
         {
-            _walkSpeed = 50f;
+            if (_walkSpeed <= _maxWalkSpeed)
+            _walkSpeed += _incrementValMaxSpeed;
         }
         else _walkSpeed = 45f;
 
@@ -400,7 +409,6 @@ public class S_PlayerMovement : MonoBehaviour
                 rb.AddForce(GetSlopeMoveDirection(_moveDirection).normalized * _moveSpeed * 15f, ForceMode.Force);
                 //rb.AddForce(_moveDirection.normalized * _moveSpeed * 20f * _upgradeSpeedValue, ForceMode.Force);
         }
-
         else if (_isGrounded)
         {
             rb.AddForce(_moveDirection.normalized * _moveSpeed * 10f * _upgradeSpeedValue, ForceMode.Force);
@@ -426,8 +434,8 @@ public class S_PlayerMovement : MonoBehaviour
         //limiting speed on slope
         if (OnSlope() && !_exitingSlope && !_isGrounded)
         {
-                if (rb.velocity.magnitude > _moveSpeed)
-                {
+            if (rb.velocity.magnitude > _moveSpeed)
+            {
                 //rb.velocity = rb.velocity.normalized * _moveSpeed;
                 rb.velocity = new Vector3(rb.velocity.x, rb.velocity.y, rb.velocity.z);
             }   
@@ -446,14 +454,17 @@ public class S_PlayerMovement : MonoBehaviour
         }
 
     }
-    private void Jump()
+    public void Jump()
     {
-        if (rb.drag >= 20)
+        if (state == MovementState.air) return;
+
+        Debug.Log(rb.drag);
+        /*if (rb.drag >= 20)
         {
             rb.AddForce(transform.up * _jumpForce * 2f, ForceMode.Impulse);
             return;
-        }
-        
+        }*/
+
         if (_isSliding && !OnSlope())
         {
             rb.AddForce(transform.up * _jumpForce * 0.8f, ForceMode.Impulse);
@@ -476,7 +487,8 @@ public class S_PlayerMovement : MonoBehaviour
         }
         else
         {
-            rb.AddForce(transform.up * _jumpForce*0.8f, ForceMode.Impulse);
+            rb.AddForce(transform.up * _jumpForce * 0.8f, ForceMode.Impulse);
+            return;
         }
 
     }
@@ -519,13 +531,15 @@ public class S_PlayerMovement : MonoBehaviour
             GetComponent<S_GrappinV2>().StopGrapple();
         }
     }
-
+    
     public bool OnSlope()
     {
         if (Physics.Raycast(transform.position, Vector3.down, out _slopeHit, _playerHeight * 0.5f + 0.3f))
         {
             float _angle = Vector3.Angle(Vector3.up, _slopeHit.normal);
+            _actualSlopeAngle = _angle;
             return _angle < _maxSlopeAngle && _angle != 0;
+            
         }
         
         return false;
@@ -548,22 +562,22 @@ public class S_PlayerMovement : MonoBehaviour
 
         if (Mathf.Abs(displacementX) >= 40 || Mathf.Abs(displacementZ) >= 40)
         {
-            _wantedSpeedGrappling = 3f;
+            _wantedSpeedGrappling = 2f;
             _wantedHeightGrappling = 1.80f;
         }
         else if (Mathf.Abs(displacementX) >= 30 || Mathf.Abs(displacementZ) >= 30)
         {
-            _wantedSpeedGrappling = 3.25f;
+            _wantedSpeedGrappling = 2.25f;
             _wantedHeightGrappling = 1.75f;
         }
         else if (Mathf.Abs(displacementX) >= 20 || Mathf.Abs(displacementZ) >= 20)
         {
-            _wantedSpeedGrappling = 3.50f;
+            _wantedSpeedGrappling = 2.50f;
             _wantedHeightGrappling = 2f;
         }
         else if (Mathf.Abs(displacementX) >= 10 || Mathf.Abs(displacementZ) >= 10)
         {
-            _wantedSpeedGrappling = 3.75f;
+            _wantedSpeedGrappling = 2.75f;
             _wantedHeightGrappling = 2f;
         }
         else if (Mathf.Abs(displacementX) >= 0 || Mathf.Abs(displacementZ) >= 0)

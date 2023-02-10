@@ -17,7 +17,7 @@ public class S_Dash : MonoBehaviour
     [SerializeField] public float _dashDuration;
     public float _dashUpgradeForce;
     private float lastPressTime;
-    public float _limitDash = 1;
+    public float _limitDash = 3;
 
     [Header("Settings")]
     [SerializeField] private bool _isUsingCameraForward = true;
@@ -28,6 +28,8 @@ public class S_Dash : MonoBehaviour
     [Header("Cooldown")]
     [SerializeField] private float _dashCd;
     [SerializeField] private float _dashCdTimer;
+    [SerializeField] private float _dashGain;
+    [SerializeField] private float _dashGainTimer;
 
     [Header("Input")]
     public KeyCode dashKey = KeyCode.E;
@@ -49,6 +51,21 @@ public class S_Dash : MonoBehaviour
 
         if (_dashCdTimer > 0)
             _dashCdTimer -= Time.deltaTime;
+
+        if (_limitDash > 3)
+            _limitDash = 3;
+        else if (_limitDash < 3)
+        {
+            if (_dashGainTimer > 0)
+            {
+                _dashGainTimer -= Time.deltaTime;
+            }  
+            else if(_dashGainTimer <= 0)
+            {
+                _limitDash++;
+                _dashGainTimer = _dashGain;
+            }
+        }
     }
 
     public void ButtonAxel()
@@ -94,23 +111,28 @@ public class S_Dash : MonoBehaviour
         _pm._isDashing = true;
         //_pm._readyToJump = false;
         Transform forwardT;
-        
+
         if (_isUsingCameraForward)
             forwardT = playerCam;
         else
             forwardT = orientation;
 
+        if (_pm._isSlopePositive)
+        {
+               _dashUpwardForce = 140f;
+               _dashUpwardForce = _dashUpwardForce - (Mathf.Abs(_pm._actualSlopeAngle * 2));
+        }
+        else
+            _dashUpwardForce = 0f;
+
         Vector3 direction = GetDirection(forwardT);
-        Vector3 forceToApply = direction * _dashForce + orientation.up * _dashUpwardForce;
+        Vector3 forceToApply = direction * _dashForce - orientation.up * _dashUpwardForce;
 
         if (_isDisablingGravity)
                _rb.useGravity = false;
 
-        if(!_pm._isGrappleActive)
-            delayedForceToApply = forceToApply;
-        else
-            delayedForceToApply = forceToApply/3;
 
+        delayedForceToApply = forceToApply;
         Invoke(nameof(DelayedDashForce), 0.025f);
 
         Invoke(nameof(ResetDash), _dashDuration);
@@ -127,7 +149,7 @@ public class S_Dash : MonoBehaviour
         {
             _rb.velocity = Vector3.zero;
         }
-        _rb.AddForce(delayedForceToApply, ForceMode.Impulse);
+            _rb.AddForce(delayedForceToApply, ForceMode.Impulse);
 
     }
 
@@ -135,14 +157,15 @@ public class S_Dash : MonoBehaviour
     {
         _pm._isDashing = false;
         _pm._ReachUpgradeBool = false;
-        
+        _dashUpwardForce = 0f;
+
         if (_isDisablingGravity)
         {
             _rb.useGravity = true;
         }
     }
 
-    private Vector3 GetDirection(Transform forwardT)
+    public Vector3 GetDirection(Transform forwardT)
     {
         float horizontalInput = Input.GetAxisRaw("Horizontal");
         float verticalInput = Input.GetAxisRaw("Vertical");

@@ -11,6 +11,8 @@ public class S_GrappinV2 : MonoBehaviour
     [SerializeField] private LineRenderer lr;
     [Header("Layer")]
     [SerializeField] private LayerMask _whatIsTarget;
+    [SerializeField] private LayerMask _whatIsWall;
+    [SerializeField] private LayerMask _whatIsGround;
 
     [Header("Grappling Hook Ref")]
     [SerializeField] private float _maxGrappleDistance;
@@ -26,6 +28,7 @@ public class S_GrappinV2 : MonoBehaviour
     [Header("Boolean")]
     public bool _isGrappling;
     public bool isIncreaseFOV;
+    public bool _isDecreaseRbDrag;
 
     public System.Action updateAction;
 
@@ -39,7 +42,10 @@ public class S_GrappinV2 : MonoBehaviour
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.A) && !_isGrappling)
-            StartGrapple();
+        {
+                StartGrapple();
+        }
+            
 
         if (_grapplingCdTimer > 0)
             _grapplingCdTimer -= Time.deltaTime;
@@ -57,6 +63,9 @@ public class S_GrappinV2 : MonoBehaviour
     private void StartGrapple()
     {
         if (_grapplingCdTimer > 0) return;
+        RaycastHit blockHit;
+        if (Physics.Raycast(_camera.position, _camera.forward, out blockHit, _maxGrappleDistance, ~(_whatIsTarget))) return;
+  
 
         _isGrappling = true;
 
@@ -65,7 +74,10 @@ public class S_GrappinV2 : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(_camera.position, _camera.forward, out hit, _maxGrappleDistance, _whatIsTarget))
         {
-            grapplePoint = hit.point;
+            _isDecreaseRbDrag = true;
+            _pm.Jump();
+            //grapplePoint = hit.point;
+            grapplePoint = hit.transform.position;
             Invoke(nameof(ExecuteGrapple), _grappleDelayTime);
         }
         else
@@ -76,7 +88,7 @@ public class S_GrappinV2 : MonoBehaviour
 
         lr.enabled = true;
         lr.SetPosition(1, grapplePoint);
-        var finalPosion = grapplePoint;
+        var finalPosition = grapplePoint;
         /*SetGraplin(finalPosion);
         updateAction = () => SetGraplin(finalPosion);*/
     }
@@ -116,6 +128,8 @@ public class S_GrappinV2 : MonoBehaviour
 
     public void StopGrapple()
     {
+        _pm._readyToJump = true;
+
         _pm._isFreezing = false;
 
         _isGrappling = false;
@@ -125,6 +139,8 @@ public class S_GrappinV2 : MonoBehaviour
         lr.enabled = false;
 
         isIncreaseFOV = false;
+
+        _isDecreaseRbDrag = false;
 
     }
 }
