@@ -171,57 +171,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
   - {fileID: 1521273602}
   - {fileID: 454190920}
   - {fileID: 123936741}
   - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &1662588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3214,7 +3167,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScriptTimer: {fileID: 7570336531923396534}
-  _player: {fileID: 2963291362109404952}
   _respawnplayer: {fileID: 2963291362610194969}
   _runStart: 0
   _Lvl2Win: 0
@@ -3653,9 +3605,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 87810423}
-  m_LocalRotation: {x: 0.6532815, y: 0.27059805, z: -0.6532815, w: -0.27059805}
-  m_LocalPosition: {x: 0, y: 9.226937, z: 9.157838}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.6532815, y: 0.27059802, z: -0.6532815, w: -0.27059802}
+  m_LocalPosition: {x: -0.0000052452087, y: 9.226936, z: 9.157826}
+  m_LocalScale: {x: 1, y: 1.0000001, z: 1.0000001}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 474430924}
@@ -4869,57 +4821,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
   - {fileID: 1654256653}
   - {fileID: 1751817601}
   - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &107939402
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11708,57 +11612,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
   - {fileID: 2073519941}
   - {fileID: 1660902276}
   - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &239052812
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12753,57 +12609,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
   - {fileID: 1356201336}
   - {fileID: 166282190}
   - {fileID: 1430385811}
   - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &266132906
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14612,57 +14421,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
   - {fileID: 952096693}
   - {fileID: 825859392}
   - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &296416536
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18762,57 +18523,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
   - {fileID: 952096693}
   - {fileID: 825859392}
   - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &392003009
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22973,57 +22686,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
   - {fileID: 925144429}
   - {fileID: 1923648398}
   - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &485740943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23667,10 +23332,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c5ec54b088c0dd46bc7132f7bbc9830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 2963291362109404952}
-  _rbplayer: {fileID: 2963291362109404954}
   _respawnplayer: {fileID: 1825941135}
-  _camera: {fileID: 2963291362628968954}
 --- !u!65 &502086419
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -25131,8 +24793,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21c72e3e7d72b2749995cb0c5397c966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 2963291362109404952}
-  _rbplayer: {fileID: 2963291362109404954}
   _respawnplayer: {fileID: 2963291362750131700}
 --- !u!114 &537305731
 MonoBehaviour:
@@ -27894,10 +27554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c5ec54b088c0dd46bc7132f7bbc9830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 2963291362109404952}
-  _rbplayer: {fileID: 2963291362109404954}
   _respawnplayer: {fileID: 723921022}
-  _camera: {fileID: 2963291362628968954}
 --- !u!65 &580618622
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30698,57 +30355,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
   - {fileID: 979911160}
   - {fileID: 141385403}
   - {fileID: 1862434380}
   - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &664208005
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32493,57 +32103,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
   - {fileID: 1561878418}
   - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &696198657
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33984,57 +33545,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
   - {fileID: 2073519941}
   - {fileID: 1660902276}
   - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &730257645
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34743,10 +34256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c5ec54b088c0dd46bc7132f7bbc9830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 2963291362109404952}
-  _rbplayer: {fileID: 2963291362109404954}
   _respawnplayer: {fileID: 617420069}
-  _camera: {fileID: 2963291362628968954}
 --- !u!65 &740243643
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35185,57 +34695,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
   - {fileID: 1815962192}
   - {fileID: 988451778}
   - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &751274368
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37186,57 +36648,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
   - {fileID: 496443111}
   - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &788804381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -37606,10 +37019,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c5ec54b088c0dd46bc7132f7bbc9830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 2963291362109404952}
-  _rbplayer: {fileID: 2963291362109404954}
   _respawnplayer: {fileID: 617420069}
-  _camera: {fileID: 2963291362628968954}
 --- !u!65 &793618914
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -42751,57 +42161,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
   - {fileID: 1787878339}
   - {fileID: 1856765458}
   - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &917702817
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -42917,57 +42279,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
   - {fileID: 1521273602}
   - {fileID: 454190920}
   - {fileID: 123936741}
   - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &920342802
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -50399,57 +49714,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
   - {fileID: 1279313807}
   - {fileID: 292734130}
   - {fileID: 1557537208}
   - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &1062251435
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52724,55 +51992,6 @@ MonoBehaviour:
   _lumiere:
   - {fileID: 1099757444}
   - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &1099757446
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -52788,55 +52007,6 @@ MonoBehaviour:
   _lumiere:
   - {fileID: 1099757444}
   - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!1001 &1104256212
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -53350,10 +52520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c5ec54b088c0dd46bc7132f7bbc9830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 2963291362109404952}
-  _rbplayer: {fileID: 2963291362109404954}
   _respawnplayer: {fileID: 350748447}
-  _camera: {fileID: 2963291362628968954}
 --- !u!65 &1112497148
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -58865,57 +58032,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
   - {fileID: 979911160}
   - {fileID: 141385403}
   - {fileID: 1862434380}
   - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &1234039092
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -59202,57 +58322,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
   - {fileID: 593219370}
   - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &1235663771
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61777,57 +60848,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
   - {fileID: 87810423}
   - {fileID: 1894101827}
   - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &1299929472
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -63257,57 +62280,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
   - {fileID: 593219370}
   - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &1316401485
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -65543,8 +64517,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21c72e3e7d72b2749995cb0c5397c966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 2963291362109404952}
-  _rbplayer: {fileID: 2963291362109404954}
   _respawnplayer: {fileID: 2963291362750131700}
 --- !u!114 &1377754287
 MonoBehaviour:
@@ -67181,57 +66153,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
   - {fileID: 1561878418}
   - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &1414619564
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -69083,57 +68006,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
   - {fileID: 415925987}
   - {fileID: 1996570603}
   - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &1443821707
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70327,57 +69202,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
   - {fileID: 496443111}
   - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &1486769648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -70774,57 +69600,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
   - {fileID: 1654256653}
   - {fileID: 1751817601}
   - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &1495007084
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -75750,10 +74528,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c5ec54b088c0dd46bc7132f7bbc9830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 2963291362109404952}
-  _rbplayer: {fileID: 2963291362109404954}
   _respawnplayer: {fileID: 723921022}
-  _camera: {fileID: 2963291362628968954}
 --- !u!65 &1594574551
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -75887,7 +74662,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScriptTimer: {fileID: 7570336531923396534}
-  _player: {fileID: 2963291362109404952}
   _respawnplayer: {fileID: 2963291362610194969}
   _runStart: 0
   _Lvl2Win: 0
@@ -77055,10 +75829,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c5ec54b088c0dd46bc7132f7bbc9830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 2963291362109404952}
-  _rbplayer: {fileID: 2963291362109404954}
   _respawnplayer: {fileID: 429061301}
-  _camera: {fileID: 2963291362628968954}
 --- !u!65 &1627531114
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -77837,57 +76608,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
   - {fileID: 925144429}
   - {fileID: 1923648398}
   - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &1651725393
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -78850,57 +77573,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
   - {fileID: 87810423}
   - {fileID: 1894101827}
   - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &1663195778
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -79890,10 +78565,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c5ec54b088c0dd46bc7132f7bbc9830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 2963291362109404952}
-  _rbplayer: {fileID: 2963291362109404954}
   _respawnplayer: {fileID: 350748447}
-  _camera: {fileID: 2963291362628968954}
 --- !u!65 &1683096908
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -80955,10 +79627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c5ec54b088c0dd46bc7132f7bbc9830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 2963291362109404952}
-  _rbplayer: {fileID: 2963291362109404954}
   _respawnplayer: {fileID: 429061301}
-  _camera: {fileID: 2963291362628968954}
 --- !u!65 &1703897820
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -82981,57 +81650,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
   - {fileID: 1815962192}
   - {fileID: 988451778}
   - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &1741475464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83178,57 +81799,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
   - {fileID: 965144736}
   - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &1748427360
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -83832,57 +82404,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
   - {fileID: 415925987}
   - {fileID: 1996570603}
   - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &1755376605
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -84027,7 +82551,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScriptTimer: {fileID: 7570336531923396534}
-  _player: {fileID: 2963291362109404952}
   _respawnplayer: {fileID: 2963291362610194969}
   _runStart: 0
   _Lvl2Win: 0
@@ -84108,57 +82631,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
   - {fileID: 1787878339}
   - {fileID: 1856765458}
   - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &1757107439
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88168,8 +86643,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21c72e3e7d72b2749995cb0c5397c966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 2963291362109404952}
-  _rbplayer: {fileID: 2963291362109404954}
   _respawnplayer: {fileID: 2963291362750131700}
 --- !u!114 &1821716498
 MonoBehaviour:
@@ -88272,57 +86745,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
   - {fileID: 965144736}
   - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &1823980566
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -89109,57 +87533,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
-  - {fileID: 1279313807}
-  - {fileID: 292734130}
-  - {fileID: 1557537208}
-  - {fileID: 643562989}
   - {fileID: 1356201336}
   - {fileID: 166282190}
   - {fileID: 1430385811}
   - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &1839649380
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90719,10 +89096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c5ec54b088c0dd46bc7132f7bbc9830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 2963291362109404952}
-  _rbplayer: {fileID: 2963291362109404954}
   _respawnplayer: {fileID: 617420069}
-  _camera: {fileID: 2963291362628968954}
 --- !u!65 &1860069360
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -92043,10 +90417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c5ec54b088c0dd46bc7132f7bbc9830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 2963291362109404952}
-  _rbplayer: {fileID: 2963291362109404954}
   _respawnplayer: {fileID: 1887720433}
-  _camera: {fileID: 2963291362628968954}
 --- !u!65 &1890980107
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -94041,10 +92412,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c5ec54b088c0dd46bc7132f7bbc9830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 2963291362109404952}
-  _rbplayer: {fileID: 2963291362109404954}
   _respawnplayer: {fileID: 723921022}
-  _camera: {fileID: 2963291362628968954}
 --- !u!65 &1930051348
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -100598,57 +98966,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _lumiere:
-  - {fileID: 1099757444}
-  - {fileID: 1099757440}
-  - {fileID: 1521273602}
-  - {fileID: 454190920}
-  - {fileID: 123936741}
-  - {fileID: 1514917530}
-  - {fileID: 925144429}
-  - {fileID: 1923648398}
-  - {fileID: 2100607561}
-  - {fileID: 415925987}
-  - {fileID: 1996570603}
-  - {fileID: 616635710}
-  - {fileID: 593219370}
-  - {fileID: 605062467}
   - {fileID: 1279313807}
   - {fileID: 292734130}
   - {fileID: 1557537208}
   - {fileID: 643562989}
-  - {fileID: 1356201336}
-  - {fileID: 166282190}
-  - {fileID: 1430385811}
-  - {fileID: 1934634399}
-  - {fileID: 979911160}
-  - {fileID: 141385403}
-  - {fileID: 1862434380}
-  - {fileID: 1042597037}
-  - {fileID: 1815962192}
-  - {fileID: 988451778}
-  - {fileID: 1753088703}
-  - {fileID: 1561878418}
-  - {fileID: 559122892}
-  - {fileID: 952096693}
-  - {fileID: 825859392}
-  - {fileID: 869747473}
-  - {fileID: 1654256653}
-  - {fileID: 1751817601}
-  - {fileID: 555052428}
-  - {fileID: 2073519941}
-  - {fileID: 1660902276}
-  - {fileID: 1077623135}
-  - {fileID: 87810423}
-  - {fileID: 1894101827}
-  - {fileID: 2110857039}
-  - {fileID: 1787878339}
-  - {fileID: 1856765458}
-  - {fileID: 944213779}
-  - {fileID: 965144736}
-  - {fileID: 180445243}
-  - {fileID: 496443111}
-  - {fileID: 1964752056}
-  _player: {fileID: 2963291362109405026}
 --- !u!114 &2086957276
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -101977,9 +100298,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2110857039}
-  m_LocalRotation: {x: 0.6532815, y: -0.27059805, z: -0.6532815, w: 0.27059805}
-  m_LocalPosition: {x: 0, y: 9.154993, z: -9.229785}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.6532815, y: -0.27059802, z: -0.65328145, w: 0.27059802}
+  m_LocalPosition: {x: -0.000008583069, y: 9.154995, z: -9.229795}
+  m_LocalScale: {x: 1.0000002, y: 1, z: 1.0000001}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 474430924}
@@ -109948,6 +108269,8 @@ MonoBehaviour:
   _dashSpeed: 25
   _dashSpeedChangeFactor: 50
   _AerialSpeed: 3
+  _maxWalkSpeed: 0
+  _incrementValMaxSpeed: 0
   _fallMultiplier: 1.5
   _isMaxSpeed: 0
   _lastState: 0
@@ -109968,15 +108291,20 @@ MonoBehaviour:
   _isGrounded: 0
   _maxSlopeAngle: 50
   _slopeVectorDownValue: 150
+  _actualSlopeAngle: 0
   _wantedSpeedGrappling: 3
   _wantedHeightGrappling: 1.5
+  _keepValueOfSlope: 0
   _ReachUpgradeBool: 0
   ClimbingScript: {fileID: 2963291362109405028}
   ScriptDash: {fileID: 2963291362109405031}
   ScriptWallRun: {fileID: 2963291362109405027}
+  GrapplingScript: {fileID: 0}
   _orientation: {fileID: 2963291363054022195}
   _player: {fileID: 2963291362782904880}
   _valueRaycast: 0.4
+  _horizontalInput: 0
+  _verticalInput: 0
   state: 0
   _isSliding: 0
   _isWallRunning: 0
@@ -109988,6 +108316,8 @@ MonoBehaviour:
   _isGrappleActive: 0
   _ResetDashSpeed: 0
   _isButtonEnabled: 0
+  _isSlopePositive: 0
+  _isMoving: 0
 --- !u!114 &2963291362109405024
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110008,12 +108338,19 @@ MonoBehaviour:
   _whatIsTarget:
     serializedVersion: 2
     m_Bits: 4096
+  _whatIsWall:
+    serializedVersion: 2
+    m_Bits: 0
+  _whatIsGround:
+    serializedVersion: 2
+    m_Bits: 0
   _maxGrappleDistance: 50
   _grappleDelayTime: 0.25
   _overshootYAxis: 2
   _grapplingCd: 1
   _isGrappling: 0
   isIncreaseFOV: 0
+  _isDecreaseRbDrag: 0
 --- !u!114 &2963291362109405025
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -110108,6 +108445,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _orientation: {fileID: 2963291363054022195}
   rb: {fileID: 2963291362109404954}
+  ScriptDash: {fileID: 0}
   pm: {fileID: 2963291362109404955}
   _whatIsWall:
     serializedVersion: 2
@@ -110124,6 +108462,7 @@ MonoBehaviour:
   _sphereCastRadius: 0.25
   _maxWallLookAngle: 30
   _wallLookAngle: 0
+  _isWallFront: 0
   _minWallNormalAngleChange: 5
   _isExitingWall: 0
   _exitWallTime: 0.2
@@ -110197,6 +108536,8 @@ MonoBehaviour:
   _isResettingVel: 1
   _dashCd: 1.5
   _dashCdTimer: 0
+  _dashGain: 0
+  _dashGainTimer: 0
   dashKey: 304
   AxelIsHere: 0
 --- !u!1 &2963291362139264324
@@ -110766,7 +109107,6 @@ MonoBehaviour:
   GrapplingHookScript: {fileID: 2963291362109405024}
   _orientation: {fileID: 2963291363054022195}
   player: {fileID: 2963291362782904881}
-  respawnPoint: {fileID: 2963291362610194969}
   _xRotation: 0
   _yRotation: 0
   _mouseX: 0
@@ -112451,7 +110791,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e2c8139c395c3646b0a1fd41c334e7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _textTimer: {fileID: 7570336531923396535}
   _hours: 0
   _minutes: 0
   _seconds: 0
@@ -112657,10 +110996,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c5ec54b088c0dd46bc7132f7bbc9830, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 2963291362109404952}
-  _rbplayer: {fileID: 2963291362109404954}
   _respawnplayer: {fileID: 1315382999}
-  _camera: {fileID: 2963291362628968954}
 --- !u!4 &8006204086740693981
 Transform:
   m_ObjectHideFlags: 0

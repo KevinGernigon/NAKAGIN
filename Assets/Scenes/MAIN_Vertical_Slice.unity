@@ -1039,7 +1039,6 @@ MonoBehaviour:
   _lumiere:
   - {fileID: 801207933}
   - {fileID: 1403850843}
-  _player: {fileID: 853461066}
 --- !u!1 &275884815 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1861675806731682297, guid: b0d9c79a5aac7684c899e68dbeb7337a, type: 3}
@@ -1165,6 +1164,14 @@ PrefabInstance:
       propertyPath: BoxList.Array.data[0]._boxUse.Array.data[2]
       value: 
       objectReference: {fileID: 8957259549143527596}
+    - target: {fileID: 2963291363101779840, guid: 4fe81b30d05e171408d89634d43f249c, type: 3}
+      propertyPath: GrapplingScript
+      value: 
+      objectReference: {fileID: 853461077}
+    - target: {fileID: 2963291363101779967, guid: 4fe81b30d05e171408d89634d43f249c, type: 3}
+      propertyPath: ScriptDash
+      value: 
+      objectReference: {fileID: 853461080}
     - target: {fileID: 6447529859060838225, guid: 4fe81b30d05e171408d89634d43f249c, type: 3}
       propertyPath: m_Name
       value: --------COMMUN--------
@@ -1579,7 +1586,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScriptTimer: {fileID: 1689701187}
-  _player: {fileID: 853461076}
   _respawnplayer: {fileID: 896247119}
   _runStart: 0
   _Lvl2Win: 0
@@ -1816,7 +1822,7 @@ PrefabInstance:
     - target: {fileID: 8006204087764881178, guid: 25e0b47eb89a4704ca93c98a1fe1877a, type: 3}
       propertyPath: _respawnplayer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 896247119}
     - target: {fileID: 8006204087764881179, guid: 25e0b47eb89a4704ca93c98a1fe1877a, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1911,7 +1917,7 @@ PrefabInstance:
     - target: {fileID: 8006204087764881178, guid: 25e0b47eb89a4704ca93c98a1fe1877a, type: 3}
       propertyPath: _respawnplayer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 896247119}
     - target: {fileID: 8006204087764881179, guid: 25e0b47eb89a4704ca93c98a1fe1877a, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -3617,16 +3623,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42c0112cd86e41459f130da042a1b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!54 &853461075 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 2963291363101779841, guid: 4fe81b30d05e171408d89634d43f249c, type: 3}
+--- !u!114 &853461077 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2963291363101779963, guid: 4fe81b30d05e171408d89634d43f249c, type: 3}
   m_PrefabInstance: {fileID: 296893618}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &853461076 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2963291363101779843, guid: 4fe81b30d05e171408d89634d43f249c, type: 3}
+  m_GameObject: {fileID: 853461066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dc2027de4281414b9f948ce679a52ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &853461080 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2963291363101779964, guid: 4fe81b30d05e171408d89634d43f249c, type: 3}
   m_PrefabInstance: {fileID: 296893618}
   m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 853461066}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 980bcc93b80ec934db55b54375dbdb24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &862313987 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7107881586323337980, guid: b0d9c79a5aac7684c899e68dbeb7337a, type: 3}
@@ -3973,8 +3991,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21c72e3e7d72b2749995cb0c5397c966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 853461076}
-  _rbplayer: {fileID: 853461075}
   _respawnplayer: {fileID: 1885723547}
 --- !u!114 &890846470
 MonoBehaviour:
@@ -4289,7 +4305,7 @@ PrefabInstance:
     - target: {fileID: 8006204087764881178, guid: 25e0b47eb89a4704ca93c98a1fe1877a, type: 3}
       propertyPath: _respawnplayer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 896247119}
     - target: {fileID: 8006204087764881179, guid: 25e0b47eb89a4704ca93c98a1fe1877a, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -4398,7 +4414,6 @@ MonoBehaviour:
   _lumiere:
   - {fileID: 801207933}
   - {fileID: 1403850843}
-  _player: {fileID: 853461066}
 --- !u!1 &979949420 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 374942096637632204, guid: b0d9c79a5aac7684c899e68dbeb7337a, type: 3}
@@ -9293,7 +9308,6 @@ MonoBehaviour:
   _lumiere:
   - {fileID: 2511405377081703292}
   - {fileID: 6124954645374886778}
-  _player: {fileID: 853461066}
 --- !u!4 &998525130308430884
 Transform:
   m_ObjectHideFlags: 0
@@ -9492,7 +9506,6 @@ MonoBehaviour:
   _lumiere:
   - {fileID: 2511405377081703292}
   - {fileID: 6124954645374886778}
-  _player: {fileID: 853461066}
 --- !u!1 &1120653435605162744
 GameObject:
   m_ObjectHideFlags: 0
@@ -10842,7 +10855,6 @@ MonoBehaviour:
   _lumiere:
   - {fileID: 2048196050249923042}
   - {fileID: 2048196050149787406}
-  _player: {fileID: 853461066}
 --- !u!33 &2048196049965442628
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -11410,7 +11422,6 @@ MonoBehaviour:
   - {fileID: 2048196050177887623}
   - {fileID: 2048196051382801244}
   - {fileID: 2048196049440866031}
-  _player: {fileID: 853461066}
 --- !u!64 &2048196050109275315
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12047,7 +12058,6 @@ MonoBehaviour:
   - {fileID: 2048196050177887623}
   - {fileID: 2048196051382801244}
   - {fileID: 2048196049440866031}
-  _player: {fileID: 853461066}
 --- !u!23 &2048196050310014152
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -12925,7 +12935,6 @@ MonoBehaviour:
   - {fileID: 2048196051489077911}
   - {fileID: 2048196050185793288}
   - {fileID: 2048196051297209214}
-  _player: {fileID: 853461066}
 --- !u!1 &2048196050563878539
 GameObject:
   m_ObjectHideFlags: 0
@@ -13142,7 +13151,6 @@ MonoBehaviour:
   - {fileID: 2048196050884525319}
   - {fileID: 2048196051111159686}
   - {fileID: 2048196050310014157}
-  _player: {fileID: 853461066}
 --- !u!114 &2048196050707460865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13262,7 +13270,6 @@ MonoBehaviour:
   - {fileID: 2048196050026724375}
   - {fileID: 2048196049426995253}
   - {fileID: 2048196049850270002}
-  _player: {fileID: 853461066}
 --- !u!23 &2048196050714749528
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14134,7 +14141,6 @@ MonoBehaviour:
   - {fileID: 2048196050026724375}
   - {fileID: 2048196049426995253}
   - {fileID: 2048196049850270002}
-  _player: {fileID: 853461066}
 --- !u!1 &2048196050996253766
 GameObject:
   m_ObjectHideFlags: 0
@@ -14481,7 +14487,6 @@ MonoBehaviour:
   _lumiere:
   - {fileID: 2048196050249923042}
   - {fileID: 2048196050149787406}
-  _player: {fileID: 853461066}
 --- !u!1 &2048196051140938612
 GameObject:
   m_ObjectHideFlags: 0
@@ -14713,7 +14718,6 @@ MonoBehaviour:
   - {fileID: 2048196051489077911}
   - {fileID: 2048196050185793288}
   - {fileID: 2048196051297209214}
-  _player: {fileID: 853461066}
 --- !u!33 &2048196051252098512
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -15137,7 +15141,6 @@ MonoBehaviour:
   - {fileID: 2048196050884525319}
   - {fileID: 2048196051111159686}
   - {fileID: 2048196050310014157}
-  _player: {fileID: 853461066}
 --- !u!33 &2048196051382801240
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -16766,7 +16769,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScriptTimer: {fileID: 1689701187}
-  _player: {fileID: 853461076}
   _respawnplayer: {fileID: 896247119}
   _runStart: 0
   _Lvl2Win: 0
@@ -17535,8 +17537,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21c72e3e7d72b2749995cb0c5397c966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 853461076}
-  _rbplayer: {fileID: 853461075}
   _respawnplayer: {fileID: 1885723547}
 --- !u!114 &3956642289573095663
 MonoBehaviour:
@@ -17748,7 +17748,6 @@ MonoBehaviour:
   _lumiere:
   - {fileID: 6693206655235241786}
   - {fileID: 6693206656231943508}
-  _player: {fileID: 853461066}
 --- !u!65 &4150050835639180531
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17926,7 +17925,6 @@ MonoBehaviour:
   _lumiere:
   - {fileID: 6693206655235241786}
   - {fileID: 6693206656231943508}
-  _player: {fileID: 853461066}
 --- !u!23 &4168839647274359465
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -19742,7 +19740,6 @@ MonoBehaviour:
   - {fileID: 4522523445701724134}
   - {fileID: 4522523444433725750}
   - {fileID: 4522523445374421541}
-  _player: {fileID: 853461066}
 --- !u!23 &4522523444502540152
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -24523,7 +24520,6 @@ MonoBehaviour:
   - {fileID: 4522523445554537843}
   - {fileID: 4522523445666317545}
   - {fileID: 4522523444980492190}
-  _player: {fileID: 853461066}
 --- !u!64 &4522523444813592060
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -25884,7 +25880,6 @@ MonoBehaviour:
   - {fileID: 4522523444767415751}
   - {fileID: 4522523445526350377}
   - {fileID: 4522523444604043954}
-  _player: {fileID: 853461066}
 --- !u!1 &4522523444887053330
 GameObject:
   m_ObjectHideFlags: 0
@@ -27740,7 +27735,6 @@ MonoBehaviour:
   - {fileID: 4522523445554537843}
   - {fileID: 4522523445666317545}
   - {fileID: 4522523444980492190}
-  _player: {fileID: 853461066}
 --- !u!64 &4522523444966732909
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -29696,7 +29690,6 @@ MonoBehaviour:
   - {fileID: 4522523444767415751}
   - {fileID: 4522523445526350377}
   - {fileID: 4522523444604043954}
-  _player: {fileID: 853461066}
 --- !u!1 &4522523445102649323
 GameObject:
   m_ObjectHideFlags: 0
@@ -29960,7 +29953,6 @@ MonoBehaviour:
   - {fileID: 4522523444631646765}
   - {fileID: 4522523446179530800}
   - {fileID: 4522523445716303299}
-  _player: {fileID: 853461066}
 --- !u!64 &4522523445112620277
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -32011,7 +32003,6 @@ MonoBehaviour:
   - {fileID: 4522523444546800418}
   - {fileID: 4522523445542666259}
   - {fileID: 4522523445648218403}
-  _player: {fileID: 853461066}
 --- !u!65 &4522523445237049124
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -39217,7 +39208,6 @@ MonoBehaviour:
   - {fileID: 4522523444631646765}
   - {fileID: 4522523446179530800}
   - {fileID: 4522523445716303299}
-  _player: {fileID: 853461066}
 --- !u!1 &4522523445618786929
 GameObject:
   m_ObjectHideFlags: 0
@@ -50033,7 +50023,6 @@ MonoBehaviour:
   - {fileID: 4522523445701724134}
   - {fileID: 4522523444433725750}
   - {fileID: 4522523445374421541}
-  _player: {fileID: 853461066}
 --- !u!64 &4522523446086674395
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -57536,7 +57525,6 @@ MonoBehaviour:
   - {fileID: 4522523444546800418}
   - {fileID: 4522523445542666259}
   - {fileID: 4522523445648218403}
-  _player: {fileID: 853461066}
 --- !u!65 &4522523446446055416
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -59651,7 +59639,6 @@ MonoBehaviour:
   _lumiere:
   - {fileID: 4699761007376702546}
   - {fileID: 7462604577412856896}
-  _player: {fileID: 853461066}
 --- !u!4 &5229044075000346225
 Transform:
   m_ObjectHideFlags: 0
@@ -59850,7 +59837,6 @@ MonoBehaviour:
   _lumiere:
   - {fileID: 4699761007376702546}
   - {fileID: 7462604577412856896}
-  _player: {fileID: 853461066}
 --- !u!1 &5229044076242136852
 GameObject:
   m_ObjectHideFlags: 0
@@ -61036,7 +61022,6 @@ MonoBehaviour:
   - {fileID: 4529131774889991801}
   - {fileID: 5910943472329731716}
   - {fileID: 5166702106134999943}
-  _player: {fileID: 853461066}
 --- !u!114 &6606305220489042381
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61237,7 +61222,6 @@ MonoBehaviour:
   - {fileID: 4529131774889991801}
   - {fileID: 5910943472329731716}
   - {fileID: 5166702106134999943}
-  _player: {fileID: 853461066}
 --- !u!4 &6606305221562785217
 Transform:
   m_ObjectHideFlags: 0
@@ -61593,8 +61577,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21c72e3e7d72b2749995cb0c5397c966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 853461076}
-  _rbplayer: {fileID: 853461075}
   _respawnplayer: {fileID: 1885723547}
 --- !u!1 &7252858786127030738
 GameObject:
@@ -79857,7 +79839,6 @@ MonoBehaviour:
   - {fileID: 6751447118158857758}
   - {fileID: 7975134388464614159}
   - {fileID: 3056692130072665624}
-  _player: {fileID: 853461066}
 --- !u!1 &8264318418125425696
 GameObject:
   m_ObjectHideFlags: 0
@@ -80058,7 +80039,6 @@ MonoBehaviour:
   - {fileID: 6751447118158857758}
   - {fileID: 7975134388464614159}
   - {fileID: 3056692130072665624}
-  _player: {fileID: 853461066}
 --- !u!4 &8264318419568022857
 Transform:
   m_ObjectHideFlags: 0
@@ -86669,7 +86649,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ScriptTimer: {fileID: 1689701187}
-  _player: {fileID: 853461076}
   _respawnplayer: {fileID: 896247119}
   _runStart: 0
   _Lvl2Win: 0
