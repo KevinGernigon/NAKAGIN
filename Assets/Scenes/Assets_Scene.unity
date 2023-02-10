@@ -5798,6 +5798,7 @@ MonoBehaviour:
   _BounceFront: 2500
   _orientationPlayer: {fileID: 1739891847}
   _PlayerContent: {fileID: 1732913600}
+  pm: {fileID: 0}
 --- !u!64 &528426852
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -6337,7 +6338,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: d4db271e9dd065540a40e1fb1dd9c43e, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d4db271e9dd065540a40e1fb1dd9c43e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -9845,7 +9846,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &944655545
 GameObject:
@@ -15961,7 +15962,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 0294339b8b8135947885c0077df69dc4, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 0294339b8b8135947885c0077df69dc4, type: 3}
       propertyPath: m_LocalScale.x
@@ -17629,6 +17630,9 @@ MonoBehaviour:
   _jetpackForce: 100
   _jetpackUpwardForce: 140
   _dividePer: 2
+  _jetPackSave: 0
+  _timerCd: 0
+  _timerMaxCd: 0
   _isJetpackAvaible: 0
 --- !u!114 &1732913604
 MonoBehaviour:
@@ -17752,6 +17756,8 @@ MonoBehaviour:
   _slideForce: 0.5
   _slideYScale: 0.5
   _slideKey: 306
+  _slidingCdMax: 0
+  _isTrue: 0
 --- !u!114 &1732913608
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17764,7 +17770,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a42c0112cd86e41459f130da042a1b9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _moveSpeed: 0
   _walkSpeed: 45
+  _timerMaxSpeed: 0
+  _maxSpeedReachCooldown: 0
   _slideSpeed: 45
   _wallRunSpeed: 21
   _climbUpSpeed: 10
@@ -17772,6 +17781,7 @@ MonoBehaviour:
   _dashSpeedChangeFactor: 50
   _AerialSpeed: 1
   _fallMultiplier: 1.5
+  _isMaxSpeed: 0
   _lastState: 0
   _groundDrag: 10
   _airSpeed: 20
@@ -17789,6 +17799,7 @@ MonoBehaviour:
     m_Bits: 3072
   _isGrounded: 0
   _maxSlopeAngle: 50
+  _slopeVectorDownValue: 0
   _wantedSpeedGrappling: 3
   _wantedHeightGrappling: 1.5
   _ReachUpgradeBool: 0
@@ -17796,6 +17807,7 @@ MonoBehaviour:
   ScriptDash: {fileID: 1732913604}
   ScriptWallRun: {fileID: 1732913605}
   _orientation: {fileID: 1739891847}
+  _player: {fileID: 0}
   _valueRaycast: 0.4
   state: 0
   _isSliding: 0
@@ -17807,6 +17819,7 @@ MonoBehaviour:
   _isFreezing: 0
   _isGrappleActive: 0
   _ResetDashSpeed: 0
+  _isButtonEnabled: 0
 --- !u!54 &1732913609
 Rigidbody:
   m_ObjectHideFlags: 0
