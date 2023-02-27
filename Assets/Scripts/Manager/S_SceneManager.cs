@@ -11,6 +11,7 @@ public class S_SceneManager : Manager
         Assets_Scene,
         Corentin_Scene,
         Playtest_Scene,
+        Tom_Scene
 
     }
 
@@ -32,7 +33,7 @@ public class S_SceneManager : Manager
 
     public void LoadGame()
     {
-        SceneManager.LoadScene(Scene.Playtest_Scene.ToString());
+        SceneManager.LoadScene(Scene.Tom_Scene.ToString());
     }
 
 
