@@ -139,7 +139,6 @@ public class S_PlayerMovement : MonoBehaviour
         if (GetSlopeMoveDirection(_moveDirection).y >= 0f && OnSlope())
         {
             _isSlopePositive = true;
-            Debug.Log(_actualSlopeAngle);
         }
         else
             _isSlopePositive = false;
@@ -460,7 +459,6 @@ public class S_PlayerMovement : MonoBehaviour
     {
         if (state == MovementState.air) return;
 
-        Debug.Log(rb.drag);
         /*if (rb.drag >= 20)
         {
             rb.AddForce(transform.up * _jumpForce * 2f, ForceMode.Impulse);

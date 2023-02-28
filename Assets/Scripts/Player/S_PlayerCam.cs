@@ -51,6 +51,7 @@ public class S_PlayerCam : MonoBehaviour
     public bool _isAxisYInverted;
     public bool _isActive;
     public bool boolChangement;
+    private bool _isClimbingBool;
     [SerializeField]
     private GameObject _eventSystem;
 
@@ -65,7 +66,7 @@ public class S_PlayerCam : MonoBehaviour
         _isAxisYInverted = true;
         _isActive = true;
         boolChangement = false;
-
+        _isClimbingBool = false;
         cam.fieldOfView = _fov;
         tilt = 0;
     }
@@ -76,7 +77,7 @@ public class S_PlayerCam : MonoBehaviour
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, _fov, _resetFovTime * Time.deltaTime);
             tilt = Mathf.Lerp(tilt, 0, _camTiltTime * Time.deltaTime);
         }
-        if (pm._isMoving)
+        if (pm._isMoving && !_isClimbingBool)
         {
             float temps = Mathf.PingPong(Time.time * _speedBobbing, 1);
             tilt = Mathf.Lerp(-_headBobbing, _headBobbing, temps);
@@ -93,6 +94,8 @@ public class S_PlayerCam : MonoBehaviour
         CameraTiltClimb();
         CameraFOVGrapplingHook();
 
+        ClimbCameraAdjusted();
+        WallRunCameraAdjusted();
 
         if (_isActive && !_eventSystem.GetComponent<S_PauseMenuV2>()._isPaused)
         {
@@ -109,7 +112,11 @@ public class S_PlayerCam : MonoBehaviour
             ////////////////
             ///
 
-            _yRotation += _mouseX;
+            if(!pm._isClimbing && !pm._isWallRunning)
+            {
+                _yRotation += _mouseX;
+            }
+            
             _xRotation -= _mouseY;
             _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
 
@@ -117,13 +124,30 @@ public class S_PlayerCam : MonoBehaviour
             _orientation.rotation = Quaternion.Euler(0, _yRotation, 0);
         }
 
-        if (!pm._isWallRunning && !pm._isSliding && !ClimbingScript._isAchievedClimb && !GrapplingHookScript.isIncreaseFOV && !pm._isDashing && !pm._isMoving)
+        if (!pm._isWallRunning && !pm._isSliding && !GrapplingHookScript.isIncreaseFOV && !pm._isDashing && !pm._isMoving)
         {
             boolChangement = false;
         }
     }
 
+    private void ClimbCameraAdjusted() 
+    {
+        if (pm._isClimbing)
+        {
+            _mouseX = 0;
+            //_mouseX = Mathf.Clamp(_mouseX, -0.2f, 0.2f);
+            _yRotation += _mouseX;
+        }
+    }
 
+    private void WallRunCameraAdjusted()
+    {
+        if (pm._isWallRunning)
+        {
+            _mouseX = Mathf.Clamp(_mouseX, -0.5f, 0.5f);
+            _yRotation += _mouseX;
+        }
+    }
     private void CameraTiltWallRunFPS()
     {
         if (pm._isWallRunning)
@@ -154,8 +178,10 @@ public class S_PlayerCam : MonoBehaviour
     {
         if (ClimbingScript._isAchievedClimb)
         {
+            _isClimbingBool = true;
             boolChangement = true;
             tilt = Mathf.Lerp(tilt, _camTiltClimbAchieved, _camTiltTime * Time.deltaTime);
+            StartCoroutine(EndClimbingAnimation());
         }     
     }
     private void CameraFOVGrapplingHook()
@@ -204,5 +230,11 @@ public class S_PlayerCam : MonoBehaviour
         Camera.main.transform.rotation = Quaternion.identity;
         yield return new WaitForSeconds(0.01f);
         _isActive = true;
+    }
+
+    IEnumerator EndClimbingAnimation()
+    {
+        yield return new WaitForSeconds(0.5f);
+        _isClimbingBool = false;
     }
 }

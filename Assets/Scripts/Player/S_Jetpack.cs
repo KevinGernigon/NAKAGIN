@@ -96,20 +96,28 @@ public class S_Jetpack : MonoBehaviour
         float i;
 
 
-            if (Mathf.Abs(_rb.velocity.y) <= 20)
+            if (Mathf.Abs(_rb.velocity.y) >= 10 && Mathf.Abs(_rb.velocity.y) <= 20)
                 {
                     i = 25;
                 }
-            /*else if (Mathf.Abs(_rb.velocity.y) <= 40 && (Mathf.Abs(_rb.velocity.y) >= 20))
+            else if (Mathf.Abs(_rb.velocity.y) <= 2)
                 {
-                    i = 60;
+                    i = 25;
                 }
-
-            else if (Mathf.Abs(_rb.velocity.y) <= 60 && (Mathf.Abs(_rb.velocity.y) >= 40))
+            else if(Mathf.Abs(_rb.velocity.y) >= 2 && Mathf.Abs(_rb.velocity.y) <= 10)
                 {
-                    i = 100;
-                }*/
-            else
+                    i = 15;
+                }
+        /*else if (Mathf.Abs(_rb.velocity.y) <= 40 && (Mathf.Abs(_rb.velocity.y) >= 20))
+            {
+                i = 60;
+            }
+
+        else if (Mathf.Abs(_rb.velocity.y) <= 60 && (Mathf.Abs(_rb.velocity.y) >= 40))
+            {
+                i = 100;
+            }*/
+        else
                 {
                     i = Mathf.Abs(_rb.velocity.y) * 1.2f;
                 }
