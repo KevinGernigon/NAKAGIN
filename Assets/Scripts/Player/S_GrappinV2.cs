@@ -65,7 +65,6 @@ public class S_GrappinV2 : MonoBehaviour
         if (_grapplingCdTimer > 0) return;
         RaycastHit blockHit;
         if (Physics.Raycast(_camera.position, _camera.forward, out blockHit, _maxGrappleDistance, ~(_whatIsTarget))) return;
-  
 
         _isGrappling = true;
 
