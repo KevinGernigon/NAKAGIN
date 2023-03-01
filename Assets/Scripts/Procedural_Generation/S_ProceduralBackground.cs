@@ -7,6 +7,7 @@ public class S_ProceduralBackground : MonoBehaviour
     [SerializeField]
     private GameObject _tile;
 
+
     private bool _mapGenerated;
 
     [SerializeField]
