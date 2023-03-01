@@ -40,6 +40,7 @@ public class S_GrappinV2 : MonoBehaviour
     [Header("Boolean")]
     public bool _isGrappling;
     public bool isIncreaseFOV;
+    public bool _isDecreaseRbDrag;
 
     public System.Action updateAction;
 
@@ -157,6 +158,8 @@ public class S_GrappinV2 : MonoBehaviour
 
     public void StopGrapple()
     {
+        _pm._readyToJump = true;
+
         _pm._isFreezing = false;
 
         _isGrappling = false;
@@ -167,6 +170,7 @@ public class S_GrappinV2 : MonoBehaviour
 
         isIncreaseFOV = false;
 
+        _isDecreaseRbDrag = false;
     }
 }
 

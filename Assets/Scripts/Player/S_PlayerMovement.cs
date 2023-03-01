@@ -22,6 +22,8 @@ public class S_PlayerMovement : MonoBehaviour
     private float _desiredMoveSpeed;
     private float _lastDesiredMoveSpeed;
     private float _speedChangeFactor;
+    private float _maxWalkSpeed;
+    private float _incrementValMaxSpeed;
     public float _fallMultiplier;
     public bool _isMaxSpeed;
 
@@ -68,7 +70,7 @@ public class S_PlayerMovement : MonoBehaviour
     private RaycastHit _slopeHit;
     private bool _exitingSlope;
     [SerializeField] private float _slopeVectorDownValue;
-
+    public float _actualSlopeAngle;
     [Header("Grappling")]
     [SerializeField] public float _wantedSpeedGrappling = 2;
     [SerializeField] public float _wantedHeightGrappling = 2;
@@ -81,6 +83,7 @@ public class S_PlayerMovement : MonoBehaviour
     [SerializeField] private S_Climbing ClimbingScript;
     [SerializeField] private S_Dash ScriptDash;
     [SerializeField] private S_WallRunning ScriptWallRun;
+    [SerializeField] private S_GrappinV2 GrapplingScript;
     [SerializeField] private Transform _orientation;
     [SerializeField] private GameObject _player;
 
@@ -163,6 +166,63 @@ public class S_PlayerMovement : MonoBehaviour
             SpeedValueUpgrade();
         }
 
+        //handle drag
+        //if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && state == MovementState.walking && !Input.GetButton("Jump") && !GrapplingScript._isDecreaseRbDrag)
+        if (_horizontalInput == 0 && _verticalInput == 0 && state == MovementState.walking && S_InputManager._playerInputAction.Player.Jump.ReadValue<float>() == 0 && !GrapplingScript._isDecreaseRbDrag)
+        {
+            rb.drag = _groundDrag + 10;
+            _isMoving = false;
+        }
+        else if (state == MovementState.walking && !GrapplingScript._isDecreaseRbDrag)
+        {
+            rb.drag = _groundDrag;
+            _isMoving = true;
+        }
+        else
+        {
+            rb.drag = 0;
+            _isMoving = false;
+        }
+
+        if (state == MovementState.air)
+        {
+            _desiredMoveSpeed = _airSpeed;
+        }
+
+        /*if (state != MovementState.air && state != MovementState.dashing) //limit dash in air
+        {
+            ScriptDash._limitDash = 3;
+        }*/
+
+        if (OnSlope())
+            _player.GetComponent<CapsuleCollider>().material.dynamicFriction = 2f;
+        else
+            _player.GetComponent<CapsuleCollider>().material.dynamicFriction = 0f;
+
+    }
+    /*private void Update()
+    {
+        //Debug.Log(GetSlopeMoveDirection(_moveDirection));
+        if (GetSlopeMoveDirection(_moveDirection).y >= 0f && OnSlope())
+        {
+            _isSlopePositive = true;
+        }
+        else
+            _isSlopePositive = false;
+
+        //Ground Check
+        _isGrounded = Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsGround);
+        //_isGrounded = Physics.BoxCast(transform.position, Vector3.one, Vector3.down, Quaternion.identity, _playerHeight * 0.5f + _valueRaycast, _whatIsGround);
+
+        InputCommand();
+        SpeedControl();
+        StateHandler();
+
+        if (_isReachUpgrade)
+        {
+            SpeedValueUpgrade();
+        }
+
 
         //handle drag
         //if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && state == MovementState.walking)
@@ -203,7 +263,7 @@ public class S_PlayerMovement : MonoBehaviour
         else
             _player.GetComponent<CapsuleCollider>().material.dynamicFriction = 0f;
 
-    }
+    }*/
 
     private void FixedUpdate()
     {
@@ -251,7 +311,7 @@ public class S_PlayerMovement : MonoBehaviour
 
         //when to jump
         //if (Input.GetButtonDown("Jump") && _readyToJump && _isGrounded || (Input.GetButtonDown("Jump") && canJumpLedge))
-        if (S_InputManager._jumpInput && _readyToJump && _isGrounded || (S_InputManager._jumpInput && canJumpLedge))
+        if (S_InputManager._playerInputAction.Player.Jump.triggered && _readyToJump && _isGrounded || (S_InputManager._playerInputAction.Player.Jump.triggered && canJumpLedge))
         {
             _readyToJump = false;
             Jump();
@@ -416,7 +476,8 @@ public class S_PlayerMovement : MonoBehaviour
 
         if (_isMaxSpeed)
         {
-            _walkSpeed = 50f;
+            if (_walkSpeed <= _maxWalkSpeed)
+                _walkSpeed += _incrementValMaxSpeed;
         }
         else _walkSpeed = 45f;
 
@@ -513,6 +574,7 @@ public class S_PlayerMovement : MonoBehaviour
         else
         {
             rb.AddForce(transform.up * _jumpForce*0.8f, ForceMode.Impulse);
+            return;
         }
 
     }
@@ -584,22 +646,22 @@ public class S_PlayerMovement : MonoBehaviour
 
         if (Mathf.Abs(displacementX) >= 40 || Mathf.Abs(displacementZ) >= 40)
         {
-            _wantedSpeedGrappling = 3f;
+            _wantedSpeedGrappling = 2f;
             _wantedHeightGrappling = 1.80f;
         }
         else if (Mathf.Abs(displacementX) >= 30 || Mathf.Abs(displacementZ) >= 30)
         {
-            _wantedSpeedGrappling = 3.25f;
+            _wantedSpeedGrappling = 2.25f;
             _wantedHeightGrappling = 1.75f;
         }
         else if (Mathf.Abs(displacementX) >= 20 || Mathf.Abs(displacementZ) >= 20)
         {
-            _wantedSpeedGrappling = 3.50f;
+            _wantedSpeedGrappling = 2.50f;
             _wantedHeightGrappling = 2f;
         }
         else if (Mathf.Abs(displacementX) >= 10 || Mathf.Abs(displacementZ) >= 10)
         {
-            _wantedSpeedGrappling = 3.75f;
+            _wantedSpeedGrappling = 2.75f;
             _wantedHeightGrappling = 2f;
         }
         else if (Mathf.Abs(displacementX) >= 0 || Mathf.Abs(displacementZ) >= 0)

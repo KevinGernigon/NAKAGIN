@@ -53,9 +53,9 @@ public class S_InputManager : MonoBehaviour
         
 
         /// Jump     
-        _playerInputAction.Player.Jump.started += ctxJump => _jumpInput = ctxJump.ReadValueAsButton();
+        /*_playerInputAction.Player.Jump.started += ctxJump => _jumpInput = ctxJump.ReadValueAsButton();
         _playerInputAction.Player.Jump.performed += _ => StartCoroutine(ResetJump());
-        _playerInputAction.Player.Jump.canceled += ctxJump => _jumpInput = ctxJump.ReadValueAsButton();   //_playerInputAction.Player.Jump.started += ctxJump => _jumpInput = ctxJump.ReadValue<float>();
+        _playerInputAction.Player.Jump.canceled += ctxJump => _jumpInput = ctxJump.ReadValueAsButton();   //_playerInputAction.Player.Jump.started += ctxJump => _jumpInput = ctxJump.ReadValue<float>();*/
 
 
         /// CameraMouvement 
