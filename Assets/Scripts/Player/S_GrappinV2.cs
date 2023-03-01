@@ -12,8 +12,19 @@ public class S_GrappinV2 : MonoBehaviour
     [SerializeField] private Transform _camera;
     [SerializeField] private Transform _grappingTransform;
     [SerializeField] private LineRenderer lr;
+
+    [Header("Audio")]
+    [SerializeField] private AudioSource SoundManager;
+    [SerializeField] private AudioClip ImpactHookSoundClip;
+    [SerializeField] private AudioClip HookSoundClip;
+    [SerializeField] private AudioClip ResetHookSoundClip;
+
     [Header("Layer")]
     [SerializeField] private LayerMask _whatIsTarget;
+    [SerializeField] private LayerMask _whatIsPlayer;
+    [SerializeField] private LayerMask _whatIsWall;
+    [SerializeField] private LayerMask _whatIsGround;
+    [SerializeField] private LayerMask Default;
 
     [Header("Grappling Hook Ref")]
     [SerializeField] private float _maxGrappleDistance;
@@ -46,6 +57,11 @@ public class S_GrappinV2 : MonoBehaviour
         if (S_InputManager._playerInputAction.Player.Grappin.triggered && !_isGrappling)
             StartGrapple();
 
+        if(Physics.Raycast(_camera.position, _camera.forward, _maxGrappleDistance, 1 << LayerMask.NameToLayer("WhatIsTarget")))
+        {
+            Debug.DrawRay(_camera.position, _camera.forward * 50, Color.red);
+        }
+            
 
         if (_grapplingCdTimer > 0)
             _grapplingCdTimer -= Time.deltaTime;
@@ -63,26 +79,45 @@ public class S_GrappinV2 : MonoBehaviour
     private void StartGrapple()
     {
         if (_grapplingCdTimer > 0) return;
+        RaycastHit blockHit;
+
+        if (Physics.Raycast(_camera.position, _camera.forward, out blockHit, _maxGrappleDistance, 1 << LayerMask.NameToLayer("WhatIsGround"))) return; 
+        if (Physics.Raycast(_camera.position, _camera.forward, out blockHit, _maxGrappleDistance, 1 << LayerMask.NameToLayer("WhatIsPlayer"))) return; 
+        if (Physics.Raycast(_camera.position, _camera.forward, out blockHit, _maxGrappleDistance, 1 << LayerMask.NameToLayer("WhatIsWall"))) return; 
+
+        SoundManager.PlayOneShot(HookSoundClip);
 
         _isGrappling = true;
 
         _pm._isFreezing = true;
 
         RaycastHit hit;
-        if(Physics.Raycast(_camera.position, _camera.forward, out hit, _maxGrappleDistance, _whatIsTarget))
+        if(Physics.Raycast(_camera.position, _camera.forward, out hit, _maxGrappleDistance, 1 << LayerMask.NameToLayer("WhatIsTarget")))
+        //if(Physics.Raycast(_camera.position, _camera.forward, out hit, _maxGrappleDistance, _whatIsTarget))
         {
-            grapplePoint = hit.point;
+            _isDecreaseRbDrag = true;
+            _pm.Jump();
+            //grapplePoint = hit.point;
+            grapplePoint = hit.transform.position;
+            SoundManager.PlayOneShot(ImpactHookSoundClip);
             Invoke(nameof(ExecuteGrapple), _grappleDelayTime);
+            lr.enabled = true;
+            lr.SetPosition(1, grapplePoint);
+            var finalPosition = grapplePoint;
+            return;
         }
         else
         {
             grapplePoint = _camera.position + _camera.forward * _maxGrappleDistance;
+            SoundManager.PlayOneShot(ResetHookSoundClip);
             Invoke(nameof(StopGrapple), _grappleDelayTime);
+            lr.enabled = true;
+            lr.SetPosition(1, grapplePoint);
+            var finalPosition = grapplePoint;
+            return;
         }
+        
 
-        lr.enabled = true;
-        lr.SetPosition(1, grapplePoint);
-        var finalPosion = grapplePoint;
         /*SetGraplin(finalPosion);
         updateAction = () => SetGraplin(finalPosion);*/
     }
@@ -109,7 +144,7 @@ public class S_GrappinV2 : MonoBehaviour
     {
         _pm._isFreezing = true;
         isIncreaseFOV = true;
-        Vector3 lowestPoint = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z); //point de départ du personnage
+        Vector3 lowestPoint = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z); //point de dï¿½part du personnage
         float grapplePointRelativeYPos = grapplePoint.y - lowestPoint.y;
         float highestPointOnArc = grapplePointRelativeYPos + _overshootYAxis;
 

@@ -126,6 +126,9 @@ public class S_PlayerMovement : MonoBehaviour
     private bool canJumpLedge;
     private float _timerJump;
     public bool _isButtonEnabled;
+    public bool _isSlopePositive;
+    public bool _isMoving;
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -139,6 +142,14 @@ public class S_PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        //Debug.Log(GetSlopeMoveDirection(_moveDirection));
+        if (GetSlopeMoveDirection(_moveDirection).y >= 0f && OnSlope())
+        {
+            _isSlopePositive = true;
+        }
+        else
+            _isSlopePositive = false;
+
         //Ground Check
         _isGrounded = Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsGround);
         //_isGrounded = Physics.BoxCast(transform.position, Vector3.one, Vector3.down, Quaternion.identity, _playerHeight * 0.5f + _valueRaycast, _whatIsGround);
@@ -158,14 +169,17 @@ public class S_PlayerMovement : MonoBehaviour
         if (_horizontalInput == 0 && _verticalInput == 0 && state == MovementState.walking)
         {
             rb.drag = _groundDrag + 10;
+            _isMoving = false;
         }
         else if (state == MovementState.walking || state == MovementState.sprinting || state == MovementState.crouching && !_isGrappleActive)
         {
             rb.drag = _groundDrag;
+            _isMoving = true;
         }
         else
         {
             rb.drag = 0;
+            _isMoving = false;
         }
 
         if (_ReachUpgradeBool == false)
@@ -430,14 +444,13 @@ public class S_PlayerMovement : MonoBehaviour
         else if (!_isGrounded || (!_isGrounded && _isGrappleActive))
         {
             rb.AddForce(_moveDirection.normalized * _moveSpeed * _AerialSpeed * _airMultiplier, ForceMode.Force);
-            
         }
-
 
         if (!_isWallRunning)
         {
             rb.useGravity = !OnSlope();
         }
+
     }
 
     private void SpeedControl()
@@ -467,13 +480,15 @@ public class S_PlayerMovement : MonoBehaviour
         }
 
     }
-    private void Jump()
+    public void Jump()
     {
-        if (rb.drag >= 20)
-        {
-            rb.AddForce(transform.up * _jumpForce * 2f, ForceMode.Impulse);
-            return;
-        }
+        if (state == MovementState.air) return;
+
+        // if (rb.drag >= 20)
+        // {
+        //     rb.AddForce(transform.up * _jumpForce * 2f, ForceMode.Impulse);
+        //     return;
+        // }
         
         if (_isSliding && !OnSlope())
         {
