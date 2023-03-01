@@ -4,10 +4,16 @@ using UnityEngine;
 using UnityEngine.UI;
 public class S_PlayerCam : MonoBehaviour
 {
+    [Header("InputManager")]
+    [SerializeField] private S_InputManager S_InputManager;
+
+    [Header("Sensitivity")]
+
     public float _sensX;
     public float _sensY;
-    [SerializeField]
-    private Slider _sensiSlider;
+
+    [SerializeField] private Slider _sensiMouseSlider;
+    [SerializeField] private Slider _sensiControllerSlider;
 
     [Header("References")]
     public S_PlayerMovement pm;
@@ -77,9 +83,12 @@ public class S_PlayerCam : MonoBehaviour
         CameraTiltSlide();
         CameraTiltClimb();
         CameraFOVGrapplingHook();
-        if (_isActive && !_eventSystem.GetComponent<S_PauseMenuV2>()._isPaused)
+
+        
+        //if (_isActive && !_eventSystem.GetComponent<S_PauseMenuV2>()._isPaused)
+        if (_isActive)
         {
-            // Mouse Input //
+            /*// Mouse Input //
             if (_isAxisXInverted)
                 _mouseX = Input.GetAxisRaw("Mouse X") * _sensX * _sensiSlider.value;
             else
@@ -89,15 +98,66 @@ public class S_PlayerCam : MonoBehaviour
                 _mouseY = Input.GetAxisRaw("Mouse Y") * _sensY * _sensiSlider.value;
             else
                 _mouseY = Input.GetAxisRaw("Mouse Y") * -_sensY * _sensiSlider.value;
-            ////////////////
-            ///
-            
-                _yRotation += _mouseX;
-                _xRotation -= _mouseY;
-                _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
+            */
 
-                transform.rotation = Quaternion.Euler(_xRotation, _yRotation, tilt);
-                _orientation.rotation = Quaternion.Euler(0, _yRotation, 0);
+   
+            // Mouse Input //
+
+
+            if (_isAxisXInverted && S_InputManager._playerInput.currentControlScheme == "KeyboardAndMouse")
+                _mouseX = S_InputManager._playerInputAction.Player.CameraMouvement.ReadValue<Vector2>().x * Time.fixedDeltaTime * _sensiMouseSlider.value;
+            else
+                _mouseX = S_InputManager._playerInputAction.Player.CameraMouvement.ReadValue<Vector2>().x * Time.fixedDeltaTime * _sensiMouseSlider.value;
+
+            if (_isAxisYInverted && S_InputManager._playerInput.currentControlScheme == "KeyboardAndMouse")
+                _mouseY = S_InputManager._playerInputAction.Player.CameraMouvement.ReadValue<Vector2>().y * Time.fixedDeltaTime * _sensiMouseSlider.value;
+            else
+                _mouseY = S_InputManager._playerInputAction.Player.CameraMouvement.ReadValue<Vector2>().y * Time.fixedDeltaTime * _sensiMouseSlider.value;
+            
+            
+            if (_isAxisXInverted && S_InputManager._playerInput.currentControlScheme == "Gamepad")
+                _mouseX = S_InputManager._playerInputAction.Player.CameraMouvement.ReadValue<Vector2>().x * Time.fixedDeltaTime * _sensiControllerSlider.value;
+            else
+                _mouseX = S_InputManager._playerInputAction.Player.CameraMouvement.ReadValue<Vector2>().x * Time.fixedDeltaTime * _sensiControllerSlider.value;
+
+            if (_isAxisYInverted && S_InputManager._playerInput.currentControlScheme == "Gamepad")
+                _mouseY = S_InputManager._playerInputAction.Player.CameraMouvement.ReadValue<Vector2>().y * Time.fixedDeltaTime * _sensiControllerSlider.value;
+            else
+                _mouseY = S_InputManager._playerInputAction.Player.CameraMouvement.ReadValue<Vector2>().y * Time.fixedDeltaTime * _sensiControllerSlider.value;
+
+
+
+
+            if(S_InputManager._playerInput.currentControlScheme == "KeyboardAndMouse")
+            {
+                if(S_InputManager._invertAxeXMouse)
+                    _yRotation += -_mouseX;
+                else
+                    _yRotation += _mouseX;
+
+                if (S_InputManager._invertAxeYMouse)
+                    _xRotation -= -_mouseY;
+                else
+                    _xRotation -= _mouseY;
+            }
+
+            if (S_InputManager._playerInput.currentControlScheme == "Gamepad")
+            {
+                if (S_InputManager._invertAxeXGamepad)
+                    _yRotation += -_mouseX;
+                else
+                    _yRotation += _mouseX;
+
+                if (S_InputManager._invertAxeYGamepad)
+                    _xRotation -= -_mouseY;
+                else
+                    _xRotation -= _mouseY;
+            }
+
+
+            _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
+            transform.rotation = Quaternion.Euler(_xRotation, _yRotation, tilt);
+            _orientation.rotation = Quaternion.Euler(0, _yRotation, 0);
         }
 
         if(!pm._isWallRunning && !pm._isSliding && !ClimbingScript._isAchievedClimb && !GrapplingHookScript.isIncreaseFOV && !pm._isDashing)

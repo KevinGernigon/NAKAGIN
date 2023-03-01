@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class S_Climbing : MonoBehaviour
 {
+    [Header("InputManager")]
+    [SerializeField] private S_InputManager S_InputManager;
+    
+
     [Header("References")]
     [SerializeField] private Transform _orientation;
     [SerializeField] private Rigidbody rb;
@@ -21,7 +25,11 @@ public class S_Climbing : MonoBehaviour
     [Header("ClimbJumping")]
     [SerializeField] private float _climbJumpUpForce;
     [SerializeField] private float _climbJumpBackForce;
-    public KeyCode jumpKey = KeyCode.Space;
+
+
+    //public KeyCode jumpKey = KeyCode.Space;
+
+
     [SerializeField] private int _climbJumps;
     [SerializeField] private int _climbJumpsLeft;
     [SerializeField] private int _counterClimbPropulsion;
@@ -68,7 +76,9 @@ public class S_Climbing : MonoBehaviour
     {
         //State 1 - Climbing
         //if (_isWallFront && Input.GetKey(KeyCode.Z) && _wallLookAngle < _maxWallLookAngle)
-        if ((Input.GetButton("Vertical") || Input.GetButton("Jump")) && (_isWallFront  && _wallLookAngle < _maxWallLookAngle))     
+
+        //if ((Input.GetButton("Vertical") || Input.GetButton("Jump")) && (_isWallFront  && _wallLookAngle < _maxWallLookAngle))  
+        if ((S_InputManager._mouvementInput.y > 0 || S_InputManager._jumpInput) && (_isWallFront  && _wallLookAngle < _maxWallLookAngle))   
         {
             if (!_isClimbing && _climbTimer > 0)
             {

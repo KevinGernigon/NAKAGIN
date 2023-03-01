@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class S_RotationPlatformes : MonoBehaviour
 {
+
+    private S_ReferenceInterface _referenceInterface;
+
+
     [SerializeField]
     private GameObject _centerPlatforms;
 
@@ -14,6 +18,14 @@ public class S_RotationPlatformes : MonoBehaviour
     private bool _isTrigger = false;
     private bool _startMoving = false;
     private Vector3 _initialRotation;
+
+    private void Awake()
+    {
+
+        _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
+ 
+
+    }
 
     void Start()
     {
@@ -33,8 +45,8 @@ public class S_RotationPlatformes : MonoBehaviour
 
         if (_isTrigger)
         {
-
-            if (Input.GetButtonDown("LeftRotation") && _startMoving == false)
+            //if (Input.GetButtonDown("LeftRotation") && _startMoving == false)
+            if (_referenceInterface._InputManager._playerInputAction.Player.MoveModuleLeft.triggered && _startMoving == false)
             {
                 _initialRotation = _centerPlatforms.transform.eulerAngles;
                 _alpha = 0f;
@@ -42,8 +54,8 @@ public class S_RotationPlatformes : MonoBehaviour
                 _startMoving = true;
                 StartCoroutine(MovePlatformsRight(_centerPlatforms));
             }
-
-            if (Input.GetButtonDown("RightRotation") && _startMoving == false)
+            //if (Input.GetButtonDown("RightRotation") && _startMoving == false)
+            if (_referenceInterface._InputManager._playerInputAction.Player.MoveModuleRight.triggered && _startMoving == false)
             {
                 _initialRotation = _centerPlatforms.transform.eulerAngles;
                 _alpha = 0f;
@@ -80,12 +92,11 @@ public class S_RotationPlatformes : MonoBehaviour
 
     public void OnTriggersEnter()
     {
-        Debug.Log("Trigger");
         _isTrigger = true;
     }
     public void OnTriggersExit()
     {
-        Debug.Log("NON Trigger");
+
         _isTrigger = false;
     }
 

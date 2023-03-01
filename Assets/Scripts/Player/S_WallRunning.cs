@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class S_WallRunning : MonoBehaviour
 {
+    [Header("InputManager")]
+    [SerializeField] private S_InputManager S_InputManager;
+
     [Header("WallRunning")]
     public LayerMask _whatIsWall;
     public LayerMask _whatIsGround;
@@ -19,11 +22,13 @@ public class S_WallRunning : MonoBehaviour
 
 
     [Header("Input")]
-    public KeyCode jumpKey = KeyCode.Space;
-    public KeyCode _upwardsRunKey = KeyCode.LeftShift;
+    //public KeyCode jumpKey = KeyCode.Space;
+
+    /*public KeyCode _upwardsRunKey = KeyCode.LeftShift;
     public KeyCode _downwardsRunKey = KeyCode.LeftControl;
     private bool _isUpwardsRunning;
-    private bool _isDownwardsRunning;
+    private bool _isDownwardsRunning;*/
+
     private float _horizontalInput;
     private float _verticalInput;
 
@@ -151,11 +156,15 @@ public class S_WallRunning : MonoBehaviour
     private void StateMachine()
     {
         // Getting inputs
-        _horizontalInput = Input.GetAxisRaw("Horizontal");
-        _verticalInput = Input.GetAxisRaw("Vertical");
+        _horizontalInput = S_InputManager._mouvementInput.x;
+        _verticalInput = S_InputManager._mouvementInput.y;
 
-        _isUpwardsRunning = Input.GetKey(_upwardsRunKey);
-        _isDownwardsRunning = Input.GetKey(_downwardsRunKey);
+        //_horizontalInput = Input.GetAxisRaw("Horizontal");
+        //_verticalInput = Input.GetAxisRaw("Vertical");
+
+        /*_isUpwardsRunning = Input.GetKey(_upwardsRunKey);
+        _isDownwardsRunning = Input.GetKey(_downwardsRunKey);*/
+
         //State 1 - WallRunning
         if ((_isWallLeft || _isWallRight) && _verticalInput > 0 && AboveGround() && !_isExitingWall)
         {
@@ -176,8 +185,11 @@ public class S_WallRunning : MonoBehaviour
                 _isExitingWall = true;
                 _exitWallTimer = _exitWallTime;
             }
+
+
             // walljump
-            if (Input.GetKeyDown(jumpKey))
+            //if (Input.GetKeyDown(jumpKey))
+            if (S_InputManager._jumpInput)
             {
                 WallJump();
             }

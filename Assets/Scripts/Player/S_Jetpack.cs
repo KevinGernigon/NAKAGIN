@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class S_Jetpack : MonoBehaviour
 {
+    [Header("InputManager")]
+    [SerializeField] private S_InputManager S_InputManager;
+
     [Header("References")]
     public Transform orientation;
     public Transform playerCam;
@@ -40,8 +43,18 @@ public class S_Jetpack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Jetpack") && _isJetpackAvaible)
-            JetpackFunction();    
+        /*if (Input.GetButtonDown("Jetpack") && _isJetpackAvaible)
+            JetpackFunction();*/
+
+        if (S_InputManager._playerInputAction.Player.Jetpack.triggered && _isJetpackAvaible)
+        {
+            if (S_InputManager._jetpackActive)
+            {
+                JetpackFunction();
+            }
+        }
+            
+        
     }
     private void FixedUpdate()
     {
@@ -96,20 +109,28 @@ public class S_Jetpack : MonoBehaviour
         float i;
 
 
-            if (Mathf.Abs(_rb.velocity.y) <= 20)
+            if (Mathf.Abs(_rb.velocity.y) >= 10 && Mathf.Abs(_rb.velocity.y) <= 20)
                 {
                     i = 25;
                 }
-            /*else if (Mathf.Abs(_rb.velocity.y) <= 40 && (Mathf.Abs(_rb.velocity.y) >= 20))
+            else if (Mathf.Abs(_rb.velocity.y) <= 2)
                 {
-                    i = 60;
+                    i = 25;
                 }
-
-            else if (Mathf.Abs(_rb.velocity.y) <= 60 && (Mathf.Abs(_rb.velocity.y) >= 40))
+            else if(Mathf.Abs(_rb.velocity.y) >= 2 && Mathf.Abs(_rb.velocity.y) <= 10)
                 {
-                    i = 100;
-                }*/
-            else
+                    i = 15;
+                }
+        /*else if (Mathf.Abs(_rb.velocity.y) <= 40 && (Mathf.Abs(_rb.velocity.y) >= 20))
+            {
+                i = 60;
+            }
+
+        else if (Mathf.Abs(_rb.velocity.y) <= 60 && (Mathf.Abs(_rb.velocity.y) >= 40))
+            {
+                i = 100;
+            }*/
+        else
                 {
                     i = Mathf.Abs(_rb.velocity.y) * 1.2f;
                 }
@@ -134,9 +155,17 @@ public class S_Jetpack : MonoBehaviour
     public void BooleanTriggerBoxEnter()
     {
         _isTriggerBoxTrue = true;
-            if (Input.GetButtonDown("Jetpack"))
-                JetpackFunction();
 
+           /* if (Input.GetButtonDown("Jetpack"))
+                JetpackFunction();*/
+        if (S_InputManager._playerInputAction.Player.Jetpack.triggered)
+        {
+            if (S_InputManager._jetpackActive)
+            { 
+                JetpackFunction(); 
+            }
+        }
+            
     }
 
     public void BooleanTriggerBoxExit()

@@ -30,4 +30,18 @@ public class S_ReferenceInterface : Manager
 
     public GameObject _UICanvas;
 
+    [Header("Refs Battery")]
+
+    public GameObject EventSysteme;
+    public S_BatteryManager _BatteryManager;
+
+
+    [Header("Refs InputManager")]
+    public S_InputManager _InputManager;
+
+    private void Awake()
+    {
+        _BatteryManager = EventSysteme.GetComponent<S_BatteryManager>();
+    }
+
 }
