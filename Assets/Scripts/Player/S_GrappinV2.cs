@@ -21,10 +21,7 @@ public class S_GrappinV2 : MonoBehaviour
 
     [Header("Layer")]
     [SerializeField] private LayerMask _whatIsTarget;
-    [SerializeField] private LayerMask _whatIsPlayer;
-    [SerializeField] private LayerMask _whatIsWall;
-    [SerializeField] private LayerMask _whatIsGround;
-    [SerializeField] private LayerMask Default;
+    [SerializeField] private LayerMask LayerToExempt;
 
     [Header("Grappling Hook Ref")]
     [SerializeField] private float _maxGrappleDistance;
@@ -47,8 +44,7 @@ public class S_GrappinV2 : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        _pm = GetComponent<S_PlayerMovement>();
-        
+        _pm = GetComponent<S_PlayerMovement>();     
     }
 
     private void Update()
@@ -57,13 +53,16 @@ public class S_GrappinV2 : MonoBehaviour
             StartGrapple();*/
         if (S_InputManager._playerInputAction.Player.Grappin.triggered && !_isGrappling)
             StartGrapple();
-
-        if(Physics.Raycast(_camera.position, _camera.forward, _maxGrappleDistance, 1 << LayerMask.NameToLayer("WhatIsTarget")))
+        if (Physics.Raycast(_camera.position, _camera.forward, _maxGrappleDistance, LayerToExempt))
         {
-            Debug.DrawRay(_camera.position, _camera.forward * 50, Color.red);
+            Debug.DrawRay(_camera.position, _camera.forward * 100, Color.red);
+        }
+        //if(Physics.Raycast(_camera.position, _camera.forward, _maxGrappleDistance, 1 << LayerMask.NameToLayer("WhatIsTarget")))
+        else if (Physics.Raycast(_camera.position, _camera.forward, _maxGrappleDistance, 1 << LayerMask.NameToLayer("WhatIsTarget")))
+        {
+            Debug.DrawRay(_camera.position, _camera.forward * 50, Color.blue);
         }
             
-
         if (_grapplingCdTimer > 0)
             _grapplingCdTimer -= Time.deltaTime;
 
@@ -80,16 +79,12 @@ public class S_GrappinV2 : MonoBehaviour
     private void StartGrapple()
     {
         if (_grapplingCdTimer > 0) return;
+        
         RaycastHit blockHit;
-
-        if (Physics.Raycast(_camera.position, _camera.forward, out blockHit, _maxGrappleDistance, 1 << LayerMask.NameToLayer("WhatIsGround"))) return; 
-        if (Physics.Raycast(_camera.position, _camera.forward, out blockHit, _maxGrappleDistance, 1 << LayerMask.NameToLayer("WhatIsPlayer"))) return; 
-        if (Physics.Raycast(_camera.position, _camera.forward, out blockHit, _maxGrappleDistance, 1 << LayerMask.NameToLayer("WhatIsWall"))) return; 
+        if (Physics.Raycast(_camera.position, _camera.forward, out blockHit, _maxGrappleDistance, LayerToExempt)) return;
 
         SoundManager.PlayOneShot(HookSoundClip);
-
         _isGrappling = true;
-
         _pm._isFreezing = true;
 
         RaycastHit hit;
@@ -101,11 +96,11 @@ public class S_GrappinV2 : MonoBehaviour
             //grapplePoint = hit.point;
             grapplePoint = hit.transform.position;
             SoundManager.PlayOneShot(ImpactHookSoundClip);
-            Invoke(nameof(ExecuteGrapple), _grappleDelayTime);
             lr.enabled = true;
             lr.SetPosition(1, grapplePoint);
             var finalPosition = grapplePoint;
-            return;
+            Invoke(nameof(ExecuteGrapple), _grappleDelayTime);
+            
         }
         else
         {
@@ -122,7 +117,6 @@ public class S_GrappinV2 : MonoBehaviour
         /*SetGraplin(finalPosion);
         updateAction = () => SetGraplin(finalPosion);*/
     }
-
 
     /*private void SetGraplin(Vector3 finalPos)
     {
