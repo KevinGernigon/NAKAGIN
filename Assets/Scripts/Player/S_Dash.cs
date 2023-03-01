@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class S_Dash : MonoBehaviour
 {
+    [Header("InputManager")]
+    [SerializeField] private S_InputManager S_InputManager;
+
     [Header("References")]
     public Transform orientation;
     public Transform playerCam;
@@ -30,7 +33,7 @@ public class S_Dash : MonoBehaviour
     [SerializeField] private float _dashCdTimer;
 
     [Header("Input")]
-    public KeyCode dashKey = KeyCode.E;
+    //public KeyCode dashKey = KeyCode.E;
 
     public bool AxelIsHere = false;
     private const float DOUBLE_CLICK_TIME = .2f;
@@ -61,8 +64,10 @@ public class S_Dash : MonoBehaviour
     {
         if (AxelIsHere)
         {
-            if (Input.GetButtonDown("Vertical") && Input.GetAxisRaw("Vertical") > 0 || (Input.GetButtonDown("Vertical") && Input.GetAxisRaw("Vertical") < 0) ||
-            Input.GetButtonDown("Horizontal") && Input.GetAxisRaw("Horizontal") > 0 || (Input.GetButtonDown("Horizontal") && Input.GetAxisRaw("Horizontal") < 0))
+            /*if (Input.GetButtonDown("Vertical") && Input.GetAxisRaw("Vertical") > 0 || (Input.GetButtonDown("Vertical") && Input.GetAxisRaw("Vertical") < 0) ||
+            Input.GetButtonDown("Horizontal") && Input.GetAxisRaw("Horizontal") > 0 || (Input.GetButtonDown("Horizontal") && Input.GetAxisRaw("Horizontal") < 0))*/
+            if (S_InputManager._mouvementInput.y != 0 && S_InputManager._mouvementInput.y > 0 || (S_InputManager._mouvementInput.y != 0 && S_InputManager._mouvementInput.y < 0) ||
+            S_InputManager._mouvementInput.x != 0 && S_InputManager._mouvementInput.x > 0 || (S_InputManager._mouvementInput.x != 0 && S_InputManager._mouvementInput.x < 0))
             {
 
                 float timeSinceLastPress = Time.time - lastPressTime;
@@ -76,7 +81,8 @@ public class S_Dash : MonoBehaviour
         }
         
 
-        if (Input.GetButtonDown("Dash"))
+        //if (Input.GetButtonDown("Dash"))
+        if (S_InputManager._dashInput)
         {
             DashFunction();
         }
@@ -144,8 +150,10 @@ public class S_Dash : MonoBehaviour
 
     private Vector3 GetDirection(Transform forwardT)
     {
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-        float verticalInput = Input.GetAxisRaw("Vertical");
+        float horizontalInput = S_InputManager._mouvementInput.x;
+        float verticalInput = S_InputManager._mouvementInput.y;
+        /*float horizontalInput = Input.GetAxisRaw("Horizontal");
+        float verticalInput = Input.GetAxisRaw("Vertical");*/
 
         Vector3 direction = new Vector3();
 

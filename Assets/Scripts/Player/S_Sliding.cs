@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class S_Sliding : MonoBehaviour
 {
-    [Header("References")]
+    [Header("InputManager")]
+    [SerializeField] private S_InputManager S_InputManager;
 
+    [Header("References")]
     [SerializeField]
     private Transform _orientation;
     [SerializeField]
@@ -26,7 +28,10 @@ public class S_Sliding : MonoBehaviour
     private float _startYScale;
 
     [Header("Input")]
+
     public KeyCode _slideKey = KeyCode.LeftControl;
+   
+
     private float _horizontalInput;
     private float _verticalInput;
 
@@ -48,28 +53,40 @@ public class S_Sliding : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(_slideKey))
-        {
+       
+       
+
+
+        //if (Input.GetKeyDown(_slideKey))
+        if (S_InputManager._playerInputAction.Player.Slide.triggered)
+        { 
+           
             _isTrue = true;
         }
-        else if (Input.GetKeyUp(_slideKey))
-        {
+        //else if (Input.GetKeyUp(_slideKey))
+        else if (S_InputManager._playerInputAction.Player.Slide.ReadValue<float>() == 0)
+        { 
+            
             _isTrue = false;
         }
 
-        if (Input.GetKeyDown(_slideKey) && (_horizontalInput != 0 || _verticalInput != 0))
+        //if (Input.GetKeyDown(_slideKey) && (_horizontalInput != 0 || _verticalInput != 0))
+        if (S_InputManager._playerInputAction.Player.Slide.triggered && (_horizontalInput != 0 || _verticalInput != 0))
         {
             StartSlide();
         }
 
-        if (Input.GetKeyDown(_slideKey) && (_horizontalInput != 0 || _verticalInput != 0) && !_pm._isGrounded)
+        //if (Input.GetKeyDown(_slideKey) && (_horizontalInput != 0 || _verticalInput != 0) && !_pm._isGrounded)
+        if (S_InputManager._playerInputAction.Player.Slide.triggered && (_horizontalInput != 0 || _verticalInput != 0) && !_pm._isGrounded)
         {
             StartCoroutine(waitForGround());
         }
+
         if (!_isTrue)
             StopAllCoroutines();
 
-        if (Input.GetKeyUp(_slideKey) && _pm._isSliding)
+        //if (Input.GetKeyUp(_slideKey) && _pm._isSliding)
+        if ((S_InputManager._playerInputAction.Player.Slide.ReadValue<float>() == 0) && _pm._isSliding)
         {
             StopSlide();
             _pm._ReachUpgradeBool = false;
@@ -81,8 +98,12 @@ public class S_Sliding : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _horizontalInput = Input.GetAxisRaw("Horizontal");
-        _verticalInput = Input.GetAxisRaw("Vertical");
+        _horizontalInput = S_InputManager._mouvementInput.x;
+        _verticalInput = S_InputManager._mouvementInput.y;
+
+        //_horizontalInput = Input.GetAxisRaw("Horizontal");
+        //_verticalInput = Input.GetAxisRaw("Vertical");
+
 
         if (_pm._isSliding)
         {

@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class S_PlayerMovement : MonoBehaviour
 {
+    [Header("InputManager")]
+    [SerializeField] private S_InputManager S_InputManager;
+
     [Header("Movement")]
     public float _moveSpeed;
     //[SerializeField] private float _sprintSpeed;
@@ -42,10 +45,18 @@ public class S_PlayerMovement : MonoBehaviour
     [SerializeField] private float _crouchYScale;
     private float _startYScale;
 
+
+
+
     [Header("Keybinds")]
     //public KeyCode _jumpKey = KeyCode.Space;
-    public KeyCode _sprintKey = KeyCode.LeftShift;
+    //public KeyCode _sprintKey = KeyCode.LeftShift;
+
     public KeyCode _crouchKey = KeyCode.LeftControl;
+
+
+
+
 
     [Header("Ground Check")]
     [SerializeField] private float _playerHeight;
@@ -76,8 +87,10 @@ public class S_PlayerMovement : MonoBehaviour
 
     [Header("Raycast")]
     [SerializeField] private float _valueRaycast;
+
     float _horizontalInput;
     float _verticalInput;
+    
 
 
     Vector3 _moveDirection;
@@ -141,7 +154,8 @@ public class S_PlayerMovement : MonoBehaviour
 
 
         //handle drag
-        if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && state == MovementState.walking)
+        //if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && state == MovementState.walking)
+        if (_horizontalInput == 0 && _verticalInput == 0 && state == MovementState.walking)
         {
             rb.drag = _groundDrag + 10;
         }
@@ -199,7 +213,8 @@ public class S_PlayerMovement : MonoBehaviour
         }
         else _timerJump = 0f;
 
-        if (Input.GetButton("Vertical"))
+        //if (Input.GetButton("Vertical"))
+        if (_verticalInput != 0 )
         {
             _timerMaxSpeed += Time.deltaTime;
             if (_timerMaxSpeed >= _maxSpeedReachCooldown)
@@ -214,12 +229,15 @@ public class S_PlayerMovement : MonoBehaviour
     private void InputCommand()
     {
 
-        _horizontalInput = Input.GetAxisRaw("Horizontal");
-        _verticalInput = Input.GetAxisRaw("Vertical");
+        _horizontalInput = S_InputManager._mouvementInput.x;
+        _verticalInput = S_InputManager._mouvementInput.y;
 
+        //_horizontalInput = Input.GetAxisRaw("Horizontal");
+        //_verticalInput = Input.GetAxisRaw("Vertical");
 
         //when to jump
-        if (Input.GetButtonDown("Jump") && _readyToJump && _isGrounded || (Input.GetButtonDown("Jump") && canJumpLedge))
+        //if (Input.GetButtonDown("Jump") && _readyToJump && _isGrounded || (Input.GetButtonDown("Jump") && canJumpLedge))
+        if (S_InputManager._jumpInput && _readyToJump && _isGrounded || (S_InputManager._jumpInput && canJumpLedge))
         {
             _readyToJump = false;
             Jump();
@@ -231,6 +249,7 @@ public class S_PlayerMovement : MonoBehaviour
         //When crouch
 
         if (Input.GetKeyDown(_crouchKey))
+        //if (S_InputManager._slideInput)
         {
             transform.localScale = new Vector3(transform.localScale.x, _crouchYScale, transform.localScale.z);
             //add force cuz floating
@@ -238,6 +257,7 @@ public class S_PlayerMovement : MonoBehaviour
         }
 
         if (Input.GetKeyUp(_crouchKey))
+        //if (!S_InputManager._slideInput)
         {
             transform.localScale = new Vector3(transform.localScale.x, _startYScale, transform.localScale.z);
         }
@@ -289,6 +309,7 @@ public class S_PlayerMovement : MonoBehaviour
         }
         //Mode - Crouch 
         else if (Input.GetKey(_crouchKey))
+        //else if (S_InputManager._slideInput)
         {
             state = MovementState.crouching;
             _desiredMoveSpeed = _crouchSpeed;
@@ -608,5 +629,8 @@ public class S_PlayerMovement : MonoBehaviour
     {
         yield return new WaitForSeconds(2f);
         _ReachUpgradeBool = false;
-    } 
+    }
+
+   
+    
 }

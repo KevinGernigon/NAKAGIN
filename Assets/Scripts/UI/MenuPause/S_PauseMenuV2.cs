@@ -4,7 +4,10 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 public class S_PauseMenuV2 : MonoBehaviour
 {
+    [Header("InputManager")]
+    [SerializeField] private S_InputManager S_InputManager;
 
+    [Header("Other")]
 
     [SerializeField] private GameObject _pauseMenuHUD;
     [SerializeField] private GameObject _startGameHUD;
@@ -12,10 +15,12 @@ public class S_PauseMenuV2 : MonoBehaviour
     [SerializeField] private GameObject _pauseInterface;
     [SerializeField] private GameObject _settingsInterface;
 
-    public bool _isPaused;
+    public bool _isPaused = false;
     private bool _ischoose;
     [SerializeField]
     private GameObject _player;
+
+    
 
     void Start()
     {
@@ -31,7 +36,8 @@ public class S_PauseMenuV2 : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("MenuPause"))
+
+        /*if (Input.GetButtonDown("MenuPause"))
         {
             if (_isPaused)
             {
@@ -41,16 +47,36 @@ public class S_PauseMenuV2 : MonoBehaviour
             {
                 PauseGame();
             }
+        }*/
+
+        if (S_InputManager._playerInputAction.Player.Pause.triggered)
+        {
+            if (S_InputManager._playerEnable)
+            {
+                PauseGame();
+                return;
+            }
+        }
+
+        if (S_InputManager._playerInputAction.UI.Pause.triggered)
+        {
+            if (!S_InputManager._playerEnable)
+                ResumeGame(); 
         }
     }
 
     public void PauseGame()
     {
+        S_InputManager.ActivePause();
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
         _pauseMenuHUD.SetActive(true);
         _startGameHUD.SetActive(false);
+
+        
+
 
         Time.timeScale = 0f;
         //AudioListener = false;
@@ -62,6 +88,8 @@ public class S_PauseMenuV2 : MonoBehaviour
         if (!_ischoose)
         {
             StartCoroutine(waitcastchoose());
+
+            S_InputManager.DesactivePause();
 
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
@@ -77,7 +105,6 @@ public class S_PauseMenuV2 : MonoBehaviour
             _isPaused = false;
 
 
-
         }
 
     }
@@ -89,16 +116,13 @@ public class S_PauseMenuV2 : MonoBehaviour
             Debug.Log("RestartLevel");
             ResumeGame();
             StartCoroutine(waitcastchoose());
+
             Scene _scene = SceneManager.GetActiveScene();
-            if (_scene.name == "Tom_Scene")
-            {
-                SceneManager.LoadScene(_scene.name);
-                SceneManager.LoadScene("Alexis_Blocking_Environment", LoadSceneMode.Additive);
-            }
-            else
-            {
-                SceneManager.LoadScene(_scene.name);
-            }
+
+            SceneManager.LoadScene("Manager_Scene");
+            SceneManager.LoadScene(_scene.name);
+            
+
         }
 
     }

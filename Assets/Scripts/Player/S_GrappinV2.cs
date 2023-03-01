@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class S_GrappinV2 : MonoBehaviour
 {
+    [Header("InputManager")]
+    [SerializeField] private S_InputManager S_InputManager;
+
     [Header("References")]
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private S_PlayerMovement _pm;
@@ -38,8 +41,11 @@ public class S_GrappinV2 : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A) && !_isGrappling)
+        /*if (Input.GetKeyDown(KeyCode.A) && !_isGrappling)
+            StartGrapple();*/
+        if (S_InputManager._playerInputAction.Player.Grappin.triggered && !_isGrappling)
             StartGrapple();
+
 
         if (_grapplingCdTimer > 0)
             _grapplingCdTimer -= Time.deltaTime;

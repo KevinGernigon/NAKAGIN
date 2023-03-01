@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class S_Jetpack : MonoBehaviour
 {
+    [Header("InputManager")]
+    [SerializeField] private S_InputManager S_InputManager;
+
     [Header("References")]
     public Transform orientation;
     public Transform playerCam;
@@ -40,8 +43,18 @@ public class S_Jetpack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Jetpack") && _isJetpackAvaible)
-            JetpackFunction();    
+        /*if (Input.GetButtonDown("Jetpack") && _isJetpackAvaible)
+            JetpackFunction();*/
+
+        if (S_InputManager._playerInputAction.Player.Jetpack.triggered && _isJetpackAvaible)
+        {
+            if (S_InputManager._jetpackActive)
+            {
+                JetpackFunction();
+            }
+        }
+            
+        
     }
     private void FixedUpdate()
     {
@@ -134,9 +147,17 @@ public class S_Jetpack : MonoBehaviour
     public void BooleanTriggerBoxEnter()
     {
         _isTriggerBoxTrue = true;
-            if (Input.GetButtonDown("Jetpack"))
-                JetpackFunction();
 
+           /* if (Input.GetButtonDown("Jetpack"))
+                JetpackFunction();*/
+        if (S_InputManager._playerInputAction.Player.Jetpack.triggered)
+        {
+            if (S_InputManager._jetpackActive)
+            { 
+                JetpackFunction(); 
+            }
+        }
+            
     }
 
     public void BooleanTriggerBoxExit()
