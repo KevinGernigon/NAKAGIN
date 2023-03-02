@@ -7,7 +7,6 @@ public class S_GenerateurEnergetique : MonoBehaviour
    
     private S_ReferenceInterface _referenceInterface;
 
-    
 
     [Header("Charge Energetique")]
 
@@ -20,10 +19,17 @@ public class S_GenerateurEnergetique : MonoBehaviour
     [SerializeField] private GameObject _indicateurCharge2;
     [SerializeField] private GameObject _indicateurCharge3;
 
+
+    [SerializeField] private LayerMask _whatIsInteractable;
+
+    private GameObject _HUD_InteractGenerateurEnable;
+    private GameObject _HUD_InteractGenerateurDisable;
+
     private void Awake()
     {
         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
-        
+        _HUD_InteractGenerateurEnable = _referenceInterface.HUD_InteractGenerateurEnable;
+        _HUD_InteractGenerateurDisable = _referenceInterface.HUD_InteractGenerateurDisable;
     }
 
 
@@ -39,42 +45,52 @@ public class S_GenerateurEnergetique : MonoBehaviour
 
     private void Update()
     {
-        if (_referenceInterface._InputManager._playerInputAction.Player.Interaction.triggered && !_referenceInterface._InputManager._jetpackActive && _OnTrigger)
-            {
-                ReloadBattery();
-            }
-    
-        /* Ici indicateur du niveau de charge UI*/
+        RaycastInteractableGenerateur();
 
-    }
-
-    ///////////////////////////////////////////////////////////////////////////////////
-    // Replacer trigger entrer par un raycast sur le player qui detecte si il regarde la console 
-            // permet : Afficher l'ui 
-                    //  Désactiver le jetpack 
-                    //  Activer la fonction RealodBattery
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player"))
+        if (_referenceInterface._InputManager._playerInputAction.Player.Interaction.triggered && _OnTrigger)
         {
-            _OnTrigger = true;
-            _referenceInterface._InputManager.DesactiveJetpackInput();
-            
+
+            //Sound Interaction Impossible
+            if (ChargeEnergetique > 0)
+                ReloadBattery();
+
         }
+
+        
+
     }
-    private void OnTriggerExit(Collider other)
+    public void RaycastInteractableGenerateur()
     {
-        if (other.CompareTag("Player"))
+        RaycastHit hit;
+        if (Physics.Raycast(_referenceInterface._CameraGameObject.transform.position, _referenceInterface._CameraGameObject.transform.forward, out hit, 1, _whatIsInteractable))
+        {
+            if (hit.collider.gameObject == gameObject)
+            {
+                _OnTrigger = true;
+
+                if(ChargeEnergetique > 0)
+                    _HUD_InteractGenerateurEnable.SetActive(true);
+
+                if(ChargeEnergetique == 0)
+                    _HUD_InteractGenerateurDisable.SetActive(true);
+
+
+                //_referenceInterface._InputManager.DesactiveJetpackInput();
+
+            }
+        }
+        else
         {
             _OnTrigger = false;
-            _referenceInterface._InputManager.ActiveJetpackInput();
+            _HUD_InteractGenerateurEnable.SetActive(false);
+            _HUD_InteractGenerateurDisable.SetActive(false);
+            //_referenceInterface._InputManager.ActiveJetpackInput();
 
         }
     }
 
+   
     
-    ///////////////////////////////////////////////////////////////
     public void ChargeUp()
     {
         ChargeEnergetique += 1f;
