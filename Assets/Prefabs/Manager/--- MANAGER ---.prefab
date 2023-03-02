@@ -2697,6 +2697,7 @@ MonoBehaviour:
   _sensY: 50
   _sensiMouseSlider: {fileID: 2923960921011726463}
   _sensiControllerSlider: {fileID: 3117067120904164121}
+  _sensitivity: 0
   pm: {fileID: 1056863178087984959}
   wr: {fileID: 1056863178087984967}
   ClimbingScript: {fileID: 1056863178087984960}
@@ -2724,8 +2725,6 @@ MonoBehaviour:
   _resetFovTime: 10
   _headBobbing: 0
   _speedBobbing: 0
-  _isAxisXInverted: 0
-  _isAxisYInverted: 0
   _isActive: 0
   boolChangement: 0
   _eventSystem: {fileID: 1056863179498974712}
@@ -8253,8 +8252,8 @@ Transform:
   - {fileID: 5672915169126256238}
   - {fileID: 1927662273218321238}
   - {fileID: 4056988738911659274}
-  - {fileID: 4056988738804597442}
   - {fileID: 4056988738955501857}
+  - {fileID: 4056988738804597442}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -8336,7 +8335,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4056988738745829937}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5691277631629918637
 MonoBehaviour:
@@ -8442,7 +8441,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 4056988738745829937}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!82 &4056988738955501860
 AudioSource:
