@@ -22,6 +22,8 @@ public class S_GrappinV2 : MonoBehaviour
     [Header("Layer")]
     [SerializeField] private LayerMask _whatIsTarget;
     [SerializeField] private LayerMask LayerToExempt;
+    [SerializeField] private LayerMask Everything;
+    [SerializeField] private LayerMask _whatIsGround;
 
     [Header("Grappling Hook Ref")]
     [SerializeField] private float _maxGrappleDistance;
@@ -53,16 +55,22 @@ public class S_GrappinV2 : MonoBehaviour
             StartGrapple();*/
         if (S_InputManager._playerInputAction.Player.Grappin.triggered && !_isGrappling)
             StartGrapple();
-        if (Physics.Raycast(_camera.position, _camera.forward, _maxGrappleDistance, LayerToExempt))
-        {
-            Debug.DrawRay(_camera.position, _camera.forward * 100, Color.red);
-        }
+
+        RaycastHit DebugHit;
+
         //if(Physics.Raycast(_camera.position, _camera.forward, _maxGrappleDistance, 1 << LayerMask.NameToLayer("WhatIsTarget")))
-        else if (Physics.Raycast(_camera.position, _camera.forward, _maxGrappleDistance, 1 << LayerMask.NameToLayer("WhatIsTarget")))
+        if (Physics.Raycast(_camera.position, _camera.forward, out DebugHit, _maxGrappleDistance, Everything))
         {
-            Debug.DrawRay(_camera.position, _camera.forward * 50, Color.blue);
+            int whatIsTarget = LayerMask.NameToLayer("WhatIsTarget");
+            if (DebugHit.collider.gameObject.layer == whatIsTarget)
+            {
+                Debug.DrawRay(_camera.position, _camera.forward * _maxGrappleDistance, Color.blue);
+            }
+            else
+                Debug.DrawRay(_camera.position, _camera.forward * _maxGrappleDistance, Color.red);
         }
-            
+
+
         if (_grapplingCdTimer > 0)
             _grapplingCdTimer -= Time.deltaTime;
 
@@ -79,44 +87,47 @@ public class S_GrappinV2 : MonoBehaviour
     private void StartGrapple()
     {
         if (_grapplingCdTimer > 0) return;
-        
-        RaycastHit blockHit;
-        if (Physics.Raycast(_camera.position, _camera.forward, out blockHit, _maxGrappleDistance, LayerToExempt)) return;
+
+        /*RaycastHit noTarget;
+        if (Physics.Raycast(_camera.position, _camera.forward, out noTarget, _maxGrappleDistance, ~_whatIsTarget))
+        {
+        }*/
 
         SoundManager.PlayOneShot(HookSoundClip);
         _isGrappling = true;
         _pm._isFreezing = true;
 
         RaycastHit hit;
-        if(Physics.Raycast(_camera.position, _camera.forward, out hit, _maxGrappleDistance, 1 << LayerMask.NameToLayer("WhatIsTarget")))
-        //if(Physics.Raycast(_camera.position, _camera.forward, out hit, _maxGrappleDistance, _whatIsTarget))
+        //if(Physics.Raycast(_camera.position, _camera.forward, out hit, _maxGrappleDistance, 1 << LayerMask.NameToLayer("WhatIsTarget")))
+        if (Physics.Raycast(_camera.position, _camera.forward, out hit, _maxGrappleDistance, Everything))
         {
-            _isDecreaseRbDrag = true;
-            _pm.Jump();
-            //grapplePoint = hit.point;
-            grapplePoint = hit.transform.position;
-            SoundManager.PlayOneShot(ImpactHookSoundClip);
-            lr.enabled = true;
-            lr.SetPosition(1, grapplePoint);
-            var finalPosition = grapplePoint;
-            Invoke(nameof(ExecuteGrapple), _grappleDelayTime);
-            
+            int whatIsTarget = LayerMask.NameToLayer("WhatIsTarget");
+            if (hit.collider.gameObject.layer == whatIsTarget)
+            {
+                _isDecreaseRbDrag = true;
+                _pm.Jump();
+                grapplePoint = hit.transform.position;
+                SoundManager.PlayOneShot(ImpactHookSoundClip);
+                Invoke(nameof(ExecuteGrapple), _grappleDelayTime);
+            }
+            else
+                TestFunction();
         }
         else
-        {
-            grapplePoint = _camera.position + _camera.forward * _maxGrappleDistance;
-            SoundManager.PlayOneShot(ResetHookSoundClip);
-            Invoke(nameof(StopGrapple), _grappleDelayTime);
+            TestFunction();
+
             lr.enabled = true;
             lr.SetPosition(1, grapplePoint);
             var finalPosition = grapplePoint;
-            return;
-        }
-        
-
+    }
+    private void TestFunction()
+    {
+        grapplePoint = _camera.position + _camera.forward * _maxGrappleDistance;
+        SoundManager.PlayOneShot(ResetHookSoundClip);
+        Invoke(nameof(StopGrapple), _grappleDelayTime);
+    }
         /*SetGraplin(finalPosion);
         updateAction = () => SetGraplin(finalPosion);*/
-    }
 
     /*private void SetGraplin(Vector3 finalPos)
     {

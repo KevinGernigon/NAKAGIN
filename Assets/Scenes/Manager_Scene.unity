@@ -197,8 +197,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1056863178087984964, guid: 9ab6d7369a5315448a2609f54942f28a, type: 3}
+      propertyPath: Everything.m_Bits
+      value: 2147483647
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056863178087984964, guid: 9ab6d7369a5315448a2609f54942f28a, type: 3}
       propertyPath: LayerToExempt.m_Bits
       value: 3639
+      objectReference: {fileID: 0}
+    - target: {fileID: 1056863178087984964, guid: 9ab6d7369a5315448a2609f54942f28a, type: 3}
+      propertyPath: _whatIsGround.m_Bits
+      value: 1025
       objectReference: {fileID: 0}
     - target: {fileID: 1056863178571173616, guid: 9ab6d7369a5315448a2609f54942f28a, type: 3}
       propertyPath: m_Layer
