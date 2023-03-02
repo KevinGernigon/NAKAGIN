@@ -39,9 +39,11 @@ public class S_ReferenceInterface : Manager
     [Header("Refs InputManager")]
     public S_InputManager _InputManager;
 
+    [Header("Audio")]
+    public S_PlayerSound PlayerSoundScript;
     private void Awake()
     {
         _BatteryManager = EventSysteme.GetComponent<S_BatteryManager>();
+        PlayerSoundScript = GetComponent<S_PlayerSound>();
     }
-
 }

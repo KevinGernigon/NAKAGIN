@@ -13,6 +13,7 @@ public class S_Respawn : MonoBehaviour
 
     public Transform _respawnplayer;
 
+
     private void Awake()
     {
 
@@ -20,7 +21,6 @@ public class S_Respawn : MonoBehaviour
 
         _playerContent = _referenceInterface._playerTransform;
         _rbplayer = _referenceInterface._playerRigidbody;
-
         _camera = _referenceInterface._CameraGameObject;
         
         _playerCam = _camera.GetComponent<S_PlayerCam>();
@@ -35,19 +35,29 @@ public class S_Respawn : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            _playerContent.position = _respawnplayer.position;
-            _rbplayer.velocity = new Vector3(0, 0, 0);
-
-            //_moduleManager.ResetPlatformRotation();                               //Commentaire temporaire
-
-            var x = this.transform.rotation.eulerAngles.x;
-            var y = this.transform.rotation.eulerAngles.y;
-
-            _playerCam.CameraReset(x,y);
-
-            Physics.SyncTransforms();
-
+            /////Start Death/////
+            _referenceInterface._playerGameObject.GetComponent<S_PlayerSound>().DeathSound();
+            StartCoroutine(WaitForEndOfTheSound());
         }
+    }
+
+    IEnumerator WaitForEndOfTheSound()
+    {
+        _referenceInterface._InputManager._playerInputAction.Player.Disable();
+        yield return new WaitForSeconds(4f);
+        _referenceInterface._InputManager._playerInputAction.Player.Enable();
+        /////After Death/////
+        _playerContent.position = _respawnplayer.position;
+        _rbplayer.velocity = new Vector3(0, 0, 0);
+
+        //_moduleManager.ResetPlatformRotation();                               //Commentaire temporaire
+
+        var x = this.transform.rotation.eulerAngles.x;
+        var y = this.transform.rotation.eulerAngles.y;
+
+        _playerCam.CameraReset(x, y);
+
+        Physics.SyncTransforms();
     }
 
 }

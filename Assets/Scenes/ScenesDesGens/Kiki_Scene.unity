@@ -1853,13 +1853,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8006204087764881178, guid: 25e0b47eb89a4704ca93c98a1fe1877a, type: 3}
+      propertyPath: DeathClip
+      value: 
+      objectReference: {fileID: 8300000, guid: ec7fd6ff59ce29248a7a4e18a3228f8e, type: 3}
+    - target: {fileID: 8006204087764881178, guid: 25e0b47eb89a4704ca93c98a1fe1877a, type: 3}
       propertyPath: _rbplayer
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8006204087764881178, guid: 25e0b47eb89a4704ca93c98a1fe1877a, type: 3}
       propertyPath: _respawnplayer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 780726144}
     - target: {fileID: 8006204087764881179, guid: 25e0b47eb89a4704ca93c98a1fe1877a, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1952,13 +1956,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8006204087764881178, guid: 25e0b47eb89a4704ca93c98a1fe1877a, type: 3}
+      propertyPath: DeathClip
+      value: 
+      objectReference: {fileID: 8300000, guid: ec7fd6ff59ce29248a7a4e18a3228f8e, type: 3}
+    - target: {fileID: 8006204087764881178, guid: 25e0b47eb89a4704ca93c98a1fe1877a, type: 3}
       propertyPath: _rbplayer
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8006204087764881178, guid: 25e0b47eb89a4704ca93c98a1fe1877a, type: 3}
       propertyPath: _respawnplayer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 780726144}
     - target: {fileID: 8006204087764881179, guid: 25e0b47eb89a4704ca93c98a1fe1877a, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -3501,6 +3509,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 236578076848029193, guid: 10dd812cacb9add49a359798193ba429, type: 3}
   m_PrefabInstance: {fileID: 8218457747477916205}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &780726144 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2963291361387002498, guid: 4fe81b30d05e171408d89634d43f249c, type: 3}
+  m_PrefabInstance: {fileID: 2963291362152894785}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &781069819
 GameObject:
   m_ObjectHideFlags: 0
@@ -4719,13 +4732,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8006204087764881178, guid: 25e0b47eb89a4704ca93c98a1fe1877a, type: 3}
+      propertyPath: DeathClip
+      value: 
+      objectReference: {fileID: 8300000, guid: ec7fd6ff59ce29248a7a4e18a3228f8e, type: 3}
+    - target: {fileID: 8006204087764881178, guid: 25e0b47eb89a4704ca93c98a1fe1877a, type: 3}
       propertyPath: _rbplayer
       value: 
       objectReference: {fileID: 0}
     - target: {fileID: 8006204087764881178, guid: 25e0b47eb89a4704ca93c98a1fe1877a, type: 3}
       propertyPath: _respawnplayer
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 780726144}
     - target: {fileID: 8006204087764881179, guid: 25e0b47eb89a4704ca93c98a1fe1877a, type: 3}
       propertyPath: m_RootOrder
       value: 1

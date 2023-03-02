@@ -27,6 +27,9 @@ public class S_PlayerMovement : MonoBehaviour
     public float _fallMultiplier;
     public bool _isMaxSpeed;
 
+    [Header("Audio")]
+    private S_PlayerSound PlayerSoundScript;
+
     public MovementState _lastState;
     private bool _isKeepingMomentum;
 
@@ -135,6 +138,7 @@ public class S_PlayerMovement : MonoBehaviour
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
+        PlayerSoundScript = GetComponent<S_PlayerSound>();
         rb.freezeRotation = true;
         _readyToJump = true;
         _saveWalkSpeed = _walkSpeed;
@@ -170,22 +174,26 @@ public class S_PlayerMovement : MonoBehaviour
         //if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && state == MovementState.walking && !Input.GetButton("Jump") && !GrapplingScript._isDecreaseRbDrag)
         if (_horizontalInput == 0 && _verticalInput == 0 && state == MovementState.walking && S_InputManager._playerInputAction.Player.Jump.ReadValue<float>() == 0 && !GrapplingScript._isDecreaseRbDrag)
         {
+            PlayerSoundScript.EndWalkSound();
             rb.drag = _groundDrag + 10;
             _isMoving = false;
         }
         else if (state == MovementState.walking && !GrapplingScript._isDecreaseRbDrag)
         {
+            PlayerSoundScript.WalkSound();
             rb.drag = _groundDrag;
             _isMoving = true;
         }
         else
         {
+            PlayerSoundScript.EndWalkSound();
             rb.drag = 0;
             _isMoving = false;
         }
 
         if (state == MovementState.air)
         {
+            PlayerSoundScript.EndWalkSound();
             _desiredMoveSpeed = _airSpeed;
         }
 
@@ -200,70 +208,6 @@ public class S_PlayerMovement : MonoBehaviour
             _player.GetComponent<CapsuleCollider>().material.dynamicFriction = 0f;
 
     }
-    /*private void Update()
-    {
-        //Debug.Log(GetSlopeMoveDirection(_moveDirection));
-        if (GetSlopeMoveDirection(_moveDirection).y >= 0f && OnSlope())
-        {
-            _isSlopePositive = true;
-        }
-        else
-            _isSlopePositive = false;
-
-        //Ground Check
-        _isGrounded = Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsGround);
-        //_isGrounded = Physics.BoxCast(transform.position, Vector3.one, Vector3.down, Quaternion.identity, _playerHeight * 0.5f + _valueRaycast, _whatIsGround);
-
-        InputCommand();
-        SpeedControl();
-        StateHandler();
-
-        if (_isReachUpgrade)
-        {
-            SpeedValueUpgrade();
-        }
-
-
-        //handle drag
-        //if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && state == MovementState.walking)
-        if (_horizontalInput == 0 && _verticalInput == 0 && state == MovementState.walking)
-        {
-            rb.drag = _groundDrag + 10;
-            _isMoving = false;
-        }
-        else if (state == MovementState.walking || state == MovementState.sprinting || state == MovementState.crouching && !_isGrappleActive)
-        {
-            rb.drag = _groundDrag;
-            _isMoving = true;
-        }
-        else
-        {
-            rb.drag = 0;
-            _isMoving = false;
-        }
-
-        if (_ReachUpgradeBool == false)
-        {
-            _dashSpeed = 25;
-            _upgradeSpeedValue = 1;
-        }
-
-        if (state == MovementState.air)
-        {
-            _desiredMoveSpeed = _airSpeed;
-        }
-
-        if (state != MovementState.air && state != MovementState.dashing) //limit dash in air
-        {
-            ScriptDash._limitDash = 1;
-        }
-
-        if (OnSlope())
-            _player.GetComponent<CapsuleCollider>().material.dynamicFriction = 2f;
-        else
-            _player.GetComponent<CapsuleCollider>().material.dynamicFriction = 0f;
-
-    }*/
 
     private void FixedUpdate()
     {
@@ -623,6 +567,7 @@ public class S_PlayerMovement : MonoBehaviour
         if (Physics.Raycast(transform.position, Vector3.down, out _slopeHit, _playerHeight * 0.5f + 0.3f))
         {
             float _angle = Vector3.Angle(Vector3.up, _slopeHit.normal);
+            _actualSlopeAngle = _angle;
             return _angle < _maxSlopeAngle && _angle != 0;
         }
         

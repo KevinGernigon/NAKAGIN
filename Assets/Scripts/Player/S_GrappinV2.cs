@@ -14,10 +14,8 @@ public class S_GrappinV2 : MonoBehaviour
     [SerializeField] private LineRenderer lr;
 
     [Header("Audio")]
-    [SerializeField] private AudioSource SoundManager;
-    [SerializeField] private AudioClip ImpactHookSoundClip;
-    [SerializeField] private AudioClip HookSoundClip;
-    [SerializeField] private AudioClip ResetHookSoundClip;
+    private S_PlayerSound PlayerSoundScript;
+
 
     [Header("Layer")]
     [SerializeField] private LayerMask _whatIsTarget;
@@ -46,7 +44,8 @@ public class S_GrappinV2 : MonoBehaviour
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
-        _pm = GetComponent<S_PlayerMovement>();     
+        _pm = GetComponent<S_PlayerMovement>();
+        PlayerSoundScript = GetComponent<S_PlayerSound>();
     }
 
     private void Update()
@@ -93,7 +92,7 @@ public class S_GrappinV2 : MonoBehaviour
         {
         }*/
 
-        SoundManager.PlayOneShot(HookSoundClip);
+        PlayerSoundScript.RopeSound();
         _isGrappling = true;
         _pm._isFreezing = true;
 
@@ -107,23 +106,23 @@ public class S_GrappinV2 : MonoBehaviour
                 _isDecreaseRbDrag = true;
                 _pm.Jump();
                 grapplePoint = hit.transform.position;
-                SoundManager.PlayOneShot(ImpactHookSoundClip);
+                PlayerSoundScript.ImpactHookSound();
                 Invoke(nameof(ExecuteGrapple), _grappleDelayTime);
             }
             else
-                TestFunction();
+                MissGrapple();
         }
         else
-            TestFunction();
+            MissGrapple();
 
             lr.enabled = true;
             lr.SetPosition(1, grapplePoint);
             var finalPosition = grapplePoint;
     }
-    private void TestFunction()
+    private void MissGrapple()
     {
         grapplePoint = _camera.position + _camera.forward * _maxGrappleDistance;
-        SoundManager.PlayOneShot(ResetHookSoundClip);
+        PlayerSoundScript.RewindSound();
         Invoke(nameof(StopGrapple), _grappleDelayTime);
     }
         /*SetGraplin(finalPosion);

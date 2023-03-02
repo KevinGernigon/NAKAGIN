@@ -22,6 +22,10 @@ public class S_Jetpack : MonoBehaviour
     [SerializeField] private bool _jetPackSave;
     private bool _isGravityDisable;
 
+    [Header("Audio")]
+    private S_PlayerSound PlayerSoundScript;
+
+
     [Header("Time Value")]
     [SerializeField] private float _timerCd;
     [SerializeField] private float _timerMaxCd;
@@ -36,6 +40,7 @@ public class S_Jetpack : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _pm = GetComponent<S_PlayerMovement>();
+        PlayerSoundScript = GetComponent<S_PlayerSound>();
         ScriptDash = GetComponent<S_Dash>();
         _isJetpackAvaible = true;
     }
@@ -83,7 +88,9 @@ public class S_Jetpack : MonoBehaviour
     }
     public void JetpackFunction()
     {
-        if(_isTriggerBoxTrue && ScriptBatteryManager._nbrBattery >= 1)
+        PlayerSoundScript.JetpackSound();
+
+        if (_isTriggerBoxTrue && ScriptBatteryManager._nbrBattery >= 1)
         {
                 ScriptBatteryManager.UseOneBattery();
                 JetPackUsage();

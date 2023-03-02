@@ -32,7 +32,7 @@ public class S_SceneManager : Manager
 
     public void LoadGame()
     {
-        SceneManager.LoadScene(Scene.Corentin_Scene.ToString());
+        SceneManager.LoadScene(Scene.Kiki_Scene.ToString());
     }
 
 
