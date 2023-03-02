@@ -109,6 +109,15 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": false
                 },
                 {
+                    ""name"": ""Interaction"",
+                    ""type"": ""Button"",
+                    ""id"": ""904b76d9-6fa5-4243-81b5-8bd635b0f650"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Pause"",
                     ""type"": ""Button"",
                     ""id"": ""0068bea2-92ba-4e4e-883b-e071b6a0ad89"",
@@ -375,11 +384,33 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""cdc5e64b-bb37-446f-b972-34fab21b2b37"",
-                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Jetpack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""11c5100a-2a29-445a-8397-9c6c026190ef"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""KeyboardAndMouse"",
+                    ""action"": ""Interaction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b0e0460-4578-41c8-ab05-b315fa26c21d"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interaction"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1005,6 +1036,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         m_Player_MoveModuleRight = m_Player.FindAction("MoveModuleRight", throwIfNotFound: true);
         m_Player_Jetpack = m_Player.FindAction("Jetpack", throwIfNotFound: true);
         m_Player_Grappin = m_Player.FindAction("Grappin", throwIfNotFound: true);
+        m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
@@ -1088,6 +1120,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_MoveModuleRight;
     private readonly InputAction m_Player_Jetpack;
     private readonly InputAction m_Player_Grappin;
+    private readonly InputAction m_Player_Interaction;
     private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
@@ -1102,6 +1135,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         public InputAction @MoveModuleRight => m_Wrapper.m_Player_MoveModuleRight;
         public InputAction @Jetpack => m_Wrapper.m_Player_Jetpack;
         public InputAction @Grappin => m_Wrapper.m_Player_Grappin;
+        public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
@@ -1139,6 +1173,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Grappin.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGrappin;
                 @Grappin.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGrappin;
                 @Grappin.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnGrappin;
+                @Interaction.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
+                @Interaction.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
+                @Interaction.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnInteraction;
                 @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
@@ -1173,6 +1210,9 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Grappin.started += instance.OnGrappin;
                 @Grappin.performed += instance.OnGrappin;
                 @Grappin.canceled += instance.OnGrappin;
+                @Interaction.started += instance.OnInteraction;
+                @Interaction.performed += instance.OnInteraction;
+                @Interaction.canceled += instance.OnInteraction;
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
@@ -1330,6 +1370,7 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         void OnMoveModuleRight(InputAction.CallbackContext context);
         void OnJetpack(InputAction.CallbackContext context);
         void OnGrappin(InputAction.CallbackContext context);
+        void OnInteraction(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
     }
     public interface IUIActions

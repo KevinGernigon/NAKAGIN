@@ -78,18 +78,21 @@ public class S_InputManager : MonoBehaviour
         _playerInputAction.Player.Slide.canceled += _ => _slideInput = false;*/
 
         /// MoveModuleLeft
-            //Gerer dans S_RotationPlatformes avec un triggered
+        //Gerer dans S_RotationPlatformes avec un triggered
         /// MoveModuleRight 
-            //Gerer dans S_RotationPlatformes avec un triggered
+        //Gerer dans S_RotationPlatformes avec un triggered
 
         /// Grappin 
-            //Gerer dans S_GrappinV2 avec un triggered
+        //Gerer dans S_GrappinV2 avec un triggered
 
         /// Jetpack 
-            //Gerer dans S_jetpack avec un triggered + les fonction ActiveJetpackInput et DesactiveJetpackInput
+        //Gerer dans S_jetpack avec un triggered + les fonction ActiveJetpackInput et DesactiveJetpackInput
 
         /// Pause
-            //Gerer dans fonction ActivePause et S_PauseMenuV2
+        //Gerer dans fonction ActivePause et S_PauseMenuV2
+
+        /// Interaction
+        //Gerer dans fonction S_GenerateurEnergetique avec un triggered
 
 
 

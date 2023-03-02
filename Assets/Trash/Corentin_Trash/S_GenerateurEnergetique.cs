@@ -9,27 +9,37 @@ public class S_GenerateurEnergetique : MonoBehaviour
 
     
 
-    [Header("Other")]
+    [Header("Charge Energetique")]
 
-    
     [SerializeField] private float DefaultCharge = 0f;
     [SerializeField] private float ChargeEnergetique = 0f;
+    [SerializeField] private bool _OnTrigger = false;
 
-    
+
+    [SerializeField] private GameObject _indicateurCharge1;
+    [SerializeField] private GameObject _indicateurCharge2;
+    [SerializeField] private GameObject _indicateurCharge3;
 
     private void Awake()
     {
         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
         
     }
+
+
     private void Start()
     {
         ChargeEnergetique = DefaultCharge;
+        _indicateurCharge1.GetComponent<Renderer>().material.color = new Color(255, 0, 0);
+        _indicateurCharge2.GetComponent<Renderer>().material.color = new Color(255, 0, 0);
+        _indicateurCharge3.GetComponent<Renderer>().material.color = new Color(255, 0, 0);
     }
+
+
 
     private void Update()
     {
-        if (_referenceInterface._InputManager._playerInputAction.Player.Jetpack.triggered && !_referenceInterface._InputManager._jetpackActive)
+        if (_referenceInterface._InputManager._playerInputAction.Player.Interaction.triggered && !_referenceInterface._InputManager._jetpackActive && _OnTrigger)
             {
                 ReloadBattery();
             }
@@ -48,7 +58,7 @@ public class S_GenerateurEnergetique : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-
+            _OnTrigger = true;
             _referenceInterface._InputManager.DesactiveJetpackInput();
             
         }
@@ -57,7 +67,7 @@ public class S_GenerateurEnergetique : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-
+            _OnTrigger = false;
             _referenceInterface._InputManager.ActiveJetpackInput();
 
         }
@@ -65,11 +75,20 @@ public class S_GenerateurEnergetique : MonoBehaviour
 
     
     ///////////////////////////////////////////////////////////////
-    
     public void ChargeUp()
     {
         ChargeEnergetique += 1f;
+
+        if(ChargeEnergetique == 1)
+            _indicateurCharge1.GetComponent<Renderer>().material.color = new Color(0, 255, 0);
+        if (ChargeEnergetique == 2)
+            _indicateurCharge2.GetComponent<Renderer>().material.color = new Color(0, 255, 0);
+        if (ChargeEnergetique == 3)
+            _indicateurCharge3.GetComponent<Renderer>().material.color = new Color(0, 255, 0);
     }
+
+
+
 
     private void ReloadBattery()
     {
@@ -77,7 +96,8 @@ public class S_GenerateurEnergetique : MonoBehaviour
       {
             _referenceInterface._BatteryManager._nbrBattery = ChargeEnergetique;
       }
-      
     }
+
+
 
 }
