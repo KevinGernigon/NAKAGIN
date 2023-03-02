@@ -12,6 +12,7 @@ public class S_PlayerCam : MonoBehaviour
     public float _sensX;
     public float _sensY;
 
+
     [SerializeField] private Slider _sensiMouseSlider;
     [SerializeField] private Slider _sensiControllerSlider;
 
@@ -51,10 +52,6 @@ public class S_PlayerCam : MonoBehaviour
     [SerializeField] private float _speedBobbing;
 
 
-
-
-    public bool _isAxisXInverted;
-    public bool _isAxisYInverted;
     public bool _isActive;
     public bool boolChangement;
     private bool _isClimbingBool;
@@ -68,8 +65,7 @@ public class S_PlayerCam : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
-        _isAxisXInverted = true;
-        _isAxisYInverted = true;
+       
         _isActive = true;
         boolChangement = false;
         _isClimbingBool = false;
@@ -116,37 +112,15 @@ public class S_PlayerCam : MonoBehaviour
                 _mouseY = Input.GetAxisRaw("Mouse Y") * -_sensY * _sensiSlider.value;
             */
 
-   
+
             // Mouse Input //
 
-
-            if (_isAxisXInverted && S_InputManager._playerInput.currentControlScheme == "KeyboardAndMouse")
-                _mouseX = S_InputManager._playerInputAction.Player.CameraMouvement.ReadValue<Vector2>().x * Time.fixedDeltaTime * _sensiMouseSlider.value;
-            else
-                _mouseX = S_InputManager._playerInputAction.Player.CameraMouvement.ReadValue<Vector2>().x * Time.fixedDeltaTime * _sensiMouseSlider.value;
-
-            if (_isAxisYInverted && S_InputManager._playerInput.currentControlScheme == "KeyboardAndMouse")
-                _mouseY = S_InputManager._playerInputAction.Player.CameraMouvement.ReadValue<Vector2>().y * Time.fixedDeltaTime * _sensiMouseSlider.value;
-            else
-                _mouseY = S_InputManager._playerInputAction.Player.CameraMouvement.ReadValue<Vector2>().y * Time.fixedDeltaTime * _sensiMouseSlider.value;
-            
-            
-            if (_isAxisXInverted && S_InputManager._playerInput.currentControlScheme == "Gamepad")
-                _mouseX = S_InputManager._playerInputAction.Player.CameraMouvement.ReadValue<Vector2>().x * Time.fixedDeltaTime * _sensiControllerSlider.value;
-            else
-                _mouseX = S_InputManager._playerInputAction.Player.CameraMouvement.ReadValue<Vector2>().x * Time.fixedDeltaTime * _sensiControllerSlider.value;
-
-            if (_isAxisYInverted && S_InputManager._playerInput.currentControlScheme == "Gamepad")
-                _mouseY = S_InputManager._playerInputAction.Player.CameraMouvement.ReadValue<Vector2>().y * Time.fixedDeltaTime * _sensiControllerSlider.value;
-            else
-                _mouseY = S_InputManager._playerInputAction.Player.CameraMouvement.ReadValue<Vector2>().y * Time.fixedDeltaTime * _sensiControllerSlider.value;
-
-
-
-
-            if(S_InputManager._playerInput.currentControlScheme == "KeyboardAndMouse")
+            if (S_InputManager._playerInput.currentControlScheme == "KeyboardAndMouse")
             {
-                if(S_InputManager._invertAxeXMouse)
+                _mouseX = S_InputManager._playerInputAction.Player.CameraMouvement.ReadValue<Vector2>().x * Time.fixedDeltaTime * _sensiMouseSlider.value;
+                _mouseY = S_InputManager._playerInputAction.Player.CameraMouvement.ReadValue<Vector2>().y * Time.fixedDeltaTime * _sensiMouseSlider.value;
+
+                if (S_InputManager._invertAxeXMouse)
                     _yRotation += -_mouseX;
                 else
                     _yRotation += _mouseX;
@@ -155,10 +129,16 @@ public class S_PlayerCam : MonoBehaviour
                     _xRotation -= -_mouseY;
                 else
                     _xRotation -= _mouseY;
+
+
             }
+
 
             if (S_InputManager._playerInput.currentControlScheme == "Gamepad")
             {
+                _mouseX = S_InputManager._playerInputAction.Player.CameraMouvement.ReadValue<Vector2>().x * Time.fixedDeltaTime * _sensiControllerSlider.value;
+                _mouseY = S_InputManager._playerInputAction.Player.CameraMouvement.ReadValue<Vector2>().y * Time.fixedDeltaTime * _sensiControllerSlider.value;
+
                 if (S_InputManager._invertAxeXGamepad)
                     _yRotation += -_mouseX;
                 else
@@ -169,7 +149,7 @@ public class S_PlayerCam : MonoBehaviour
                 else
                     _xRotation -= _mouseY;
             }
-
+           
 
             _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
             ////////////////
@@ -262,22 +242,6 @@ public class S_PlayerCam : MonoBehaviour
             boolChangement = true;
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, _dashFov, _dashFovTime * Time.deltaTime);
         }
-    }
-
-    public void InvertXAxis()
-    {
-        if (!_isAxisXInverted)
-            _isAxisXInverted = true;
-        else
-            _isAxisXInverted = false;
-    }
-
-    public void InvertYAxis()
-    {
-        if (!_isAxisYInverted)
-            _isAxisYInverted = true;
-        else
-            _isAxisYInverted = false;
     }
 
     public void CameraReset(float x, float y)
