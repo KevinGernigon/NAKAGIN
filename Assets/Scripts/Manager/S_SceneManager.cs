@@ -2,46 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEditor;
+
 
 public class S_SceneManager : Manager
-{
+{ 
     private enum Scene
     {
-        Manager_Scene,
-        Assets_Scene,
         Corentin_Scene,
-        Kiki_Scene
-
     }
 
-    private List<string> _allScenes;
-    private int _indexCurrent;
-
-
-    private void LoadScene(Scene scene) 
-    {
-        SceneManager.LoadScene(scene.ToString());
-    }
-
-
-    public void LoadMainMenu()
-    {
-        SceneManager.LoadScene(Scene.Manager_Scene.ToString());
-    }
-
+    [SerializeField]
+    private S_ManagerEditor _managerEditor;
 
     public void LoadGame()
-    {
+    { 
+        //SceneManager.LoadScene(_managerEditor.sceneToStart);
         SceneManager.LoadScene(Scene.Corentin_Scene.ToString());
     }
 
-
-    private void LoadNextScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1) ;
-    }
-
-   
 }
 
 

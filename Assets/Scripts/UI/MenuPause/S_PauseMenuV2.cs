@@ -15,12 +15,15 @@ public class S_PauseMenuV2 : MonoBehaviour
     [SerializeField] private GameObject _pauseInterface;
     [SerializeField] private GameObject _settingsInterface;
 
+    [SerializeField] private S_BatteryManager _BatteryManager;
+
     public bool _isPaused = false;
     private bool _ischoose;
-    [SerializeField]
-    private GameObject _player;
 
-    
+    [Header("ResetPlayer")]
+    [SerializeField] private GameObject _player;
+    /*[SerializeField] private Rigidbody _playerRb;
+    [SerializeField] private Transform _Spawnpoint;*/
 
     void Start()
     {
@@ -29,25 +32,13 @@ public class S_PauseMenuV2 : MonoBehaviour
 
         ResetPauseHUD();
 
-       // S_Debugger.AddButton("Quit", QuitGame);
+       
 
     }
 
 
     void Update()
     {
-
-        /*if (Input.GetButtonDown("MenuPause"))
-        {
-            if (_isPaused)
-            {
-                ResumeGame();
-            }
-            else
-            {
-                PauseGame();
-            }
-        }*/
 
         if (S_InputManager._playerInputAction.Player.Pause.triggered)
         {
@@ -106,7 +97,6 @@ public class S_PauseMenuV2 : MonoBehaviour
 
 
         }
-
     }
 
     public void RestartLevel()
@@ -115,16 +105,21 @@ public class S_PauseMenuV2 : MonoBehaviour
         {
             Debug.Log("RestartLevel");
             ResumeGame();
+            ResetPlayer();
             StartCoroutine(waitcastchoose());
 
             Scene _scene = SceneManager.GetActiveScene();
 
             SceneManager.LoadScene("Manager_Scene");
             SceneManager.LoadScene(_scene.name);
+
             
-
         }
+    }
 
+    private void ResetPlayer()
+    {
+        _BatteryManager._nbrBattery = 0 ;
     }
 
     public void MainMenu()

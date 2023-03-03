@@ -82,7 +82,7 @@ public class S_ConsoleFinRun : MonoBehaviour
                     if (_referenceInterface._InputManager._playerInput.currentControlScheme == "Gamepad")
                     {
 
-                        _TextInteraction.text = "";
+                        _TextInteraction.text = "Y";
 
                         //Image lier a l'interaction 
 

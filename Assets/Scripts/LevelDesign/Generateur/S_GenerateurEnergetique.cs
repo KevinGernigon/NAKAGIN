@@ -1,6 +1,8 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using TMPro;
 
 public class S_GenerateurEnergetique : MonoBehaviour
 {
@@ -25,11 +27,18 @@ public class S_GenerateurEnergetique : MonoBehaviour
     private GameObject _HUD_InteractGenerateurEnable;
     private GameObject _HUD_InteractGenerateurDisable;
 
+    public InputActionReference ActionRef = null;
+    private TMP_Text _TextInteraction;
+  
+
+
     private void Awake()
     {
         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
         _HUD_InteractGenerateurEnable = _referenceInterface.HUD_InteractGenerateurEnable;
         _HUD_InteractGenerateurDisable = _referenceInterface.HUD_InteractGenerateurDisable;
+
+        _TextInteraction = _HUD_InteractGenerateurEnable.GetComponentInChildren<TMP_Text>();
     }
 
 
@@ -68,7 +77,30 @@ public class S_GenerateurEnergetique : MonoBehaviour
             {
                 _OnTrigger = true;
 
-                if(ChargeEnergetique > 0)
+                if (_referenceInterface._InputManager._playerInput.currentControlScheme == "KeyboardAndMouse")
+                {
+
+                    int bindingIndex = ActionRef.action.GetBindingIndexForControl(ActionRef.action.controls[0]);
+
+                    _TextInteraction.text = InputControlPath.ToHumanReadableString(
+                    ActionRef.action.bindings[bindingIndex].effectivePath,
+                    InputControlPath.HumanReadableStringOptions.OmitDevice
+                    );
+
+                  
+                    //Insert text ou Image lier a l'interaction 
+
+                }
+                if (_referenceInterface._InputManager._playerInput.currentControlScheme == "Gamepad")
+                {
+
+                    _TextInteraction.text = "Y";
+
+                    //Image lier a l'interaction 
+
+                }
+
+                if (ChargeEnergetique > 0)
                     _HUD_InteractGenerateurEnable.SetActive(true);
 
                 if(ChargeEnergetique == 0)
