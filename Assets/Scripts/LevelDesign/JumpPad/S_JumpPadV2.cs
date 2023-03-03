@@ -7,14 +7,15 @@ public class S_JumpPadV2 : MonoBehaviour
     [Range(0, 10000)] public float _BounceHight;
     [Range(0, 10000)] public float _BounceFront;
 
-
+    private S_PlayerMovement _pm;
     private S_ReferenceInterface _referenceInterface;
+    private S_PlayerSound PlayerSoundScript;
 
     private Transform _orientationPlayer = null;
     private GameObject _playerContent = null;
 
 
-    private S_PlayerMovement _pm;
+
 
 
     private void Awake()
@@ -24,7 +25,7 @@ public class S_JumpPadV2 : MonoBehaviour
         _playerContent = _referenceInterface._playerGameObject;
         _orientationPlayer = _referenceInterface._orientationTransform;
         _pm = _playerContent.GetComponent<S_PlayerMovement>();
-
+        PlayerSoundScript = _playerContent.GetComponent<S_PlayerSound>();
     }
 
 
@@ -32,6 +33,7 @@ public class S_JumpPadV2 : MonoBehaviour
     {
         if (collision.gameObject == _playerContent)
         {
+            PlayerSoundScript.JumppadSound();
             GameObject _bouncer = collision.gameObject;
             Rigidbody _rb = _bouncer.GetComponent<Rigidbody>();
 

@@ -6,10 +6,12 @@ public class S_RotationPlatformes : MonoBehaviour
 {
 
     private S_ReferenceInterface _referenceInterface;
+    private S_PlayerSound PlayerSoundScript;
 
 
     [SerializeField]
     private GameObject _centerPlatforms;
+    private GameObject Player;
 
     [SerializeField]
     private float _degre = 90f;
@@ -23,8 +25,8 @@ public class S_RotationPlatformes : MonoBehaviour
     {
 
         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
- 
-
+        Player = _referenceInterface._playerGameObject;
+        PlayerSoundScript = Player.GetComponent<S_PlayerSound>();
     }
 
     void Start()
@@ -40,6 +42,8 @@ public class S_RotationPlatformes : MonoBehaviour
             if (_alpha >= 1)
             {
                 _startMoving = false;
+                PlayerSoundScript.EndPlatformMovingSound();
+                PlayerSoundScript.EndingPlatformMovingSound();
             }
         }
 
@@ -71,8 +75,10 @@ public class S_RotationPlatformes : MonoBehaviour
 
     IEnumerator MovePlatformsRight(GameObject platforms)
     {
+        PlayerSoundScript.PlatformMovingSound();
         while (_startMoving == true)
         {
+            
             _centerPlatforms.transform.Rotate(Vector3.right * _degre / Mathf.Round(1 / _alphaSpeed));
             _alpha += _alphaSpeed;
             yield return new WaitForSeconds(0.01f);
@@ -81,8 +87,10 @@ public class S_RotationPlatformes : MonoBehaviour
     }
     IEnumerator MovePlatformsLeft(GameObject platforms)
     {
+        PlayerSoundScript.PlatformMovingSound();
         while (_startMoving == true)
         {
+            
             _centerPlatforms.transform.Rotate(Vector3.left * _degre / Mathf.Round(1 / _alphaSpeed));
             _alpha += _alphaSpeed ;
             yield return new WaitForSeconds(0.01f);
