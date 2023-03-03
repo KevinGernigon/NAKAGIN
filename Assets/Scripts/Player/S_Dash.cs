@@ -22,6 +22,9 @@ public class S_Dash : MonoBehaviour
     private float lastPressTime;
     public float _limitDash = 3;
 
+    [Header("Audio")]
+    private S_PlayerSound PlayerSoundScript;
+
     [Header("Settings")]
     [SerializeField] private bool _isUsingCameraForward = true;
     [SerializeField] private bool _isAllowingAllDirections = true;
@@ -44,6 +47,7 @@ public class S_Dash : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _pm = GetComponent<S_PlayerMovement>();
+        PlayerSoundScript = GetComponent<S_PlayerSound>();
         _dashUpgradeForce = 1;
     }
 
@@ -113,6 +117,7 @@ public class S_Dash : MonoBehaviour
 
         else _dashCdTimer = _dashCd;
 
+        PlayerSoundScript.DashSound();
         _limitDash--;
         _pm._isDashing = true;
         //_pm._readyToJump = false;

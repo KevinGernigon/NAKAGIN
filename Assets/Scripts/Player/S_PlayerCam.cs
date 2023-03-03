@@ -98,22 +98,8 @@ public class S_PlayerCam : MonoBehaviour
         ClimbCameraAdjusted();
         WallRunCameraAdjusted();
         
-        //if (_isActive && !_eventSystem.GetComponent<S_PauseMenuV2>()._isPaused)
-        if (_isActive){
-            /*// Mouse Input //
-            if (_isAxisXInverted)
-                _mouseX = Input.GetAxisRaw("Mouse X") * _sensX * _sensiSlider.value;
-            else
-                _mouseX = Input.GetAxisRaw("Mouse X") * -_sensX * _sensiSlider.value;
-
-            if (_isAxisYInverted)
-                _mouseY = Input.GetAxisRaw("Mouse Y") * _sensY * _sensiSlider.value;
-            else
-                _mouseY = Input.GetAxisRaw("Mouse Y") * -_sensY * _sensiSlider.value;
-            */
-
-
-            // Mouse Input //
+        if (_isActive)
+        {
 
             if (S_InputManager._playerInput.currentControlScheme == "KeyboardAndMouse")
             {
@@ -150,16 +136,7 @@ public class S_PlayerCam : MonoBehaviour
                     _xRotation -= _mouseY;
             }
            
-
-            _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
-            ////////////////
-            ///
-
-            if(!pm._isClimbing && !pm._isWallRunning)
-            {
-                _yRotation += _mouseX;
-            }
-            
+            _yRotation += _mouseX;
             _xRotation -= _mouseY;
             _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
 
@@ -185,12 +162,14 @@ public class S_PlayerCam : MonoBehaviour
 
     private void WallRunCameraAdjusted()
     {
-        if (pm._isWallRunning)
+        if (pm._isWallRunning || pm._isSliding)
         {
             _mouseX = Mathf.Clamp(_mouseX, -0.5f, 0.5f);
             _yRotation += _mouseX;
         }
     }
+
+
     private void CameraTiltWallRunFPS()
     {
         if (pm._isWallRunning)
