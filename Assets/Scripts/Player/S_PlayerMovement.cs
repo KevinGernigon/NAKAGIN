@@ -50,18 +50,8 @@ public class S_PlayerMovement : MonoBehaviour
     [SerializeField] private float _crouchYScale;
     private float _startYScale;
 
-
-
-
     [Header("Keybinds")]
-    //public KeyCode _jumpKey = KeyCode.Space;
-    //public KeyCode _sprintKey = KeyCode.LeftShift;
-
     public KeyCode _crouchKey = KeyCode.LeftControl;
-
-
-
-
 
     [Header("Ground Check")]
     [SerializeField] private float _playerHeight;
@@ -153,6 +143,7 @@ public class S_PlayerMovement : MonoBehaviour
         if (GetSlopeMoveDirection(_moveDirection).y >= 0f && OnSlope())
         {
             _isSlopePositive = true;
+            _moveSpeed = _walkSpeed;
         }
         else
             _isSlopePositive = false;
@@ -206,7 +197,6 @@ public class S_PlayerMovement : MonoBehaviour
             _player.GetComponent<CapsuleCollider>().material.dynamicFriction = 2f;
         else
             _player.GetComponent<CapsuleCollider>().material.dynamicFriction = 0f;
-
     }
 
     private void FixedUpdate()

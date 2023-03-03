@@ -6,6 +6,7 @@ public class S_Respawn : MonoBehaviour
 {
     private S_ReferenceInterface _referenceInterface;
     private S_PlayerCam _playerCam;
+    private S_DestructibleObject DestructibleObject;
 
     private Transform _playerContent;
     private Rigidbody _rbplayer;
@@ -13,12 +14,14 @@ public class S_Respawn : MonoBehaviour
 
     public Transform _respawnplayer;
 
+    public bool _isDead = false;
+
 
     private void Awake()
     {
 
         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
-
+        DestructibleObject = GetComponent<S_DestructibleObject>();
         _playerContent = _referenceInterface._playerTransform;
         _rbplayer = _referenceInterface._playerRigidbody;
         _camera = _referenceInterface._CameraGameObject;
@@ -37,16 +40,20 @@ public class S_Respawn : MonoBehaviour
         {
             /////Start Death/////
             _referenceInterface._playerGameObject.GetComponent<S_PlayerSound>().DeathSound();
-            StartCoroutine(WaitForEndOfTheSound());
+            //_isDead = true;
+            //Change _isDead dans GestionScene
+            StartCoroutine(WaitAnimToRespawn());
         }
     }
 
-    IEnumerator WaitForEndOfTheSound()
+    IEnumerator WaitAnimToRespawn()
     {
         _referenceInterface._InputManager._playerInputAction.Player.Disable();
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(5f); //Death Anim
         _referenceInterface._InputManager._playerInputAction.Player.Enable();
         /////After Death/////
+        //_isDead = false;
+        //Change _isDead dans GestionScene
         _playerContent.position = _respawnplayer.position;
         _rbplayer.velocity = new Vector3(0, 0, 0);
 

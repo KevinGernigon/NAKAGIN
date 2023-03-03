@@ -123,6 +123,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!4 &200157236 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1056863179762039262, guid: 9ab6d7369a5315448a2609f54942f28a, type: 3}
+  m_PrefabInstance: {fileID: 4056988738066653378}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &714808294
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,6 +649,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1056863178087984959, guid: 9ab6d7369a5315448a2609f54942f28a, type: 3}
+      propertyPath: _camera
+      value: 
+      objectReference: {fileID: 200157236}
     - target: {fileID: 1056863178087984962, guid: 9ab6d7369a5315448a2609f54942f28a, type: 3}
       propertyPath: JetpackClip
       value: 
