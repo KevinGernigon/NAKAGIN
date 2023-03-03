@@ -9,7 +9,8 @@ public class S_SceneManager : Manager
     {
         Manager_Scene,
         Assets_Scene,
-        Corentin_Scene
+        Corentin_Scene,
+        Alexis_Scene
 
     }
 
@@ -31,7 +32,7 @@ public class S_SceneManager : Manager
 
     public void LoadGame()
     {
-        SceneManager.LoadScene(Scene.Corentin_Scene.ToString());
+        SceneManager.LoadScene(Scene.Alexis_Scene.ToString());
     }
 
 
