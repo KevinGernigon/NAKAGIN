@@ -16,22 +16,19 @@ public class S_Sliding : MonoBehaviour
     private Rigidbody rb;
     private S_PlayerMovement _pm;
 
+    [Header("Audio")]
+    private S_PlayerSound PlayerSoundScript;
+
     [Header("Sliding")]
     [SerializeField] private float _maxSlideTime;
     [SerializeField] private float _SlideValue;
-
     [SerializeField] public float _slideForce;
-    private float _slideTimer;
-
     [SerializeField] private float _slideYScale;
-
+    private float _slideTimer;
     private float _startYScale;
 
     [Header("Input")]
-
     public KeyCode _slideKey = KeyCode.LeftControl;
-   
-
     private float _horizontalInput;
     private float _verticalInput;
 
@@ -46,27 +43,22 @@ public class S_Sliding : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         _pm = GetComponent<S_PlayerMovement>();
-
+        PlayerSoundScript = GetComponent<S_PlayerSound>();
         _startYScale = _playerObj.localScale.y;
         _slidingCdTimer = _slidingCdMax;
     }
 
     private void Update()
     {
-       
-       
-
 
         //if (Input.GetKeyDown(_slideKey))
         if (S_InputManager._playerInputAction.Player.Slide.triggered)
         { 
-           
             _isTrue = true;
         }
         //else if (Input.GetKeyUp(_slideKey))
         else if (S_InputManager._playerInputAction.Player.Slide.ReadValue<float>() == 0)
         { 
-            
             _isTrue = false;
         }
 
@@ -117,6 +109,7 @@ public class S_Sliding : MonoBehaviour
 
         if (_pm._isGrounded == true)
         {
+            PlayerSoundScript.SlideSound();
             _pm._isSliding = true;
             _playerObj.localScale = new Vector3(_playerObj.localScale.x, _slideYScale, _playerObj.localScale.z);
             rb.AddForce(Vector3.down * _SlideValue, ForceMode.Impulse);
@@ -156,6 +149,7 @@ public class S_Sliding : MonoBehaviour
 
     private void StopSlide()
     {
+        PlayerSoundScript.EndSoundSlide();
         _pm._isSliding = false;
         _slidingCdTimer = _slidingCdMax;
         _playerObj.localScale = new Vector3(_playerObj.localScale.x, _startYScale, _playerObj.localScale.z);
