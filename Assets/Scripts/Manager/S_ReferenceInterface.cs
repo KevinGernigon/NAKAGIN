@@ -38,7 +38,7 @@ public class S_ReferenceInterface : Manager
 
     [Header("Refs Battery")]
 
-    public GameObject EventSysteme;
+    public GameObject EventSystem;
     public S_BatteryManager _BatteryManager;
 
 
@@ -49,7 +49,7 @@ public class S_ReferenceInterface : Manager
     public S_PlayerSound PlayerSoundScript;
     private void Awake()
     {
-        _BatteryManager = EventSysteme.GetComponent<S_BatteryManager>();
+        _BatteryManager = EventSystem.GetComponent<S_BatteryManager>();
         PlayerSoundScript = GetComponent<S_PlayerSound>();
     }
 }

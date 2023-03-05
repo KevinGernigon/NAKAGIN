@@ -79,6 +79,7 @@ public class S_GenerateurEnergetique : MonoBehaviour
 
                 if (_referenceInterface._InputManager._playerInput.currentControlScheme == "KeyboardAndMouse")
                 {
+                    //Insert text ou Image lier a l'interaction 
 
                     int bindingIndex = ActionRef.action.GetBindingIndexForControl(ActionRef.action.controls[0]);
 
@@ -88,15 +89,14 @@ public class S_GenerateurEnergetique : MonoBehaviour
                     );
 
                   
-                    //Insert text ou Image lier a l'interaction 
+                    
 
                 }
                 if (_referenceInterface._InputManager._playerInput.currentControlScheme == "Gamepad")
                 {
-
+                    //Insert text ou Image lier a l'interaction 
                     _TextInteraction.text = "Y";
 
-                    //Image lier a l'interaction 
 
                 }
 

@@ -16,6 +16,8 @@ public class S_GrappinV2 : MonoBehaviour
     [Header("Audio")]
     private S_PlayerSound PlayerSoundScript;
 
+    [Header("HUD")]
+    [SerializeField] private GameObject _HUDCrossHairLock;
 
     [Header("Layer")]
     [SerializeField] private LayerMask _whatIsTarget;
@@ -64,9 +66,17 @@ public class S_GrappinV2 : MonoBehaviour
             if (DebugHit.collider.gameObject.layer == whatIsTarget)
             {
                 Debug.DrawRay(_camera.position, _camera.forward * _maxGrappleDistance, Color.blue);
+
+                _HUDCrossHairLock.SetActive(true);
+
             }
             else
+            {
                 Debug.DrawRay(_camera.position, _camera.forward * _maxGrappleDistance, Color.red);
+            
+                _HUDCrossHairLock.SetActive(false);
+
+            }
         }
 
 

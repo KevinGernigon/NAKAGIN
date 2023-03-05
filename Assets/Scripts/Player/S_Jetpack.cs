@@ -25,6 +25,9 @@ public class S_Jetpack : MonoBehaviour
     [Header("Audio")]
     private S_PlayerSound PlayerSoundScript;
 
+    [Header("HUD")]
+    [SerializeField]  private GameObject _HUDJetpackWarning;
+
 
     [Header("Time Value")]
     [SerializeField] private float _timerCd;
@@ -58,8 +61,6 @@ public class S_Jetpack : MonoBehaviour
                 JetpackFunction();
             }
         }
-            
-        
     }
     private void FixedUpdate()
     {
@@ -88,21 +89,23 @@ public class S_Jetpack : MonoBehaviour
     }
     public void JetpackFunction()
     {
-        PlayerSoundScript.JetpackSound();
+        
 
         if (_isTriggerBoxTrue && ScriptBatteryManager._nbrBattery >= 1)
         {
-                ScriptBatteryManager.UseOneBattery();
-                JetPackUsage();
+            PlayerSoundScript.JetpackSound();
+            ScriptBatteryManager.UseOneBattery();
+            JetPackUsage();
         }
 
 
         if (!_isTriggerBoxTrue && !_isMaxForce && ScriptBatteryManager._nbrBattery >= 1)
-            {
-                    ScriptBatteryManager.UseOneBattery();
-                    JetPackUsage();
+        {
+            PlayerSoundScript.JetpackSound();
+            ScriptBatteryManager.UseOneBattery();
+            JetPackUsage();
 
-            }
+        }
 
         if (_isGravityDisable)
              _rb.useGravity = false;
@@ -163,9 +166,12 @@ public class S_Jetpack : MonoBehaviour
     {
         _isTriggerBoxTrue = true;
 
-           /* if (Input.GetButtonDown("Jetpack"))
-                JetpackFunction();*/
-        if (S_InputManager._playerInputAction.Player.Jetpack.triggered)
+        if (ScriptBatteryManager._nbrBattery >= 1)
+            _HUDJetpackWarning.SetActive(true);
+
+            /* if (Input.GetButtonDown("Jetpack"))
+                 JetpackFunction();*/
+            if (S_InputManager._playerInputAction.Player.Jetpack.triggered)
         {
             if (S_InputManager._jetpackActive)
             { 
@@ -174,10 +180,14 @@ public class S_Jetpack : MonoBehaviour
         }
             
     }
+   
+
 
     public void BooleanTriggerBoxExit()
     {
         _isTriggerBoxTrue = false;
+
+        _HUDJetpackWarning.SetActive(false);
     }
 
     private void ResetJetpack()
