@@ -222,7 +222,7 @@ public class S_PlayerMovement : MonoBehaviour
                     i++;
                     if (i >= 2)
                     {
-                        Debug.Log("GroundContact");
+                        //Debug.Log("GroundContact");
                         _isHigherThan = false;
                         PlayerSoundScript.LandingSound();
                         i = 0;

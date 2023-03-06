@@ -3,15 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(S_SceneManager))]
+/*[CustomEditor(typeof(S_SceneManager))]
 public class S_ManagerEditor : Editor
 {
-    [SerializeField]
     private S_SceneManager sceneManager;
-    public string sceneToStart;
+
+    private void OnEnable()
+    {
+        sceneManager = target as S_SceneManager;
+    }
+
     public enum DisplayCategory
     {
-        Assets_Scene, Kiki_Scene, Alexis_Scene, Corentin_Scene, MAIN_VerticalSlice, Killian_Scene, Tom_Scene, Playtest_Scene, Maxime_Scene, Kevin_Scene
+        Corentin_Scene, Kiki_Scene, Alexis_Scene, Assets_Scene, MAIN_VerticalSlice, Killian_Scene, Tom_Scene, Playtest_Scene, Maxime_Scene, Kevin_Scene
     }
 
 
@@ -21,10 +25,10 @@ public class S_ManagerEditor : Editor
     {
 
         categoryToDisplay = (DisplayCategory)EditorGUILayout.EnumPopup("Scene à lancer", categoryToDisplay);
-        sceneToStart = categoryToDisplay.ToString();
+        sceneManager.sceneToStart = categoryToDisplay.ToString();
 
         EditorGUILayout.Space();
 
         serializedObject.ApplyModifiedProperties();
     }
-}
+}*/

@@ -7,6 +7,10 @@ using TMPro;
 public class S_ConsoleFinRun : MonoBehaviour
 {
     private S_ReferenceInterface _referenceInterface;
+    private GameObject Player;
+
+    [Header("Audio")]
+    private S_PlayerSound PlayerSoundScript;
 
     public InputActionReference ActionRef = null;
 
@@ -26,7 +30,8 @@ public class S_ConsoleFinRun : MonoBehaviour
     {
         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
         _HUD_Interaction = _referenceInterface.HUD_InteractGenerateurEnable;
-
+        Player = _referenceInterface._playerGameObject;
+        PlayerSoundScript = Player.GetComponent<S_PlayerSound>();
         _TextInteraction = _HUD_Interaction.GetComponentInChildren<TMP_Text>();
     }
 
@@ -45,7 +50,7 @@ public class S_ConsoleFinRun : MonoBehaviour
         if (_referenceInterface._InputManager._playerInputAction.Player.Interaction.triggered && !_consoleActive && _OnTrigger)
         {
             //Son
-
+            PlayerSoundScript.ValidationConsoleSound();
             _consoleActive = true;
             _GenerateurEnergetique.ChargeUp();
 
