@@ -4,8 +4,14 @@ using UnityEngine;
 
 public class S_RotationPlatformes : MonoBehaviour
 {
+
+    private S_ReferenceInterface _referenceInterface;
+    private S_PlayerSound PlayerSoundScript;
+
+
     [SerializeField]
     private GameObject _centerPlatforms;
+    private GameObject Player;
 
     [SerializeField]
     private float _degre = 90f;
@@ -13,11 +19,23 @@ public class S_RotationPlatformes : MonoBehaviour
     public float _alphaSpeed = 0.001f;
     private bool _isTrigger = false;
     private bool _startMoving = false;
+    private bool _stopSpam = false;
     private Vector3 _initialRotation;
+    int i = 1;
+    private void Awake()
+    {
+
+        _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
+        Player = _referenceInterface._playerGameObject;
+        PlayerSoundScript = Player.GetComponent<S_PlayerSound>();
+    }
+
+
+    
 
     void Start()
     {
-
+        
     }
 
     void Update()
@@ -27,14 +45,21 @@ public class S_RotationPlatformes : MonoBehaviour
             
             if (_alpha >= 1)
             {
-                _startMoving = false;
+                i = 1;
+            }
+
+            if (_alpha >= 0.9f && i == 1)
+            {
+                i = 0;
+                PlayerSoundScript.EndPlatformMovingSound();
+                PlayerSoundScript.EndingPlatformMovingSound();
             }
         }
 
         if (_isTrigger)
         {
-
-            if (Input.GetButtonDown("LeftRotation") && _startMoving == false)
+            
+            if (_referenceInterface._InputManager._playerInputAction.Player.MoveModuleLeft.triggered && _startMoving == false)
             {
                 _initialRotation = _centerPlatforms.transform.eulerAngles;
                 _alpha = 0f;
@@ -42,8 +67,8 @@ public class S_RotationPlatformes : MonoBehaviour
                 _startMoving = true;
                 StartCoroutine(MovePlatformsRight(_centerPlatforms));
             }
-
-            if (Input.GetButtonDown("RightRotation") && _startMoving == false)
+            
+            if (_referenceInterface._InputManager._playerInputAction.Player.MoveModuleRight.triggered && _startMoving == false)
             {
                 _initialRotation = _centerPlatforms.transform.eulerAngles;
                 _alpha = 0f;
@@ -59,33 +84,36 @@ public class S_RotationPlatformes : MonoBehaviour
 
     IEnumerator MovePlatformsRight(GameObject platforms)
     {
-        while (_startMoving == true)
+        PlayerSoundScript.PlatformMovingSound();
+        while (_startMoving == true && _alpha < 1)
         {
+            
             _centerPlatforms.transform.Rotate(Vector3.right * _degre / Mathf.Round(1 / _alphaSpeed));
             _alpha += _alphaSpeed;
             yield return new WaitForSeconds(0.01f);
         }
-        
+        _startMoving = false;        
     }
     IEnumerator MovePlatformsLeft(GameObject platforms)
     {
-        while (_startMoving == true)
+        PlayerSoundScript.PlatformMovingSound();
+        while (_startMoving == true && _alpha < 1)
         {
+            
             _centerPlatforms.transform.Rotate(Vector3.left * _degre / Mathf.Round(1 / _alphaSpeed));
             _alpha += _alphaSpeed ;
             yield return new WaitForSeconds(0.01f);
         }
-
+        _startMoving = false;
     }
 
     public void OnTriggersEnter()
     {
-        Debug.Log("Trigger");
         _isTrigger = true;
     }
     public void OnTriggersExit()
     {
-        Debug.Log("NON Trigger");
+
         _isTrigger = false;
     }
 

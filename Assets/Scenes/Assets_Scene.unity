@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 0
-  m_FogColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+  m_Fog: 1
+  m_FogColor: {r: 0.254717, g: 0.254717, b: 0.254717, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.01
+  m_FogDensity: 0.005
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18087927, g: 0.22203416, b: 0.28181133, a: 1}
+  m_IndirectSpecularColor: {r: 0.1838306, g: 0.2285295, b: 0.3005336, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -9896,64 +9896,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c77225f351f30b4da245f08ee349e9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _plateformesMouvantesList:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  _player: {fileID: 1732913600}
-  _screenEdges: {fileID: 559164536}
-  _screenEdgesImages:
-  - {fileID: 2800000, guid: 045777885071df841b78bb2b90da5a7b, type: 3}
-  - {fileID: 2800000, guid: f604f8ec3eeec424ca53ff9bce4af53c, type: 3}
-  - {fileID: 2800000, guid: c7f8220d48968fb4a8bc010dd5888a6d, type: 3}
-  - {fileID: 2800000, guid: a60f8baf118d48f41a836c4ea800a1c0, type: 3}
 --- !u!114 &944655548
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13192,14 +13134,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1227247463}
-  m_LocalRotation: {x: 0.15651809, y: -0.03783008, z: 0.55292857, w: 0.8175212}
+  m_LocalRotation: {x: 0.32041222, y: 0.048029006, z: 0.52187145, w: 0.7891004}
   m_LocalPosition: {x: 0, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 719750000}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 17.322, y: 6.691, z: 69.165}
+  m_LocalEulerAnglesHint: {x: 27.1, y: 27.44, z: 73.692}
 --- !u!108 &1227247465
 Light:
   m_ObjectHideFlags: 0
@@ -13212,13 +13154,13 @@ Light:
   m_Type: 1
   m_Shape: 0
   m_Color: {r: 0.8867924, g: 0.8290274, b: 0.78974724, a: 1}
-  m_Intensity: 1.29
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10.34
   m_Shadows:
-    m_Type: 2
+    m_Type: 1
     m_Resolution: -1
     m_CustomResolution: -1
     m_Strength: 0.37
@@ -16647,6 +16589,14 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: -6907106956807425096, guid: 04761937142acc44e9c51bb8b069292b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c0da2e7982938b45b51931c55a264ac, type: 2}
+    - target: {fileID: -6590567441614910832, guid: 04761937142acc44e9c51bb8b069292b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c0da2e7982938b45b51931c55a264ac, type: 2}
     - target: {fileID: -831454076559630225, guid: 04761937142acc44e9c51bb8b069292b, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -16659,10 +16609,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Entree_generateur
       objectReference: {fileID: 0}
+    - target: {fileID: 1485749865075990466, guid: 04761937142acc44e9c51bb8b069292b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c0da2e7982938b45b51931c55a264ac, type: 2}
     - target: {fileID: 1854119649444112774, guid: 04761937142acc44e9c51bb8b069292b, type: 3}
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 4223739495759915852, guid: 04761937142acc44e9c51bb8b069292b, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 4c0da2e7982938b45b51931c55a264ac, type: 2}
     - target: {fileID: 4927581260357453451, guid: 04761937142acc44e9c51bb8b069292b, type: 3}
       propertyPath: m_Layer
       value: 10
@@ -17181,7 +17139,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 33558ddc4ce42fb4e9dbb5d6381b0e8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Battery: {fileID: 0}
+  Battery: {fileID: 944655548}
 --- !u!4 &1701565991
 Transform:
   m_ObjectHideFlags: 0

@@ -15,15 +15,12 @@ public class S_BatteryManager : MonoBehaviour
     [SerializeField] private float _nbrMinBattery = 0;
     [SerializeField] private float _nbrBatteryFind = 0;
 
-    [SerializeField] public bool _overdrive = false;
-
-    [Header("UI")]
+     [Header("UI")]
     public Image Battery_1;
     public Image Battery_2;
     public Image Battery_3;
     public Sprite Empty_Battery;
     public Sprite Full_Battery;
-    public Sprite Overdrive_Battery;
 
 
     private void Update()
@@ -53,12 +50,7 @@ public class S_BatteryManager : MonoBehaviour
             Battery_3.sprite = Full_Battery;
         }
 
-        if (_overdrive == true)
-        {
-            Battery_1.sprite = Overdrive_Battery;
-            Battery_2.sprite = Overdrive_Battery;
-            Battery_3.sprite = Overdrive_Battery;
-        }
+        
     }
 
     public void UseOneBattery()
@@ -113,16 +105,7 @@ public class S_BatteryManager : MonoBehaviour
                 _nbrBattery = _nbrMaxBattery;
             }
         }
-        else
-        {
-            if (!_overdrive)
-            {
-                _overdrive = true;
-            }
-            //UI trop de batterie //Overdrive
-        }
-        
-        
+  
     }
     public void GetTwoBattery()
     {
@@ -137,17 +120,7 @@ public class S_BatteryManager : MonoBehaviour
 
             }
         }
-        else
-        {
-
-            if (!_overdrive)
-            {
-                _overdrive = true;
-            }
-            //UI trop de batterie //Overdrive
-        }
-
-        
+ 
     }
 
     public void GetThreeBattery()
@@ -162,27 +135,8 @@ public class S_BatteryManager : MonoBehaviour
 
             }
         }
-        else
-        {
-
-            if (!_overdrive)
-            {
-                _overdrive = true;
-            }
-            //UI trop de batterie //Overdrive
-        }
+       
 
     }
-
-
-    public void UseOverdrive()
-    {
-        if(_overdrive)
-        {
-            _overdrive = false;
-
-        }
-    }
-
 
 }

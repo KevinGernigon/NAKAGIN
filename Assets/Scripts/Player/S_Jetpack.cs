@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class S_Jetpack : MonoBehaviour
 {
+    [Header("InputManager")]
+    [SerializeField] private S_InputManager S_InputManager;
+
     [Header("References")]
     public Transform orientation;
     public Transform playerCam;
@@ -19,6 +22,13 @@ public class S_Jetpack : MonoBehaviour
     [SerializeField] private bool _jetPackSave;
     private bool _isGravityDisable;
 
+    [Header("Audio")]
+    private S_PlayerSound PlayerSoundScript;
+
+    [Header("HUD")]
+    [SerializeField]  private GameObject _HUDJetpackWarning;
+
+
     [Header("Time Value")]
     [SerializeField] private float _timerCd;
     [SerializeField] private float _timerMaxCd;
@@ -33,6 +43,7 @@ public class S_Jetpack : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _pm = GetComponent<S_PlayerMovement>();
+        PlayerSoundScript = GetComponent<S_PlayerSound>();
         ScriptDash = GetComponent<S_Dash>();
         _isJetpackAvaible = true;
     }
@@ -40,8 +51,16 @@ public class S_Jetpack : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButtonDown("Jetpack") && _isJetpackAvaible)
-            JetpackFunction();    
+        /*if (Input.GetButtonDown("Jetpack") && _isJetpackAvaible)
+            JetpackFunction();*/
+
+        if (S_InputManager._playerInputAction.Player.Jetpack.triggered && _isJetpackAvaible)
+        {
+            if (S_InputManager._jetpackActive)
+            {
+                JetpackFunction();
+            }
+        }
     }
     private void FixedUpdate()
     {
@@ -70,19 +89,23 @@ public class S_Jetpack : MonoBehaviour
     }
     public void JetpackFunction()
     {
-        if(_isTriggerBoxTrue && ScriptBatteryManager._nbrBattery >= 1)
+        
+
+        if (_isTriggerBoxTrue && ScriptBatteryManager._nbrBattery >= 1)
         {
-                ScriptBatteryManager.UseOneBattery();
-                JetPackUsage();
+            PlayerSoundScript.JetpackSound();
+            ScriptBatteryManager.UseOneBattery();
+            JetPackUsage();
         }
 
 
         if (!_isTriggerBoxTrue && !_isMaxForce && ScriptBatteryManager._nbrBattery >= 1)
-            {
-                    ScriptBatteryManager.UseOneBattery();
-                    JetPackUsage();
+        {
+            PlayerSoundScript.JetpackSound();
+            ScriptBatteryManager.UseOneBattery();
+            JetPackUsage();
 
-            }
+        }
 
         if (_isGravityDisable)
              _rb.useGravity = false;
@@ -96,20 +119,28 @@ public class S_Jetpack : MonoBehaviour
         float i;
 
 
-            if (Mathf.Abs(_rb.velocity.y) <= 20)
+            if (Mathf.Abs(_rb.velocity.y) >= 10 && Mathf.Abs(_rb.velocity.y) <= 20)
                 {
                     i = 25;
                 }
-            /*else if (Mathf.Abs(_rb.velocity.y) <= 40 && (Mathf.Abs(_rb.velocity.y) >= 20))
+            else if (Mathf.Abs(_rb.velocity.y) <= 2)
                 {
-                    i = 60;
+                    i = 25;
                 }
-
-            else if (Mathf.Abs(_rb.velocity.y) <= 60 && (Mathf.Abs(_rb.velocity.y) >= 40))
+            else if(Mathf.Abs(_rb.velocity.y) >= 2 && Mathf.Abs(_rb.velocity.y) <= 10)
                 {
-                    i = 100;
-                }*/
-            else
+                    i = 15;
+                }
+        /*else if (Mathf.Abs(_rb.velocity.y) <= 40 && (Mathf.Abs(_rb.velocity.y) >= 20))
+            {
+                i = 60;
+            }
+
+        else if (Mathf.Abs(_rb.velocity.y) <= 60 && (Mathf.Abs(_rb.velocity.y) >= 40))
+            {
+                i = 100;
+            }*/
+        else
                 {
                     i = Mathf.Abs(_rb.velocity.y) * 1.2f;
                 }
@@ -134,14 +165,29 @@ public class S_Jetpack : MonoBehaviour
     public void BooleanTriggerBoxEnter()
     {
         _isTriggerBoxTrue = true;
-            if (Input.GetButtonDown("Jetpack"))
-                JetpackFunction();
 
+        if (ScriptBatteryManager._nbrBattery >= 1)
+            _HUDJetpackWarning.SetActive(true);
+
+            /* if (Input.GetButtonDown("Jetpack"))
+                 JetpackFunction();*/
+            if (S_InputManager._playerInputAction.Player.Jetpack.triggered)
+        {
+            if (S_InputManager._jetpackActive)
+            { 
+                JetpackFunction(); 
+            }
+        }
+            
     }
+   
+
 
     public void BooleanTriggerBoxExit()
     {
         _isTriggerBoxTrue = false;
+
+        _HUDJetpackWarning.SetActive(false);
     }
 
     private void ResetJetpack()

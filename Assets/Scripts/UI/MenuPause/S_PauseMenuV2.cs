@@ -2,9 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 public class S_PauseMenuV2 : MonoBehaviour
 {
+    [Header("InputManager")]
+    [SerializeField] private S_InputManager S_InputManager;
 
+    [Header("Other")]
 
     [SerializeField] private GameObject _pauseMenuHUD;
     [SerializeField] private GameObject _startGameHUD;
@@ -12,40 +16,109 @@ public class S_PauseMenuV2 : MonoBehaviour
     [SerializeField] private GameObject _pauseInterface;
     [SerializeField] private GameObject _settingsInterface;
 
-    public bool _isPaused;
+    [SerializeField] private S_BatteryManager _BatteryManager;
+
+    [Header("HUD")]
+
+    [SerializeField] private EventSystem _eventSystem;
+
+    [SerializeField] private GameObject FirstSelectButtonPause;
+    [SerializeField] private GameObject FirstSelectButtonSetting;
+    [SerializeField] private GameObject LastSelectButton;
+    [SerializeField] private GameObject LastSelectButtonSetting;
+
+    public bool _isPaused = false;
+    private bool _isSetting = false;
     private bool _ischoose;
-    [SerializeField]
-    private GameObject _player;
+    [SerializeField] private bool ControllerActive = true;
+
+    [Header("ResetPlayer")]
+    [SerializeField] private GameObject _player;
+    /*[SerializeField] private Rigidbody _playerRb;
+    [SerializeField] private Transform _Spawnpoint;*/
 
     void Start()
     {
 
         _pauseMenuHUD.SetActive(false);
-
         ResetPauseHUD();
-
-       // S_Debugger.AddButton("Quit", QuitGame);
 
     }
 
 
     void Update()
     {
-        if (Input.GetButtonDown("MenuPause"))
+
+        if (S_InputManager._playerInputAction.Player.Pause.triggered)
         {
-            if (_isPaused)
-            {
-                ResumeGame();
-            }
-            else
+            if (S_InputManager._playerEnable)
             {
                 PauseGame();
+                return;
             }
         }
-    }
 
+        if (S_InputManager._playerInputAction.UI.Pause.triggered)
+        {
+            if (!S_InputManager._playerEnable)
+            {   
+                _isSetting = false;
+                ResumeGame();
+               
+            }
+
+        }
+
+        if (S_InputManager._playerInput.currentControlScheme == "Gamepad" && ControllerActive && _isPaused && !_isSetting)
+        {
+            if (EventSystem.current.currentSelectedGameObject == null)
+                LastSelectButton = FirstSelectButtonPause;
+            ControllerActive = false;
+            EventSystem.current.SetSelectedGameObject(LastSelectButton);
+        }
+
+        if (S_InputManager._playerInput.currentControlScheme == "Gamepad" && ControllerActive && _isPaused && _isSetting)
+        {
+            if (EventSystem.current.currentSelectedGameObject == null)
+                LastSelectButtonSetting = FirstSelectButtonSetting;
+            ControllerActive = false;
+            EventSystem.current.SetSelectedGameObject(LastSelectButtonSetting);
+        }
+
+
+        if (S_InputManager._playerInput.currentControlScheme == "KeyboardAndMouse" && !ControllerActive && _isPaused && !_isSetting)
+        {
+            LastSelectButton = EventSystem.current.currentSelectedGameObject;
+            ControllerActive = true;
+            EventSystem.current.SetSelectedGameObject(null);
+        }
+
+        if (S_InputManager._playerInput.currentControlScheme == "KeyboardAndMouse" && !ControllerActive && _isPaused && _isSetting)
+        {
+            LastSelectButtonSetting = EventSystem.current.currentSelectedGameObject;
+            ControllerActive = true;
+            EventSystem.current.SetSelectedGameObject(null);
+        }
+
+
+
+    }
     public void PauseGame()
     {
+        S_InputManager.ActivePause();
+        
+        if (S_InputManager._playerInput.currentControlScheme == "Gamepad")
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(FirstSelectButtonPause);
+            LastSelectButton = EventSystem.current.currentSelectedGameObject;
+        }
+        else
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            LastSelectButton = FirstSelectButtonPause;
+        }
+
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
@@ -63,6 +136,8 @@ public class S_PauseMenuV2 : MonoBehaviour
         {
             StartCoroutine(waitcastchoose());
 
+            S_InputManager.DesactivePause();
+
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
@@ -77,9 +152,7 @@ public class S_PauseMenuV2 : MonoBehaviour
             _isPaused = false;
 
 
-
         }
-
     }
 
     public void RestartLevel()
@@ -88,17 +161,39 @@ public class S_PauseMenuV2 : MonoBehaviour
         {
             Debug.Log("RestartLevel");
             ResumeGame();
+            ResetPlayer();
             StartCoroutine(waitcastchoose());
+
             Scene _scene = SceneManager.GetActiveScene();
-            if (_scene.name == "Tom_Scene")
-            {
-                SceneManager.LoadScene(_scene.name);
-                SceneManager.LoadScene("Alexis_Blocking_Environment", LoadSceneMode.Additive);
-            }
-            else
-            {
-                SceneManager.LoadScene(_scene.name);
-            }
+
+            SceneManager.LoadScene("Manager_Scene");
+            SceneManager.LoadScene(_scene.name);
+
+            
+        }
+    }
+    private void ResetPlayer()
+    {
+        _BatteryManager._nbrBattery = 0 ;
+    }
+
+
+    public void Setting()
+    {
+
+        _isSetting = true;
+
+        if (S_InputManager._playerInput.currentControlScheme == "Gamepad")
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(FirstSelectButtonSetting);
+            LastSelectButtonSetting = FirstSelectButtonSetting;
+           
+        }
+        else
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            LastSelectButtonSetting = FirstSelectButtonSetting;
         }
 
     }

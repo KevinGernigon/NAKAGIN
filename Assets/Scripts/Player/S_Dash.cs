@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class S_Dash : MonoBehaviour
 {
+    [Header("InputManager")]
+    [SerializeField] private S_InputManager S_InputManager;
+
     [Header("References")]
     public Transform orientation;
     public Transform playerCam;
@@ -19,6 +22,9 @@ public class S_Dash : MonoBehaviour
     private float lastPressTime;
     public float _limitDash = 3;
 
+    [Header("Audio")]
+    private S_PlayerSound PlayerSoundScript;
+
     [Header("Settings")]
     [SerializeField] private bool _isUsingCameraForward = true;
     [SerializeField] private bool _isAllowingAllDirections = true;
@@ -32,7 +38,7 @@ public class S_Dash : MonoBehaviour
     [SerializeField] private float _dashGainTimer;
 
     [Header("Input")]
-    public KeyCode dashKey = KeyCode.E;
+    //public KeyCode dashKey = KeyCode.E;
 
     public bool AxelIsHere = false;
     private const float DOUBLE_CLICK_TIME = .2f;
@@ -41,6 +47,7 @@ public class S_Dash : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _pm = GetComponent<S_PlayerMovement>();
+        PlayerSoundScript = GetComponent<S_PlayerSound>();
         _dashUpgradeForce = 1;
     }
 
@@ -78,8 +85,10 @@ public class S_Dash : MonoBehaviour
     {
         if (AxelIsHere)
         {
-            if (Input.GetButtonDown("Vertical") && Input.GetAxisRaw("Vertical") > 0 || (Input.GetButtonDown("Vertical") && Input.GetAxisRaw("Vertical") < 0) ||
-            Input.GetButtonDown("Horizontal") && Input.GetAxisRaw("Horizontal") > 0 || (Input.GetButtonDown("Horizontal") && Input.GetAxisRaw("Horizontal") < 0))
+            /*if (Input.GetButtonDown("Vertical") && Input.GetAxisRaw("Vertical") > 0 || (Input.GetButtonDown("Vertical") && Input.GetAxisRaw("Vertical") < 0) ||
+            Input.GetButtonDown("Horizontal") && Input.GetAxisRaw("Horizontal") > 0 || (Input.GetButtonDown("Horizontal") && Input.GetAxisRaw("Horizontal") < 0))*/
+            if (S_InputManager._mouvementInput.y != 0 && S_InputManager._mouvementInput.y > 0 || (S_InputManager._mouvementInput.y != 0 && S_InputManager._mouvementInput.y < 0) ||
+            S_InputManager._mouvementInput.x != 0 && S_InputManager._mouvementInput.x > 0 || (S_InputManager._mouvementInput.x != 0 && S_InputManager._mouvementInput.x < 0))
             {
 
                 float timeSinceLastPress = Time.time - lastPressTime;
@@ -93,7 +102,8 @@ public class S_Dash : MonoBehaviour
         }
         
 
-        if (Input.GetButtonDown("Dash"))
+        //if (Input.GetButtonDown("Dash"))
+        if (S_InputManager._dashInput)
         {
             DashFunction();
         }
@@ -107,6 +117,7 @@ public class S_Dash : MonoBehaviour
 
         else _dashCdTimer = _dashCd;
 
+        PlayerSoundScript.DashSound();
         _limitDash--;
         _pm._isDashing = true;
         //_pm._readyToJump = false;
@@ -167,8 +178,10 @@ public class S_Dash : MonoBehaviour
 
     public Vector3 GetDirection(Transform forwardT)
     {
-        float horizontalInput = Input.GetAxisRaw("Horizontal");
-        float verticalInput = Input.GetAxisRaw("Vertical");
+        float horizontalInput = S_InputManager._mouvementInput.x;
+        float verticalInput = S_InputManager._mouvementInput.y;
+        /*float horizontalInput = Input.GetAxisRaw("Horizontal");
+        float verticalInput = Input.GetAxisRaw("Vertical");*/
 
         Vector3 direction = new Vector3();
 

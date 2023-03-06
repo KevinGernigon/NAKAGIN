@@ -3,15 +3,26 @@ using UnityEngine;
 
 public class S_GrappinV2 : MonoBehaviour
 {
+    [Header("InputManager")]
+    [SerializeField] private S_InputManager S_InputManager;
+
     [Header("References")]
     [SerializeField] private Rigidbody _rb;
     [SerializeField] private S_PlayerMovement _pm;
     [SerializeField] private Transform _camera;
     [SerializeField] private Transform _grappingTransform;
     [SerializeField] private LineRenderer lr;
+
+    [Header("Audio")]
+    private S_PlayerSound PlayerSoundScript;
+
+    [Header("HUD")]
+    [SerializeField] private GameObject _HUDCrossHairLock;
+
     [Header("Layer")]
     [SerializeField] private LayerMask _whatIsTarget;
-    [SerializeField] private LayerMask _whatIsWall;
+    [SerializeField] private LayerMask LayerToExempt;
+    [SerializeField] private LayerMask Everything;
     [SerializeField] private LayerMask _whatIsGround;
 
     [Header("Grappling Hook Ref")]
@@ -36,16 +47,38 @@ public class S_GrappinV2 : MonoBehaviour
     {
         _rb = GetComponent<Rigidbody>();
         _pm = GetComponent<S_PlayerMovement>();
-        
+        PlayerSoundScript = GetComponent<S_PlayerSound>();
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.A) && !_isGrappling)
+        /*if (Input.GetKeyDown(KeyCode.A) && !_isGrappling)
+            StartGrapple();*/
+        if (S_InputManager._playerInputAction.Player.Grappin.triggered && !_isGrappling)
+            StartGrapple();
+
+        RaycastHit DebugHit;
+
+        //if(Physics.Raycast(_camera.position, _camera.forward, _maxGrappleDistance, 1 << LayerMask.NameToLayer("WhatIsTarget")))
+        if (Physics.Raycast(_camera.position, _camera.forward, out DebugHit, _maxGrappleDistance, Everything))
         {
-                StartGrapple();
-        }
+            int whatIsTarget = LayerMask.NameToLayer("WhatIsTarget");
+            if (DebugHit.collider.gameObject.layer == whatIsTarget)
+            {
+                Debug.DrawRay(_camera.position, _camera.forward * _maxGrappleDistance, Color.blue);
+
+                _HUDCrossHairLock.SetActive(true);
+
+            }
+            else
+            {
+                Debug.DrawRay(_camera.position, _camera.forward * _maxGrappleDistance, Color.red);
             
+                _HUDCrossHairLock.SetActive(false);
+
+            }
+        }
+
 
         if (_grapplingCdTimer > 0)
             _grapplingCdTimer -= Time.deltaTime;
@@ -63,36 +96,47 @@ public class S_GrappinV2 : MonoBehaviour
     private void StartGrapple()
     {
         if (_grapplingCdTimer > 0) return;
-        RaycastHit blockHit;
-        if (Physics.Raycast(_camera.position, _camera.forward, out blockHit, _maxGrappleDistance, ~(_whatIsTarget))) return;
-  
 
+        /*RaycastHit noTarget;
+        if (Physics.Raycast(_camera.position, _camera.forward, out noTarget, _maxGrappleDistance, ~_whatIsTarget))
+        {
+        }*/
+
+        PlayerSoundScript.RopeSound();
         _isGrappling = true;
-
         _pm._isFreezing = true;
 
         RaycastHit hit;
-        if(Physics.Raycast(_camera.position, _camera.forward, out hit, _maxGrappleDistance, _whatIsTarget))
+        //if(Physics.Raycast(_camera.position, _camera.forward, out hit, _maxGrappleDistance, 1 << LayerMask.NameToLayer("WhatIsTarget")))
+        if (Physics.Raycast(_camera.position, _camera.forward, out hit, _maxGrappleDistance, Everything))
         {
-            _isDecreaseRbDrag = true;
-            _pm.Jump();
-            //grapplePoint = hit.point;
-            grapplePoint = hit.transform.position;
-            Invoke(nameof(ExecuteGrapple), _grappleDelayTime);
+            int whatIsTarget = LayerMask.NameToLayer("WhatIsTarget");
+            if (hit.collider.gameObject.layer == whatIsTarget)
+            {
+                _isDecreaseRbDrag = true;
+                _pm.Jump();
+                grapplePoint = hit.transform.position;
+                PlayerSoundScript.ImpactHookSound();
+                Invoke(nameof(ExecuteGrapple), _grappleDelayTime);
+            }
+            else
+                MissGrapple();
         }
         else
-        {
-            grapplePoint = _camera.position + _camera.forward * _maxGrappleDistance;
-            Invoke(nameof(StopGrapple), _grappleDelayTime);
-        }
+            MissGrapple();
 
-        lr.enabled = true;
-        lr.SetPosition(1, grapplePoint);
-        var finalPosition = grapplePoint;
+            lr.enabled = true;
+            lr.SetPosition(1, grapplePoint);
+            var finalPosition = grapplePoint;
+    }
+    private void MissGrapple()
+    {
+        grapplePoint = _camera.position + _camera.forward * _maxGrappleDistance;
+        PlayerSoundScript.RewindSound();
+        Invoke(nameof(StopGrapple), _grappleDelayTime);
+    }
         /*SetGraplin(finalPosion);
         updateAction = () => SetGraplin(finalPosion);*/
-    }
-
 
     /*private void SetGraplin(Vector3 finalPos)
     {
@@ -115,7 +159,7 @@ public class S_GrappinV2 : MonoBehaviour
     {
         _pm._isFreezing = true;
         isIncreaseFOV = true;
-        Vector3 lowestPoint = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z); //point de départ du personnage
+        Vector3 lowestPoint = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z); //point de dï¿½part du personnage
         float grapplePointRelativeYPos = grapplePoint.y - lowestPoint.y;
         float highestPointOnArc = grapplePointRelativeYPos + _overshootYAxis;
 
@@ -141,7 +185,6 @@ public class S_GrappinV2 : MonoBehaviour
         isIncreaseFOV = false;
 
         _isDecreaseRbDrag = false;
-
     }
 }
 
