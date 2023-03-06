@@ -21,6 +21,7 @@ public class S_RotationPlatformes : MonoBehaviour
     private bool _startMoving = false;
     private Vector3 _initialRotation;
 
+    int i = 1;
     private void Awake()
     {
 
@@ -42,6 +43,11 @@ public class S_RotationPlatformes : MonoBehaviour
             if (_alpha >= 1)
             {
                 _startMoving = false;
+                i = 1;
+            }
+            if (_alpha >= 0.9f && i == 1)
+            {
+                i = 0;
                 PlayerSoundScript.EndPlatformMovingSound();
                 PlayerSoundScript.EndingPlatformMovingSound();
             }
