@@ -58,6 +58,11 @@ public class S_ResolutionControl : MonoBehaviour
 
     }
 
+
+
+
+
+
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = _filteredResolutions[resolutionIndex];

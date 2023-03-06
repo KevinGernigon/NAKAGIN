@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.EventSystems;
 public class S_PauseMenuV2 : MonoBehaviour
 {
     [Header("InputManager")]
@@ -17,8 +18,19 @@ public class S_PauseMenuV2 : MonoBehaviour
 
     [SerializeField] private S_BatteryManager _BatteryManager;
 
+    [Header("HUD")]
+
+    [SerializeField] private EventSystem _eventSystem;
+
+    [SerializeField] private GameObject FirstSelectButtonPause;
+    [SerializeField] private GameObject FirstSelectButtonSetting;
+    [SerializeField] private GameObject LastSelectButton;
+    [SerializeField] private GameObject LastSelectButtonSetting;
+
     public bool _isPaused = false;
+    private bool _isSetting = false;
     private bool _ischoose;
+    [SerializeField] private bool ControllerActive = true;
 
     [Header("ResetPlayer")]
     [SerializeField] private GameObject _player;
@@ -29,10 +41,7 @@ public class S_PauseMenuV2 : MonoBehaviour
     {
 
         _pauseMenuHUD.SetActive(false);
-
         ResetPauseHUD();
-
-       
 
     }
 
@@ -52,22 +61,69 @@ public class S_PauseMenuV2 : MonoBehaviour
         if (S_InputManager._playerInputAction.UI.Pause.triggered)
         {
             if (!S_InputManager._playerEnable)
-                ResumeGame(); 
-        }
-    }
+            {   
+                _isSetting = false;
+                ResumeGame();
+               
+            }
 
+        }
+
+        if (S_InputManager._playerInput.currentControlScheme == "Gamepad" && ControllerActive && _isPaused && !_isSetting)
+        {
+            if (EventSystem.current.currentSelectedGameObject == null)
+                LastSelectButton = FirstSelectButtonPause;
+            ControllerActive = false;
+            EventSystem.current.SetSelectedGameObject(LastSelectButton);
+        }
+
+        if (S_InputManager._playerInput.currentControlScheme == "Gamepad" && ControllerActive && _isPaused && _isSetting)
+        {
+            if (EventSystem.current.currentSelectedGameObject == null)
+                LastSelectButtonSetting = FirstSelectButtonSetting;
+            ControllerActive = false;
+            EventSystem.current.SetSelectedGameObject(LastSelectButtonSetting);
+        }
+
+
+        if (S_InputManager._playerInput.currentControlScheme == "KeyboardAndMouse" && !ControllerActive && _isPaused && !_isSetting)
+        {
+            LastSelectButton = EventSystem.current.currentSelectedGameObject;
+            ControllerActive = true;
+            EventSystem.current.SetSelectedGameObject(null);
+        }
+
+        if (S_InputManager._playerInput.currentControlScheme == "KeyboardAndMouse" && !ControllerActive && _isPaused && _isSetting)
+        {
+            LastSelectButtonSetting = EventSystem.current.currentSelectedGameObject;
+            ControllerActive = true;
+            EventSystem.current.SetSelectedGameObject(null);
+        }
+
+
+
+    }
     public void PauseGame()
     {
         S_InputManager.ActivePause();
+        
+        if (S_InputManager._playerInput.currentControlScheme == "Gamepad")
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(FirstSelectButtonPause);
+            LastSelectButton = EventSystem.current.currentSelectedGameObject;
+        }
+        else
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            LastSelectButton = FirstSelectButtonPause;
+        }
 
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
         _pauseMenuHUD.SetActive(true);
         _startGameHUD.SetActive(false);
-
-        
-
 
         Time.timeScale = 0f;
         //AudioListener = false;
@@ -116,10 +172,30 @@ public class S_PauseMenuV2 : MonoBehaviour
             
         }
     }
-
     private void ResetPlayer()
     {
         _BatteryManager._nbrBattery = 0 ;
+    }
+
+
+    public void Setting()
+    {
+
+        _isSetting = true;
+
+        if (S_InputManager._playerInput.currentControlScheme == "Gamepad")
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(FirstSelectButtonSetting);
+            LastSelectButtonSetting = FirstSelectButtonSetting;
+           
+        }
+        else
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            LastSelectButtonSetting = FirstSelectButtonSetting;
+        }
+
     }
 
     public void MainMenu()

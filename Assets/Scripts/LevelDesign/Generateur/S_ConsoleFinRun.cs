@@ -44,6 +44,8 @@ public class S_ConsoleFinRun : MonoBehaviour
 
         if (_referenceInterface._InputManager._playerInputAction.Player.Interaction.triggered && !_consoleActive && _OnTrigger)
         {
+            //Son
+
             _consoleActive = true;
             _GenerateurEnergetique.ChargeUp();
 

@@ -28,7 +28,7 @@ public class S_GenerateurEnergetique : MonoBehaviour
     private GameObject _HUD_InteractGenerateurDisable;
 
     public InputActionReference ActionRef = null;
-    private TMP_Text _TextInteraction;
+    //private TMP_Text _TextInteraction;
   
 
 
@@ -38,7 +38,7 @@ public class S_GenerateurEnergetique : MonoBehaviour
         _HUD_InteractGenerateurEnable = _referenceInterface.HUD_InteractGenerateurEnable;
         _HUD_InteractGenerateurDisable = _referenceInterface.HUD_InteractGenerateurDisable;
 
-        _TextInteraction = _HUD_InteractGenerateurEnable.GetComponentInChildren<TMP_Text>();
+        //_TextInteraction = _HUD_InteractGenerateurEnable.GetComponentInChildren<TMP_Text>();
     }
 
 
@@ -77,8 +77,9 @@ public class S_GenerateurEnergetique : MonoBehaviour
             {
                 _OnTrigger = true;
 
-                if (_referenceInterface._InputManager._playerInput.currentControlScheme == "KeyboardAndMouse")
+                /*if (_referenceInterface._InputManager._playerInput.currentControlScheme == "KeyboardAndMouse")
                 {
+                    //Insert text ou Image lier a l'interaction 
 
                     int bindingIndex = ActionRef.action.GetBindingIndexForControl(ActionRef.action.controls[0]);
 
@@ -87,18 +88,13 @@ public class S_GenerateurEnergetique : MonoBehaviour
                     InputControlPath.HumanReadableStringOptions.OmitDevice
                     );
 
-                  
-                    //Insert text ou Image lier a l'interaction 
-
                 }
                 if (_referenceInterface._InputManager._playerInput.currentControlScheme == "Gamepad")
                 {
-
+                    //Insert text ou Image lier a l'interaction 
                     _TextInteraction.text = "Y";
-
-                    //Image lier a l'interaction 
-
-                }
+     
+                }*/
 
                 if (ChargeEnergetique > 0)
                     _HUD_InteractGenerateurEnable.SetActive(true);
@@ -140,6 +136,9 @@ public class S_GenerateurEnergetique : MonoBehaviour
 
     private void ReloadBattery()
     {
+
+      //Son Interaction Generateur 
+
       if ( _referenceInterface._BatteryManager._nbrBattery < ChargeEnergetique )
       {
             _referenceInterface._BatteryManager._nbrBattery = ChargeEnergetique;

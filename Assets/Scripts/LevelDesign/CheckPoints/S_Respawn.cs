@@ -31,7 +31,7 @@ public class S_Respawn : MonoBehaviour
 
 
 
-    //[SerializeField] private S_ModuleManager _moduleManager;                      //Commentaire temporaire
+    [SerializeField] private S_ModuleManager _moduleManager;                    
 
 
     private void OnTriggerEnter(Collider other)
@@ -57,8 +57,8 @@ public class S_Respawn : MonoBehaviour
         _playerContent.position = _respawnplayer.position;
         _rbplayer.velocity = new Vector3(0, 0, 0);
 
-        //_moduleManager.ResetPlatformRotation();                               //Commentaire temporaire
-
+        _moduleManager.ResetPlatformRotation();
+        
         var x = this.transform.rotation.eulerAngles.x;
         var y = this.transform.rotation.eulerAngles.y;
 
