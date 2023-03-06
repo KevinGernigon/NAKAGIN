@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(S_SceneManager))]
+/*[CustomEditor(typeof(S_SceneManager))]
 public class S_ManagerEditor : Editor
 {
     private S_SceneManager sceneManager;
@@ -31,4 +31,4 @@ public class S_ManagerEditor : Editor
 
         serializedObject.ApplyModifiedProperties();
     }
-}
+}*/
