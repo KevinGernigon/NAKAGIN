@@ -136,6 +136,9 @@ public class S_GenerateurEnergetique : MonoBehaviour
 
     private void ReloadBattery()
     {
+
+      //Son Interaction Generateur 
+
       if ( _referenceInterface._BatteryManager._nbrBattery < ChargeEnergetique )
       {
             _referenceInterface._BatteryManager._nbrBattery = ChargeEnergetique;
