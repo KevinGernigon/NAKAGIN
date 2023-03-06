@@ -13,7 +13,7 @@ public class S_ModuleManager : MonoBehaviour
     {
         for (int i = 0; i < _listPivotModules.Count; i++)
         {
-            Debug.Log(_listPivotModules[i].transform.localEulerAngles);
+            //Debug.Log(_listPivotModules[i].transform.localEulerAngles);
             _listRotationPivots.Add(_listPivotModules[i].transform.localEulerAngles);
         }
     }

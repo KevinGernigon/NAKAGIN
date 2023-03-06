@@ -14,6 +14,7 @@ public class S_PlayerSound : MonoBehaviour
     [SerializeField] private AudioSource LandingSoundManager;
     [SerializeField] private AudioSource PlatformSoundManager;
     [SerializeField] private AudioSource WallRunSoundManager;
+    [SerializeField] private AudioSource SauvetageSoundManager;
     [SerializeField] private AudioClip DeathClip;
     [SerializeField] private AudioClip DashClip;
     [SerializeField] private AudioClip ImpactHookClip;
@@ -28,6 +29,11 @@ public class S_PlayerSound : MonoBehaviour
     [SerializeField] private AudioClip JumppadClip;
     [SerializeField] private AudioClip EndPlatformMovingClip;
     [SerializeField] private AudioClip WallRunClip;
+    [SerializeField] private AudioClip AccessDeniedClip;
+    [SerializeField] private AudioClip AccessAcceptedClip;
+    [SerializeField] private AudioClip SauvetageClip;
+    [SerializeField] private AudioClip NoBatteryClip;
+    [SerializeField] private AudioClip ValidationConsoleClip;
 
 
     [Header("Bool")]
@@ -35,11 +41,14 @@ public class S_PlayerSound : MonoBehaviour
     private bool _isPlayingWalk = false;
     private bool _isPlayingPlatform = false;
     private bool _isPlayingWallRun = false;
+    private bool _isPlayingSauvetage = false;
 
     [Header("Timer")]
     private float timer = 2.56f;
     private float timerWallRun = 2.56f;
+    private float timerSauvetage = 2.56f;
     private float timerBetween = 2.56f;
+    private float timerBetweenSauvetage = 1.38f;
 
 
     int i;
@@ -102,6 +111,23 @@ public class S_PlayerSound : MonoBehaviour
             StartCoroutine(AlreadyPlayingLanding());
         }
 
+    }
+
+    public void AccessDeniedSound()
+    {
+        SoundManager.PlayOneShot(AccessDeniedClip);
+    }
+    public void AccessAcceptedSound()
+    {
+        SoundManager.PlayOneShot(AccessAcceptedClip);
+    }
+    public void NoBatterySound()
+    {
+        SoundManager.PlayOneShot(NoBatteryClip);
+    }
+    public void ValidationConsoleSound()
+    {
+        SoundManager.PlayOneShot(ValidationConsoleClip);
     }
 
     ////////////////////////
@@ -195,6 +221,29 @@ public class S_PlayerSound : MonoBehaviour
     }
 
     //////////////////////////////////////////////////////
+    /// SauvetageJetPack
+    //////////////////////////////////////////////////////
+
+    public void StartSauvetageSound()
+    {
+        SauvetageSoundManager.volume = 0.5f;
+        if (!_isPlayingSauvetage)
+        {
+            timerSauvetage += Time.deltaTime;
+            if(timerSauvetage > timerBetweenSauvetage)
+            {
+                StartCoroutine(SauvetageCoroutine());
+            }
+        }
+    }
+
+    public void EndSauvetageSound()
+    {
+        SauvetageSoundManager.Stop();
+        StartCoroutine(FadeAudioSource.StartFade(SauvetageSoundManager, 1, 0));
+    }
+
+    //////////////////////////////////////////////////////
     /// Autre
     //////////////////////////////////////////////////////
 
@@ -243,6 +292,13 @@ public class S_PlayerSound : MonoBehaviour
         WallRunSoundManager.Play();
         yield return new WaitUntil(() => WallRunSoundManager.isPlaying);
         _isPlayingWallRun = false;
+    }
+    IEnumerator SauvetageCoroutine()
+    {
+        _isPlayingSauvetage = true;
+        SauvetageSoundManager.Play();
+        yield return new WaitUntil(() => SauvetageSoundManager.isPlaying);
+        _isPlayingSauvetage = false;
     }
 
     //////////////////////////////////////////////////////
