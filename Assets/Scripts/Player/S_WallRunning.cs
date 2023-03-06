@@ -198,7 +198,6 @@ public class S_WallRunning : MonoBehaviour
             //if (Input.GetKeyDown(jumpKey))
             if (S_InputManager._playerInputAction.Player.Jump.triggered)
             {
-                Debug.Log("?");
                 WallJump();
             }
         }
