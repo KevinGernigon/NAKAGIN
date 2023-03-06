@@ -30,9 +30,12 @@ public class S_RotationPlatformes : MonoBehaviour
         PlayerSoundScript = Player.GetComponent<S_PlayerSound>();
     }
 
+
+    
+
     void Start()
     {
-
+        
     }
 
     void Update()
