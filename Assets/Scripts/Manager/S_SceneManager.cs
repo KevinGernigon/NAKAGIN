@@ -5,43 +5,21 @@ using UnityEngine.SceneManagement;
 
 public class S_SceneManager : Manager
 {
-    private enum Scene
-    {
-        Manager_Scene,
-        Assets_Scene,
-        Corentin_Scene,
-        Kiki_Scene
 
-    }
-
-    private List<string> _allScenes;
-    private int _indexCurrent;
-
-
-    private void LoadScene(Scene scene) 
-    {
-        SceneManager.LoadScene(scene.ToString());
-    }
-
+    public string sceneToStart;
 
     public void LoadMainMenu()
     {
-        SceneManager.LoadScene(Scene.Manager_Scene.ToString());
+        SceneManager.LoadScene(sceneToStart);
     }
 
 
     public void LoadGame()
     {
-        SceneManager.LoadScene(Scene.Corentin_Scene.ToString());
+        SceneManager.LoadScene(sceneToStart);
     }
 
 
-    private void LoadNextScene()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1) ;
-    }
-
-   
 }
 
 
