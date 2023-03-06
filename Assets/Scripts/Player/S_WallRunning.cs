@@ -198,6 +198,7 @@ public class S_WallRunning : MonoBehaviour
             //if (Input.GetKeyDown(jumpKey))
             if (S_InputManager._playerInputAction.Player.Jump.triggered)
             {
+                Debug.Log("?");
                 WallJump();
             }
         }
@@ -258,6 +259,7 @@ public class S_WallRunning : MonoBehaviour
 
         //forward force
         rb.AddForce(_wallForward * _wallRunForce, ForceMode.Force);
+        PlayerSoundScript.WallRunSound();
 
         //upwards/downwards force
         if (_isWallRunEnding)
@@ -287,6 +289,7 @@ public class S_WallRunning : MonoBehaviour
 
     private void StopWallRun()
     {
+        PlayerSoundScript.EndWallRunSound();
         pm._isWallRunning = false;
         ClimbScript._maxWallLookAngle = 30f;
     }

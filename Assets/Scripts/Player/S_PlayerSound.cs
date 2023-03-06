@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class S_PlayerSound : MonoBehaviour
 {
+    [Header("Reference")]
+    private S_PlayerMovement PlayerMovement;
+
     [Header("Audio")]
     [SerializeField] private AudioSource SoundManager;
     [SerializeField] private AudioSource WalkSoundManager;
     [SerializeField] private AudioSource SlideSoundManager;
     [SerializeField] private AudioSource LandingSoundManager;
     [SerializeField] private AudioSource PlatformSoundManager;
+    [SerializeField] private AudioSource WallRunSoundManager;
     [SerializeField] private AudioClip DeathClip;
     [SerializeField] private AudioClip DashClip;
     [SerializeField] private AudioClip ImpactHookClip;
@@ -23,19 +27,31 @@ public class S_PlayerSound : MonoBehaviour
     [SerializeField] private AudioClip DestructionClip;
     [SerializeField] private AudioClip JumppadClip;
     [SerializeField] private AudioClip EndPlatformMovingClip;
+    [SerializeField] private AudioClip WallRunClip;
 
 
     [Header("Bool")]
     private bool _isPlayingLanding = false;
     private bool _isPlayingWalk = false;
     private bool _isPlayingPlatform = false;
+    private bool _isPlayingWallRun = false;
 
     [Header("Timer")]
     private float timer = 2.56f;
+    private float timerWallRun = 2.56f;
     private float timerBetween = 2.56f;
 
 
     int i;
+
+    private void Start()
+    {
+        PlayerMovement = GetComponent<S_PlayerMovement>();
+    }
+
+    ////////////////////
+    /// Sound Effect ///
+    ////////////////////
     public void DeathSound()
     {
         SoundManager.PlayOneShot(DeathClip);
@@ -67,16 +83,38 @@ public class S_PlayerSound : MonoBehaviour
     {
         SoundManager.PlayOneShot(JumpClip);
     }
-    public void SlideSound()
+
+    public void DestructionSound()
     {
-        SlideSoundManager.volume = 0.2f;
-        SlideSoundManager.PlayOneShot(SlideClip);
-        StartCoroutine(FadeAudioSource.StartFade(SlideSoundManager, 1, 0));
+        SoundManager.PlayOneShot(DestructionClip);
     }
 
-    public void WalkSound()
+    public void JumppadSound()
+    {
+        SoundManager.PlayOneShot(JumppadClip);
+    }
+
+    public void LandingSound()
     {
 
+        if (_isPlayingLanding == false)
+        {
+            StartCoroutine(AlreadyPlayingLanding());
+        }
+
+    }
+
+    ////////////////////////
+    /// End Sound Effect ///
+    ////////////////////////
+
+
+
+    //////////////////////////////////////////////////////
+    /// Walk
+    //////////////////////////////////////////////////////
+    public void WalkSound()
+    {
         if (_isPlayingLanding == false)
         {
             timer += Time.deltaTime;
@@ -88,32 +126,47 @@ public class S_PlayerSound : MonoBehaviour
             }
         }
     }
-    public void LandingSound()
+    public void EndSoundWalk()
     {
-
-        if (_isPlayingLanding == false)
+        WalkSoundManager.Stop();
+        timer = 2.56f;
+    }
+    //////////////////////////////////////////////////////
+    /// WallRun
+    /////////////////////////////////////////////////////////
+    public void WallRunSound()
+    {
+        WallRunSoundManager.volume = 0.2f;
+        if (PlayerMovement._isWallRunning)
         {
-            StartCoroutine(AlreadyPlayingLanding());
+            timerWallRun += Time.deltaTime;
+            if (timerWallRun > timerBetween)
+            {
+                //WalkSoundManager.PlayOneShot(WalkClip);
+                StartCoroutine(WaitingWallRun());
+                timerWallRun = 0;
+            }
         }
-
     }
-    public void DestructionSound()
+    public void EndWallRunSound()
     {
-        SoundManager.PlayOneShot(DestructionClip);
+        WallRunSoundManager.Stop();
+        StartCoroutine(FadeAudioSource.StartFade(WallRunSoundManager, 1, 0));
+        timerWallRun = 2.56f;
     }
+    //////////////////////////////////////////////////////
+
+
+    //////////////////////////////////////////////////////
+    /// Platform
+    //////////////////////////////////////////////////////
     
-    public void JumppadSound()
-    {
-        SoundManager.PlayOneShot(JumppadClip);
-    }
-
     public void PlatformMovingSound()
     {
         if (_isPlayingPlatform == false)
         {
             StartCoroutine(AlreadyPlayingMovingPlatform());
         }
-        
     }
 
     public void EndPlatformMovingSound()
@@ -125,15 +178,26 @@ public class S_PlayerSound : MonoBehaviour
 
         SoundManager.PlayOneShot(EndPlatformMovingClip);
     }
-    public void EndSoundWalk()
+
+    //////////////////////////////////////////////////////
+    /// Slide
+    //////////////////////////////////////////////////////
+
+    public void SlideSound()
     {
-        WalkSoundManager.Stop();
-        timer = 2.56f;
+        SlideSoundManager.volume = 0.2f;
+        SlideSoundManager.PlayOneShot(SlideClip);
+        StartCoroutine(FadeAudioSource.StartFade(SlideSoundManager, 1, 0));
     }
     public void EndSoundSlide()
     {
         SlideSoundManager.Stop();
     }
+
+    //////////////////////////////////////////////////////
+    /// Autre
+    //////////////////////////////////////////////////////
+
     public static class FadeAudioSource
     {
         public static IEnumerator StartFade(AudioSource audioSource, float duration, float targetVolume)
@@ -172,4 +236,14 @@ public class S_PlayerSound : MonoBehaviour
         yield return new WaitUntil(() => PlatformSoundManager.isPlaying);
         _isPlayingPlatform = false;
     }
+
+    IEnumerator WaitingWallRun()
+    {
+        _isPlayingWallRun = true;
+        WallRunSoundManager.Play();
+        yield return new WaitUntil(() => WallRunSoundManager.isPlaying);
+        _isPlayingWallRun = false;
+    }
+
+    //////////////////////////////////////////////////////
 }
