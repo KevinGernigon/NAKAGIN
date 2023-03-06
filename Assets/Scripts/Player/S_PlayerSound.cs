@@ -243,6 +243,27 @@ public class S_PlayerSound : MonoBehaviour
         StartCoroutine(FadeAudioSource.StartFade(SauvetageSoundManager, 1, 0));
     }
 
+    public void PauseSound()
+    {
+        SoundManager.Pause();
+        LandingSoundManager.Pause();
+        SauvetageSoundManager.Pause();
+        PlatformSoundManager.Pause();
+        SlideSoundManager.Pause();
+        WalkSoundManager.Pause();
+        WallRunSoundManager.Pause();
+    }
+
+    public void UnPauseSound()
+    {
+        SoundManager.UnPause();
+        LandingSoundManager.UnPause();
+        SauvetageSoundManager.UnPause();
+        PlatformSoundManager.UnPause();
+        SlideSoundManager.UnPause();
+        WalkSoundManager.UnPause();
+        WallRunSoundManager.UnPause();
+    }
     //////////////////////////////////////////////////////
     /// Autre
     //////////////////////////////////////////////////////

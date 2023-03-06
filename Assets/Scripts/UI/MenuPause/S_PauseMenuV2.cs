@@ -8,8 +8,10 @@ public class S_PauseMenuV2 : MonoBehaviour
     [Header("InputManager")]
     [SerializeField] private S_InputManager S_InputManager;
 
-    [Header("Other")]
+    [Header("Audio")]
+    [SerializeField] private S_PlayerSound PlayerSound;
 
+    [Header("Other")]
     [SerializeField] private GameObject _pauseMenuHUD;
     [SerializeField] private GameObject _startGameHUD;
 
@@ -39,7 +41,6 @@ public class S_PauseMenuV2 : MonoBehaviour
 
     void Start()
     {
-
         _pauseMenuHUD.SetActive(false);
         ResetPauseHUD();
 
@@ -63,8 +64,7 @@ public class S_PauseMenuV2 : MonoBehaviour
             if (!S_InputManager._playerEnable)
             {   
                 _isSetting = false;
-                ResumeGame();
-               
+                ResumeGame();    
             }
 
         }
@@ -106,7 +106,9 @@ public class S_PauseMenuV2 : MonoBehaviour
     public void PauseGame()
     {
         S_InputManager.ActivePause();
-        
+
+        PlayerSound.PauseSound();
+
         if (S_InputManager._playerInput.currentControlScheme == "Gamepad")
         {
             EventSystem.current.SetSelectedGameObject(null);
@@ -134,6 +136,7 @@ public class S_PauseMenuV2 : MonoBehaviour
     {
         if (!_ischoose)
         {
+            PlayerSound.UnPauseSound();
             StartCoroutine(waitcastchoose());
 
             S_InputManager.DesactivePause();
