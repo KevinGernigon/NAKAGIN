@@ -7426,9 +7426,9 @@ MonoBehaviour:
   _isResettingVel: 1
   _dashCd: 1.5
   _dashCdTimer: 0
-  _dashGain: 0
+  _dashGain: 3
   _dashGainTimer: 0
-  AxelIsHere: 0
+  AxelIsHere: 1
 --- !u!114 &3956388861518991234
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7853,7 +7853,7 @@ MonoBehaviour:
   _camTiltTime: 1
   _wallSlideFovTime: 1
   _wallSlideFov: 100
-  _grapplingHookFov: 130
+  _grapplingHookFov: 110
   _grapplingHookFovTime: 1
   _dashFov: 100
   _dashFovTime: 1
