@@ -170,9 +170,11 @@ public class S_PauseMenuV2 : MonoBehaviour
             Scene _scene = SceneManager.GetActiveScene();
 
             SceneManager.LoadScene("Manager_Scene");
+
             SceneManager.LoadScene(_scene.name);
 
-            
+            if(_scene.name == "Tom_Scene")
+                SceneManager.LoadScene("Asset_Scene", LoadSceneMode.Additive);
         }
     }
     private void ResetPlayer()

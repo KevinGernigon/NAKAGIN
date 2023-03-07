@@ -245,25 +245,16 @@ public class S_PlayerSound : MonoBehaviour
 
     public void PauseSound()
     {
-        SoundManager.Pause();
-        LandingSoundManager.Pause();
-        SauvetageSoundManager.Pause();
-        PlatformSoundManager.Pause();
-        SlideSoundManager.Pause();
-        WalkSoundManager.Pause();
-        WallRunSoundManager.Pause();
+        AudioListener.pause = true;
+      
     }
 
     public void UnPauseSound()
     {
-        SoundManager.UnPause();
-        LandingSoundManager.UnPause();
-        SauvetageSoundManager.UnPause();
-        PlatformSoundManager.UnPause();
-        SlideSoundManager.UnPause();
-        WalkSoundManager.UnPause();
-        WallRunSoundManager.UnPause();
+        AudioListener.pause = false;
+      
     }
+
     //////////////////////////////////////////////////////
     /// Autre
     //////////////////////////////////////////////////////

@@ -2,8 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
-
-/*[CustomEditor(typeof(S_SceneManager))]
+/*
+[CustomEditor(typeof(S_SceneManager))]
 public class S_ManagerEditor : Editor
 {
     private S_SceneManager sceneManager;
@@ -19,16 +19,18 @@ public class S_ManagerEditor : Editor
     }
 
 
-    public DisplayCategory categoryToDisplay;
+    [SerializeField] public DisplayCategory categoryToDisplay;
 
     public override void OnInspectorGUI()
     {
 
         categoryToDisplay = (DisplayCategory)EditorGUILayout.EnumPopup("Scene à lancer", categoryToDisplay);
+
         sceneManager.sceneToStart = categoryToDisplay.ToString();
 
         EditorGUILayout.Space();
-
+        
+        EditorUtility.SetDirty(sceneManager);
         serializedObject.ApplyModifiedProperties();
     }
 }*/
