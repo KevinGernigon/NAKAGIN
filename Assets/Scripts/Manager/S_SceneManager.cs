@@ -10,8 +10,8 @@ public class S_SceneManager : Manager
         Manager_Scene,
         Assets_Scene,
         Corentin_Scene,
-        Kiki_Scene
-
+        Kiki_Scene,
+        Kevin_Scene
     }
 
     private List<string> _allScenes;
@@ -32,7 +32,7 @@ public class S_SceneManager : Manager
 
     public void LoadGame()
     {
-        SceneManager.LoadScene(Scene.Corentin_Scene.ToString());
+        SceneManager.LoadScene(Scene.Kevin_Scene.ToString());
     }
 
 

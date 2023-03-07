@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class S_SpeedLines : MonoBehaviour
+public class S_SpeedLinesOLD : MonoBehaviour
 {
     [SerializeField]
     private GameObject _player;
