@@ -5,6 +5,7 @@ float4 _CameraColorTexture_TexelSize;
 TEXTURE2D(_CameraDepthTexture2);
 SAMPLER(sampler_CameraDepthTexture2);
 
+
 TEXTURE2D(_CameraDepthNormalsTexture);
 SAMPLER(sampler_CameraDepthNormalsTexture);
  
@@ -19,8 +20,11 @@ float3 DecodeNormal(float4 enc)
     return n;
 }
 
+
 void Outline_float(float2 UV, float OutlineThickness, float DepthSensitivity, float NormalsSensitivity, float ColorSensitivity, float4 OutlineColor, out float4 Out)
 {
+
+    
     float halfScaleFloor = floor(OutlineThickness * 0.5);
     float halfScaleCeil = ceil(OutlineThickness * 0.5);
     float2 Texel = (1.0) / float2(_CameraColorTexture_TexelSize.z, _CameraColorTexture_TexelSize.w);
@@ -37,7 +41,7 @@ void Outline_float(float2 UV, float OutlineThickness, float DepthSensitivity, fl
 
     for (int i = 0; i < 4; i++)
     {
-        depthSamples[i] = SAMPLE_TEXTURE2D(_CameraDepthTexture, sampler_CameraDepthTexture, uvSamples[i]).r;
+        depthSamples[i] = SAMPLE_TEXTURE2D(_CameraDepthTexture2, sampler_CameraDepthTexture2, uvSamples[i]).r;
         normalSamples[i] = DecodeNormal(SAMPLE_TEXTURE2D(_CameraDepthNormalsTexture, sampler_CameraDepthNormalsTexture, uvSamples[i]));
         colorSamples[i] = SAMPLE_TEXTURE2D(_CameraColorTexture, sampler_CameraColorTexture, uvSamples[i]);
     }
