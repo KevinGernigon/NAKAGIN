@@ -4,8 +4,10 @@ using UnityEngine;
 
 public class S_Sliding : MonoBehaviour
 {
-    [Header("References")]
+    [Header("InputManager")]
+    [SerializeField] private S_InputManager S_InputManager;
 
+    [Header("References")]
     [SerializeField]
     private Transform _orientation;
     [SerializeField]
@@ -14,15 +16,15 @@ public class S_Sliding : MonoBehaviour
     private Rigidbody rb;
     private S_PlayerMovement _pm;
 
+    [Header("Audio")]
+    private S_PlayerSound PlayerSoundScript;
+
     [Header("Sliding")]
     [SerializeField] private float _maxSlideTime;
     [SerializeField] private float _SlideValue;
-
     [SerializeField] public float _slideForce;
-    private float _slideTimer;
-
     [SerializeField] private float _slideYScale;
-
+    private float _slideTimer;
     private float _startYScale;
 
     [Header("Input")]
@@ -41,35 +43,42 @@ public class S_Sliding : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         _pm = GetComponent<S_PlayerMovement>();
-
+        PlayerSoundScript = GetComponent<S_PlayerSound>();
         _startYScale = _playerObj.localScale.y;
         _slidingCdTimer = _slidingCdMax;
     }
 
     private void Update()
     {
-        if (Input.GetKeyDown(_slideKey))
-        {
+
+        //if (Input.GetKeyDown(_slideKey))
+        if (S_InputManager._playerInputAction.Player.Slide.triggered)
+        { 
             _isTrue = true;
         }
-        else if (Input.GetKeyUp(_slideKey))
-        {
+        //else if (Input.GetKeyUp(_slideKey))
+        else if (S_InputManager._playerInputAction.Player.Slide.ReadValue<float>() == 0)
+        { 
             _isTrue = false;
         }
 
-        if (Input.GetKeyDown(_slideKey) && (_horizontalInput != 0 || _verticalInput != 0))
+        //if (Input.GetKeyDown(_slideKey) && (_horizontalInput != 0 || _verticalInput != 0))
+        if (S_InputManager._playerInputAction.Player.Slide.triggered && (_horizontalInput != 0 || _verticalInput != 0))
         {
             StartSlide();
         }
 
-        if (Input.GetKeyDown(_slideKey) && (_horizontalInput != 0 || _verticalInput != 0) && !_pm._isGrounded)
+        //if (Input.GetKeyDown(_slideKey) && (_horizontalInput != 0 || _verticalInput != 0) && !_pm._isGrounded)
+        if (S_InputManager._playerInputAction.Player.Slide.triggered && (_horizontalInput != 0 || _verticalInput != 0) && !_pm._isGrounded)
         {
             StartCoroutine(waitForGround());
         }
+
         if (!_isTrue)
             StopAllCoroutines();
 
-        if (Input.GetKeyUp(_slideKey) && _pm._isSliding)
+        //if (Input.GetKeyUp(_slideKey) && _pm._isSliding)
+        if ((S_InputManager._playerInputAction.Player.Slide.ReadValue<float>() == 0) && _pm._isSliding)
         {
             StopSlide();
             _pm._ReachUpgradeBool = false;
@@ -81,8 +90,12 @@ public class S_Sliding : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _horizontalInput = Input.GetAxisRaw("Horizontal");
-        _verticalInput = Input.GetAxisRaw("Vertical");
+        _horizontalInput = S_InputManager._mouvementInput.x;
+        _verticalInput = S_InputManager._mouvementInput.y;
+
+        //_horizontalInput = Input.GetAxisRaw("Horizontal");
+        //_verticalInput = Input.GetAxisRaw("Vertical");
+
 
         if (_pm._isSliding)
         {
@@ -96,6 +109,7 @@ public class S_Sliding : MonoBehaviour
 
         if (_pm._isGrounded == true)
         {
+            PlayerSoundScript.SlideSound();
             _pm._isSliding = true;
             _playerObj.localScale = new Vector3(_playerObj.localScale.x, _slideYScale, _playerObj.localScale.z);
             rb.AddForce(Vector3.down * _SlideValue, ForceMode.Impulse);
@@ -135,6 +149,7 @@ public class S_Sliding : MonoBehaviour
 
     private void StopSlide()
     {
+        PlayerSoundScript.EndSoundSlide();
         _pm._isSliding = false;
         _slidingCdTimer = _slidingCdMax;
         _playerObj.localScale = new Vector3(_playerObj.localScale.x, _startYScale, _playerObj.localScale.z);

@@ -6,9 +6,12 @@ using TMPro;
 
 public class S_InfoScore : MonoBehaviour
 {
+
+    private S_ReferenceInterface _referenceInterface;
+
     [SerializeField]private S_Timer ScriptTimer;
 
-    [SerializeField] private Transform _player;
+    private Transform _playerContent;
     [SerializeField] private Transform _respawnplayer;
 
 
@@ -30,7 +33,11 @@ public class S_InfoScore : MonoBehaviour
     private float _bestTimeminutes, _bestTimeseconds, _bestTimemilliseconds;
 
 
-
+    private void Awake()
+    {
+        _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
+        _playerContent = _referenceInterface._playerTransform;
+    }
 
     private void Start()
     {
@@ -154,7 +161,7 @@ public class S_InfoScore : MonoBehaviour
 
                 ScriptTimer.TimerReset();
 
-                _player.transform.position = _respawnplayer.transform.position;
+                _playerContent.transform.position = _respawnplayer.transform.position;
                 Physics.SyncTransforms();
 
                 //Concequence de défaite

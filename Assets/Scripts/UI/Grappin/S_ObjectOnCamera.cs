@@ -5,11 +5,17 @@ using UnityEngine.UI;
 
 public class S_ObjectOnCamera : MonoBehaviour
 {
+
+    private S_ReferenceInterface _referenceInterface;
+
     [SerializeField] private Collider _triggerUI;
     [SerializeField] private Collider _collider;
-    [SerializeField] private GameObject _player;
     [SerializeField] private GameObject _HUDGrappin;
-    [SerializeField] private Canvas _canvasUI;
+
+    private GameObject _playerContent;
+    private GameObject _canvasUIGameObject;
+    private Canvas _canvasUI;
+
     [SerializeField] public Transform lookat;
 
     Plane[] cameraFrustum;
@@ -19,6 +25,16 @@ public class S_ObjectOnCamera : MonoBehaviour
     private bool _createdUI;
     private float _timeoffset = 0;
     private bool _inRange;
+
+
+    private void Awake()
+    {
+        _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
+        _playerContent = _referenceInterface._playerGameObject;
+        _canvasUIGameObject = _referenceInterface._UICanvas;
+        _canvasUI = _canvasUIGameObject.GetComponent<Canvas>();
+    }
+
 
     void Start()
     {
@@ -56,7 +72,7 @@ public class S_ObjectOnCamera : MonoBehaviour
 
     void CheckWalls()
     {
-        var ray = new Ray(_player.transform.position, _collider.transform.position);
+        var ray = new Ray(_playerContent.transform.position, _collider.transform.position);
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit))
         {

@@ -4,11 +4,17 @@ using UnityEngine;
 
 public class S_Climbing : MonoBehaviour
 {
+    [Header("InputManager")]
+    [SerializeField] private S_InputManager S_InputManager;
+    
+
     [Header("References")]
     [SerializeField] private Transform _orientation;
     [SerializeField] private Rigidbody rb;
+    [SerializeField] private S_Dash ScriptDash;
     public S_PlayerMovement pm;
     [SerializeField] private LayerMask _whatIsWall;
+
 
     [Header("Climbing")]
     [SerializeField] private float _climbSpeed;
@@ -16,10 +22,14 @@ public class S_Climbing : MonoBehaviour
     private float _climbTimer;
     private bool _isClimbing;
 
-    [Header("ClimbJumping")]
+    /*[Header("ClimbJumping")]
     [SerializeField] private float _climbJumpUpForce;
-    [SerializeField] private float _climbJumpBackForce;
-    public KeyCode jumpKey = KeyCode.Space;
+    [SerializeField] private float _climbJumpBackForce;*/
+
+
+    //public KeyCode jumpKey = KeyCode.Space;
+
+
     [SerializeField] private int _climbJumps;
     [SerializeField] private int _climbJumpsLeft;
     [SerializeField] private int _counterClimbPropulsion;
@@ -31,7 +41,7 @@ public class S_Climbing : MonoBehaviour
     public float _wallLookAngle;
 
     private RaycastHit _frontWallHit;
-    private bool _isWallFront;
+    public bool _isWallFront;
 
     private Transform _lastWall;
     private Vector3 _lastWallNormal;
@@ -66,7 +76,9 @@ public class S_Climbing : MonoBehaviour
     {
         //State 1 - Climbing
         //if (_isWallFront && Input.GetKey(KeyCode.Z) && _wallLookAngle < _maxWallLookAngle)
-        if ((Input.GetButton("Vertical") || Input.GetButton("Jump")) && (_isWallFront  && _wallLookAngle < _maxWallLookAngle))     
+
+        //if ((Input.GetButton("Vertical") || Input.GetButton("Jump")) && (_isWallFront  && _wallLookAngle < _maxWallLookAngle))  
+        if ((S_InputManager._mouvementInput.y > 0 || S_InputManager._jumpInput) && (_isWallFront  && _wallLookAngle < _maxWallLookAngle))   
         {
             if (!_isClimbing && _climbTimer > 0)
             {
@@ -100,7 +112,6 @@ public class S_Climbing : MonoBehaviour
             if (_isClimbing)
             {
                 StopClimbingByReachPoint();
-
             }
         }
 
@@ -166,9 +177,11 @@ public class S_Climbing : MonoBehaviour
 
     IEnumerator counterJumpAdjustment()
     {
-        yield return new WaitForSeconds(0.05f);
-        rb.AddForce(Vector3.down * _counterClimbPropulsion, ForceMode.Impulse);
+        //yield return new WaitForSeconds(0.1f);
+        yield return new WaitUntil(() => !_isWallFront);
+        rb.AddForce(Vector3.down * _counterClimbPropulsion, ForceMode.Impulse);   
     }
+
     IEnumerator EndClimbingAnimation()
     {
         yield return new WaitForSeconds(_AnimationClimbTime);

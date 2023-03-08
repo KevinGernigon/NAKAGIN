@@ -7,18 +7,37 @@ public class S_JumpPadV2 : MonoBehaviour
     [Range(0, 10000)] public float _BounceHight;
     [Range(0, 10000)] public float _BounceFront;
 
-    [SerializeField] private Transform _orientationPlayer;
-    [SerializeField] private GameObject _PlayerContent;
-    [SerializeField] private S_PlayerMovement pm;
-    
+    private S_PlayerMovement _pm;
+    private S_ReferenceInterface _referenceInterface;
+    private S_PlayerSound PlayerSoundScript;
+
+    private Transform _orientationPlayer = null;
+    private GameObject _playerContent = null;
+
+
+
+
+
+    private void Awake()
+    {
+
+        _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
+        _playerContent = _referenceInterface._playerGameObject;
+        _orientationPlayer = _referenceInterface._orientationTransform;
+        _pm = _playerContent.GetComponent<S_PlayerMovement>();
+        PlayerSoundScript = _playerContent.GetComponent<S_PlayerSound>();
+    }
+
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject == _PlayerContent)
+        if (collision.gameObject == _playerContent)
         {
+            PlayerSoundScript.JumppadSound();
             GameObject _bouncer = collision.gameObject;
             Rigidbody _rb = _bouncer.GetComponent<Rigidbody>();
 
-            if (pm._isSliding || pm._isDashing)
+            if (_pm._isSliding || _pm._isDashing)
             {
                 _rb.AddForce(Vector3.up * _BounceHight * 0.7f);
                 _rb.AddForce(_orientationPlayer.forward * _BounceFront * 0.7f);

@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ground
+  - Destructible
+  - Pivot
   layers:
   - Default
   - TransparentFX
@@ -14,12 +16,12 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - WhatIsTarget
   - WhatIsPlayer
   - WhatIsGround
   - WhatIsWall
-  - WhatIsTarget
-  - 
+  - WhatIsInteractable
+  - WhatIsDestructible
   - 
   - 
   - 

@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class S_WallRunning : MonoBehaviour
 {
+    [Header("InputManager")]
+    [SerializeField] private S_InputManager S_InputManager;
+
+    [Header("Audio")]
+    private S_PlayerSound PlayerSoundScript;
+
     [Header("WallRunning")]
     public LayerMask _whatIsWall;
     public LayerMask _whatIsGround;
@@ -19,11 +25,13 @@ public class S_WallRunning : MonoBehaviour
 
 
     [Header("Input")]
-    public KeyCode jumpKey = KeyCode.Space;
-    public KeyCode _upwardsRunKey = KeyCode.LeftShift;
+    //public KeyCode jumpKey = KeyCode.Space;
+
+    /*public KeyCode _upwardsRunKey = KeyCode.LeftShift;
     public KeyCode _downwardsRunKey = KeyCode.LeftControl;
     private bool _isUpwardsRunning;
-    private bool _isDownwardsRunning;
+    private bool _isDownwardsRunning;*/
+
     private float _horizontalInput;
     private float _verticalInput;
 
@@ -65,6 +73,7 @@ public class S_WallRunning : MonoBehaviour
     {
         rb = GetComponent<Rigidbody>();
         pm = GetComponent<S_PlayerMovement>();
+        PlayerSoundScript = GetComponent<S_PlayerSound>();
         _wallRunTimeClimb = _wallRunTimeClimbRef;
     }
 
@@ -72,16 +81,16 @@ public class S_WallRunning : MonoBehaviour
     {
         CheckForWall();
         StateMachine();
-        if(pm._isWallRunning)
-        _wallRunTimeClimb -= Time.deltaTime;
+        if (pm._isWallRunning)
+            _wallRunTimeClimb -= Time.deltaTime;
 
-        if(_wallRunTimeClimb <= 0)
+        if (_wallRunTimeClimb <= 0)
         {
             _isWallRunEnding = true;
             WallRunningMovement();
         }
 
-        if(_isExitingWall)
+        if (_isExitingWall)
             _wallRunTimeClimb = _wallRunTimeClimbRef;
     }
 
@@ -124,17 +133,20 @@ public class S_WallRunning : MonoBehaviour
         //add reset _lastWall
     }
 
-        private bool NewWallHit()
+    private bool NewWallHit()
     {
-        if (_lastWall == null) { 
+        if (_lastWall == null)
+        {
             return true;
         }
 
-        if (_isWallLeft && _leftWallHit.transform != _lastWall) { 
+        if (_isWallLeft && _leftWallHit.transform != _lastWall)
+        {
             return true;
         }
 
-        else if (_isWallRight && _rightWallHit.transform != _lastWall){
+        else if (_isWallRight && _rightWallHit.transform != _lastWall)
+        {
             return true;
         }
 
@@ -151,11 +163,15 @@ public class S_WallRunning : MonoBehaviour
     private void StateMachine()
     {
         // Getting inputs
-        _horizontalInput = Input.GetAxisRaw("Horizontal");
-        _verticalInput = Input.GetAxisRaw("Vertical");
+        _horizontalInput = S_InputManager._mouvementInput.x;
+        _verticalInput = S_InputManager._mouvementInput.y;
 
-        _isUpwardsRunning = Input.GetKey(_upwardsRunKey);
-        _isDownwardsRunning = Input.GetKey(_downwardsRunKey);
+        //_horizontalInput = Input.GetAxisRaw("Horizontal");
+        //_verticalInput = Input.GetAxisRaw("Vertical");
+
+        /*_isUpwardsRunning = Input.GetKey(_upwardsRunKey);
+        _isDownwardsRunning = Input.GetKey(_downwardsRunKey);*/
+
         //State 1 - WallRunning
         if ((_isWallLeft || _isWallRight) && _verticalInput > 0 && AboveGround() && !_isExitingWall)
         {
@@ -163,21 +179,24 @@ public class S_WallRunning : MonoBehaviour
             if (!pm._isWallRunning && !pm._isGrounded)
             {
                 StartWallRun();
-               
+
             }
 
-            if(_wallRunTimer > 0)
+            if (_wallRunTimer > 0)
             {
                 _wallRunTimer -= Time.deltaTime;
             }
 
-            if(_wallRunTimer <= 0 && pm._isWallRunning)
+            if (_wallRunTimer <= 0 && pm._isWallRunning)
             {
                 _isExitingWall = true;
                 _exitWallTimer = _exitWallTime;
             }
+
+
             // walljump
-            if (Input.GetKeyDown(jumpKey))
+            //if (Input.GetKeyDown(jumpKey))
+            if (S_InputManager._playerInputAction.Player.Jump.triggered)
             {
                 WallJump();
             }
@@ -190,12 +209,12 @@ public class S_WallRunning : MonoBehaviour
                 StopWallRun();
 
             }
-            if(_exitWallTimer > 0)
+            if (_exitWallTimer > 0)
             {
                 _exitWallTimer -= Time.deltaTime;
             }
 
-            if(_exitWallTimer <= 0)
+            if (_exitWallTimer <= 0)
             {
                 _isExitingWall = false;
             }
@@ -232,13 +251,14 @@ public class S_WallRunning : MonoBehaviour
         Vector3 _wallNormal = _isWallRight ? _rightWallHit.normal : _leftWallHit.normal;
         Vector3 _wallForward = Vector3.Cross(_wallNormal, transform.up);
 
-        if((_orientation.forward - _wallForward).magnitude > (_orientation.forward - -_wallForward).magnitude)
+        if ((_orientation.forward - _wallForward).magnitude > (_orientation.forward - -_wallForward).magnitude)
         {
             _wallForward = -_wallForward;
         }
 
         //forward force
         rb.AddForce(_wallForward * _wallRunForce, ForceMode.Force);
+        PlayerSoundScript.WallRunSound();
 
         //upwards/downwards force
         if (_isWallRunEnding)
@@ -268,10 +288,11 @@ public class S_WallRunning : MonoBehaviour
 
     private void StopWallRun()
     {
+        PlayerSoundScript.EndWallRunSound();
         pm._isWallRunning = false;
         ClimbScript._maxWallLookAngle = 30f;
     }
-    
+
     //Reset _lastWall
     private void OnCollisionEnter(Collision other)
     {
@@ -285,6 +306,8 @@ public class S_WallRunning : MonoBehaviour
 
     private void WallJump()
     {
+        PlayerSoundScript.JumpSound();
+
         bool firstJump = true;
         //enter exiting wall state
 
@@ -306,7 +329,7 @@ public class S_WallRunning : MonoBehaviour
         rb.AddForce(forceToApply, ForceMode.Impulse);
 
         RememberLastWall();
-        
+
         StopWallRun();
     }
 }
