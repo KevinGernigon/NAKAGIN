@@ -4029,13 +4029,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1225684087}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -473.10242, y: -2103.0156, z: -1204.7329}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_Father: {fileID: 2022550259}
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1225684090
 MonoBehaviour:
@@ -4051,6 +4051,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _playerRb: {fileID: 3956388861518991356}
   _shaderMat: {fileID: 2100000, guid: 3a0629a8271adf4458b97f3d8d2e11d2, type: 2}
+  _playerMovement: {fileID: 3956388861518991357}
+  S_InputManager: {fileID: 6554351822182483883}
 --- !u!1 &1292550626
 GameObject:
   m_ObjectHideFlags: 0
@@ -6898,6 +6900,7 @@ Transform:
   - {fileID: 1292550627}
   - {fileID: 1946968576}
   - {fileID: 481704671}
+  - {fileID: 1225684089}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7118,7 +7121,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: e26ed89335d331b4d940d170e7aae7b4, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_Volume: 0.1
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -11825,9 +11828,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1333326105193434243}
   m_Direction: 0
   m_MinValue: 1
-  m_MaxValue: 50
+  m_MaxValue: 1000
   m_WholeNumbers: 0
-  m_Value: 15
+  m_Value: 500
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -17225,6 +17228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1634caa98270f842944e56e71208175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sceneToStart: Corentin_Scene
 --- !u!1 &7777727511360918156
 GameObject:
   m_ObjectHideFlags: 0
