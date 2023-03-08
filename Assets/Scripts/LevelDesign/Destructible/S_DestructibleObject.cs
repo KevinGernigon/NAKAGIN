@@ -9,6 +9,7 @@ public class S_DestructibleObject : MonoBehaviour
     private GameObject Player;
     private S_ReferenceInterface ReferenceInterface;
     private S_PlayerMovement PlayerMovement;
+    private S_PlayerSound PlayerSoundScript;
     private GameObject Camera;
 
     private void Awake()
@@ -17,6 +18,7 @@ public class S_DestructibleObject : MonoBehaviour
         Player = ReferenceInterface._playerGameObject;
         PlayerMovement = Player.GetComponent<S_PlayerMovement>();
         Camera = ReferenceInterface._CameraGameObject;
+        PlayerSoundScript = Player.GetComponent<S_PlayerSound>();
 
     }
 
@@ -27,12 +29,12 @@ public class S_DestructibleObject : MonoBehaviour
         ResetWall();
 
         RaycastHit hit;
-        if(Physics.Raycast(Camera.transform.position, Camera.transform.forward, out hit, 3f, 1 << LayerMask.NameToLayer("WhatIsDestructible")) && PlayerMovement._isDashing)
+        if(Physics.Raycast(Camera.transform.position, Camera.transform.forward, out hit, 1.5f, 1 << LayerMask.NameToLayer("WhatIsDestructible")) && PlayerMovement._isDashing)
         {
             //Destroy(hit.collider.gameObject);
             hit.collider.GetComponent<Renderer>().enabled = false;
             hit.collider.GetComponent<BoxCollider>().enabled = false;
-            
+            PlayerSoundScript.DestructionSound();
         }
     }
 

@@ -25,6 +25,9 @@ public class S_Jetpack : MonoBehaviour
     [Header("Audio")]
     private S_PlayerSound PlayerSoundScript;
 
+    [Header("HUD")]
+    [SerializeField]  private GameObject _HUDJetpackWarning;
+
 
     [Header("Time Value")]
     [SerializeField] private float _timerCd;
@@ -34,6 +37,7 @@ public class S_Jetpack : MonoBehaviour
 
     private bool _isTriggerBoxTrue;
     private bool _isMaxForce;
+    private bool _isSoundActive;
     
     [SerializeField] private bool _isJetpackAvaible;
     void Start()
@@ -58,8 +62,6 @@ public class S_Jetpack : MonoBehaviour
                 JetpackFunction();
             }
         }
-            
-        
     }
     private void FixedUpdate()
     {
@@ -88,21 +90,27 @@ public class S_Jetpack : MonoBehaviour
     }
     public void JetpackFunction()
     {
-        PlayerSoundScript.JetpackSound();
+        if (ScriptBatteryManager._nbrBattery <= 0 && _isJetpackAvaible && !_isSoundActive)
+        {
+            PlayerSoundScript.NoBatterySound();
+            StartCoroutine(EndSoundCoroutine());
+        }
 
         if (_isTriggerBoxTrue && ScriptBatteryManager._nbrBattery >= 1)
         {
-                ScriptBatteryManager.UseOneBattery();
-                JetPackUsage();
+            PlayerSoundScript.JetpackSound();
+            ScriptBatteryManager.UseOneBattery();
+            JetPackUsage();
         }
 
 
         if (!_isTriggerBoxTrue && !_isMaxForce && ScriptBatteryManager._nbrBattery >= 1)
-            {
-                    ScriptBatteryManager.UseOneBattery();
-                    JetPackUsage();
+        {
+            PlayerSoundScript.JetpackSound();
+            ScriptBatteryManager.UseOneBattery();
+            JetPackUsage();
 
-            }
+        }
 
         if (_isGravityDisable)
              _rb.useGravity = false;
@@ -163,9 +171,16 @@ public class S_Jetpack : MonoBehaviour
     {
         _isTriggerBoxTrue = true;
 
-           /* if (Input.GetButtonDown("Jetpack"))
-                JetpackFunction();*/
-        if (S_InputManager._playerInputAction.Player.Jetpack.triggered)
+        if (ScriptBatteryManager._nbrBattery >= 1)
+        {
+            _HUDJetpackWarning.SetActive(true);
+            PlayerSoundScript.StartSauvetageSound();
+
+        }
+
+            /* if (Input.GetButtonDown("Jetpack"))
+                 JetpackFunction();*/
+            if (S_InputManager._playerInputAction.Player.Jetpack.triggered)
         {
             if (S_InputManager._jetpackActive)
             { 
@@ -174,10 +189,14 @@ public class S_Jetpack : MonoBehaviour
         }
             
     }
-
+   
     public void BooleanTriggerBoxExit()
     {
         _isTriggerBoxTrue = false;
+
+        _HUDJetpackWarning.SetActive(false);
+
+        PlayerSoundScript.EndSauvetageSound();
     }
 
     private void ResetJetpack()
@@ -193,5 +212,12 @@ public class S_Jetpack : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         _isJetpackAvaible = true;
+    }
+
+    IEnumerator EndSoundCoroutine()
+    {
+        _isSoundActive = true;
+        yield return new WaitForSeconds(2f);
+        _isSoundActive = false;
     }
 }

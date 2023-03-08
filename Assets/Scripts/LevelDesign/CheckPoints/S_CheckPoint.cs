@@ -12,7 +12,7 @@ public class S_CheckPoint : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Debug.Log("checkPoint");
+            //Debug.Log("checkPoint");
             _respawnCoordonne.transform.position = _respawnCapsule.transform.position;
             _respawnCoordonne.transform.position = new Vector3(_respawnCoordonne.transform.position.x, _respawnCoordonne.transform.position.y, _respawnCoordonne.transform.position.z);
 

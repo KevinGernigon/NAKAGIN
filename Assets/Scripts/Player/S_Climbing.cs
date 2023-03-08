@@ -22,9 +22,9 @@ public class S_Climbing : MonoBehaviour
     private float _climbTimer;
     private bool _isClimbing;
 
-    [Header("ClimbJumping")]
+    /*[Header("ClimbJumping")]
     [SerializeField] private float _climbJumpUpForce;
-    [SerializeField] private float _climbJumpBackForce;
+    [SerializeField] private float _climbJumpBackForce;*/
 
 
     //public KeyCode jumpKey = KeyCode.Space;

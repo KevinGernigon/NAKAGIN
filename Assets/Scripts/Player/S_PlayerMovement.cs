@@ -80,9 +80,12 @@ public class S_PlayerMovement : MonoBehaviour
     [SerializeField] private Transform _orientation;
     [SerializeField] private GameObject _player;
 
-
     [Header("Raycast")]
     [SerializeField] private float _valueRaycast;
+
+    [Header("AirTime")]
+    private float _timeInAir = 0f;
+    private float _minRequirementTimeInAir = 0.5f;
 
     float _horizontalInput;
     float _verticalInput;
@@ -124,7 +127,9 @@ public class S_PlayerMovement : MonoBehaviour
     public bool _isButtonEnabled;
     public bool _isSlopePositive;
     public bool _isMoving;
+    public bool _isHigherThan;
 
+    int i = 0;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -139,6 +144,7 @@ public class S_PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+
         //Debug.Log(GetSlopeMoveDirection(_moveDirection));
         if (GetSlopeMoveDirection(_moveDirection).y >= 0f && OnSlope())
         {
@@ -165,7 +171,7 @@ public class S_PlayerMovement : MonoBehaviour
         //if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && state == MovementState.walking && !Input.GetButton("Jump") && !GrapplingScript._isDecreaseRbDrag)
         if (_horizontalInput == 0 && _verticalInput == 0 && state == MovementState.walking && S_InputManager._playerInputAction.Player.Jump.ReadValue<float>() == 0 && !GrapplingScript._isDecreaseRbDrag)
         {
-            PlayerSoundScript.EndWalkSound();
+            PlayerSoundScript.EndSoundWalk();
             rb.drag = _groundDrag + 10;
             _isMoving = false;
         }
@@ -177,15 +183,16 @@ public class S_PlayerMovement : MonoBehaviour
         }
         else
         {
-            PlayerSoundScript.EndWalkSound();
+            PlayerSoundScript.EndSoundWalk();
             rb.drag = 0;
             _isMoving = false;
         }
 
         if (state == MovementState.air)
         {
-            PlayerSoundScript.EndWalkSound();
+            PlayerSoundScript.EndSoundWalk();
             _desiredMoveSpeed = _airSpeed;
+
         }
 
         /*if (state != MovementState.air && state != MovementState.dashing) //limit dash in air
@@ -203,6 +210,34 @@ public class S_PlayerMovement : MonoBehaviour
     {
         MovingPlayer();
 
+
+        if (state == MovementState.air || _isHigherThan)
+        {
+            _timeInAir += Time.fixedDeltaTime;
+            if (_timeInAir >= _minRequirementTimeInAir)
+            {
+                _isHigherThan = true;
+                if (Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.7f + _valueRaycast, _whatIsGround) && _isHigherThan)
+                {
+                    i++;
+                    if (i >= 2)
+                    {
+                        //Debug.Log("GroundContact");
+                        _isHigherThan = false;
+                        PlayerSoundScript.LandingSound();
+                        i = 0;
+                    }
+                   
+                }
+            }
+        }
+        else
+        {
+            _timeInAir = 0f;
+            _isHigherThan = false;
+            i = 0;
+        }
+
         if (_lastState != MovementState.dashing)
         {
             rb.velocity += Vector3.up * Physics.gravity.y * _fallMultiplier * Time.deltaTime;
@@ -217,7 +252,6 @@ public class S_PlayerMovement : MonoBehaviour
             }
             else
                 canJumpLedge = false;
-
         }
         else _timerJump = 0f;
 
@@ -251,7 +285,6 @@ public class S_PlayerMovement : MonoBehaviour
             Jump();
             canJumpLedge = false;
             Invoke(nameof(ResetJump), _jumpCooldown);
-
 
         }
         //When crouch
@@ -477,14 +510,19 @@ public class S_PlayerMovement : MonoBehaviour
     }
     public void Jump()
     {
-        if (state == MovementState.air) return;
+        if (!canJumpLedge)
+        {
+            if (state == MovementState.air) return;
+        }
 
+        PlayerSoundScript.JumpSound();
+        
         // if (rb.drag >= 20)
         // {
         //     rb.AddForce(transform.up * _jumpForce * 2f, ForceMode.Impulse);
         //     return;
         // }
-        
+
         if (_isSliding && !OnSlope())
         {
             rb.AddForce(transform.up * _jumpForce * 0.8f, ForceMode.Impulse);
@@ -493,21 +531,24 @@ public class S_PlayerMovement : MonoBehaviour
         {
             rb.AddForce(transform.up * _jumpForce * (0.8f-ScriptDash._dashDuration), ForceMode.Impulse);
         }
-        else if (GetSlopeMoveDirection(_moveDirection).y > 0)
+        else if (GetSlopeMoveDirection(_moveDirection).y >= 0)
         {
             rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
         }
         else if (!canJumpLedge)
         {
             _exitingSlope = true;
-            _readyToJump = false;
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
             //rb.velocity = new Vector3(rb.velocity.x, ??, rb.velocity.z);
             rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
         }
+        else if (_isGrounded)
+        {
+            rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
+        }
         else
         {
-            rb.AddForce(transform.up * _jumpForce*0.8f, ForceMode.Impulse);
+            rb.AddForce(transform.up * _jumpForce * 0.8f, ForceMode.Impulse);
             return;
         }
 
@@ -518,6 +559,9 @@ public class S_PlayerMovement : MonoBehaviour
         _readyToJump = true;
 
         _exitingSlope = false;
+
+        canJumpLedge = true;
+
     }
 
     public void JumpToPosition(Vector3 targetPosition, float trajectoryHeight)

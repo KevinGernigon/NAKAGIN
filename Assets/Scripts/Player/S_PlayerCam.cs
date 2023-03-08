@@ -74,16 +74,11 @@ public class S_PlayerCam : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        if (!boolChangement)
-        {
-            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, _fov, _resetFovTime * Time.deltaTime);
-            tilt = Mathf.Lerp(tilt, 0, _camTiltTime * Time.deltaTime);
-        }
-        if (pm._isMoving && !_isClimbingBool)
+        /*if (pm._isMoving && !_isClimbingBool)
         {
             float temps = Mathf.PingPong(Time.time * _speedBobbing, 1);
             tilt = Mathf.Lerp(-_headBobbing, _headBobbing, temps);
-        }
+        }*/
 
 
     }
@@ -97,7 +92,13 @@ public class S_PlayerCam : MonoBehaviour
         CameraFOVGrapplingHook();
         ClimbCameraAdjusted();
         WallRunCameraAdjusted();
-        
+
+        if (!boolChangement)
+        {
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, _fov, _resetFovTime * Time.fixedDeltaTime);
+            tilt = Mathf.Lerp(tilt, 0, _camTiltTime * Time.fixedDeltaTime);
+        }
+
         if (_isActive)
         {
 
@@ -136,15 +137,15 @@ public class S_PlayerCam : MonoBehaviour
                     _xRotation -= _mouseY;
             }
            
-            _yRotation += _mouseX;
-            _xRotation -= _mouseY;
+            //_yRotation += _mouseX;
+           // _xRotation -= _mouseY;
             _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
 
             transform.rotation = Quaternion.Euler(_xRotation, _yRotation, tilt);
             _orientation.rotation = Quaternion.Euler(0, _yRotation, 0);
         }
 
-        if (!pm._isWallRunning && !pm._isSliding && !GrapplingHookScript.isIncreaseFOV && !pm._isDashing && !pm._isMoving)
+        if (!pm._isWallRunning && !pm._isSliding && !GrapplingHookScript.isIncreaseFOV && !pm._isDashing)
         {
             boolChangement = false;
         }
@@ -175,15 +176,15 @@ public class S_PlayerCam : MonoBehaviour
         if (pm._isWallRunning)
         {
             boolChangement = true;
-            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, _wallRunFov, _wallRunFovTime * Time.deltaTime);
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, _wallRunFov, _wallRunFovTime * Time.fixedDeltaTime);
             if (wr._isWallLeft)
             {
-                tilt = Mathf.Lerp(tilt, -_camTiltWR, _camTiltTime * Time.deltaTime);
+                tilt = Mathf.Lerp(tilt, -_camTiltWR, _camTiltTime * Time.fixedDeltaTime);
             }
 
             else if (wr._isWallRight)
             {
-                tilt = Mathf.Lerp(tilt, _camTiltWR, _camTiltTime * Time.deltaTime);
+                tilt = Mathf.Lerp(tilt, _camTiltWR, _camTiltTime * Time.fixedDeltaTime);
             }
         }
     }
@@ -192,9 +193,9 @@ public class S_PlayerCam : MonoBehaviour
         if (pm._isSliding)
         {
             boolChangement = true;
-            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, _wallSlideFov, _wallSlideFovTime * Time.deltaTime);
-            tilt = Mathf.Lerp(tilt, _camTiltSlide, _camTiltTime * Time.deltaTime);
-        }        
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, _wallSlideFov, _wallSlideFovTime * Time.fixedDeltaTime);
+            tilt = Mathf.Lerp(tilt, _camTiltSlide, _camTiltTime * Time.fixedDeltaTime);
+        }
     }
     private void CameraTiltClimb()
     {
@@ -202,7 +203,7 @@ public class S_PlayerCam : MonoBehaviour
         {
             _isClimbingBool = true;
             boolChangement = true;
-            tilt = Mathf.Lerp(tilt, _camTiltClimbAchieved, _camTiltTime * Time.deltaTime);
+            tilt = Mathf.Lerp(tilt, _camTiltClimbAchieved, _camTiltTime * Time.fixedDeltaTime);
             StartCoroutine(EndClimbingAnimation());
         }     
     }
@@ -211,7 +212,7 @@ public class S_PlayerCam : MonoBehaviour
         if (GrapplingHookScript.isIncreaseFOV)
         {
             boolChangement = true;
-            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, _grapplingHookFov, _grapplingHookFovTime * Time.deltaTime);
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, _grapplingHookFov, _grapplingHookFovTime * Time.fixedDeltaTime);
         }
     }
     private void CameraFOVDash()
@@ -219,7 +220,7 @@ public class S_PlayerCam : MonoBehaviour
         if (pm._isDashing)
         {
             boolChangement = true;
-            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, _dashFov, _dashFovTime * Time.deltaTime);
+            cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, _dashFov, _dashFovTime * Time.fixedDeltaTime);
         }
     }
 
