@@ -8,10 +8,12 @@ public class S_GenerateurEnergetique : MonoBehaviour
 {
    
     private S_ReferenceInterface _referenceInterface;
+    private GameObject Player;
 
+    [Header("Audio")]
+    private S_PlayerSound PlayerSoundScript;
 
     [Header("Charge Energetique")]
-
     [SerializeField] private float DefaultCharge = 0f;
     [SerializeField] private float ChargeEnergetique = 0f;
     [SerializeField] private bool _OnTrigger = false;
@@ -28,13 +30,18 @@ public class S_GenerateurEnergetique : MonoBehaviour
     private GameObject _HUD_InteractGenerateurDisable;
 
     public InputActionReference ActionRef = null;
+
+    private bool _isSoundRunning = false;
+    private bool _isSoundRunning0Bat = false;
     //private TMP_Text _TextInteraction;
-  
+
 
 
     private void Awake()
     {
         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
+        Player = _referenceInterface._playerGameObject;
+        PlayerSoundScript = Player.GetComponent<S_PlayerSound>();
         _HUD_InteractGenerateurEnable = _referenceInterface.HUD_InteractGenerateurEnable;
         _HUD_InteractGenerateurDisable = _referenceInterface.HUD_InteractGenerateurDisable;
 
@@ -60,8 +67,18 @@ public class S_GenerateurEnergetique : MonoBehaviour
         {
 
             //Sound Interaction Impossible
-            if (ChargeEnergetique > 0)
-                ReloadBattery();
+            if (ChargeEnergetique <= 0 && !_isSoundRunning0Bat)
+            {
+                PlayerSoundScript.AccessDeniedSound();
+                StartCoroutine(WaitUntilEndSound0Battery());
+
+            }
+
+            if (ChargeEnergetique > 0 && !(ChargeEnergetique == _referenceInterface._BatteryManager._nbrBattery) && !_isSoundRunning)
+            {
+                PlayerSoundScript.AccessAcceptedSound();
+                StartCoroutine(WaitUntilEndSound());
+            }
 
         }
 
@@ -109,6 +126,7 @@ public class S_GenerateurEnergetique : MonoBehaviour
         }
         else
         {
+
             _OnTrigger = false;
             _HUD_InteractGenerateurEnable.SetActive(false);
             _HUD_InteractGenerateurDisable.SetActive(false);
@@ -145,6 +163,18 @@ public class S_GenerateurEnergetique : MonoBehaviour
       }
     }
 
-
+    IEnumerator WaitUntilEndSound()
+    {
+        _isSoundRunning = true;
+        yield return new WaitForSeconds(2.5f);
+        _isSoundRunning = false;
+        ReloadBattery();
+    }
+    IEnumerator WaitUntilEndSound0Battery()
+    {
+        _isSoundRunning0Bat = true;
+        yield return new WaitForSeconds(1f);
+        _isSoundRunning0Bat = false;
+    }
 
 }

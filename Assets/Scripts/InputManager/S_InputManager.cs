@@ -104,14 +104,14 @@ public class S_InputManager : MonoBehaviour
             _playerInputAction.Player.Disable();
             _playerInputAction.UI.Enable();
             _playerEnable = false;
-            Debug.Log("Mode UI");
+            //Debug.Log("Mode UI");
     }
 
     public void DesactivePause()
     {       _playerInputAction.UI.Disable();
             _playerInputAction.Player.Enable();
             _playerEnable = true;
-            Debug.Log("Mode Player");
+            //Debug.Log("Mode Player");
     }
 
     private void OnEnable()

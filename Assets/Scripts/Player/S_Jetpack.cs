@@ -37,6 +37,7 @@ public class S_Jetpack : MonoBehaviour
 
     private bool _isTriggerBoxTrue;
     private bool _isMaxForce;
+    private bool _isSoundActive;
     
     [SerializeField] private bool _isJetpackAvaible;
     void Start()
@@ -89,7 +90,11 @@ public class S_Jetpack : MonoBehaviour
     }
     public void JetpackFunction()
     {
-        
+        if (ScriptBatteryManager._nbrBattery <= 0 && _isJetpackAvaible && !_isSoundActive)
+        {
+            PlayerSoundScript.NoBatterySound();
+            StartCoroutine(EndSoundCoroutine());
+        }
 
         if (_isTriggerBoxTrue && ScriptBatteryManager._nbrBattery >= 1)
         {
@@ -167,7 +172,11 @@ public class S_Jetpack : MonoBehaviour
         _isTriggerBoxTrue = true;
 
         if (ScriptBatteryManager._nbrBattery >= 1)
+        {
             _HUDJetpackWarning.SetActive(true);
+            PlayerSoundScript.StartSauvetageSound();
+
+        }
 
             /* if (Input.GetButtonDown("Jetpack"))
                  JetpackFunction();*/
@@ -181,13 +190,13 @@ public class S_Jetpack : MonoBehaviour
             
     }
    
-
-
     public void BooleanTriggerBoxExit()
     {
         _isTriggerBoxTrue = false;
 
         _HUDJetpackWarning.SetActive(false);
+
+        PlayerSoundScript.EndSauvetageSound();
     }
 
     private void ResetJetpack()
@@ -203,5 +212,12 @@ public class S_Jetpack : MonoBehaviour
     {
         yield return new WaitForSeconds(5f);
         _isJetpackAvaible = true;
+    }
+
+    IEnumerator EndSoundCoroutine()
+    {
+        _isSoundActive = true;
+        yield return new WaitForSeconds(2f);
+        _isSoundActive = false;
     }
 }
