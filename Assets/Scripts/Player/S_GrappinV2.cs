@@ -73,7 +73,6 @@ public class S_GrappinV2 : MonoBehaviour
             else
             {
                 Debug.DrawRay(_camera.position, _camera.forward * _maxGrappleDistance, Color.red);
-            
                 _HUDCrossHairLock.SetActive(false);
 
             }
