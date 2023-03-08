@@ -2590,7 +2590,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: a7fd7a8caf42b754d994e71cfb194233, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -3710,7 +3710,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 64b0bbeb972132e4ca53631f313fe0d3, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.3
+  m_Volume: 0.2
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -8856,6 +8856,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   S_InputManager: {fileID: 6554351822182483883}
   _orientation: {fileID: 3956388862463579861}
+  _anim_bras: {fileID: 4190180972782943877}
   _playerObj: {fileID: 3956388862188452567}
   _maxSlideTime: 0.75
   _SlideValue: 5
@@ -8880,9 +8881,9 @@ GameObject:
   - component: {fileID: 3956388861518991237}
   - component: {fileID: 3956388861518991233}
   - component: {fileID: 3956388861518991232}
-  - component: {fileID: 3956388861518991239}
   - component: {fileID: 3956388861518991238}
   - component: {fileID: 2108909237}
+  - component: {fileID: 3956388861518991359}
   m_Layer: 9
   m_Name: PlayerContent
   m_TagString: Player
@@ -8967,20 +8968,6 @@ MonoBehaviour:
   _isGrappling: 0
   isIncreaseFOV: 0
   _isDecreaseRbDrag: 0
---- !u!114 &3956388861518991239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3956388861518991236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 158d8775900a506418fcf85b7509c6be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pm: {fileID: 3956388861518991357}
-  ScriptBatteryManager: {fileID: 8483312902858541986}
 --- !u!54 &3956388861518991356
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9011,15 +8998,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   S_InputManager: {fileID: 6554351822182483883}
   _moveSpeed: 0
-  _walkSpeed: 45
+  _walkSpeed: 10
   _timerMaxSpeed: 0
-  _maxSpeedReachCooldown: 5
+  _maxSpeedReachCooldown: 0
   _slideSpeed: 35
   _wallRunSpeed: 21
   _climbUpSpeed: 10
   _dashSpeed: 25
   _dashSpeedChangeFactor: 50
   _AerialSpeed: 3
+  _maxWalkSpeed: 55
+  _incrementValMaxSpeed: 0.05
   _fallMultiplier: 1.5
   _isMaxSpeed: 0
   _lastState: 0
@@ -9047,6 +9036,7 @@ MonoBehaviour:
   ScriptDash: {fileID: 3956388861518991233}
   ScriptWallRun: {fileID: 3956388861518991237}
   GrapplingScript: {fileID: 3956388861518991238}
+  AccelerationScript: {fileID: 3956388861518991359}
   _orientation: {fileID: 3956388862463579861}
   _player: {fileID: 3956388862188452566}
   _valueRaycast: 0.4
@@ -9064,6 +9054,8 @@ MonoBehaviour:
   _isSlopePositive: 0
   _isMoving: 0
   _isHigherThan: 0
+  _isAccelerating: 0
+  _isDecelerating: 0
 --- !u!4 &3956388861518991358
 Transform:
   m_ObjectHideFlags: 0
@@ -9082,6 +9074,18 @@ Transform:
   m_Father: {fileID: 3956388861505565574}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3956388861518991359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3956388861518991236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2246a7e1a73b9b428887108bd2fb331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3956388861597576754
 GameObject:
   m_ObjectHideFlags: 0

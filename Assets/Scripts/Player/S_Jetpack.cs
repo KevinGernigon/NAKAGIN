@@ -13,6 +13,7 @@ public class S_Jetpack : MonoBehaviour
     private Rigidbody _rb;
     private S_PlayerMovement _pm;
     private S_Dash ScriptDash;
+    private S_GrappinV2 GrappinScript;
     [SerializeField] private S_BatteryManager ScriptBatteryManager;
 
     [Header("Jetpack")]
@@ -45,6 +46,7 @@ public class S_Jetpack : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _pm = GetComponent<S_PlayerMovement>();
         PlayerSoundScript = GetComponent<S_PlayerSound>();
+        GrappinScript = GetComponent<S_GrappinV2>();
         ScriptDash = GetComponent<S_Dash>();
         _isJetpackAvaible = true;
     }
@@ -90,6 +92,8 @@ public class S_Jetpack : MonoBehaviour
     }
     public void JetpackFunction()
     {
+        if (GrappinScript._isGrappling) return;
+
         if (ScriptBatteryManager._nbrBattery <= 0 && _isJetpackAvaible && !_isSoundActive)
         {
             PlayerSoundScript.NoBatterySound();
