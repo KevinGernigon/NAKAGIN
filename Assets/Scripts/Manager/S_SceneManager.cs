@@ -8,7 +8,7 @@ using UnityEditor;
 public class S_SceneManager : Manager
 {
 
-    //public string sceneToStart;
+    public string sceneToStart;
 
     //private S_ManagerEditor _managerEditor;
 
@@ -19,12 +19,24 @@ public class S_SceneManager : Manager
 
     public void LoadGame()
     {
-        //SceneManager.LoadScene(sceneToStart);
-        SceneManager.LoadScene("Tom_Scene");
-        //if(sceneToStart == "Tom_Scene")
-        //{
+        /*SceneManager.LoadScene(sceneToStart);
+        //SceneManager.LoadScene("Tom_Scene");
+        if(sceneToStart == "Tom_Scene")
+        {
             SceneManager.LoadScene("Asset_Scene", LoadSceneMode.Additive);
-        //}
+        }*/
+
+        sceneToStart = "Tom_Scene";
+
+        SceneManager.LoadScene(sceneToStart);
+        //SceneManager.LoadScene("Tom_Scene");
+        if (sceneToStart == "Tom_Scene")
+        {
+            SceneManager.LoadScene("Asset_Scene", LoadSceneMode.Additive);
+        }
+
+
+
     }
 
 

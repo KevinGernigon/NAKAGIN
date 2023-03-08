@@ -123,4 +123,22 @@ public class S_InputManager : MonoBehaviour
     {
         _playerInputAction.Disable();
     }
+
+    public void InvertAxisYMouse()
+    {
+        _invertAxeYMouse = !_invertAxeYMouse;
+    }
+    public void InvertAxisXMouse()
+    {
+        _invertAxeXMouse = !_invertAxeXMouse;
+    }
+    public void InvertAxisYGamepad()
+    {
+        _invertAxeYGamepad = !_invertAxeYGamepad;
+    }
+    public void InvertAxisXGamepad()
+    {
+        _invertAxeXGamepad = !_invertAxeXGamepad;
+    }
+
 }

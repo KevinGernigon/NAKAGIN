@@ -137,8 +137,8 @@ public class S_PlayerCam : MonoBehaviour
                     _xRotation -= _mouseY;
             }
            
-            _yRotation += _mouseX;
-            _xRotation -= _mouseY;
+            //_yRotation += _mouseX;
+           // _xRotation -= _mouseY;
             _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
 
             transform.rotation = Quaternion.Euler(_xRotation, _yRotation, tilt);
