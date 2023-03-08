@@ -101,7 +101,6 @@ public class S_PlayerCam : MonoBehaviour
 
         if (_isActive)
         {
-
             if (S_InputManager._playerInput.currentControlScheme == "KeyboardAndMouse")
             {
                 _mouseX = S_InputManager._playerInputAction.Player.CameraMouvement.ReadValue<Vector2>().x * Time.fixedDeltaTime * _sensiMouseSlider.value;
@@ -136,9 +135,15 @@ public class S_PlayerCam : MonoBehaviour
                 else
                     _xRotation -= _mouseY;
             }
-           
+
             //_yRotation += _mouseX;
-           // _xRotation -= _mouseY;
+            // _xRotation -= _mouseY;
+            if (pm._isClimbing)
+            {
+                _xRotation = Mathf.Clamp(_xRotation, -90f, 0f);
+                _xRotation = Mathf.Lerp(_xRotation, -70f, 1f * Time.deltaTime);
+            }
+            else
             _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
 
             transform.rotation = Quaternion.Euler(_xRotation, _yRotation, tilt);

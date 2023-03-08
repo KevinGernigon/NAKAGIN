@@ -8823,11 +8823,11 @@ MonoBehaviour:
   rb: {fileID: 3956388861518991356}
   ScriptDash: {fileID: 3956388861518991233}
   pm: {fileID: 3956388861518991357}
-  _whatIsWall:
+  _whatIsClimbable:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 16384
   _climbSpeed: 25
-  _maxClimbTime: 2
+  _maxClimbTime: 5
   _climbJumps: 1
   _climbJumpsLeft: 0
   _counterClimbPropulsion: 45
@@ -8836,6 +8836,7 @@ MonoBehaviour:
   _maxWallLookAngle: 30
   _wallLookAngle: 0
   _isWallFront: 0
+  _isWallWasFront: 0
   _minWallNormalAngleChange: 5
   _isExitingWall: 0
   _exitWallTime: 0.2
@@ -8904,7 +8905,7 @@ MonoBehaviour:
   S_InputManager: {fileID: 6554351822182483883}
   _whatIsWall:
     serializedVersion: 2
-    m_Bits: 3072
+    m_Bits: 2048
   _whatIsGround:
     serializedVersion: 2
     m_Bits: 1024
@@ -9034,7 +9035,7 @@ MonoBehaviour:
   _playerHeight: 2
   _whatIsGround:
     serializedVersion: 2
-    m_Bits: 3072
+    m_Bits: 19456
   _isGrounded: 0
   _maxSlopeAngle: 50
   _slopeVectorDownValue: 150
