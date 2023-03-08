@@ -13,7 +13,7 @@ public class S_Climbing : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private S_Dash ScriptDash;
     public S_PlayerMovement pm;
-    [SerializeField] private LayerMask _whatIsWall;
+    [SerializeField] private LayerMask _whatIsClimbable;
 
 
     [Header("Climbing")]
@@ -42,6 +42,7 @@ public class S_Climbing : MonoBehaviour
 
     private RaycastHit _frontWallHit;
     public bool _isWallFront;
+    public bool _isWallWasFront;
 
     private Transform _lastWall;
     private Vector3 _lastWallNormal;
@@ -78,7 +79,8 @@ public class S_Climbing : MonoBehaviour
         //if (_isWallFront && Input.GetKey(KeyCode.Z) && _wallLookAngle < _maxWallLookAngle)
 
         //if ((Input.GetButton("Vertical") || Input.GetButton("Jump")) && (_isWallFront  && _wallLookAngle < _maxWallLookAngle))  
-        if ((S_InputManager._mouvementInput.y > 0 || S_InputManager._jumpInput) && (_isWallFront  && _wallLookAngle < _maxWallLookAngle))   
+        //if ((S_InputManager._mouvementInput.y > 0 || S_InputManager._jumpInput) && (_isWallFront  && _wallLookAngle < _maxWallLookAngle))   
+        if (_isWallFront  && _wallLookAngle < _maxWallLookAngle)   
         {
             if (!_isClimbing && _climbTimer > 0)
             {
@@ -123,7 +125,7 @@ public class S_Climbing : MonoBehaviour
     }
     private void WallCheck()
     {
-        _isWallFront = Physics.SphereCast(transform.position, _sphereCastRadius, _orientation.forward, out _frontWallHit, _detectionLength, _whatIsWall);
+        _isWallFront = Physics.SphereCast(transform.position, _sphereCastRadius, _orientation.forward, out _frontWallHit, _detectionLength, _whatIsClimbable);
         _wallLookAngle = Vector3.Angle(_orientation.forward, -_frontWallHit.normal);
 
         bool newWall = _frontWallHit.transform != _lastWall || Mathf.Abs(Vector3.Angle(_lastWallNormal, _frontWallHit.normal)) > _minWallNormalAngleChange;
@@ -146,6 +148,7 @@ public class S_Climbing : MonoBehaviour
 
     private void ClimbingMovement()
     {
+        //rb.velocity = new Vector3(rb.velocity.x, _climbSpeed, rb.velocity.z);
         rb.velocity = new Vector3(rb.velocity.x, _climbSpeed, rb.velocity.z);
     }
 
@@ -177,9 +180,11 @@ public class S_Climbing : MonoBehaviour
 
     IEnumerator counterJumpAdjustment()
     {
+        Vector3 forceToApply = _orientation.forward * 100;
         //yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => !_isWallFront);
-        rb.AddForce(Vector3.down * _counterClimbPropulsion, ForceMode.Impulse);   
+        yield return new WaitForSeconds(0.05f); 
+        rb.AddForce(forceToApply + Vector3.down * _counterClimbPropulsion, ForceMode.Impulse);   
     }
 
     IEnumerator EndClimbingAnimation()
