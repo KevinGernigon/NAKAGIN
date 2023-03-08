@@ -33,6 +33,7 @@ void Outline_float(float2 UV, float OutlineThickness, float DepthSensitivity, fl
     uvSamples[1] = UV + float2(Texel.x, Texel.y) * halfScaleCeil;
     uvSamples[2] = UV + float2(Texel.x * halfScaleCeil, -Texel.y * halfScaleFloor);
     uvSamples[3] = UV + float2(-Texel.x * halfScaleFloor, Texel.y * halfScaleCeil);
+    
 
     for (int i = 0; i < 4; i++)
     {
