@@ -441,6 +441,13 @@ public class S_PlayerMovement : MonoBehaviour
         if (state == MovementState.dashing) return;
         if (ClimbingScript._isExitingWall) return;
 
+        if (_isClimbing)
+        {
+            _moveDirection = _orientation.up * _verticalInput;
+            return;
+        }
+        
+
         if (_isMaxSpeed)
         {
             if (_walkSpeed <= _maxWalkSpeed)
@@ -450,6 +457,7 @@ public class S_PlayerMovement : MonoBehaviour
 
         //calculate movement direction 
         _moveDirection = _orientation.forward * _verticalInput + _orientation.right * _horizontalInput;
+
 
         //on slope
         if (OnSlope() && !_exitingSlope)
@@ -531,7 +539,7 @@ public class S_PlayerMovement : MonoBehaviour
         {
             rb.AddForce(transform.up * _jumpForce * (0.8f-ScriptDash._dashDuration), ForceMode.Impulse);
         }
-        else if (GetSlopeMoveDirection(_moveDirection).y >= 0)
+        else if (GetSlopeMoveDirection(_moveDirection).y >= 0 || _isGrounded)
         {
             rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
         }
@@ -540,10 +548,6 @@ public class S_PlayerMovement : MonoBehaviour
             _exitingSlope = true;
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
             //rb.velocity = new Vector3(rb.velocity.x, ??, rb.velocity.z);
-            rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
-        }
-        else if (_isGrounded)
-        {
             rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
         }
         else

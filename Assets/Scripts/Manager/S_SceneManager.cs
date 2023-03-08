@@ -33,6 +33,7 @@ public class S_SceneManager : Manager
         if (sceneToStart == "Tom_Scene")
         {
             SceneManager.LoadScene("Asset_Scene", LoadSceneMode.Additive);
+            SceneManager.LoadScene("TestPost_Process", LoadSceneMode.Additive);
         }
 
 
