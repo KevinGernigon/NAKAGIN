@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+
 public class S_PauseMenuV2 : MonoBehaviour
 {
     [Header("InputManager")]
@@ -26,21 +27,27 @@ public class S_PauseMenuV2 : MonoBehaviour
 
     [SerializeField] private GameObject FirstSelectButtonPause;
     [SerializeField] private GameObject FirstSelectButtonSetting;
-    [SerializeField] private GameObject LastSelectButton;
-    [SerializeField] private GameObject LastSelectButtonSetting;
+    private GameObject LastSelectButton;
+    private GameObject LastSelectButtonSetting;
 
     public bool _isPaused = false;
     private bool _isSetting = false;
     private bool _ischoose;
+    public bool _IsRestart = false;
     [SerializeField] private bool ControllerActive = true;
 
-    [Header("ResetPlayer")]
+    [Header("Reset")]
     [SerializeField] private GameObject _player;
-    /*[SerializeField] private Rigidbody _playerRb;
-    [SerializeField] private Transform _Spawnpoint;*/
+
+    private void Awake()
+    {
+        
+}
 
     void Start()
     {
+
+
         _pauseMenuHUD.SetActive(false);
         ResetPauseHUD();
 
@@ -163,24 +170,25 @@ public class S_PauseMenuV2 : MonoBehaviour
         if (!_ischoose)
         {
             Debug.Log("RestartLevel");
+
             ResumeGame();
-            ResetPlayer();
+            Restart();
+             
             StartCoroutine(waitcastchoose());
 
+            _IsRestart = false;
             Scene _scene = SceneManager.GetActiveScene();
-
             SceneManager.LoadScene("Manager_Scene");
-
             SceneManager.LoadScene(_scene.name);
-
             if(_scene.name == "Tom_Scene")
                 SceneManager.LoadScene("Asset_Scene", LoadSceneMode.Additive);
+
+           
+          
+
         }
     }
-    private void ResetPlayer()
-    {
-        _BatteryManager._nbrBattery = 0 ;
-    }
+   
 
 
     public void Setting()
@@ -241,5 +249,11 @@ public class S_PauseMenuV2 : MonoBehaviour
         _settingsInterface.SetActive(false);
     }
 
+    public void Restart()
+    { 
+        _IsRestart = true ; 
+        _BatteryManager._nbrBattery = 0;
+        _settingsInterface.SetActive(false);
+    }
 
 }

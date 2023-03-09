@@ -4,20 +4,20 @@ using UnityEngine;
 
 public class S_CheckPoint : MonoBehaviour
 {
-    [SerializeField] private Transform _respawnCapsule;
-    [SerializeField] private Transform _respawnCoordonne;
-
+    [SerializeField] private Transform _capsuleCheckpointArea;
+    //[SerializeField] private Transform _capsuleRespawn;
+    [SerializeField]private S_RunCheckPointManager _RunCheckPointManager;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
             //Debug.Log("checkPoint");
-            _respawnCoordonne.transform.position = _respawnCapsule.transform.position;
-            _respawnCoordonne.transform.position = new Vector3(_respawnCoordonne.transform.position.x, _respawnCoordonne.transform.position.y, _respawnCoordonne.transform.position.z);
+            _RunCheckPointManager.checkpointCapsule.transform.position = _capsuleCheckpointArea.transform.position;
+            _RunCheckPointManager.checkpointCapsule.transform.position = new Vector3(_RunCheckPointManager.checkpointCapsule.transform.position.x, _RunCheckPointManager.checkpointCapsule.transform.position.y, _RunCheckPointManager.checkpointCapsule.transform.position.z);
 
 
-            _respawnCoordonne.transform.eulerAngles = new Vector3(_respawnCapsule.transform.rotation.eulerAngles.x, _respawnCapsule.transform.rotation.eulerAngles.y, _respawnCapsule.transform.rotation.eulerAngles.z);
+            _RunCheckPointManager.checkpointCapsule.transform.eulerAngles = new Vector3(_capsuleCheckpointArea.transform.rotation.eulerAngles.x, _capsuleCheckpointArea.transform.rotation.eulerAngles.y, _capsuleCheckpointArea.transform.rotation.eulerAngles.z);
             
             Physics.SyncTransforms();
         }

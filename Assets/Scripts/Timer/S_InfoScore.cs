@@ -21,6 +21,7 @@ public class S_InfoScore : MonoBehaviour
     [SerializeField] private TMP_Text _level1TimerTxt;
     [SerializeField] private TMP_Text _level2TimerTxt;
     [SerializeField] private TMP_Text _bestTimeTxt;
+    [SerializeField] private S_RunCheckPointManager S_RunCheckPointManager;
 
     public float _level1Time = 10f;
     public float _level2Time = 15f;
@@ -161,7 +162,11 @@ public class S_InfoScore : MonoBehaviour
 
                 ScriptTimer.TimerReset();
 
-                _playerContent.transform.position = _respawnplayer.transform.position;
+                S_RunCheckPointManager.FintimerRespawn();
+                //_playerContent.transform.position = _respawnplayer.transform.position;
+
+
+
                 Physics.SyncTransforms();
 
                 //Concequence de défaite

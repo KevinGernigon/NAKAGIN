@@ -12,9 +12,14 @@ public class S_ObjectOnCamera : MonoBehaviour
     [SerializeField] private Collider _collider;
     [SerializeField] private GameObject _HUDGrappin;
 
+    private GameObject _eventSystem;
+    private S_PauseMenuV2 S_PauseMenuV2;
+
     private GameObject _playerContent;
     private GameObject _canvasUIGameObject;
+
     private Canvas _canvasUI;
+    private GameObject _GrappinUI;
 
     [SerializeField] public Transform lookat;
 
@@ -32,7 +37,10 @@ public class S_ObjectOnCamera : MonoBehaviour
         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
         _playerContent = _referenceInterface._playerGameObject;
         _canvasUIGameObject = _referenceInterface._UICanvas;
+
         _canvasUI = _canvasUIGameObject.GetComponent<Canvas>();
+        _GrappinUI = _referenceInterface._UIStartHUD;
+        S_PauseMenuV2 = _referenceInterface.EventSystem.GetComponent<S_PauseMenuV2>();
     }
 
 
@@ -45,27 +53,32 @@ public class S_ObjectOnCamera : MonoBehaviour
     void Update()
     {
         CheckWalls();
+
         var bounds = _collider.bounds;
         cameraFrustum = GeometryUtility.CalculateFrustumPlanes(_mainCamera);
-        if (GeometryUtility.TestPlanesAABB(cameraFrustum, bounds) && _inRange == true)
+        if (GeometryUtility.TestPlanesAABB(cameraFrustum, bounds) && _inRange == true && !S_PauseMenuV2._isPaused && !S_PauseMenuV2._IsRestart)
         {
             CreateUI();
             _UI.GetComponent<S_Follow_UI>().ObjectToFollow = lookat;
             _timeoffset = 0;
             StartCoroutine(setHudActive(_UI));
+
         }
         else
         {
             Destroy(_UI);
             _createdUI = false;
         }
+
+        if (S_PauseMenuV2._IsRestart)
+            DestroyUIGrappin();
     }
 
     void CreateUI()
     {
         if (_createdUI == false)
         {
-            _UI = Instantiate(_HUDGrappin, _canvasUI.transform);
+            _UI = Instantiate(_HUDGrappin, _GrappinUI.transform);
             _createdUI = true;
         }
     }
@@ -115,7 +128,15 @@ public class S_ObjectOnCamera : MonoBehaviour
             
         }
     }
+    public void DestroyUIGrappin()
+    {
+        Destroy(_UI);
+        _createdUI = false;
+    }
+
 }
+
+
 
 
 /*RaycastHit hit;
