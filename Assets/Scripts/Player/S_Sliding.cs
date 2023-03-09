@@ -37,6 +37,7 @@ public class S_Sliding : MonoBehaviour
 
     [Header("Bool")]
     public bool _isTrue;
+    public int i;
 
     private void Start()
     {
@@ -129,25 +130,25 @@ public class S_Sliding : MonoBehaviour
         Vector3 _inputDirection = _orientation.forward * _verticalInput + _orientation.right * _horizontalInput;
 
         //sliding normal 
-        if (!_pm.OnSlope() || rb.velocity.y > -0.1f)
+        if (!_pm.OnSlope() || rb.velocity.y > -0.1f || _pm.GetSlopeMoveDirection(_inputDirection).y <= -10 || _pm.GetSlopeMoveDirection(_inputDirection).y >= 10)
         {
+            
             rb.AddForce(_inputDirection.normalized * _slideForce, ForceMode.Force);
             _slideTimer -= Time.deltaTime;
         }
-
         //sliding slope 
         else
         {
             rb.AddForce(_pm.GetSlopeMoveDirection(_inputDirection) * _slideForce, ForceMode.Force);
         }
-
         if (_slideTimer <= 0 || !_pm._isGrounded)
         {
             StopSlide();
         }
+
     }
 
-    private void StopSlide()
+    public void StopSlide()
     {
         PlayerSoundScript.EndSoundSlide();
         _pm._isSliding = false;

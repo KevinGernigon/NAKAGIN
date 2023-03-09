@@ -64,9 +64,11 @@ public class S_PlayerMovement : MonoBehaviour
     private bool _exitingSlope;
     [SerializeField] private float _slopeVectorDownValue;
     public float _actualSlopeAngle;
+
     [Header("Grappling")]
     [SerializeField] public float _wantedSpeedGrappling = 2;
     [SerializeField] public float _wantedHeightGrappling = 2;
+
     [Header("Upgrade values")]
     private float _upgradeSpeedValue;
     private float _upgradeDashSpeed;
@@ -150,7 +152,6 @@ public class S_PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-
         //Debug.Log(GetSlopeMoveDirection(_moveDirection));
         if (GetSlopeMoveDirection(_moveDirection).y >= 0f && OnSlope())
         {
@@ -347,7 +348,7 @@ public class S_PlayerMovement : MonoBehaviour
         {
             state = MovementState.sliding;
 
-            if (OnSlope() && rb.velocity.y < 0.1f)
+            if (OnSlope() && rb.velocity.y > -2f)
             {
                 _desiredMoveSpeed = _slideSpeed;
             }
@@ -451,10 +452,13 @@ public class S_PlayerMovement : MonoBehaviour
 
         if (_isClimbing)
         {
-            _moveDirection = _orientation.up * _verticalInput;
+            _moveDirection = Vector3.up;
             return;
         }
-        
+        else
+        {
+            _moveDirection = _orientation.forward * _verticalInput + _orientation.right * _horizontalInput;
+        }
 
         if (_isMaxSpeed)
         {
@@ -463,7 +467,7 @@ public class S_PlayerMovement : MonoBehaviour
         }
 
         //calculate movement direction 
-        _moveDirection = _orientation.forward * _verticalInput + _orientation.right * _horizontalInput;
+        
 
 
         //on slope
@@ -613,7 +617,7 @@ public class S_PlayerMovement : MonoBehaviour
         {
             float _angle = Vector3.Angle(Vector3.up, _slopeHit.normal);
             _actualSlopeAngle = _angle;
-            return _angle < _maxSlopeAngle && _angle != 0;
+            return _angle < _maxSlopeAngle && (_angle >= 5 || _angle <= -5);
         }
         
         return false;

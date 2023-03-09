@@ -141,10 +141,9 @@ public class S_PlayerCam : MonoBehaviour
             if (pm._isClimbing)
             {
                 _xRotation = Mathf.Clamp(_xRotation, -90f, 0f);
-                _xRotation = Mathf.Lerp(_xRotation, -70f, 1f * Time.deltaTime);
             }
             else
-            _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
+                _xRotation = Mathf.Clamp(_xRotation, -90f, 90f);
 
             transform.rotation = Quaternion.Euler(_xRotation, _yRotation, tilt);
             _orientation.rotation = Quaternion.Euler(0, _yRotation, 0);

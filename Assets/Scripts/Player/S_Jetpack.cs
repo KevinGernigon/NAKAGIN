@@ -92,7 +92,7 @@ public class S_Jetpack : MonoBehaviour
     }
     public void JetpackFunction()
     {
-        if (GrappinScript._isGrappling) return;
+        if (GrappinScript._isHookingHUD) return;
 
         if (ScriptBatteryManager._nbrBattery <= 0 && _isJetpackAvaible && !_isSoundActive)
         {

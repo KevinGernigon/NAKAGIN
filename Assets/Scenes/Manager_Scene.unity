@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.04343203, g: 0.043293595, b: 0.04343203, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -8823,9 +8823,9 @@ MonoBehaviour:
   rb: {fileID: 3956388861518991356}
   ScriptDash: {fileID: 3956388861518991233}
   pm: {fileID: 3956388861518991357}
-  _whatIsWall:
+  _whatIsClimbable:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 16384
   _climbSpeed: 25
   _maxClimbTime: 2
   _climbJumps: 1
@@ -8836,6 +8836,7 @@ MonoBehaviour:
   _maxWallLookAngle: 30
   _wallLookAngle: 0
   _isWallFront: 0
+  _isWallWasFront: 0
   _minWallNormalAngleChange: 5
   _isExitingWall: 0
   _exitWallTime: 0.2
@@ -8967,6 +8968,7 @@ MonoBehaviour:
   _isGrappling: 0
   isIncreaseFOV: 0
   _isDecreaseRbDrag: 0
+  _isHookingHUD: 0
 --- !u!54 &3956388861518991356
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9023,7 +9025,7 @@ MonoBehaviour:
   _playerHeight: 2
   _whatIsGround:
     serializedVersion: 2
-    m_Bits: 3072
+    m_Bits: 19456
   _isGrounded: 0
   _maxSlopeAngle: 50
   _slopeVectorDownValue: 150
@@ -17233,8 +17235,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1634caa98270f842944e56e71208175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToStart: Corentin_Scene
-  categoryToDisplay: 0
+  sceneToStart: Tom_Scene
+  categoryToDisplay: 6
 --- !u!1 &7777727511360918156
 GameObject:
   m_ObjectHideFlags: 0

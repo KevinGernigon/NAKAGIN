@@ -42,7 +42,7 @@ public class S_GrappinV2 : MonoBehaviour
     public bool _isDecreaseRbDrag;
 
     private bool _isHUD;
-    private bool _isHookingHUD;
+    public bool _isHookingHUD;
 
     public System.Action updateAction;
 

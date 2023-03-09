@@ -38,7 +38,7 @@ public class S_Accelaration : MonoBehaviour
             Debug.Log("Accelerating");
             PlayerMovement._isAccelerating = true;
              
-            PlayerMovement._walkSpeed += 0.45f * compteur;
+            PlayerMovement._walkSpeed += 0.45f * compteur * 1.3f;
             if (PlayerMovement._walkSpeed > 45) PlayerMovement._walkSpeed = 45;
            yield return new WaitForSeconds(0.05f);
         }
