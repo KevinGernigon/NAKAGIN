@@ -73,8 +73,32 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_4fc581c7ca95404ba2f9412199358f59_Texture_1:
+        m_Texture: {fileID: 2800000, guid: d5f93bb3d2d959b4b8eb8bfd67db0feb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_6a364f8837e043eeb53508bcb1c01ba1_Texture_1:
+        m_Texture: {fileID: 2800000, guid: d5f93bb3d2d959b4b8eb8bfd67db0feb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_70bdd4505f574abfbc3dba87cdea509c_Texture_1:
+        m_Texture: {fileID: 2800000, guid: d5f93bb3d2d959b4b8eb8bfd67db0feb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_968aa7f06df5413ea4c4d57cf02e6dd0_Texture_1:
+        m_Texture: {fileID: 2800000, guid: 89cae79755e390047962da7baf6f4dcc, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _SampleTexture2D_cfe3ea8601e24ee680ec95a039ab3be2_Texture_1:
         m_Texture: {fileID: 2800000, guid: 41320bf3411c1ca4c888ea811379e78d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_eda9901a7bec43bc89e40f908d85acf0_Texture_1:
+        m_Texture: {fileID: 2800000, guid: d5f93bb3d2d959b4b8eb8bfd67db0feb, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _SampleTexture2D_fd371b726c7640ceb50e3dc42ee6502c_Texture_1:
+        m_Texture: {fileID: 2800000, guid: d5f93bb3d2d959b4b8eb8bfd67db0feb, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -99,7 +123,12 @@ Material:
     - _Activate_SpeedLines: 1
     - _AlphaClip: 0
     - _Blend: 0
-    - _BlurIntensity: 0
+    - _BlurIntensity: 0.003
+    - _BlurMax: 196.65
+    - _BlurMin: 104.52
+    - _Blur_CenterMaskEdge: 0.58
+    - _Blur_CenterMaskSize: -0.71
+    - _Blur_Falloff: -0.82
     - _BumpScale: 1
     - _CastShadows: 1
     - _ClearCoatMask: 0
@@ -112,7 +141,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _FBP_CenterMaskEdge: 0.2198523
+    - _FBP_CenterMaskEdge: 0.21983868
     - _FBP_CenterMaskSize: 0.17
     - _FBP_FrameRate: 120
     - _FBP_LineDensity: 0.51
@@ -128,7 +157,7 @@ Material:
     - _NormalsSensitivity: 2
     - _OcclusionStrength: 1
     - _Outline_Size: 0
-    - _Outline_Thickness: 1
+    - _Outline_Thickness: 2
     - _Parallax: 0.005
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -136,7 +165,7 @@ Material:
     - _SL_CenterMaskEdge: 0.5
     - _SL_CenterMaskSize: 0.0625
     - _SL_FrameRate: 20
-    - _SL_LineDensity: 0
+    - _SL_LineDensity: 0.33468172
     - _SL_LineFallOff: 0.25
     - _SL_LinesAmount: 15
     - _SL_Speed: 1
@@ -151,6 +180,7 @@ Material:
     - _ZWriteControl: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _Blur_Center: {r: 0.5, g: 0.5, b: 0, a: 0}
     - _CameraHolder: {r: 8.811829, g: 21, b: 42.058125, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
