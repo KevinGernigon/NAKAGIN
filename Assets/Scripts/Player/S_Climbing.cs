@@ -79,8 +79,8 @@ public class S_Climbing : MonoBehaviour
         //if (_isWallFront && Input.GetKey(KeyCode.Z) && _wallLookAngle < _maxWallLookAngle)
 
         //if ((Input.GetButton("Vertical") || Input.GetButton("Jump")) && (_isWallFront  && _wallLookAngle < _maxWallLookAngle))  
-        //if ((S_InputManager._mouvementInput.y > 0 || S_InputManager._jumpInput) && (_isWallFront  && _wallLookAngle < _maxWallLookAngle))   
-        if (_isWallFront  && _wallLookAngle < _maxWallLookAngle)   
+        if ((S_InputManager._mouvementInput.y > 0 || S_InputManager._jumpInput) && (_isWallFront  && _wallLookAngle < _maxWallLookAngle))   
+        //if (_isWallFront  && _wallLookAngle < _maxWallLookAngle)   
         {
             if (!_isClimbing && _climbTimer > 0)
             {
