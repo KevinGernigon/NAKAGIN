@@ -163,17 +163,8 @@ public class S_InfoScore : MonoBehaviour
                 ScriptTimer.TimerReset();
 
                 S_RunCheckPointManager.FintimerRespawn();
-                //_playerContent.transform.position = _respawnplayer.transform.position;
+ 
 
-
-
-                Physics.SyncTransforms();
-
-                //Concequence de défaite
-                // temps ecouler 
-                // tp le jouer au check point devant le niveau 
-                // Attention si le joueur tombe et respawn en dehors du circuit la run est toujour en cours donc a la fin il y a tp
-                //TimerReset() lorsque joueur tombe dans le death area
 
             }
 

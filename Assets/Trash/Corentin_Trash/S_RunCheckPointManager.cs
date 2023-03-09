@@ -6,6 +6,8 @@ public class S_RunCheckPointManager : MonoBehaviour
 {
     public Transform _spawnRunCapsule;
     public Transform checkpointCapsule;
+    [SerializeField]private S_Timer _Timer;
+    //[SerializeField] private S_InfoScore _InfoScore;
 
     private S_ReferenceInterface _referenceInterface;
     private Transform _playerContent;
@@ -27,8 +29,11 @@ public class S_RunCheckPointManager : MonoBehaviour
 
 
     public void FintimerRespawn()
-    {
+    { 
+        //ResetSpawnPoint();
+
         _playerContent.position = _spawnRunCapsule.position;
+       
         RespawnPlayer();
     }
 
@@ -43,7 +48,7 @@ public class S_RunCheckPointManager : MonoBehaviour
     public void ResetSpawnPoint()
     {
         checkpointCapsule.position = _spawnRunCapsule.position;
-        RespawnPlayer();
+       
     }
 
     private void RespawnPlayer()
@@ -56,6 +61,22 @@ public class S_RunCheckPointManager : MonoBehaviour
         var y = this.transform.rotation.eulerAngles.y;
         _playerCam.CameraReset(x, y);
         Physics.SyncTransforms();
+    }
+
+    public void StartChrono()
+    {
+        _Timer.TimerStart();
+        //_InfoScore.SendTimeChallengeToTimer();
+    }
+
+    public void StopChrono()
+    {
+        _Timer.TimerStop();
+    }
+
+    public void ResetChrono()
+    {
+        _Timer.TimerReset();
     }
 
 }

@@ -148,7 +148,8 @@ public class S_CloseDoor : MonoBehaviour
             }
 
             yield return null;
-            time += Time.deltaTime * Speed;
+            if(ScriptTimer._timerPlay)
+                time += Time.deltaTime * Speed;
         }
 
         /* envoye un signal lorsque la porte est fermer pour tp le joueur si encore en run */

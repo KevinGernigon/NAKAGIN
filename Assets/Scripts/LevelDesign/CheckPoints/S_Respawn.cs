@@ -34,12 +34,12 @@ public class S_Respawn : MonoBehaviour
             _isDead = false;
 
             /////Start Death/////
-            ///
-
+    
             //_referenceInterface._playerGameObject.GetComponent<S_PlayerSound>().DeathSound();
             StartCoroutine(WaitToRespawn());
 
-           
+            /////After Death/////   
+
 
         }
     }
@@ -47,10 +47,13 @@ public class S_Respawn : MonoBehaviour
     IEnumerator WaitToRespawn()
     {
         //stop crono
+        _runCheckPointManager.StopChrono();
+
         _referenceInterface._InputManager._playerInputAction.Player.Disable();
         yield return new WaitForSeconds(2f); //Death Anim
         _referenceInterface._InputManager._playerInputAction.Player.Enable();
         _isDead = true;
+
 
 
         /////After Death/////       
@@ -61,14 +64,17 @@ public class S_Respawn : MonoBehaviour
         if (_runCheckPointManager.checkpointCapsule.position == _runCheckPointManager._spawnRunCapsule.position )
         {
             _runCheckPointManager.DeathRespawn();
-            Debug.Log("AAA");
-            //reset crono
+            //reset chrono
+            _runCheckPointManager.ResetChrono();
+
+           
         }
         else
         {
             _runCheckPointManager.DeathRespawn();
-            Debug.Log("BBB");
+
             //start crono
+            _runCheckPointManager.StartChrono();
         }
     }
 }
