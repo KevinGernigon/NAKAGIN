@@ -41,6 +41,9 @@ public class S_GrappinV2 : MonoBehaviour
     public bool isIncreaseFOV;
     public bool _isDecreaseRbDrag;
 
+    private bool _isHUD;
+    private bool _isHookingHUD;
+
     public System.Action updateAction;
 
     private void Awake()
@@ -52,6 +55,7 @@ public class S_GrappinV2 : MonoBehaviour
 
     private void Update()
     {
+        HUDCrosshair();
         /*if (Input.GetKeyDown(KeyCode.A) && !_isGrappling)
             StartGrapple();*/
         if (S_InputManager._playerInputAction.Player.Grappin.triggered && !_isGrappling)
@@ -67,16 +71,18 @@ public class S_GrappinV2 : MonoBehaviour
             {
                 Debug.DrawRay(_camera.position, _camera.forward * _maxGrappleDistance, Color.blue);
 
-                _HUDCrossHairLock.SetActive(true);
+                _isHUD = true;
 
             }
             else
             {
                 Debug.DrawRay(_camera.position, _camera.forward * _maxGrappleDistance, Color.red);
-                _HUDCrossHairLock.SetActive(false);
+                StartCoroutine(TimeraffichageHUDCrosshair());
 
             }
         }
+        else
+            StartCoroutine(TimeraffichageHUDCrosshair());
 
 
         if (_grapplingCdTimer > 0)
@@ -128,6 +134,25 @@ public class S_GrappinV2 : MonoBehaviour
             lr.SetPosition(1, grapplePoint);
             var finalPosition = grapplePoint;
     }
+
+    private void HUDCrosshair()
+    {
+        if (!_isHookingHUD)
+        {
+            if(_isHUD)
+                _HUDCrossHairLock.SetActive(true);
+            else
+                _HUDCrossHairLock.SetActive(false);
+        }
+        else _HUDCrossHairLock.SetActive(false);
+
+    }
+    IEnumerator TimeraffichageHUDCrosshair()
+    {
+        yield return new WaitForSeconds(0.2f);
+        _isHUD = false;
+    }
+
     private void MissGrapple()
     {
         grapplePoint = _camera.position + _camera.forward * _maxGrappleDistance;
@@ -156,6 +181,7 @@ public class S_GrappinV2 : MonoBehaviour
     }*/
     private void ExecuteGrapple()
     {
+        _isHookingHUD = true;
         _pm._isFreezing = true;
         isIncreaseFOV = true;
         Vector3 lowestPoint = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z); //point de d�part du personnage
@@ -167,6 +193,7 @@ public class S_GrappinV2 : MonoBehaviour
         _pm.JumpToPosition(grapplePoint, highestPointOnArc);
 
         Invoke(nameof(StopGrapple), 1f);
+        Invoke(nameof(HUDManager), 3f);
     }
 
     public void StopGrapple()
@@ -184,6 +211,11 @@ public class S_GrappinV2 : MonoBehaviour
         isIncreaseFOV = false;
 
         _isDecreaseRbDrag = false;
+    }
+
+    public void HUDManager()
+    {
+        _isHookingHUD = false;
     }
 }
 
