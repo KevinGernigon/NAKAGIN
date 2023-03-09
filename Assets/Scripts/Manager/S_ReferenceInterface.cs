@@ -22,7 +22,7 @@ public class S_ReferenceInterface : Manager
     public GameObject _CameraGameObject;
 
 
-    [Header("Refs UI")]
+    [Header("Refs Jetpack")]
     public S_Jetpack _Jetpack;
 
     [Header("Refs UI")]
@@ -32,9 +32,10 @@ public class S_ReferenceInterface : Manager
     public GameObject HUD_InteractGenerateurEnable;
     public GameObject HUD_InteractGenerateurDisable;
 
-    [Header("Refs Timer")]
+    [Header("Refs UI")]
 
     public GameObject _UICanvas;
+    public GameObject _UIStartHUD;
 
     [Header("Refs Battery")]
 

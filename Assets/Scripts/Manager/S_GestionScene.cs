@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class S_GestionScene : MonoBehaviour
 {
@@ -18,6 +19,7 @@ public class S_GestionScene : MonoBehaviour
     public bool _IsDead;
 
     [SerializeField] private Transform _spawnPoint;
+    private TMP_Text _textTimer;
 
     private void Awake()
     {
@@ -28,21 +30,20 @@ public class S_GestionScene : MonoBehaviour
         _camera = _referenceInterface._CameraGameObject;
         _playerCam = _camera.GetComponent<S_PlayerCam>();
 
+        _textTimer = _referenceInterface._timerText;
 
     }
 
     private void Start()
     {
-
         _playerTransform.position = _spawnPoint.position;
         _playerRb.velocity = new Vector3(0, 0, 0);
-
         var x = this.transform.rotation.eulerAngles.x;
         var y = this.transform.rotation.eulerAngles.y;
-
         _playerCam.CameraReset(x, y);
-
         Physics.SyncTransforms();
+
+        _textTimer.text = "";
 
     }
 
