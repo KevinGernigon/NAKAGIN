@@ -6,29 +6,36 @@ public class S_Bras_Animation : MonoBehaviour
 {
     private bool _isAnimated = false;
 
-    [SerializeField]
-    private GameObject _Arms;
+   
+    [SerializeField] private GameObject _Arms;
 
     private Animator arms_AC;
 
-    [SerializeField]
-    private GameObject _arms_Mesh;
+    [SerializeField] private GameObject _arms_Mesh;
+
+
+    [Header("InputManager")]
+    [SerializeField] private S_InputManager S_InputManager;
 
     private void Awake()
     {
         arms_AC = _Arms.GetComponent<Animator>();
         _arms_Mesh.SetActive(false);
+
+
+
     }
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && _isAnimated == false)
+        
+        if (S_InputManager._playerInputAction.Player.MoveModuleLeft.triggered && _isAnimated == false)
         {
             _arms_Mesh.SetActive(true);
             int random = Random.Range(1, 3);
             _isAnimated = true;
             arms_AC.Play("A_Arms_Left_0" + random.ToString(), 0, 0.0f);
         }
-        else if (Input.GetMouseButtonDown(1) && _isAnimated == false)
+        else if (S_InputManager._playerInputAction.Player.MoveModuleRight.triggered && _isAnimated == false)
         {
             _arms_Mesh.SetActive(true);
             int random = Random.Range(1, 3);
