@@ -26,10 +26,11 @@ public class S_InfoScore : MonoBehaviour
     public float _level1Time = 10f;
     public float _level2Time = 15f;
     private float _bestTime = 0f;
-
+    private float timePlayer;
 
     [Header("Affichage UI")]
     [SerializeField] private GameObject _HUDInfoScore;
+    [SerializeField] private GameObject _detectionRunBox;
     [SerializeField] private LayerMask _whatIsInformative;
     [SerializeField] private LayerMask Everything;
 
@@ -48,12 +49,16 @@ public class S_InfoScore : MonoBehaviour
 
     private void Start()
     {
-        ShowTimerChallenge();
+        
         
     }
 
     private void Update()
     {
+
+
+
+
        if( _runStart && (ScriptTimer._timerTime > _level1Time))
        {
             GetBestTimePlayer();
@@ -64,7 +69,16 @@ public class S_InfoScore : MonoBehaviour
        if (Physics.Raycast(_referenceInterface._CameraGameObject.transform.position, _referenceInterface._CameraGameObject.transform.forward, out hit, 100, Everything))
        {
             int whatIsInformative = LayerMask.NameToLayer("WhatIsInformative");
-            if (hit.collider.gameObject.layer == whatIsInformative)
+            //Debug.Log(hit.collider.gameObject);
+            if (hit.collider.gameObject.layer == whatIsInformative && hit.collider.gameObject == _detectionRunBox)
+            {
+                ShowTimerChallenge();
+                AfficheBesttimeplayer();
+                _HUDInfoScore.SetActive(true);
+                
+
+            }
+            else if (hit.collider.gameObject.layer == whatIsInformative)
             {
                 _HUDInfoScore.SetActive(true);
             }
@@ -72,12 +86,13 @@ public class S_InfoScore : MonoBehaviour
             {
                 _HUDInfoScore.SetActive(false);
             }
-       }
+        }
         else
         {
             _HUDInfoScore.SetActive(false);
         }
     }
+
 
 
     private void ShowTimerChallenge()
@@ -107,7 +122,80 @@ public class S_InfoScore : MonoBehaviour
     }
 
 
-   
+   private void AfficheBesttimeplayer()
+    {
+        if (_bestTime != 0f)
+        {
+            _bestTimeTxt.text = _bestTimeminutes + ":" + _bestTimeseconds + ":" + _bestTimemilliseconds;
+            BestTimeAffichageMinutes();
+
+            if (_bestTime < _level1Time)
+            {
+                _level1TimerTxt.color = Color.green;
+            }
+            else
+                _level1TimerTxt.color = Color.white;
+
+            if (_bestTime < _level2Time)
+            {
+                _level2TimerTxt.color = Color.green;
+            }
+            else
+                _level2TimerTxt.color = Color.white;
+        }
+        else
+        {
+            _bestTimeTxt.text = "";
+            _level1TimerTxt.color = Color.white;
+            _level2TimerTxt.color = Color.white;
+        }
+           
+    }
+
+    private void BestTimeAffichageMinutes()
+    {
+        if (_bestTimeminutes < 10)// ajoute un 0 devant les 10 premiere min
+        {
+            if (_bestTimeseconds < 10)// ajoute un 0 devant les 10 premiere sec
+            {
+
+                if (_bestTimemilliseconds < 100)
+
+                    _bestTimeTxt.text = "0" + _bestTimeminutes + ":" + "0" + _bestTimeseconds + ":" + "0" + _bestTimemilliseconds;
+
+                else
+                    _bestTimeTxt.text = "0" + _bestTimeminutes + ":" + "0" + _bestTimeseconds + ":" + _bestTimemilliseconds;
+            }
+            else
+            {
+                if (_bestTimemilliseconds < 100)
+
+                    _bestTimeTxt.text = "0" + _bestTimeminutes + ":" + _bestTimeseconds + ":" + "0" + _bestTimemilliseconds;
+
+                else
+                    _bestTimeTxt.text = "0" + _bestTimeminutes + ":" + _bestTimeseconds + ":" + _bestTimemilliseconds;
+            }
+        }
+        else
+        {
+            if (_bestTimeseconds < 10)
+            {
+                if (_bestTimemilliseconds < 100)
+                    _bestTimeTxt.text = _bestTimeminutes + ":" + "0" + _bestTimeseconds + ":" + "0" + _bestTimemilliseconds;
+                else
+                    _bestTimeTxt.text = _bestTimeminutes + ":" + "0" + _bestTimeseconds + ":" + _bestTimemilliseconds;
+            }
+            else
+            {
+                if (_bestTimemilliseconds < 100)
+                    _bestTimeTxt.text = _bestTimeminutes + ":" + _bestTimeseconds + ":" + "0" + _bestTimemilliseconds;
+                else
+                    _bestTimeTxt.text = _bestTimeminutes + ":" + _bestTimeseconds + ":" + _bestTimemilliseconds;
+
+            }
+
+        }
+    }
 
     public void SendTimeChallengeToTimer()         //fonction lancé au passage de la trigger box start de la run 
     {
@@ -121,68 +209,26 @@ public class S_InfoScore : MonoBehaviour
         if (_runStart)
         {
             _runStart = false;
-
-            float timePlayer = ScriptTimer._timerTime;
-
+             timePlayer = ScriptTimer._timerTime;
 
             if (timePlayer < _level1Time)
             {
 
                 // ajout chemin vers les recompenses en cas de victoire 
-
+                
+                
                 if (timePlayer < _bestTime || _bestTime == 0f)
                 {
-                    _level1TimerTxt.color = Color.green;
+                    
                     _bestTime = timePlayer;
 
                     _bestTimeminutes = ScriptTimer._minutes;
                     _bestTimeseconds = ScriptTimer._seconds;
                     _bestTimemilliseconds = ScriptTimer._milliseconds;
 
-                    _bestTimeTxt.text = _bestTimeminutes + ":" + _bestTimeseconds + ":" + _bestTimemilliseconds;
+                    //_bestTimeTxt.text = _bestTimeminutes + ":" + _bestTimeseconds + ":" + _bestTimemilliseconds;
 
-                    if (_bestTimeminutes < 10)// ajoute un 0 devant les 10 premiere min
-                    {
-                        if (_bestTimeseconds < 10)// ajoute un 0 devant les 10 premiere sec
-                        {
-
-                            if (_bestTimemilliseconds < 100)
-
-                                _bestTimeTxt.text = "0" + _bestTimeminutes + ":" + "0" + _bestTimeseconds + ":" + "0" + _bestTimemilliseconds;
-
-                            else
-                                _bestTimeTxt.text = "0" + _bestTimeminutes + ":" + "0" + _bestTimeseconds + ":" + _bestTimemilliseconds;
-                        }
-                        else
-                        {
-                            if (_bestTimemilliseconds < 100)
-
-                                _bestTimeTxt.text = "0" + _bestTimeminutes + ":" + _bestTimeseconds + ":" + "0" + _bestTimemilliseconds;
-
-                            else
-                                _bestTimeTxt.text = "0" + _bestTimeminutes + ":" + _bestTimeseconds + ":" + _bestTimemilliseconds;
-                        }
-                    }
-                    else
-                    {
-                        if (_bestTimeseconds < 10)
-                        {
-                            if (_bestTimemilliseconds < 100)
-                                _bestTimeTxt.text = _bestTimeminutes + ":" + "0" + _bestTimeseconds + ":" + "0" + _bestTimemilliseconds;
-                            else
-                                _bestTimeTxt.text = _bestTimeminutes + ":" + "0" + _bestTimeseconds + ":" + _bestTimemilliseconds;
-                        }
-                        else
-                        {
-                            if (_bestTimemilliseconds < 100)
-                                _bestTimeTxt.text = _bestTimeminutes + ":" + _bestTimeseconds + ":" + "0" + _bestTimemilliseconds;
-                            else
-                                _bestTimeTxt.text = _bestTimeminutes + ":" + _bestTimeseconds + ":" + _bestTimemilliseconds;
-
-                        }
-
-                    }
-
+                    //BestTimeAffichageMinutes();
                 }
 
             }
@@ -200,10 +246,9 @@ public class S_InfoScore : MonoBehaviour
 
             if (timePlayer < _level2Time)
             {
-                _level2TimerTxt.color = Color.green;
                 _Lvl2Win = true;
 
-            }
+            }          
         }
             
 

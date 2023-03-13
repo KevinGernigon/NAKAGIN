@@ -133,7 +133,7 @@ public class S_CloseDoor : MonoBehaviour
 
         float time = 0;
 
-        _DoorIsOpen = false;
+       
 
         _DoorMooving = true;
 
@@ -148,13 +148,14 @@ public class S_CloseDoor : MonoBehaviour
             }
 
             yield return null;
-            if(ScriptTimer._timerPlay)
+            if(ScriptTimer._timerPlay || (_DoorIsOpen && !ScriptInfoScore._runStart))
                 time += Time.deltaTime * Speed;
         }
 
         /* envoye un signal lorsque la porte est fermer pour tp le joueur si encore en run */
         //Debug.Log("Porte fermer");
         _DoorMooving = false;
+        _DoorIsOpen = false;
 
     }
 
