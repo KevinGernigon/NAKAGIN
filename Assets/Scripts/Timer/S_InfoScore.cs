@@ -25,9 +25,15 @@ public class S_InfoScore : MonoBehaviour
 
     public float _level1Time = 10f;
     public float _level2Time = 15f;
-    
     private float _bestTime = 0f;
-    
+
+
+    [Header("Affichage UI")]
+    [SerializeField] private GameObject _HUDInfoScore;
+    [SerializeField] private LayerMask _whatIsInformative;
+    [SerializeField] private LayerMask Everything;
+
+
 
     private float _level1Timeminutes, _level1Timeseconds, _level1Timemilliseconds;
     private float _level2Timeminutes, _level2Timeseconds, _level2Timemilliseconds;
@@ -52,8 +58,25 @@ public class S_InfoScore : MonoBehaviour
        {
             GetBestTimePlayer();
        }
-
-     
+       
+        
+       RaycastHit hit;
+       if (Physics.Raycast(_referenceInterface._CameraGameObject.transform.position, _referenceInterface._CameraGameObject.transform.forward, out hit, 100, Everything))
+       {
+            int whatIsInformative = LayerMask.NameToLayer("WhatIsInformative");
+            if (hit.collider.gameObject.layer == whatIsInformative)
+            {
+                _HUDInfoScore.SetActive(true);
+            }
+            else
+            {
+                _HUDInfoScore.SetActive(false);
+            }
+       }
+        else
+        {
+            _HUDInfoScore.SetActive(false);
+        }
     }
 
 
@@ -64,7 +87,11 @@ public class S_InfoScore : MonoBehaviour
         _level1Timeseconds = (int)(_level1Time % 60f);
         _level1Timemilliseconds = (int)(_level1Time * 1000f) % 1000;
 
-        _level1TimerTxt.text = "0" + _level1Timeminutes + ":" + _level1Timeseconds + ":" + "00" + _level1Timemilliseconds;
+        if (_level1Timeseconds < 10)      
+            _level1TimerTxt.text = "0" + _level1Timeminutes + ":" + "0" + _level1Timeseconds + ":" + "00" + _level1Timemilliseconds;
+        else
+            _level1TimerTxt.text = "0" + _level1Timeminutes + ":" + _level1Timeseconds + ":" + "00" + _level1Timemilliseconds;
+
 
 
 
@@ -72,7 +99,10 @@ public class S_InfoScore : MonoBehaviour
         _level2Timeseconds = (int)(_level2Time % 60f);
         _level2Timemilliseconds = (int)(_level2Time * 1000f) % 1000;
 
-        _level2TimerTxt.text = "0" + _level2Timeminutes + ":" + _level2Timeseconds + ":" + "00" + _level2Timemilliseconds;
+        if (_level2Timeseconds < 10)
+            _level2TimerTxt.text = "0" + _level2Timeminutes + ":" + "0" + _level2Timeseconds + ":" + "00" + _level2Timemilliseconds;
+        else
+            _level2TimerTxt.text = "0" + _level2Timeminutes + ":" + _level2Timeseconds + ":" + "00" + _level2Timemilliseconds;
 
     }
 
