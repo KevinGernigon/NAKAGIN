@@ -12,6 +12,8 @@ public class S_Climbing : MonoBehaviour
     [SerializeField] private Transform _orientation;
     [SerializeField] private Rigidbody rb;
     [SerializeField] private S_Dash ScriptDash;
+    [SerializeField] private S_Accelaration AccelerationScript;
+
     public S_PlayerMovement pm;
     [SerializeField] private LayerMask _whatIsClimbable;
 
@@ -55,6 +57,10 @@ public class S_Climbing : MonoBehaviour
     public bool _isAchievedClimb;
     [SerializeField] private float _AnimationClimbTime;
 
+    private void Start()
+    {
+        AccelerationScript = GetComponent<S_Accelaration>();
+    }
     private void Update()
     {
         WallCheck();
@@ -154,6 +160,8 @@ public class S_Climbing : MonoBehaviour
 
     private void StopClimbingByReachPoint()
     {
+        pm._walkSpeed = 10;
+
         _isClimbing = false;
         pm._isClimbing = false;
         StartCoroutine(counterJumpAdjustment());
@@ -162,6 +170,8 @@ public class S_Climbing : MonoBehaviour
     }
     private void StopClimbingByTime()
     {
+        pm._walkSpeed = 10;
+
         _isClimbing = false;
         pm._isClimbing = false;
     }

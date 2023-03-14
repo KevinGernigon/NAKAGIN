@@ -58,6 +58,8 @@ public class S_PlayerCam : MonoBehaviour
     [SerializeField]
     private GameObject _eventSystem;
 
+    private int _RandomCount;
+    private bool _isRandomNumber;
     public float tilt { get; private set; }
 
     // Start is called before the first frame update
@@ -152,9 +154,18 @@ public class S_PlayerCam : MonoBehaviour
         if (!pm._isWallRunning && !pm._isSliding && !GrapplingHookScript.isIncreaseFOV && !pm._isDashing)
         {
             boolChangement = false;
+            _isRandomNumber = false;
         }
     }
 
+    public void RandomFunction()
+    {
+        if (!_isRandomNumber)
+        {
+            _isRandomNumber = true;
+            _RandomCount = Random.Range(1, 3);
+        }
+    }
     private void ClimbCameraAdjusted() 
     {
         if (pm._isClimbing)
@@ -194,11 +205,15 @@ public class S_PlayerCam : MonoBehaviour
     }
     private void CameraTiltSlide()
     {
+        RandomFunction();
         if (pm._isSliding)
         {
             boolChangement = true;
             cam.fieldOfView = Mathf.Lerp(cam.fieldOfView, _wallSlideFov, _wallSlideFovTime * Time.fixedDeltaTime);
-            tilt = Mathf.Lerp(tilt, _camTiltSlide, _camTiltTime * Time.fixedDeltaTime);
+            if (_RandomCount == 1)
+                tilt = Mathf.Lerp(tilt, _camTiltSlide, _camTiltTime * Time.fixedDeltaTime);
+            else if (_RandomCount == 2)
+                tilt = Mathf.Lerp(tilt, -_camTiltSlide, _camTiltTime * Time.fixedDeltaTime);
         }
     }
     private void CameraTiltClimb()

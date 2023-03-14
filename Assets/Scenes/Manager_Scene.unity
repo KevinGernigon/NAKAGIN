@@ -8822,6 +8822,7 @@ MonoBehaviour:
   _orientation: {fileID: 3956388862463579861}
   rb: {fileID: 3956388861518991356}
   ScriptDash: {fileID: 3956388861518991233}
+  AccelerationScript: {fileID: 0}
   pm: {fileID: 3956388861518991357}
   _whatIsClimbable:
     serializedVersion: 2
@@ -8865,6 +8866,7 @@ MonoBehaviour:
   _slideKey: 306
   _slidingCdMax: 1
   _isTrue: 0
+  i: 0
 --- !u!1 &3956388861518991236
 GameObject:
   m_ObjectHideFlags: 0
@@ -8911,7 +8913,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   _wallRunForce: 200
-  _wallClimbSpeed: 5
+  _wallClimbSpeed: 1
   _wallJumpUpForce: 28
   _wallJumpSideForce: 30
   _maxWallRunTime: 20
@@ -8969,6 +8971,8 @@ MonoBehaviour:
   isIncreaseFOV: 0
   _isDecreaseRbDrag: 0
   _isHookingHUD: 0
+  _isAimForgivenessActive: 0
+  IncrementValue: 0
 --- !u!54 &3956388861518991356
 Rigidbody:
   m_ObjectHideFlags: 0
