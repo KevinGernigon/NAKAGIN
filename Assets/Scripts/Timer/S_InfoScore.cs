@@ -14,10 +14,12 @@ public class S_InfoScore : MonoBehaviour
     private Transform _playerContent;
     [SerializeField] private Transform _respawnplayer;
 
-
     public bool _runStart;
     public bool _Lvl2Win;
+    public bool _Lvl1Win;
+    [SerializeField] private string _nameRun;
 
+    [SerializeField] private TMP_Text _NameRunTxt;
     [SerializeField] private TMP_Text _level1TimerTxt;
     [SerializeField] private TMP_Text _level2TimerTxt;
     [SerializeField] private TMP_Text _bestTimeTxt;
@@ -56,9 +58,6 @@ public class S_InfoScore : MonoBehaviour
     private void Update()
     {
 
-
-
-
        if( _runStart && (ScriptTimer._timerTime > _level1Time))
        {
             GetBestTimePlayer();
@@ -66,37 +65,46 @@ public class S_InfoScore : MonoBehaviour
        
         
        RaycastHit hit;
-       if (Physics.Raycast(_referenceInterface._CameraGameObject.transform.position, _referenceInterface._CameraGameObject.transform.forward, out hit, 100, Everything))
+       if (Physics.Raycast(_referenceInterface._CameraGameObject.transform.position, _referenceInterface._CameraGameObject.transform.forward, out hit, 30, Everything))
        {
             int whatIsInformative = LayerMask.NameToLayer("WhatIsInformative");
             //Debug.Log(hit.collider.gameObject);
+
+
             if (hit.collider.gameObject.layer == whatIsInformative && hit.collider.gameObject == _detectionRunBox)
             {
                 ShowTimerChallenge();
                 AfficheBesttimeplayer();
-                _HUDInfoScore.SetActive(true);
-                
-
             }
-            else if (hit.collider.gameObject.layer == whatIsInformative)
+
+            if (hit.collider.gameObject.layer == whatIsInformative)
             {
                 _HUDInfoScore.SetActive(true);
+                StopAllCoroutines();
             }
             else
             {
-                _HUDInfoScore.SetActive(false);
+                StartCoroutine(AffichageHUDInfoRun());
             }
         }
         else
         {
-            _HUDInfoScore.SetActive(false);
+            StartCoroutine(AffichageHUDInfoRun());
         }
     }
 
 
+    IEnumerator AffichageHUDInfoRun()
+    {
+        yield return new WaitForSeconds(1f);
+        _HUDInfoScore.SetActive(false);
+    }
 
     private void ShowTimerChallenge()
     {
+
+        _NameRunTxt.text = _nameRun ;
+
 
         _level1Timeminutes = (int)(_level1Time / 60f) % 60;
         _level1Timeseconds = (int)(_level1Time % 60f);
@@ -209,47 +217,42 @@ public class S_InfoScore : MonoBehaviour
         if (_runStart)
         {
             _runStart = false;
-             timePlayer = ScriptTimer._timerTime;
+            timePlayer = ScriptTimer._timerTime;
 
-            if (timePlayer < _level1Time)
-            {
 
-                // ajout chemin vers les recompenses en cas de victoire 
-                
-                
-                if (timePlayer < _bestTime || _bestTime == 0f)
-                {
+        if (timePlayer < _bestTime || _bestTime == 0f)
+        {
                     
-                    _bestTime = timePlayer;
+             _bestTime = timePlayer;
 
-                    _bestTimeminutes = ScriptTimer._minutes;
-                    _bestTimeseconds = ScriptTimer._seconds;
-                    _bestTimemilliseconds = ScriptTimer._milliseconds;
+             _bestTimeminutes = ScriptTimer._minutes;
+             _bestTimeseconds = ScriptTimer._seconds;
+             _bestTimemilliseconds = ScriptTimer._milliseconds;
+             
+        }
 
-                    //_bestTimeTxt.text = _bestTimeminutes + ":" + _bestTimeseconds + ":" + _bestTimemilliseconds;
 
-                    //BestTimeAffichageMinutes();
-                }
-
-            }
-            else
-            {
+        if (timePlayer < _level1Time)
+        {
+                // ajout chemin vers les recompenses en cas de victoire 
+                _Lvl1Win = true;
+        }
+        /*else
+        {
                 _runStart = false;
 
                 ScriptTimer.TimerReset();
 
                 S_RunCheckPointManager.FintimerRespawn();
- 
 
+        }*/
 
-            }
-
-            if (timePlayer < _level2Time)
-            {
+        if(timePlayer < _level2Time)
+        {
                 _Lvl2Win = true;
 
-            }          
-        }
+        }          
+    }
             
 
     }

@@ -29,10 +29,11 @@ public class S_CloseDoor : MonoBehaviour
     public bool _Doorlvl2Open = false;
 
     private bool _DoorMooving = false;
+    private bool _Doorlvl2Mooving = false;
+    
 
-
-    private Coroutine _animationCoroutine;
-
+    private Coroutine _animationCoroutinelvl1;
+    private Coroutine _animationCoroutinelvl2;
 
 
     private void Awake()
@@ -65,11 +66,19 @@ public class S_CloseDoor : MonoBehaviour
 
         }
 
-        if (ScriptInfoScore._Lvl2Win && !_Doorlvl2Open)
+        if (ScriptInfoScore._runStart && (ScriptTimer._timerTime > ScriptInfoScore._level1Time - _timeAfterClose) && !_Doorlvl2Mooving)
+        {
+
+            ClosedDoorLvl2(_speedClosing);
+
+        }
+
+        if (ScriptInfoScore._runStart && !_Doorlvl2Open)
         {
             OpenDoorLvl2();
         }
 
+        
     }
 
 
@@ -79,12 +88,12 @@ public class S_CloseDoor : MonoBehaviour
         //Debug.Log("Open Door");
         if (!_DoorIsOpen)
         {
-            if (_animationCoroutine != null)
+            if (_animationCoroutinelvl1 != null)
             {
-                StopCoroutine(_animationCoroutine);
+                StopCoroutine(_animationCoroutinelvl1);
             }
 
-            _animationCoroutine = StartCoroutine(DoSlidingOpen());
+            _animationCoroutinelvl1 = StartCoroutine(DoSlidingOpen());
 
         }
 
@@ -115,14 +124,60 @@ public class S_CloseDoor : MonoBehaviour
         //Debug.Log("Close Door");
         if (_DoorIsOpen)
         {
-            if (_animationCoroutine != null)
+            if (_animationCoroutinelvl1 != null)
             {
-                StopCoroutine(_animationCoroutine);
+                StopCoroutine(_animationCoroutinelvl1);
             }
 
-            _animationCoroutine = StartCoroutine(DoSlidingClose(Speed));
+            _animationCoroutinelvl1 = StartCoroutine(DoSlidingClose(Speed));
 
         }
+
+    }
+    public void ClosedDoorLvl2(float Speed)
+    {
+        //Debug.Log("Close Door");
+        if ( _Doorlvl2Open)
+        {
+            if (_animationCoroutinelvl2 != null)
+            {
+                StopCoroutine(_animationCoroutinelvl2);
+            }
+
+            _animationCoroutinelvl2 = StartCoroutine(DoSlidingCloselvl2(Speed));
+
+        }
+
+    }
+    private IEnumerator DoSlidingCloselvl2(float Speed)
+    {
+        Vector3 endPosition = _startPositionDoorLvl2;
+        Vector3 startPosition = _doorLvl2.transform.position;
+
+        float time = 0;
+
+
+        _Doorlvl2Mooving = true;
+
+        while (time < 1)
+        {
+
+            _doorLvl2.transform.position = Vector3.Lerp(startPosition, endPosition, time);
+
+            if (!ScriptInfoScore._runStart)
+            {
+                Speed = _speedOpening;
+            }
+
+            yield return null;
+            if (ScriptTimer._timerPlay || (_DoorIsOpen && !ScriptInfoScore._runStart))
+                time += Time.deltaTime * Speed;
+        }
+
+        /* envoye un signal lorsque la porte est fermer pour tp le joueur si encore en run */
+        //Debug.Log("Porte fermer");
+        _Doorlvl2Mooving = false;
+        _Doorlvl2Open = false;
 
     }
 
@@ -133,8 +188,7 @@ public class S_CloseDoor : MonoBehaviour
 
         float time = 0;
 
-       
-
+    
         _DoorMooving = true;
 
         while (time < 1)
@@ -171,10 +225,16 @@ public class S_CloseDoor : MonoBehaviour
 
     public void OpenDoorLvl2()
     {
-        _Doorlvl2Open = true;
+        if (!_Doorlvl2Open)
+        {
+            if (_animationCoroutinelvl2 != null)
+            {
+                StopCoroutine(_animationCoroutinelvl2);
+            }
 
-        StartCoroutine(DoSlidingOpenDoorLvl2());
+            _animationCoroutinelvl2 = StartCoroutine(DoSlidingOpenDoorLvl2());
 
+        }
     }
 
     private IEnumerator DoSlidingOpenDoorLvl2()
@@ -182,6 +242,7 @@ public class S_CloseDoor : MonoBehaviour
         Vector3 endPosition = _startPositionDoorLvl2 + _slideAmount * _slideDirection;
         Vector3 startPosition = _doorLvl2.transform.position;
 
+        _Doorlvl2Open = true;
 
         float time = 0;
         while (time < 1)
