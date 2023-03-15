@@ -19,6 +19,7 @@ public class S_SlowmotionJetpack : MonoBehaviour
     {
         S_Jetpack.BooleanTriggerBoxEnter();
         _referenceInterface._InputManager._playerInputAction.Player.Dash.Disable();
+        _referenceInterface._InputManager._playerInputAction.Player.Grappin.Disable();
 
 
 
@@ -28,5 +29,6 @@ public class S_SlowmotionJetpack : MonoBehaviour
 
         S_Jetpack.BooleanTriggerBoxExit();
         _referenceInterface._InputManager._playerInputAction.Player.Dash.Enable();
+        _referenceInterface._InputManager._playerInputAction.Player.Grappin.Enable();
     }
 }

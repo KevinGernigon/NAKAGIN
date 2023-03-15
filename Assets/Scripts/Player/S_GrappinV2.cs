@@ -181,7 +181,6 @@ public class S_GrappinV2 : MonoBehaviour
 
     private void MissGrapple()
     {
-        IncrementValue = 0;
         grapplePoint = _camera.position + _camera.forward * _maxGrappleDistance;
         PlayerSoundScript.RewindSound();
         Invoke(nameof(StopGrapple), _grappleDelayTime);
@@ -225,6 +224,8 @@ public class S_GrappinV2 : MonoBehaviour
 
     public void StopGrapple()
     {
+        IncrementValue = 0;
+
         _pm._readyToJump = true;
 
         _pm._isFreezing = false;
