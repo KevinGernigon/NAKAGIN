@@ -31,6 +31,7 @@ public class S_GrappinV2 : MonoBehaviour
     [SerializeField] private float _overshootYAxis;
 
     private Vector3 grapplePoint;
+    private Vector3 previousGrapplePoint;
 
     [Header("Cooldown")]
     [SerializeField] private float _grapplingCd;
@@ -42,10 +43,10 @@ public class S_GrappinV2 : MonoBehaviour
     public bool _isDecreaseRbDrag;
 
     private bool _isHUD;
-    private bool _isHookingHUD;
-
+    public bool _isHookingHUD;
+    public bool _isAimForgivenessActive;
     public System.Action updateAction;
-
+    public int IncrementValue;
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -55,6 +56,7 @@ public class S_GrappinV2 : MonoBehaviour
 
     private void Update()
     {
+        Debug.Log(_isAimForgivenessActive);
         HUDCrosshair();
         /*if (Input.GetKeyDown(KeyCode.A) && !_isGrappling)
             StartGrapple();*/
@@ -70,19 +72,30 @@ public class S_GrappinV2 : MonoBehaviour
             if (DebugHit.collider.gameObject.layer == whatIsTarget)
             {
                 Debug.DrawRay(_camera.position, _camera.forward * _maxGrappleDistance, Color.blue);
-
+                grapplePoint = DebugHit.transform.position;
                 _isHUD = true;
-
+                _isAimForgivenessActive = true;
+                if (IncrementValue <= 0)
+                {
+                    IncrementValue++;
+                    Debug.Log("?");
+                    previousGrapplePoint = grapplePoint;
+                }
+                StopAllCoroutines();
             }
-            else
+            /*else
             {
                 Debug.DrawRay(_camera.position, _camera.forward * _maxGrappleDistance, Color.red);
                 StartCoroutine(TimeraffichageHUDCrosshair());
+                StartCoroutine(TimerAimForgiveness());
 
-            }
+            }*/
         }
         else
-            StartCoroutine(TimeraffichageHUDCrosshair());
+        {
+            StartCoroutine(TimerGrapplingHook());
+        }
+
 
 
         if (_grapplingCdTimer > 0)
@@ -94,7 +107,7 @@ public class S_GrappinV2 : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (_isGrappling)
+        if(_isGrappling)
             //lr.SetPosition(1000, _grappingTransform.position);
             lr.SetPosition(0, _grappingTransform.position);
     }
@@ -110,10 +123,18 @@ public class S_GrappinV2 : MonoBehaviour
         PlayerSoundScript.RopeSound();
         _isGrappling = true;
         _pm._isFreezing = true;
-
         RaycastHit hit;
+        if (_isAimForgivenessActive)
+        {
+            Debug.Log("????????????");
+            _isDecreaseRbDrag = true;
+            _pm.Jump();
+            grapplePoint = previousGrapplePoint;
+            PlayerSoundScript.ImpactHookSound();
+            Invoke(nameof(ExecuteGrapple), _grappleDelayTime);
+        }   
         //if(Physics.Raycast(_camera.position, _camera.forward, out hit, _maxGrappleDistance, 1 << LayerMask.NameToLayer("WhatIsTarget")))
-        if (Physics.Raycast(_camera.position, _camera.forward, out hit, _maxGrappleDistance, Everything))
+        else if (Physics.Raycast(_camera.position, _camera.forward, out hit, _maxGrappleDistance, Everything))
         {
             int whatIsTarget = LayerMask.NameToLayer("WhatIsTarget");
             if (hit.collider.gameObject.layer == whatIsTarget)
@@ -130,9 +151,12 @@ public class S_GrappinV2 : MonoBehaviour
         else
             MissGrapple();
 
+
             lr.enabled = true;
             lr.SetPosition(1, grapplePoint);
             var finalPosition = grapplePoint;
+            /*SetGraplin(finalPosition);
+            updateAction = () => SetGraplin(finalPosition);*/
     }
 
     private void HUDCrosshair()
@@ -147,10 +171,12 @@ public class S_GrappinV2 : MonoBehaviour
         else _HUDCrossHairLock.SetActive(false);
 
     }
-    IEnumerator TimeraffichageHUDCrosshair()
+
+    IEnumerator TimerGrapplingHook()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.3f);
         _isHUD = false;
+        _isAimForgivenessActive = false;
     }
 
     private void MissGrapple()
@@ -159,15 +185,15 @@ public class S_GrappinV2 : MonoBehaviour
         PlayerSoundScript.RewindSound();
         Invoke(nameof(StopGrapple), _grappleDelayTime);
     }
-        /*SetGraplin(finalPosion);
-        updateAction = () => SetGraplin(finalPosion);*/
+
 
     /*private void SetGraplin(Vector3 finalPos)
     {
+
         float i = 0f;
-        lr.positionCount = 1000;
+        lr.positionCount = 100;
         var tempTime = Time.time;
-        for (int y = 0; y < 1000; y++)
+        for (int y = 0; y < lr.positionCount; y++)
         {
             //var tempPosition = Vector3.Lerp(_grappingTransform.position, finalPos, i);
             var tempPosition = Vector3.Lerp(finalPos, _grappingTransform.position, i);
@@ -177,7 +203,7 @@ public class S_GrappinV2 : MonoBehaviour
         }
 
         lr.SetPosition(lr.positionCount - 1, _grappingTransform.position);
-    
+   
     }*/
     private void ExecuteGrapple()
     {
@@ -198,6 +224,8 @@ public class S_GrappinV2 : MonoBehaviour
 
     public void StopGrapple()
     {
+        IncrementValue = 0;
+
         _pm._readyToJump = true;
 
         _pm._isFreezing = false;

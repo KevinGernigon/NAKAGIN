@@ -83,23 +83,23 @@ public class S_Dash : MonoBehaviour
 
     private void InputManager()
     {
-        if (AxelIsHere)
+        /*if (AxelIsHere)
         {
-            /*if (Input.GetButtonDown("Vertical") && Input.GetAxisRaw("Vertical") > 0 || (Input.GetButtonDown("Vertical") && Input.GetAxisRaw("Vertical") < 0) ||
-            Input.GetButtonDown("Horizontal") && Input.GetAxisRaw("Horizontal") > 0 || (Input.GetButtonDown("Horizontal") && Input.GetAxisRaw("Horizontal") < 0))*/
+            if (Input.GetButtonDown("Vertical") && Input.GetAxisRaw("Vertical") > 0 || (Input.GetButtonDown("Vertical") && Input.GetAxisRaw("Vertical") < 0) ||
+            Input.GetButtonDown("Horizontal") && Input.GetAxisRaw("Horizontal") > 0 || (Input.GetButtonDown("Horizontal") && Input.GetAxisRaw("Horizontal") < 0)) {
             if (S_InputManager._mouvementInput.y != 0 && S_InputManager._mouvementInput.y > 0 || (S_InputManager._mouvementInput.y != 0 && S_InputManager._mouvementInput.y < 0) ||
-            S_InputManager._mouvementInput.x != 0 && S_InputManager._mouvementInput.x > 0 || (S_InputManager._mouvementInput.x != 0 && S_InputManager._mouvementInput.x < 0))
+            S_InputManager._mouvementInput.x != 0 && S_InputManager._mouvementInput.x > 0 || (S_InputManager._mouvementInput.x != 0 && S_InputManager._mouvementInput.x < 0)) 
             {
-
                 float timeSinceLastPress = Time.time - lastPressTime;
 
                 if (timeSinceLastPress <= DOUBLE_CLICK_TIME)
                 {
+                    Debug.Log("?");
                     DashFunction();
                 }
-                lastPressTime = Time.time;
+            lastPressTime = Time.time;
             }
-        }
+        }*/ 
         
 
         //if (Input.GetButtonDown("Dash"))

@@ -66,7 +66,9 @@ public class S_WallRunning : MonoBehaviour
     [SerializeField] private S_Climbing ClimbScript;
     private Rigidbody rb;
 
-
+    private bool _isJumpForgivenessActive;
+    private bool canWallJumpLedge;
+    private float _timerWallJump;
 
     // Start is called before the first frame update
     private void Start()
@@ -75,6 +77,7 @@ public class S_WallRunning : MonoBehaviour
         pm = GetComponent<S_PlayerMovement>();
         PlayerSoundScript = GetComponent<S_PlayerSound>();
         _wallRunTimeClimb = _wallRunTimeClimbRef;
+        _isJumpForgivenessActive = false;
     }
 
     private void Update()
@@ -92,6 +95,18 @@ public class S_WallRunning : MonoBehaviour
 
         if (_isExitingWall)
             _wallRunTimeClimb = _wallRunTimeClimbRef;
+
+        if (!pm._isWallRunning && _isJumpForgivenessActive)
+        {
+            _timerWallJump += Time.deltaTime;
+            if (_timerWallJump < 0.25f)
+            {
+                canWallJumpLedge = true;
+            }
+            else
+                canWallJumpLedge = false;
+        }
+        else _timerWallJump = 0f;
     }
 
     private void FixedUpdate()
@@ -204,6 +219,11 @@ public class S_WallRunning : MonoBehaviour
         //State 2 - Exiting
         else if (_isExitingWall)
         {
+            if(canWallJumpLedge && S_InputManager._playerInputAction.Player.Jump.triggered)
+            {
+                WallJump();
+            }
+
             if (pm._isWallRunning)
             {
                 StopWallRun();
@@ -222,6 +242,11 @@ public class S_WallRunning : MonoBehaviour
         //State 3 - None
         else
         {
+            if (canWallJumpLedge && S_InputManager._playerInputAction.Player.Jump.triggered)
+            {
+                WallJump();
+            }
+
             if (pm._isWallRunning)
             {
                 StopWallRun();
@@ -240,6 +265,8 @@ public class S_WallRunning : MonoBehaviour
         ClimbScript._maxWallLookAngle = 0;
 
         _isWallRemembered = false;
+
+        _isJumpForgivenessActive = true;
     }
 
 
@@ -307,7 +334,8 @@ public class S_WallRunning : MonoBehaviour
     private void WallJump()
     {
         PlayerSoundScript.JumpSound();
-
+        _isJumpForgivenessActive = false;
+        canWallJumpLedge = false;
         bool firstJump = true;
         //enter exiting wall state
 

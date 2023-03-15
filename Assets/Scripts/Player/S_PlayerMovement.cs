@@ -10,7 +10,7 @@ public class S_PlayerMovement : MonoBehaviour
     [Header("Movement")]
     public float _moveSpeed;
     //[SerializeField] private float _sprintSpeed;
-    [SerializeField] private float _walkSpeed;
+    [SerializeField] public float _walkSpeed;
     [SerializeField] private float _timerMaxSpeed;
     [SerializeField] private float _maxSpeedReachCooldown;
     [SerializeField] private float _slideSpeed;
@@ -22,8 +22,8 @@ public class S_PlayerMovement : MonoBehaviour
     private float _desiredMoveSpeed;
     private float _lastDesiredMoveSpeed;
     private float _speedChangeFactor;
-    private float _maxWalkSpeed;
-    private float _incrementValMaxSpeed;
+    [SerializeField] private float _maxWalkSpeed;
+    [SerializeField] private float _incrementValMaxSpeed;
     public float _fallMultiplier;
     public bool _isMaxSpeed;
 
@@ -64,9 +64,11 @@ public class S_PlayerMovement : MonoBehaviour
     private bool _exitingSlope;
     [SerializeField] private float _slopeVectorDownValue;
     public float _actualSlopeAngle;
+
     [Header("Grappling")]
     [SerializeField] public float _wantedSpeedGrappling = 2;
     [SerializeField] public float _wantedHeightGrappling = 2;
+
     [Header("Upgrade values")]
     private float _upgradeSpeedValue;
     private float _upgradeDashSpeed;
@@ -77,6 +79,7 @@ public class S_PlayerMovement : MonoBehaviour
     [SerializeField] private S_Dash ScriptDash;
     [SerializeField] private S_WallRunning ScriptWallRun;
     [SerializeField] private S_GrappinV2 GrapplingScript;
+    [SerializeField] private S_Accelaration AccelerationScript;
     [SerializeField] private Transform _orientation;
     [SerializeField] private GameObject _player;
 
@@ -129,22 +132,26 @@ public class S_PlayerMovement : MonoBehaviour
     public bool _isMoving;
     public bool _isHigherThan;
 
+    public bool _isAccelerating;
+    public bool _isDecelerating;
+
     int i = 0;
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
         PlayerSoundScript = GetComponent<S_PlayerSound>();
+        AccelerationScript = GetComponent<S_Accelaration>();
         rb.freezeRotation = true;
         _readyToJump = true;
         _saveWalkSpeed = _walkSpeed;
         _startYScale = transform.localScale.y;
         _upgradeSpeedValue = 1;
         _isButtonEnabled = true;
+        _isDecelerating = false;
     }
 
     private void Update()
     {
-
         //Debug.Log(GetSlopeMoveDirection(_moveDirection));
         if (GetSlopeMoveDirection(_moveDirection).y >= 0f && OnSlope())
         {
@@ -162,21 +169,23 @@ public class S_PlayerMovement : MonoBehaviour
         SpeedControl();
         StateHandler();
 
-        if (_isReachUpgrade)
-        {
-            SpeedValueUpgrade();
-        }
 
         //handle drag
         //if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && state == MovementState.walking && !Input.GetButton("Jump") && !GrapplingScript._isDecreaseRbDrag)
         if (_horizontalInput == 0 && _verticalInput == 0 && state == MovementState.walking && S_InputManager._playerInputAction.Player.Jump.ReadValue<float>() == 0 && !GrapplingScript._isDecreaseRbDrag)
         {
+            _isAccelerating = false;
+            _isDecelerating = true;
+            AccelerationScript.VarianceVitesse();
             PlayerSoundScript.EndSoundWalk();
             rb.drag = _groundDrag + 10;
             _isMoving = false;
         }
         else if (state == MovementState.walking && !GrapplingScript._isDecreaseRbDrag)
         {
+            _isAccelerating = true;
+            _isDecelerating = false;
+            AccelerationScript.VarianceVitesse();
             PlayerSoundScript.WalkSound();
             rb.drag = _groundDrag;
             _isMoving = true;
@@ -339,7 +348,7 @@ public class S_PlayerMovement : MonoBehaviour
         {
             state = MovementState.sliding;
 
-            if (OnSlope() && rb.velocity.y < 0.1f)
+            if (OnSlope() && rb.velocity.y > -2f)
             {
                 _desiredMoveSpeed = _slideSpeed;
             }
@@ -443,20 +452,22 @@ public class S_PlayerMovement : MonoBehaviour
 
         if (_isClimbing)
         {
-            _moveDirection = _orientation.up * _verticalInput;
+            _moveDirection = Vector3.up;
             return;
         }
-        
+        else
+        {
+            _moveDirection = _orientation.forward * _verticalInput + _orientation.right * _horizontalInput;
+        }
 
         if (_isMaxSpeed)
         {
             if (_walkSpeed <= _maxWalkSpeed)
                 _walkSpeed += _incrementValMaxSpeed;
         }
-        else _walkSpeed = 45f;
 
         //calculate movement direction 
-        _moveDirection = _orientation.forward * _verticalInput + _orientation.right * _horizontalInput;
+        
 
 
         //on slope
@@ -524,7 +535,6 @@ public class S_PlayerMovement : MonoBehaviour
         }
 
         PlayerSoundScript.JumpSound();
-        
         // if (rb.drag >= 20)
         // {
         //     rb.AddForce(transform.up * _jumpForce * 2f, ForceMode.Impulse);
@@ -539,9 +549,10 @@ public class S_PlayerMovement : MonoBehaviour
         {
             rb.AddForce(transform.up * _jumpForce * (0.8f-ScriptDash._dashDuration), ForceMode.Impulse);
         }
-        else if (GetSlopeMoveDirection(_moveDirection).y >= 0 || _isGrounded)
+        else if (GetSlopeMoveDirection(_moveDirection).y != 0 || _isGrounded)
         {
             rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
+            return;
         }
         else if (!canJumpLedge)
         {
@@ -606,7 +617,7 @@ public class S_PlayerMovement : MonoBehaviour
         {
             float _angle = Vector3.Angle(Vector3.up, _slopeHit.normal);
             _actualSlopeAngle = _angle;
-            return _angle < _maxSlopeAngle && _angle != 0;
+            return _angle < _maxSlopeAngle && (_angle >= 5 || _angle <= -5);
         }
         
         return false;
@@ -673,23 +684,6 @@ public class S_PlayerMovement : MonoBehaviour
         return velocityXZ + velocityY;
     }
 
-    public void SpeedValueUpgrade()
-    {
-        _ReachUpgradeBool = true;
-
-        if (_ReachUpgradeBool)
-        {
-            _upgradeSpeedValue += 2.5f;
-            _dashSpeed += 15;
-            StartCoroutine(upgradeSpeed());
-        }
-    }
-
-    IEnumerator upgradeSpeed()
-    {
-        yield return new WaitForSeconds(2f);
-        _ReachUpgradeBool = false;
-    }
 
    
     
