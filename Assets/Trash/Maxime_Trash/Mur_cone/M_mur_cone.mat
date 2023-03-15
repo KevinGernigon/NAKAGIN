@@ -42,7 +42,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emissive:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: f99bbfa2677f2804290f98af11b2e0fc, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Metallic:
@@ -71,8 +71,9 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
+    - _ActivateEmissive: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RoughnessPower: 0.2
+    - _RoughnessPower: 1
     m_Colors: []
   m_BuildTextureStacks: []

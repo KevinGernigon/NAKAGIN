@@ -34,11 +34,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _Albedo:
-        m_Texture: {fileID: 2800000, guid: bc41136f50095b4488c1e7f8781f9c6d, type: 3}
+        m_Texture: {fileID: 2800000, guid: a965dc45d4009684b831d0e444750036, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Ambient_Occlusion:
-        m_Texture: {fileID: 2800000, guid: 95527985f3bb9664e99e84e37d556c21, type: 3}
+        m_Texture: {fileID: 2800000, guid: 5924402a6cabce041a6d22ef6df3aac0, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -66,7 +66,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Emissive:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 2800000, guid: bb29dabeaa8ebc94c9926bdc30685fc9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -74,7 +74,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Metallic:
-        m_Texture: {fileID: 2800000, guid: 45ab50a9a1e0e29428da2be236741a10, type: 3}
+        m_Texture: {fileID: 2800000, guid: fe4da107bb6ccfe4c809b39fb3ac24e9, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
@@ -82,7 +82,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Normal:
-        m_Texture: {fileID: 2800000, guid: adc40ce04c05fde48b2e3aff74c75d12, type: 3}
+        m_Texture: {fileID: 2800000, guid: a129ac6726a5c5049b21bac3769594dd, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _OcclusionMap:
@@ -94,7 +94,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Roughness:
-        m_Texture: {fileID: 2800000, guid: 5da7b515b53a0b9428815beaec9c05a9, type: 3}
+        m_Texture: {fileID: 2800000, guid: a70422ed3d9fdd84e90116ccf5cdbb85, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SpecGlossMap:
@@ -115,7 +115,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _ActivateEmissive: 0
+    - _ActivateEmissive: 1
     - _AlphaClip: 0
     - _Blend: 0
     - _BumpScale: 1
@@ -136,7 +136,7 @@ Material:
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
-    - _RoughnessPower: 0.2
+    - _RoughnessPower: 1
     - _Smoothness: 0.5
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
