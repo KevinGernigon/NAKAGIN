@@ -1,9 +1,12 @@
+#include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/DeclareDepthTexture.hlsl"
+
 TEXTURE2D(_CameraColorTexture);
 SAMPLER(sampler_CameraColorTexture);
 float4 _CameraColorTexture_TexelSize;
 
-TEXTURE2D(_CameraDepthTexture2);
-SAMPLER(sampler_CameraDepthTexture2);
+//TEXTURE2D(_CameraDepthTexture2);
+//UNITY_DECLARE_DEPTH_TEXTURE(_CameraDepthTexture);
+//SAMPLER(sampler_CameraDepthTexture);
 
 
 TEXTURE2D(_CameraDepthNormalsTexture);
@@ -23,7 +26,7 @@ float3 DecodeNormal(float4 enc)
 
 void Outline_float(float2 UV, float OutlineThickness, float DepthSensitivity, float NormalsSensitivity, float ColorSensitivity, float4 OutlineColor, out float4 Out)
 {
-
+    //UnityTexture2D _CameraDepthTexture = SampleSceneDepth(UV);
     
     float halfScaleFloor = floor(OutlineThickness * 0.5);
     float halfScaleCeil = ceil(OutlineThickness * 0.5);
@@ -41,7 +44,8 @@ void Outline_float(float2 UV, float OutlineThickness, float DepthSensitivity, fl
 
     for (int i = 0; i < 4; i++)
     {
-        depthSamples[i] = SAMPLE_TEXTURE2D(_CameraDepthTexture2, sampler_CameraDepthTexture2, uvSamples[i]).r;
+        //depthSamples[i] = SAMPLE_TEXTURE2D(_CameraDepthTexture, sampler_CameraDepthTexture, uvSamples[i]).r;
+        depthSamples[i] = SampleSceneDepth(UV);
         normalSamples[i] = DecodeNormal(SAMPLE_TEXTURE2D(_CameraDepthNormalsTexture, sampler_CameraDepthNormalsTexture, uvSamples[i]));
         colorSamples[i] = SAMPLE_TEXTURE2D(_CameraColorTexture, sampler_CameraColorTexture, uvSamples[i]);
     }
