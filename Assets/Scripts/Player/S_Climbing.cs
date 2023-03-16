@@ -145,7 +145,7 @@ public class S_Climbing : MonoBehaviour
 
     private void StartClimbing()
     {
-        pm._walkSpeed = 10;
+        pm._walkSpeed = 40;
         _isClimbing = true;
         pm._isClimbing = true;
 
