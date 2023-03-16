@@ -132,7 +132,6 @@ public class S_Sliding : MonoBehaviour
         //sliding normal 
         if (!_pm.OnSlope() || rb.velocity.y > -0.1f || _pm.GetSlopeMoveDirection(_inputDirection).y <= -10 || _pm.GetSlopeMoveDirection(_inputDirection).y >= 10)
         {
-            
             rb.AddForce(_inputDirection.normalized * _slideForce, ForceMode.Force);
             _slideTimer -= Time.deltaTime;
         }
