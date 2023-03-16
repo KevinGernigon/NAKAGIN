@@ -17,7 +17,7 @@ public class S_SpeedLines : MonoBehaviour
 
     private void Start()
     {
-        StartCoroutine("incrementSpeedLines");
+        //StartCoroutine("incrementSpeedLines");
     }
 
     private void Update()
@@ -41,14 +41,14 @@ public class S_SpeedLines : MonoBehaviour
             playerVelocityz = -playerVelocityz;
         }
 
-        if (_playerMovement.state == S_PlayerMovement.MovementState.dashing || _playerMovement.state == S_PlayerMovement.MovementState.sliding || _playerMovement.state == S_PlayerMovement.MovementState.air && _playerMovement._isGrappleActive)
+        if (_playerMovement.state == S_PlayerMovement.MovementState.dashing || _playerMovement.state == S_PlayerMovement.MovementState.air && _playerMovement._isGrappleActive)
         {
             _shaderMat.SetFloat("_SL_LineDensity", 0.4f);
         }
-        else if(_playerMovement.state == S_PlayerMovement.MovementState.air)
+        /*else if(_playerMovement.state == S_PlayerMovement.MovementState.air)
         {
             _shaderMat.SetFloat("_SL_LineDensity", 0.3f);
-        }
+        }*/
         else
         {
             //_shaderMat.SetFloat("_SL_LineDensity", 0.45f / 2 * (playerVelocityx + playerVelocityy + playerVelocityz + 0.1f * _increaseSpeedLines));

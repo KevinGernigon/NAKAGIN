@@ -12,6 +12,14 @@ public class S_BlurIntensity : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        _shaderMat.SetFloat("_Blur_CenterMaskEdge", -_playerMovement._moveSpeed * 3 + 20);
+        _shaderMat.SetFloat("_Blur_CenterMaskEdge", -_playerMovement._moveSpeed * 3 + 50);
+    }
+
+    IEnumerator IncrementBlur()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(0.001f);
+        }
     }
 }

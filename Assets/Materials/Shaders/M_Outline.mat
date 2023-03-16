@@ -104,11 +104,11 @@ Material:
     - _Activate_SpeedLines: 1
     - _AlphaClip: 0
     - _Blend: 0
-    - _BlurDensity: 0
-    - _BlurIntensity: 0.005
-    - _Blur_CenterMaskEdge: -10
-    - _Blur_CenterMaskSize: 0.0625
-    - _Blur_Falloff: 0
+    - _BlurDensity: 5.58
+    - _BlurIntensity: 0.003
+    - _Blur_CenterMaskEdge: 20
+    - _Blur_CenterMaskSize: 58.67
+    - _Blur_Falloff: 21
     - _BumpScale: 1
     - _CastShadows: 1
     - _ClearCoatMask: 0
@@ -121,7 +121,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
-    - _FBP_CenterMaskEdge: 0.21937937
+    - _FBP_CenterMaskEdge: 0.21955805
     - _FBP_CenterMaskSize: 0.17
     - _FBP_FrameRate: 120
     - _FBP_LineDensity: 0.51
@@ -131,7 +131,7 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
-    - _Max: 425
+    - _Max: 170
     - _Metallic: 0
     - _Min: 50
     - _NormalsSensitivity: 2
@@ -170,6 +170,6 @@ Material:
     - _Min: {r: -1, g: 1, b: 0, a: 0}
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _SL_Center: {r: 0.5, g: 0.5, b: 0, a: 0}
-    - _SL_Color: {r: 0.6603774, g: 0.6603774, b: 0.6603774, a: 1}
+    - _SL_Color: {r: 0.3679245, g: 0.3679245, b: 0.3679245, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
   m_BuildTextureStacks: []
