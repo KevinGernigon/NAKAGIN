@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000002, guid: 7925de0f541551c44ad5ba13628d2d41, type: 2}
+  m_LightingDataAsset: {fileID: 112000004, guid: bfbf9d5589dbb7c46bc0030241890fb8, type: 2}
   m_LightingSettings: {fileID: 0}
 --- !u!196 &4
 NavMeshSettings:
@@ -4319,6 +4319,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1225684089}
   - component: {fileID: 1225684090}
+  - component: {fileID: 1225684091}
   m_Layer: 0
   m_Name: post_process_effects
   m_TagString: Untagged
@@ -4357,6 +4358,20 @@ MonoBehaviour:
   _shaderMat: {fileID: 2100000, guid: 3a0629a8271adf4458b97f3d8d2e11d2, type: 2}
   _playerMovement: {fileID: 3956388861518991357}
   S_InputManager: {fileID: 6554351822182483883}
+--- !u!114 &1225684091
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1225684087}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e08e35380ab313142b348a5864be4ad8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerMovement: {fileID: 3956388861518991357}
+  _shaderMat: {fileID: 2100000, guid: 3a0629a8271adf4458b97f3d8d2e11d2, type: 2}
 --- !u!1 &1292550626
 GameObject:
   m_ObjectHideFlags: 0
@@ -9439,10 +9454,11 @@ MonoBehaviour:
   _orientation: {fileID: 3956388862463579861}
   rb: {fileID: 3956388861518991356}
   ScriptDash: {fileID: 3956388861518991233}
+  AccelerationScript: {fileID: 3956388861518991359}
   pm: {fileID: 3956388861518991357}
-  _whatIsWall:
+  _whatIsClimbable:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 16384
   _climbSpeed: 25
   _maxClimbTime: 2
   _climbJumps: 1
@@ -9453,6 +9469,7 @@ MonoBehaviour:
   _maxWallLookAngle: 30
   _wallLookAngle: 0
   _isWallFront: 0
+  _isWallWasFront: 0
   _minWallNormalAngleChange: 5
   _isExitingWall: 0
   _exitWallTime: 0.2
@@ -9472,6 +9489,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   S_InputManager: {fileID: 6554351822182483883}
   _orientation: {fileID: 3956388862463579861}
+  _anim_bras: {fileID: 4190180972782943877}
   _playerObj: {fileID: 3956388862188452567}
   _maxSlideTime: 0.75
   _SlideValue: 5
@@ -9480,6 +9498,7 @@ MonoBehaviour:
   _slideKey: 306
   _slidingCdMax: 1
   _isTrue: 0
+  i: 0
 --- !u!1 &3956388861518991236
 GameObject:
   m_ObjectHideFlags: 0
@@ -9496,9 +9515,9 @@ GameObject:
   - component: {fileID: 3956388861518991237}
   - component: {fileID: 3956388861518991233}
   - component: {fileID: 3956388861518991232}
-  - component: {fileID: 3956388861518991239}
   - component: {fileID: 3956388861518991238}
   - component: {fileID: 2108909237}
+  - component: {fileID: 3956388861518991359}
   m_Layer: 9
   m_Name: PlayerContent
   m_TagString: Player
@@ -9583,20 +9602,9 @@ MonoBehaviour:
   _isGrappling: 0
   isIncreaseFOV: 0
   _isDecreaseRbDrag: 0
---- !u!114 &3956388861518991239
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3956388861518991236}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 158d8775900a506418fcf85b7509c6be, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  pm: {fileID: 3956388861518991357}
-  ScriptBatteryManager: {fileID: 8483312902858541986}
+  _isHookingHUD: 0
+  _isAimForgivenessActive: 0
+  IncrementValue: 0
 --- !u!54 &3956388861518991356
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9627,15 +9635,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   S_InputManager: {fileID: 6554351822182483883}
   _moveSpeed: 0
-  _walkSpeed: 45
+  _walkSpeed: 10
   _timerMaxSpeed: 0
-  _maxSpeedReachCooldown: 5
+  _maxSpeedReachCooldown: 0
   _slideSpeed: 35
   _wallRunSpeed: 21
   _climbUpSpeed: 10
   _dashSpeed: 25
   _dashSpeedChangeFactor: 50
   _AerialSpeed: 3
+  _maxWalkSpeed: 55
+  _incrementValMaxSpeed: 0.05
   _fallMultiplier: 1.5
   _isMaxSpeed: 0
   _lastState: 0
@@ -9651,7 +9661,7 @@ MonoBehaviour:
   _playerHeight: 2
   _whatIsGround:
     serializedVersion: 2
-    m_Bits: 3072
+    m_Bits: 19456
   _isGrounded: 0
   _maxSlopeAngle: 50
   _slopeVectorDownValue: 150
@@ -9663,6 +9673,7 @@ MonoBehaviour:
   ScriptDash: {fileID: 3956388861518991233}
   ScriptWallRun: {fileID: 3956388861518991237}
   GrapplingScript: {fileID: 3956388861518991238}
+  AccelerationScript: {fileID: 3956388861518991359}
   _orientation: {fileID: 3956388862463579861}
   _player: {fileID: 3956388862188452566}
   _valueRaycast: 0.4
@@ -9680,6 +9691,8 @@ MonoBehaviour:
   _isSlopePositive: 0
   _isMoving: 0
   _isHigherThan: 0
+  _isAccelerating: 0
+  _isDecelerating: 0
 --- !u!4 &3956388861518991358
 Transform:
   m_ObjectHideFlags: 0
@@ -9698,6 +9711,18 @@ Transform:
   m_Father: {fileID: 3956388861505565574}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3956388861518991359
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3956388861518991236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2246a7e1a73b9b428887108bd2fb331, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3956388861597576754
 GameObject:
   m_ObjectHideFlags: 0
@@ -17848,8 +17873,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1634caa98270f842944e56e71208175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToStart: Corentin_Scene
-  categoryToDisplay: 0
+  sceneToStart: Tom_Scene
+  categoryToDisplay: 6
 --- !u!1 &7777727511360918156
 GameObject:
   m_ObjectHideFlags: 0

@@ -18,7 +18,7 @@ public class S_InfoScoreValidation : MonoBehaviour
    
     [SerializeField] private TMP_Text _level1TimerTxt;
 
-    [SerializeField] private S_RunCheckPointManager S_RunCheckPointManager;
+    [SerializeField] private S_RunCheckPointManagerValidation S_RunCheckPointManagerValidation;
 
     public float _level1Time = 10f;
     private float _level2Time = 0f;
@@ -89,7 +89,7 @@ public class S_InfoScoreValidation : MonoBehaviour
 
                 ScriptTimer.TimerReset();
 
-                S_RunCheckPointManager.FintimerRespawn();
+                S_RunCheckPointManagerValidation.FintimerRespawn();
  
 
 
