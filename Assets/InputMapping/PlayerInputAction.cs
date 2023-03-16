@@ -125,6 +125,24 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ResetRun"",
+                    ""type"": ""Button"",
+                    ""id"": ""bca510c6-8749-4fae-a168-278f1c5b31f5"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""RestartRun"",
+                    ""type"": ""Button"",
+                    ""id"": ""fb32c416-76a7-4d32-9fec-950e3c9a3513"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -411,6 +429,50 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Interaction"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""15b1cf99-2b56-48cc-b7d8-f3271ce64d11"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ResetRun"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""acb6a312-ab56-4415-97f5-82cb5df04c22"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ResetRun"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3fdd80d4-b496-43a0-82fe-81c43af5ef4b"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RestartRun"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""deb07ad6-351a-4a23-9d02-6abf574faafc"",
+                    ""path"": ""<Gamepad>/dpad/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""RestartRun"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1038,6 +1100,8 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         m_Player_Grappin = m_Player.FindAction("Grappin", throwIfNotFound: true);
         m_Player_Interaction = m_Player.FindAction("Interaction", throwIfNotFound: true);
         m_Player_Pause = m_Player.FindAction("Pause", throwIfNotFound: true);
+        m_Player_ResetRun = m_Player.FindAction("ResetRun", throwIfNotFound: true);
+        m_Player_RestartRun = m_Player.FindAction("RestartRun", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
@@ -1122,6 +1186,8 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Grappin;
     private readonly InputAction m_Player_Interaction;
     private readonly InputAction m_Player_Pause;
+    private readonly InputAction m_Player_ResetRun;
+    private readonly InputAction m_Player_RestartRun;
     public struct PlayerActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -1137,6 +1203,8 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         public InputAction @Grappin => m_Wrapper.m_Player_Grappin;
         public InputAction @Interaction => m_Wrapper.m_Player_Interaction;
         public InputAction @Pause => m_Wrapper.m_Player_Pause;
+        public InputAction @ResetRun => m_Wrapper.m_Player_ResetRun;
+        public InputAction @RestartRun => m_Wrapper.m_Player_RestartRun;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1179,6 +1247,12 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                @ResetRun.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnResetRun;
+                @ResetRun.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnResetRun;
+                @ResetRun.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnResetRun;
+                @RestartRun.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestartRun;
+                @RestartRun.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestartRun;
+                @RestartRun.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnRestartRun;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -1216,6 +1290,12 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @ResetRun.started += instance.OnResetRun;
+                @ResetRun.performed += instance.OnResetRun;
+                @ResetRun.canceled += instance.OnResetRun;
+                @RestartRun.started += instance.OnRestartRun;
+                @RestartRun.performed += instance.OnRestartRun;
+                @RestartRun.canceled += instance.OnRestartRun;
             }
         }
     }
@@ -1372,6 +1452,8 @@ public partial class @PlayerInputAction : IInputActionCollection2, IDisposable
         void OnGrappin(InputAction.CallbackContext context);
         void OnInteraction(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnResetRun(InputAction.CallbackContext context);
+        void OnRestartRun(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

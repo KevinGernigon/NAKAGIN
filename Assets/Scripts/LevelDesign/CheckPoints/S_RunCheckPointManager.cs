@@ -6,8 +6,13 @@ public class S_RunCheckPointManager : MonoBehaviour
 {
     public Transform _spawnRunCapsule;
     public Transform checkpointCapsule;
-    [SerializeField]private S_Timer _Timer;
-    //[SerializeField] private S_InfoScore _InfoScore;
+    [SerializeField] private S_Timer _Timer;
+    [SerializeField] private S_InfoScore _InfoScore;
+    [SerializeField] private S_ModuleManager _moduleManager;
+
+    
+    public bool _isDead = false;
+  
 
     private S_ReferenceInterface _referenceInterface;
     private Transform _playerContent;
@@ -27,13 +32,26 @@ public class S_RunCheckPointManager : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        if (_referenceInterface._InputManager._playerInputAction.Player.ResetRun.triggered && _InfoScore._runStart)
+        {
+            DeathPlayer();
+        }
+        if (_referenceInterface._InputManager._playerInputAction.Player.RestartRun.triggered && _InfoScore._runStart)
+        {
+            checkpointCapsule.position = _spawnRunCapsule.position;
+            DeathPlayer();
+        }
+
+    }
 
     public void FintimerRespawn()
-    { 
+    {
         //ResetSpawnPoint();
 
         _playerContent.position = _spawnRunCapsule.position;
-       
+
         RespawnPlayer();
     }
 
@@ -48,7 +66,7 @@ public class S_RunCheckPointManager : MonoBehaviour
     public void ResetSpawnPoint()
     {
         checkpointCapsule.position = _spawnRunCapsule.position;
-       
+
     }
 
     private void RespawnPlayer()
@@ -65,18 +83,76 @@ public class S_RunCheckPointManager : MonoBehaviour
 
     public void StartChrono()
     {
-        _Timer.TimerStart();
+        if (!_InfoScore.endRun)
+            _Timer.TimerStart();
         //_InfoScore.SendTimeChallengeToTimer();
     }
 
     public void StopChrono()
     {
-        _Timer.TimerStop();
+        if (!_InfoScore.endRun)
+            _Timer.TimerStop();
     }
 
     public void ResetChrono()
     {
         _Timer.TimerReset();
     }
+   
+    public void DeathPlayer()
+    {
+        StartCoroutine(WaitToRespawn());
+    }
 
+
+
+    IEnumerator WaitToRespawn()
+    {
+        _isDead = true;
+
+        //stop crono
+        StopChrono();
+
+        //Death Anim
+
+        _referenceInterface._playerGameObject.GetComponent<S_PlayerSound>().DeathSound();
+
+        _referenceInterface._InputManager._playerInputAction.Player.Disable();
+
+        _referenceInterface.HUD_Death.SetActive(true);
+
+          
+        yield return new WaitForSeconds(2f);
+
+        /////After Death/////  
+
+        //Module Rotation reset
+        _moduleManager.ResetPlatformRotation();
+
+        //Player position reset
+        if (checkpointCapsule.position == _spawnRunCapsule.position)
+        {
+            _InfoScore._runStart = false;
+            DeathRespawn();
+            //reset chrono
+            ResetChrono();
+        }
+        else
+        {
+            DeathRespawn();
+            //start crono
+            StartChrono();
+        }
+
+        _referenceInterface._InputManager._playerInputAction.Player.Enable();
+
+        _referenceInterface.HUD_Death.SetActive(false);
+
+   
+
+
+
+        _isDead = false;
+
+    }
 }

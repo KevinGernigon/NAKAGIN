@@ -23,15 +23,19 @@ public class S_InfoScore : MonoBehaviour
     [SerializeField] private TMP_Text _level1TimerTxt;
     [SerializeField] private TMP_Text _level2TimerTxt;
     [SerializeField] private TMP_Text _bestTimeTxt;
-    [SerializeField] private S_RunCheckPointManager S_RunCheckPointManager;
 
     public float _level1Time = 10f;
     public float _level2Time = 15f;
     private float _bestTime = 0f;
     private float timePlayer;
+    public bool endRun = false;
+    public bool _isAnimPlaying = false;
 
     [Header("Affichage UI")]
+
     [SerializeField] private GameObject _HUDInfoScore;
+    [SerializeField] private Animator _aniamHUDInfoRun;
+
     [SerializeField] private GameObject _detectionRunBox;
     [SerializeField] private LayerMask _whatIsInformative;
     [SerializeField] private LayerMask Everything;
@@ -47,6 +51,7 @@ public class S_InfoScore : MonoBehaviour
     {
         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
         _playerContent = _referenceInterface._playerTransform;
+       
     }
 
     private void Start()
@@ -80,6 +85,12 @@ public class S_InfoScore : MonoBehaviour
             if (hit.collider.gameObject.layer == whatIsInformative)
             {
                 _HUDInfoScore.SetActive(true);
+                if (_isAnimPlaying)
+                {
+                    _aniamHUDInfoRun.Play("A_InfoScoreOpen");
+                    _isAnimPlaying = true;
+                }
+
                 StopAllCoroutines();
             }
             else
@@ -96,7 +107,11 @@ public class S_InfoScore : MonoBehaviour
 
     IEnumerator AffichageHUDInfoRun()
     {
+      
         yield return new WaitForSeconds(1f);
+        _aniamHUDInfoRun.Play("A_InfoScoreClosing");
+        yield return new WaitForSeconds(1f);
+        _isAnimPlaying = false;
         _HUDInfoScore.SetActive(false);
     }
 
@@ -216,7 +231,7 @@ public class S_InfoScore : MonoBehaviour
     {
         if (_runStart)
         {
-            _runStart = false;
+            //_runStart = false;
             timePlayer = ScriptTimer._timerTime;
 
 
