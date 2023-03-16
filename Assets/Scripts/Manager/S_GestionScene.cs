@@ -36,6 +36,9 @@ public class S_GestionScene : MonoBehaviour
 
     private void Start()
     {
+
+
+
         _playerTransform.position = _spawnPoint.position;
         _playerRb.velocity = new Vector3(0, 0, 0);
         var x = this.transform.rotation.eulerAngles.x;
@@ -45,6 +48,9 @@ public class S_GestionScene : MonoBehaviour
 
         _textTimer.text = "";
 
+
+
+
     }
 
 
@@ -52,4 +58,5 @@ public class S_GestionScene : MonoBehaviour
     {
         
     }
+
 }

@@ -8,11 +8,6 @@ public class S_Respawn : MonoBehaviour
     private S_ReferenceInterface _referenceInterface;
     private GameObject _camera;
 
-    //public Transform _respawnplayer;
-
-    public bool _isDead = false;
-    [SerializeField] private S_ModuleManager _moduleManager;
-
     [SerializeField] private GameObject _managerRun;
     private S_RunCheckPointManager _runCheckPointManager;
 
@@ -22,6 +17,7 @@ public class S_Respawn : MonoBehaviour
         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
        
         _runCheckPointManager = _managerRun.GetComponent<S_RunCheckPointManager>();
+       
 
     }
        
@@ -31,44 +27,17 @@ public class S_Respawn : MonoBehaviour
         if (other.CompareTag("Player"))
         {
 
-            _isDead = false;
+          
 
             /////Start Death/////
-            ///
 
-            //_referenceInterface._playerGameObject.GetComponent<S_PlayerSound>().DeathSound();
-            StartCoroutine(WaitToRespawn());
+         
+            _runCheckPointManager.DeathPlayer();
 
-           
+            /////After Death/////   
+          
 
         }
     }
 
-    IEnumerator WaitToRespawn()
-    {
-        //stop crono
-        _referenceInterface._InputManager._playerInputAction.Player.Disable();
-        yield return new WaitForSeconds(2f); //Death Anim
-        _referenceInterface._InputManager._playerInputAction.Player.Enable();
-        _isDead = true;
-
-
-        /////After Death/////       
-        //Module Rotation reset
-        _moduleManager.ResetPlatformRotation();
-
-        //Player position reset
-        if (_runCheckPointManager.checkpointCapsule.position == _runCheckPointManager._spawnRunCapsule.position )
-        {
-            _runCheckPointManager.DeathRespawn();
-            Debug.Log("AAA");
-            //reset crono
-        }
-        else
-        {
-            _runCheckPointManager.DeathRespawn();
-            Debug.Log("BBB");
-            //start crono
-        }
-    }
 }

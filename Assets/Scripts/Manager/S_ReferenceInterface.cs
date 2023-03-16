@@ -36,6 +36,7 @@ public class S_ReferenceInterface : Manager
 
     public GameObject _UICanvas;
     public GameObject _UIStartHUD;
+    public GameObject HUD_Death;
 
     [Header("Refs Battery")]
 

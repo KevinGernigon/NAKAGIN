@@ -19,7 +19,7 @@ public class S_Timer : MonoBehaviour
     
     public float _startTime, _stopTime;
 
-    private bool _timerPlay = false;
+    public bool _timerPlay = false;
 
 
 
@@ -40,17 +40,17 @@ public class S_Timer : MonoBehaviour
 
     private void Update()
     {
-
-        _timerTime = _stopTime + (Time.time) -(_startTime);
-
-        _hours = (int)(_timerTime / 3600f);
-        _minutes = (int)(_timerTime / 60f) % 60;
-        _seconds = (int)(_timerTime % 60f);
-        _milliseconds = (int)(_timerTime * 1000f) % 1000;
-
-
         if (_timerPlay) // affichage 
         {
+             _timerTime = _stopTime + (Time.time) -(_startTime);
+
+            _hours = (int)(_timerTime / 3600f);
+            _minutes = (int)(_timerTime / 60f) % 60;
+            _seconds = (int)(_timerTime % 60f);
+            _milliseconds = (int)(_timerTime * 1000f) % 1000;
+
+
+       
             if (_minutes < 10)// ajoute un 0 devant les 10 premiere min
             {
                 if (_seconds < 10)// ajoute un 0 devant les 10 premiere sec
@@ -101,7 +101,6 @@ public class S_Timer : MonoBehaviour
         if (!_timerPlay)
         {
 
-            
             _timerPlay = true;
             _startTime = Time.time;
 
@@ -125,7 +124,7 @@ public class S_Timer : MonoBehaviour
     {
         
         _timerPlay = false;
-        _stopTime = _timerTime;
+        _timerTime = 0f;
 
         _textTimer.text = "";
        
