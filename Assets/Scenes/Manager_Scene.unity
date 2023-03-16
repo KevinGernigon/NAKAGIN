@@ -9459,11 +9459,11 @@ MonoBehaviour:
   _whatIsClimbable:
     serializedVersion: 2
     m_Bits: 16384
-  _climbSpeed: 25
+  _climbSpeed: 15
   _maxClimbTime: 2
   _climbJumps: 1
   _climbJumpsLeft: 0
-  _counterClimbPropulsion: 45
+  _counterClimbPropulsion: 30
   _detectionLength: 1
   _sphereCastRadius: 0.25
   _maxWallLookAngle: 30
@@ -9652,6 +9652,7 @@ MonoBehaviour:
   _groundDrag: 10
   _airSpeed: 20
   _jumpForce: 35
+  _jumpCount: 0
   _jumpCooldown: 0.5
   _airMultiplier: 3
   _readyToJump: 0
@@ -9662,6 +9663,9 @@ MonoBehaviour:
   _whatIsGround:
     serializedVersion: 2
     m_Bits: 19456
+  _whatIsWall:
+    serializedVersion: 2
+    m_Bits: 2048
   _isGrounded: 0
   _maxSlopeAngle: 50
   _slopeVectorDownValue: 150
@@ -9693,6 +9697,7 @@ MonoBehaviour:
   _isHigherThan: 0
   _isAccelerating: 0
   _isDecelerating: 0
+  _isWhatIsWallOnGround: 0
 --- !u!4 &3956388861518991358
 Transform:
   m_ObjectHideFlags: 0

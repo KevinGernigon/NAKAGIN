@@ -145,6 +145,7 @@ public class S_Climbing : MonoBehaviour
 
     private void StartClimbing()
     {
+        pm._walkSpeed = 10;
         _isClimbing = true;
         pm._isClimbing = true;
 
@@ -160,7 +161,6 @@ public class S_Climbing : MonoBehaviour
 
     private void StopClimbingByReachPoint()
     {
-        pm._walkSpeed = 10;
 
         _isClimbing = false;
         pm._isClimbing = false;
@@ -190,11 +190,11 @@ public class S_Climbing : MonoBehaviour
 
     IEnumerator counterJumpAdjustment()
     {
-        Vector3 forceToApply = _orientation.forward * 100;
+        //Vector3 forceToApply = _orientation.forward;
         //yield return new WaitForSeconds(0.1f);
         yield return new WaitUntil(() => !_isWallFront);
         yield return new WaitForSeconds(0.05f); 
-        rb.AddForce(forceToApply + Vector3.down * _counterClimbPropulsion, ForceMode.Impulse);   
+        rb.AddForce(Vector3.down * _counterClimbPropulsion, ForceMode.Impulse);   
     }
 
     IEnumerator EndClimbingAnimation()

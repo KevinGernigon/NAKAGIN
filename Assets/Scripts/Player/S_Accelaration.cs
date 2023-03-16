@@ -35,7 +35,6 @@ public class S_Accelaration : MonoBehaviour
         while (PlayerMovement._walkSpeed < 45)
         {
             compteur += 1;
-            Debug.Log("Accelerating");
             PlayerMovement._isAccelerating = true;
              
             PlayerMovement._walkSpeed += 0.45f * compteur * 1.3f;
@@ -49,7 +48,6 @@ public class S_Accelaration : MonoBehaviour
         while (PlayerMovement._walkSpeed > 10 && !PauseMenu._isPaused)
         {
             compteur += 1;
-            Debug.Log("Decelerating");
             PlayerMovement._isDecelerating = false;
              
             PlayerMovement._walkSpeed -= 0.45f * compteur;

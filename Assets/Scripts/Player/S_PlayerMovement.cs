@@ -41,6 +41,7 @@ public class S_PlayerMovement : MonoBehaviour
 
     [Header("Jumping")]
     [SerializeField] private float _jumpForce;
+    [SerializeField] private int _jumpCount;
     [SerializeField] private float _jumpCooldown;
     [SerializeField] private float _airMultiplier;
     public bool _readyToJump;
@@ -56,6 +57,7 @@ public class S_PlayerMovement : MonoBehaviour
     [Header("Ground Check")]
     [SerializeField] private float _playerHeight;
     [SerializeField] private LayerMask _whatIsGround;
+    [SerializeField] private LayerMask _whatIsWall;
     public bool _isGrounded;
 
     [Header("Slope Handling")]
@@ -134,6 +136,7 @@ public class S_PlayerMovement : MonoBehaviour
 
     public bool _isAccelerating;
     public bool _isDecelerating;
+    public bool _isWhatIsWallOnGround;
 
     int i = 0;
     private void Start()
@@ -152,7 +155,7 @@ public class S_PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        //Debug.Log(GetSlopeMoveDirection(_moveDirection));
+        Debug.Log(_isWhatIsWallOnGround);
         if (GetSlopeMoveDirection(_moveDirection).y >= 0f && OnSlope())
         {
             _isSlopePositive = true;
@@ -162,6 +165,7 @@ public class S_PlayerMovement : MonoBehaviour
             _isSlopePositive = false;
 
         //Ground Check
+
         _isGrounded = Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsGround);
         //_isGrounded = Physics.BoxCast(transform.position, Vector3.one, Vector3.down, Quaternion.identity, _playerHeight * 0.5f + _valueRaycast, _whatIsGround);
 
@@ -208,6 +212,12 @@ public class S_PlayerMovement : MonoBehaviour
         {
             ScriptDash._limitDash = 3;
         }*/
+
+        if (Physics.Raycast(transform.position, Vector3.down, _playerHeight * 2f + _valueRaycast, _whatIsWall))
+        {
+            _isWhatIsWallOnGround = true;
+        }
+        else _isWhatIsWallOnGround = false;
 
         if (OnSlope())
             _player.GetComponent<CapsuleCollider>().material.dynamicFriction = 2f;
@@ -347,10 +357,9 @@ public class S_PlayerMovement : MonoBehaviour
         else if (_isSliding)
         {
             state = MovementState.sliding;
-
-            if (OnSlope() && rb.velocity.y > -2f)
+            if(OnSlope() && rb.velocity.y > 0f)
             {
-                _desiredMoveSpeed = _slideSpeed;
+                _isSliding = false;
             }
             else
             {
@@ -479,7 +488,7 @@ public class S_PlayerMovement : MonoBehaviour
                 rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 20f, ForceMode.Force);
             }
             else
-                rb.AddForce(GetSlopeMoveDirection(_moveDirection).normalized * _moveSpeed * 15f, ForceMode.Force);
+                rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 20f, ForceMode.Force);
                 //rb.AddForce(_moveDirection.normalized * _moveSpeed * 20f * _upgradeSpeedValue, ForceMode.Force);
         }
 
@@ -533,6 +542,11 @@ public class S_PlayerMovement : MonoBehaviour
         {
             if (state == MovementState.air) return;
         }
+        if (_jumpCount != 0) return;
+
+        Debug.Log("??");
+
+        _jumpCount++;
 
         PlayerSoundScript.JumpSound();
         // if (rb.drag >= 20)
@@ -540,8 +554,20 @@ public class S_PlayerMovement : MonoBehaviour
         //     rb.AddForce(transform.up * _jumpForce * 2f, ForceMode.Impulse);
         //     return;
         // }
-
-        if (_isSliding && !OnSlope())
+        
+        if(_isSliding && OnSlope())
+        {
+            rb.AddForce(transform.up * _jumpForce * 1.5f, ForceMode.Impulse);
+        }
+        else if (_isWhatIsWallOnGround)
+        {
+            rb.AddForce(transform.up * _jumpForce * 0.6f, ForceMode.Impulse);
+        }
+        else if (OnSlope() && !_isSliding && !_isWhatIsWallOnGround)
+        {
+            rb.AddForce(transform.up * _jumpForce * 1.15f, ForceMode.Impulse);
+        }
+        else if (_isSliding && !OnSlope())
         {
             rb.AddForce(transform.up * _jumpForce * 0.8f, ForceMode.Impulse);
         }
@@ -552,7 +578,6 @@ public class S_PlayerMovement : MonoBehaviour
         else if (GetSlopeMoveDirection(_moveDirection).y != 0 || _isGrounded)
         {
             rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
-            return;
         }
         else if (!canJumpLedge)
         {
@@ -563,20 +588,20 @@ public class S_PlayerMovement : MonoBehaviour
         }
         else
         {
-            rb.AddForce(transform.up * _jumpForce * 0.8f, ForceMode.Impulse);
-            return;
+            rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
         }
 
     }
 
     private void ResetJump()
     {
+        _jumpCount = 0;
+
         _readyToJump = true;
 
         _exitingSlope = false;
 
         canJumpLedge = true;
-
     }
 
     public void JumpToPosition(Vector3 targetPosition, float trajectoryHeight)
@@ -682,9 +707,5 @@ public class S_PlayerMovement : MonoBehaviour
         Vector3 velocityXZ = (displacementXZ / (Mathf.Sqrt(-2 * trajectoryHeight / gravity) + Mathf.Sqrt(2 * (displacementY - trajectoryHeight) / gravity))) * _wantedSpeedGrappling;
 
         return velocityXZ + velocityY;
-    }
-
-
-   
-    
+    }  
 }

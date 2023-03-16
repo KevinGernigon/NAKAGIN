@@ -56,7 +56,6 @@ public class S_GrappinV2 : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(_isAimForgivenessActive);
         HUDCrosshair();
         /*if (Input.GetKeyDown(KeyCode.A) && !_isGrappling)
             StartGrapple();*/
@@ -78,18 +77,16 @@ public class S_GrappinV2 : MonoBehaviour
                 if (IncrementValue <= 0)
                 {
                     IncrementValue++;
-                    Debug.Log("?");
                     previousGrapplePoint = grapplePoint;
                 }
                 StopAllCoroutines();
             }
-            /*else
+            else
             {
                 Debug.DrawRay(_camera.position, _camera.forward * _maxGrappleDistance, Color.red);
-                StartCoroutine(TimeraffichageHUDCrosshair());
-                StartCoroutine(TimerAimForgiveness());
+                StartCoroutine(TimerGrapplingHook());
 
-            }*/
+            }
         }
         else
         {
