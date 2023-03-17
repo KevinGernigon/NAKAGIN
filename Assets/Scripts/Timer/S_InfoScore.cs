@@ -85,22 +85,30 @@ public class S_InfoScore : MonoBehaviour
             if (hit.collider.gameObject.layer == whatIsInformative)
             {
                 _HUDInfoScore.SetActive(true);
+
                 if (_isAnimPlaying)
                 {
+                    _aniamHUDInfoRun.Rebind();
                     _aniamHUDInfoRun.Play("A_InfoScoreOpen");
-                    _isAnimPlaying = true;
+                    _isAnimPlaying = false;
                 }
 
-                StopAllCoroutines();
+                //StopAllCoroutines();
             }
-            else
+            else if (!_isAnimPlaying)
             {
-                StartCoroutine(AffichageHUDInfoRun());
+                //StartCoroutine(AffichageHUDInfoRun());
+                _aniamHUDInfoRun.Rebind();
+                _aniamHUDInfoRun.Play("A_InfoScoreClosing");
+                _isAnimPlaying = true;
             }
         }
-        else
+        else if (!_isAnimPlaying)
         {
-            StartCoroutine(AffichageHUDInfoRun());
+            //StartCoroutine(AffichageHUDInfoRun());
+            _aniamHUDInfoRun.Rebind();
+            _aniamHUDInfoRun.Play("A_InfoScoreClosing");
+            _isAnimPlaying = true;
         }
     }
 
@@ -109,9 +117,15 @@ public class S_InfoScore : MonoBehaviour
     {
       
         yield return new WaitForSeconds(1f);
-        _aniamHUDInfoRun.Play("A_InfoScoreClosing");
+
+        if (!_isAnimPlaying)
+        {
+            _aniamHUDInfoRun.Rebind();
+            _aniamHUDInfoRun.Play("A_InfoScoreClosing");
+            _isAnimPlaying = true;
+        }
         yield return new WaitForSeconds(1f);
-        _isAnimPlaying = false;
+
         _HUDInfoScore.SetActive(false);
     }
 
