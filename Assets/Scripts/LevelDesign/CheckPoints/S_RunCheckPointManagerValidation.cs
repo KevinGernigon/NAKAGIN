@@ -108,15 +108,18 @@ public class S_RunCheckPointManagerValidation : MonoBehaviour
         StopChrono();
 
         //Death Anim
+        _referenceInterface._playerGameObject.GetComponent<S_PlayerSound>().DeathSound();
 
         _referenceInterface._InputManager._playerInputAction.Player.Disable();
-        yield return new WaitForSeconds(2f); //Death Anim
-        _referenceInterface._InputManager._playerInputAction.Player.Enable();
+
+        _referenceInterface.HUD_Death.SetActive(true);
+
+        yield return new WaitForSeconds(2f);
 
         /////After Death/////  
         //Module Rotation reset
         _moduleManager.ResetPlatformRotation();
-
+       
         //Player position reset
         if (checkpointCapsule.position == _spawnRunCapsule.position)
         {
@@ -131,6 +134,10 @@ public class S_RunCheckPointManagerValidation : MonoBehaviour
             //start crono
             StartChrono();
         }
+
+        _referenceInterface._InputManager._playerInputAction.Player.Enable();
+
+        _referenceInterface.HUD_Death.SetActive(false);
 
         _isDead = false;
 
