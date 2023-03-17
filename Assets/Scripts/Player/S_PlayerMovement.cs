@@ -155,7 +155,6 @@ public class S_PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        Debug.Log(_isWhatIsWallOnGround);
         if (GetSlopeMoveDirection(_moveDirection).y >= 0f && OnSlope())
         {
             _isSlopePositive = true;
@@ -488,7 +487,7 @@ public class S_PlayerMovement : MonoBehaviour
                 rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 20f, ForceMode.Force);
             }
             else
-                rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 20f, ForceMode.Force);
+                rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 15f, ForceMode.Force);
                 //rb.AddForce(_moveDirection.normalized * _moveSpeed * 20f * _upgradeSpeedValue, ForceMode.Force);
         }
 
@@ -543,8 +542,6 @@ public class S_PlayerMovement : MonoBehaviour
             if (state == MovementState.air) return;
         }
         if (_jumpCount != 0) return;
-
-        Debug.Log("??");
 
         _jumpCount++;
 

@@ -33,6 +33,8 @@ public class S_Jetpack : MonoBehaviour
     [Header("Time Value")]
     [SerializeField] private float _timerCd;
     [SerializeField] private float _timerMaxCd;
+    [SerializeField] private float _timerJetpack = 0;
+    [SerializeField] private float _maxTimerJetpack = 0.3f;
     private Vector3 saveForceToApplyInAir;
     private Vector3 saveForceToApplyOnGround;
 
@@ -56,6 +58,24 @@ public class S_Jetpack : MonoBehaviour
     {
         /*if (Input.GetButtonDown("Jetpack") && _isJetpackAvaible)
             JetpackFunction();*/
+        if (!_pm._isGrounded)
+        {
+            _timerJetpack += Time.deltaTime;
+            if (_timerJetpack < _maxTimerJetpack && _timerJetpack != 0)
+            {
+                _isJetpackAvaible = false;
+            }
+            else
+            {
+                _isJetpackAvaible = true;
+            }
+        }
+        else
+        {
+            _timerJetpack = 0;
+            _isJetpackAvaible = true;
+        }
+
 
         if (S_InputManager._playerInputAction.Player.Jetpack.triggered && _isJetpackAvaible)
         {
@@ -128,28 +148,11 @@ public class S_Jetpack : MonoBehaviour
         float i;
 
 
-            if (Mathf.Abs(_rb.velocity.y) >= 10 && Mathf.Abs(_rb.velocity.y) <= 20)
+            if (Mathf.Abs(_rb.velocity.y) <= 20)
                 {
                     i = 25;
                 }
-            else if (Mathf.Abs(_rb.velocity.y) <= 2)
-                {
-                    i = 25;
-                }
-            else if(Mathf.Abs(_rb.velocity.y) >= 2 && Mathf.Abs(_rb.velocity.y) <= 10)
-                {
-                    i = 15;
-                }
-        /*else if (Mathf.Abs(_rb.velocity.y) <= 40 && (Mathf.Abs(_rb.velocity.y) >= 20))
-            {
-                i = 60;
-            }
-
-        else if (Mathf.Abs(_rb.velocity.y) <= 60 && (Mathf.Abs(_rb.velocity.y) >= 40))
-            {
-                i = 100;
-            }*/
-        else
+            else
                 {
                     i = Mathf.Abs(_rb.velocity.y) * 1.2f;
                 }
