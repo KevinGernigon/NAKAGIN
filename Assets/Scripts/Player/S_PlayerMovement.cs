@@ -166,6 +166,12 @@ public class S_PlayerMovement : MonoBehaviour
         //Ground Check
 
         _isGrounded = Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsGround);
+        if (!_isGrounded && _jumpCount >= 0)
+        {
+            _jumpCount = 0;
+            _jumpForce = 0;
+        }
+        else _jumpForce = 35;
         //_isGrounded = Physics.BoxCast(transform.position, Vector3.one, Vector3.down, Quaternion.identity, _playerHeight * 0.5f + _valueRaycast, _whatIsGround);
 
         InputCommand();
@@ -261,7 +267,7 @@ public class S_PlayerMovement : MonoBehaviour
             rb.velocity += Vector3.up * Physics.gravity.y * _fallMultiplier * Time.deltaTime;
         }
 
-        if (!_isGrounded)
+        if (!_isGrounded && _jumpCount == 0)
         {
             _timerJump += Time.deltaTime;
             if (_timerJump < _jumpCooldown - 0.01f && _readyToJump)
@@ -297,14 +303,13 @@ public class S_PlayerMovement : MonoBehaviour
 
         //when to jump
         //if (Input.GetButtonDown("Jump") && _readyToJump && _isGrounded || (Input.GetButtonDown("Jump") && canJumpLedge))
-        if (S_InputManager._playerInputAction.Player.Jump.triggered && _readyToJump && _isGrounded || (S_InputManager._playerInputAction.Player.Jump.triggered && canJumpLedge))
-        {
-            _readyToJump = false;
-            Jump();
-            canJumpLedge = false;
-            Invoke(nameof(ResetJump), _jumpCooldown);
-
-        }
+            if (S_InputManager._playerInputAction.Player.Jump.triggered && _readyToJump && _isGrounded || (S_InputManager._playerInputAction.Player.Jump.triggered && canJumpLedge))
+            {
+                _readyToJump = false;
+                Jump();
+                canJumpLedge = false;
+                Invoke(nameof(ResetJump), _jumpCooldown);
+            }
         //When crouch
 
         if (Input.GetKeyDown(_crouchKey))
@@ -541,16 +546,10 @@ public class S_PlayerMovement : MonoBehaviour
         {
             if (state == MovementState.air) return;
         }
-        if (_jumpCount != 0) return;
 
         _jumpCount++;
 
         PlayerSoundScript.JumpSound();
-        // if (rb.drag >= 20)
-        // {
-        //     rb.AddForce(transform.up * _jumpForce * 2f, ForceMode.Impulse);
-        //     return;
-        // }
         
         if(_isSliding && OnSlope())
         {
@@ -592,8 +591,6 @@ public class S_PlayerMovement : MonoBehaviour
 
     private void ResetJump()
     {
-        _jumpCount = 0;
-
         _readyToJump = true;
 
         _exitingSlope = false;

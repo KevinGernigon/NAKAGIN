@@ -9408,6 +9408,8 @@ MonoBehaviour:
   _HUDJetpackWarning: {fileID: 4854074001246712156}
   _timerCd: 0
   _timerMaxCd: 1
+  _timerJetpack: 0
+  _maxTimerJetpack: 0.3
   _isJetpackAvaible: 0
 --- !u!114 &3956388861518991233
 MonoBehaviour:
@@ -9540,7 +9542,7 @@ MonoBehaviour:
   S_InputManager: {fileID: 6554351822182483883}
   _whatIsWall:
     serializedVersion: 2
-    m_Bits: 3072
+    m_Bits: 2048
   _whatIsGround:
     serializedVersion: 2
     m_Bits: 1024
@@ -9653,7 +9655,7 @@ MonoBehaviour:
   _airSpeed: 20
   _jumpForce: 35
   _jumpCount: 0
-  _jumpCooldown: 0.5
+  _jumpCooldown: 0.25
   _airMultiplier: 3
   _readyToJump: 0
   _crouchSpeed: 3.5

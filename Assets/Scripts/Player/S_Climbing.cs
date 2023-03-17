@@ -170,8 +170,6 @@ public class S_Climbing : MonoBehaviour
     }
     private void StopClimbingByTime()
     {
-        pm._walkSpeed = 10;
-
         _isClimbing = false;
         pm._isClimbing = false;
     }
