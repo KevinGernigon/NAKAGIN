@@ -4552,7 +4552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 190f48b965ba5b040bacb5cd1ae2017e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 190f48b965ba5b040bacb5cd1ae2017e, type: 3}
@@ -5457,27 +5457,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc2bf2df0d516ed4a9786aac5fad971e, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.30172
+      value: 0.0032989
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc2bf2df0d516ed4a9786aac5fad971e, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.30172
+      value: 0.0032989
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc2bf2df0d516ed4a9786aac5fad971e, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.30172
+      value: 0.0032989
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc2bf2df0d516ed4a9786aac5fad971e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0.0015689
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc2bf2df0d516ed4a9786aac5fad971e, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -8.81
+      value: -8.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc2bf2df0d516ed4a9786aac5fad971e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -12.6
+      value: -13.75
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: cc2bf2df0d516ed4a9786aac5fad971e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -5510,6 +5510,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: cc2bf2df0d516ed4a9786aac5fad971e, type: 3}
       propertyPath: m_Name
       value: OBJ_Passerelle_Bloc
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: cc2bf2df0d516ed4a9786aac5fad971e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2bf2df0d516ed4a9786aac5fad971e, type: 3}
@@ -6748,7 +6752,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1131848316}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.32, y: -2.088, z: -6.125}
+  m_LocalPosition: {x: -0.32, y: -2.33, z: -5.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6787,7 +6791,7 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 0, g: 1, b: 0.86500573, a: 1}
-  m_Intensity: 10.09
+  m_Intensity: 31.34
   m_Range: 1.956848
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
