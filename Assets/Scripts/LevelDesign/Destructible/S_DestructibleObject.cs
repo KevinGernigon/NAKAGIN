@@ -21,6 +21,13 @@ public class S_DestructibleObject : MonoBehaviour
         PlayerSoundScript = Player.GetComponent<S_PlayerSound>();
 
     }
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.GetComponent<Collider>().tag == "Player")
+        {
+            GetComponent<Renderer>().enabled = false;
+        }
+    }
 
     private void Update()
     {
@@ -28,27 +35,16 @@ public class S_DestructibleObject : MonoBehaviour
         //Recup player death dans gestion scene
         ResetWall();
 
-        RaycastHit hit;
-        if(Physics.Raycast(Camera.transform.position, Camera.transform.forward, out hit, 1.5f, 1 << LayerMask.NameToLayer("WhatIsDestructible")) && PlayerMovement._isDashing)
+        if (PlayerMovement._isDashing)
         {
-            //Destroy(hit.collider.gameObject);
-            hit.collider.GetComponent<Renderer>().enabled = false;
-            hit.collider.GetComponent<BoxCollider>().enabled = false;
-            PlayerSoundScript.DestructionSound();
+            GetComponent<BoxCollider>().isTrigger = true;
         }
+        else
+            GetComponent<BoxCollider>().isTrigger = false;
     }
 
     public void ResetWall()
     {
-        /*if (_isDead)
-        {
-
-        }*/
-        if (Input.GetKeyDown(KeyCode.M)){
-
-            Debug.Log("?");
             GetComponent<Renderer>().enabled = true;
-            GetComponent<BoxCollider>().enabled = true;
-        }
     }
 }

@@ -82,6 +82,7 @@ public class S_PlayerMovement : MonoBehaviour
     [SerializeField] private S_WallRunning ScriptWallRun;
     [SerializeField] private S_GrappinV2 GrapplingScript;
     [SerializeField] private S_Accelaration AccelerationScript;
+    [SerializeField] private S_Sliding SlideScript;
     [SerializeField] private Transform _orientation;
     [SerializeField] private GameObject _player;
 
@@ -94,8 +95,6 @@ public class S_PlayerMovement : MonoBehaviour
 
     float _horizontalInput;
     float _verticalInput;
-    
-
 
     Vector3 _moveDirection;
 
@@ -136,7 +135,6 @@ public class S_PlayerMovement : MonoBehaviour
 
     public bool _isAccelerating;
     public bool _isDecelerating;
-    public bool _isWhatIsWallOnGround;
 
     int i = 0;
     private void Start()
@@ -144,6 +142,7 @@ public class S_PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         PlayerSoundScript = GetComponent<S_PlayerSound>();
         AccelerationScript = GetComponent<S_Accelaration>();
+        SlideScript = GetComponent<S_Sliding>();
         rb.freezeRotation = true;
         _readyToJump = true;
         _saveWalkSpeed = _walkSpeed;
@@ -164,8 +163,9 @@ public class S_PlayerMovement : MonoBehaviour
             _isSlopePositive = false;
 
         //Ground Check
-
         _isGrounded = Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsGround);
+        //_isGrounded = Physics.CheckSphere(transform.position, 1.1f, _whatIsGround);
+
         if (!_isGrounded && _jumpCount >= 0)
         {
             _jumpCount = 0;
@@ -217,12 +217,6 @@ public class S_PlayerMovement : MonoBehaviour
         {
             ScriptDash._limitDash = 3;
         }*/
-
-        if (Physics.Raycast(transform.position, Vector3.down, _playerHeight * 2f + _valueRaycast, _whatIsWall))
-        {
-            _isWhatIsWallOnGround = true;
-        }
-        else _isWhatIsWallOnGround = false;
 
         if (OnSlope())
             _player.GetComponent<CapsuleCollider>().material.dynamicFriction = 2f;
@@ -361,14 +355,8 @@ public class S_PlayerMovement : MonoBehaviour
         else if (_isSliding)
         {
             state = MovementState.sliding;
-            if(OnSlope() && rb.velocity.y > 0f)
-            {
-                _isSliding = false;
-            }
-            else
-            {
-                _desiredMoveSpeed = _walkSpeed * GetComponent<S_Sliding>()._slideForce;
-            }
+            //if(OnSlope() && rb.velocity.y > 0f)
+            _desiredMoveSpeed = _walkSpeed * GetComponent<S_Sliding>()._slideForce;
         }
         //Mode - Crouch 
         else if (Input.GetKey(_crouchKey))
@@ -489,9 +477,11 @@ public class S_PlayerMovement : MonoBehaviour
             rb.AddForce(Vector3.down * _slopeVectorDownValue, ForceMode.Force);
             if (rb.velocity.y > 0 && _isSliding)
             {
-                rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 20f, ForceMode.Force);
+                rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 15f, ForceMode.Force);
             }
-            else
+            else if(_isSliding)
+                rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 20f, ForceMode.Force);
+            else    
                 rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 15f, ForceMode.Force);
                 //rb.AddForce(_moveDirection.normalized * _moveSpeed * 20f * _upgradeSpeedValue, ForceMode.Force);
         }
@@ -553,40 +543,37 @@ public class S_PlayerMovement : MonoBehaviour
         
         if(_isSliding && OnSlope())
         {
+            Debug.Log("Jump V1");
             rb.AddForce(transform.up * _jumpForce * 1.5f, ForceMode.Impulse);
         }
-        else if (_isWhatIsWallOnGround)
+        else if (OnSlope() && !_isSliding)
         {
-            rb.AddForce(transform.up * _jumpForce * 0.6f, ForceMode.Impulse);
-        }
-        else if (OnSlope() && !_isSliding && !_isWhatIsWallOnGround)
-        {
+            Debug.Log("Jump V3");
             rb.AddForce(transform.up * _jumpForce * 1.15f, ForceMode.Impulse);
         }
         else if (_isSliding && !OnSlope())
         {
+            Debug.Log("Jump V4");
             rb.AddForce(transform.up * _jumpForce * 0.8f, ForceMode.Impulse);
         }
         else if (_isDashing)
         {
+            Debug.Log("Jump V5");
             rb.AddForce(transform.up * _jumpForce * (0.8f-ScriptDash._dashDuration), ForceMode.Impulse);
         }
         else if (GetSlopeMoveDirection(_moveDirection).y != 0 || _isGrounded)
         {
+            Debug.Log("Jump V6");
             rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
         }
         else if (!canJumpLedge)
         {
+            Debug.Log("Jump V7");
             _exitingSlope = true;
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
             //rb.velocity = new Vector3(rb.velocity.x, ??, rb.velocity.z);
             rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
         }
-        else
-        {
-            rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
-        }
-
     }
 
     private void ResetJump()
