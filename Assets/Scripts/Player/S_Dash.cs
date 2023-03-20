@@ -25,6 +25,15 @@ public class S_Dash : MonoBehaviour
     [Header("Audio")]
     private S_PlayerSound PlayerSoundScript;
 
+    [Header("UI")]
+    [SerializeField] private GameObject _hudDashFleche1;
+    [SerializeField] private GameObject _hudDashFleche2;
+    [SerializeField] private GameObject _hudDashFleche3;
+    [Header("")]
+    [SerializeField] private GameObject _hudDashJauge1;
+    [SerializeField] private GameObject _hudDashJauge2;
+    [SerializeField] private GameObject _hudDashJauge3;
+
     [Header("Settings")]
     [SerializeField] private bool _isUsingCameraForward = true;
     [SerializeField] private bool _isAllowingAllDirections = true;
@@ -73,6 +82,54 @@ public class S_Dash : MonoBehaviour
                 _dashGainTimer = _dashGain;
             }
         }
+
+        if(_limitDash == 0)
+        {
+            _hudDashFleche3.SetActive(false);
+            _hudDashFleche2.SetActive(false);
+            _hudDashFleche1.SetActive(false);
+
+            _hudDashJauge3.SetActive(false);
+            _hudDashJauge2.SetActive(false);
+            _hudDashJauge1.SetActive(false);
+        }
+        if (_limitDash == 1)
+        {
+            _hudDashFleche3.SetActive(false);
+            _hudDashFleche2.SetActive(false);
+            _hudDashFleche1.SetActive(true);
+
+            _hudDashJauge3.SetActive(false);
+            _hudDashJauge2.SetActive(false);
+            _hudDashJauge1.SetActive(true);
+
+        }
+        if (_limitDash == 2)
+        {
+            _hudDashFleche3.SetActive(false);
+            _hudDashFleche2.SetActive(true);
+            _hudDashFleche1.SetActive(true);
+
+            _hudDashJauge3.SetActive(false);
+            _hudDashJauge2.SetActive(true);
+            _hudDashJauge1.SetActive(true);
+
+        }
+        if (_limitDash == 3)
+        {
+            _hudDashFleche3.SetActive(true);
+            _hudDashFleche2.SetActive(true);
+            _hudDashFleche1.SetActive(true);
+
+            _hudDashJauge3.SetActive(true);
+            _hudDashJauge2.SetActive(true);
+            _hudDashJauge1.SetActive(true);
+        }
+
+
+
+
+
     }
 
     public void ButtonAxel()

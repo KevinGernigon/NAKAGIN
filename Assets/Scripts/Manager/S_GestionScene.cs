@@ -7,19 +7,17 @@ public class S_GestionScene : MonoBehaviour
 {
 
     private S_ReferenceInterface _referenceInterface;
-
-
+    
     [Header("Reset Player")]
     private Transform _playerTransform;
     private Rigidbody _playerRb;
     private GameObject _camera;
-    private S_PlayerCam _playerCam;
+    private S_PlayerCam _playerCam; 
+    private TMP_Text _textTimer;
+    [SerializeField] private Transform _spawnPoint;
 
     [Header("Reset Wall")]
-    public bool _IsDead;
-
-    [SerializeField] private Transform _spawnPoint;
-    private TMP_Text _textTimer;
+    [SerializeField] private S_ModuleManager _moduleManager;
 
     private void Awake()
     {
@@ -36,10 +34,8 @@ public class S_GestionScene : MonoBehaviour
 
     private void Start()
     {
-
-
-
         _playerTransform.position = _spawnPoint.position;
+
         _playerRb.velocity = new Vector3(0, 0, 0);
         var x = this.transform.rotation.eulerAngles.x;
         var y = this.transform.rotation.eulerAngles.y;
@@ -48,15 +44,14 @@ public class S_GestionScene : MonoBehaviour
 
         _textTimer.text = "";
 
+    }
 
-
+    public void ResetEventOnRun()
+    { 
+        _moduleManager.ResetPlatformRotation();
 
     }
 
 
-    private void Update()
-    {
-        
-    }
 
 }

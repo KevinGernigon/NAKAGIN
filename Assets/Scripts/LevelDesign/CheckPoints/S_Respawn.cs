@@ -17,7 +17,6 @@ public class S_Respawn : MonoBehaviour
         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
        
         _runCheckPointManager = _managerRun.GetComponent<S_RunCheckPointManager>();
-       
 
     }
        
@@ -26,16 +25,11 @@ public class S_Respawn : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-
-          
-
             /////Start Death/////
-
          
             _runCheckPointManager.DeathPlayer();
 
             /////After Death/////   
-          
 
         }
     }

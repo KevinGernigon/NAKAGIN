@@ -33,7 +33,6 @@ public class S_RespawnValidation : MonoBehaviour
 
             /////After Death/////   
 
-
         }
     }
 
