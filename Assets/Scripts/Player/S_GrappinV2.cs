@@ -18,6 +18,8 @@ public class S_GrappinV2 : MonoBehaviour
 
     [Header("HUD")]
     [SerializeField] private GameObject _HUDCrossHairLock;
+    [SerializeField] private Animator _aniamCrossHair;
+    private bool _isAnimPlaying = true;
 
     [Header("Layer")]
     [SerializeField] private LayerMask _whatIsTarget;
@@ -41,8 +43,8 @@ public class S_GrappinV2 : MonoBehaviour
     public bool isIncreaseFOV;
     public bool _isDecreaseRbDrag;
 
-    private bool _isHUD;
-    public bool _isHookingHUD;
+    public bool _isHUD = false;
+    public bool _isHookingHUD = false;
     public bool _isAimForgivenessActive;
     public System.Action updateAction;
     public int IncrementValue;
@@ -51,6 +53,7 @@ public class S_GrappinV2 : MonoBehaviour
         _rb = GetComponent<Rigidbody>();
         _pm = GetComponent<S_PlayerMovement>();
         PlayerSoundScript = GetComponent<S_PlayerSound>();
+        _isHUD = false;
     }
 
     private void Update()
@@ -103,7 +106,7 @@ public class S_GrappinV2 : MonoBehaviour
 
     private void LateUpdate()
     {
-        if(_isGrappling)
+        if (_isGrappling)
             //lr.SetPosition(1000, _grappingTransform.position);
             lr.SetPosition(0, _grappingTransform.position);
     }
@@ -128,7 +131,7 @@ public class S_GrappinV2 : MonoBehaviour
             grapplePoint = previousGrapplePoint;
             PlayerSoundScript.ImpactHookSound();
             Invoke(nameof(ExecuteGrapple), _grappleDelayTime);
-        }   
+        }
         //if(Physics.Raycast(_camera.position, _camera.forward, out hit, _maxGrappleDistance, 1 << LayerMask.NameToLayer("WhatIsTarget")))
         else if (Physics.Raycast(_camera.position, _camera.forward, out hit, _maxGrappleDistance, Everything))
         {
@@ -148,24 +151,42 @@ public class S_GrappinV2 : MonoBehaviour
             MissGrapple();
 
 
-            lr.enabled = true;
-            lr.SetPosition(1, grapplePoint);
-            var finalPosition = grapplePoint;
-            /*SetGraplin(finalPosition);
-            updateAction = () => SetGraplin(finalPosition);*/
+        lr.enabled = true;
+        lr.SetPosition(1, grapplePoint);
+        var finalPosition = grapplePoint;
+        /*SetGraplin(finalPosition);
+        updateAction = () => SetGraplin(finalPosition);*/
     }
 
     private void HUDCrosshair()
     {
-        if (!_isHookingHUD)
-        {
-            if(_isHUD)
+       if (!_isHookingHUD)
+       {
+            if (_isHUD)
+            {
                 _HUDCrossHairLock.SetActive(true);
-            else
-                _HUDCrossHairLock.SetActive(false);
-        }
-        else _HUDCrossHairLock.SetActive(false);
-
+                if (_isAnimPlaying && _grapplingCdTimer <= 0)
+                {
+                    _aniamCrossHair.Rebind();
+                    _aniamCrossHair.Play("A_CrossHairOpen");
+                    _isAnimPlaying = false;
+                }
+            }
+            else if (!_isAnimPlaying)
+            {
+                _aniamCrossHair.Rebind();
+                _aniamCrossHair.Play("A_CrossHairClose");
+                _isAnimPlaying = true;
+                //_HUDCrossHairLock.SetActive(false);
+            }  
+       }
+       else if (!_isAnimPlaying && _grapplingCdTimer >= 0)
+       {
+            _aniamCrossHair.Rebind();
+            _aniamCrossHair.Play("A_CrossHairClose");
+            _isAnimPlaying = true;
+            //_HUDCrossHairLock.SetActive(false);
+       }     
     }
 
     IEnumerator TimerGrapplingHook()
@@ -206,7 +227,7 @@ public class S_GrappinV2 : MonoBehaviour
         _isHookingHUD = true;
         _pm._isFreezing = true;
         isIncreaseFOV = true;
-        Vector3 lowestPoint = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z); //point de d�part du personnage
+        Vector3 lowestPoint = new Vector3(transform.position.x, transform.position.y - 1f, transform.position.z); //point de d part du personnage
         float grapplePointRelativeYPos = grapplePoint.y - lowestPoint.y;
         float highestPointOnArc = grapplePointRelativeYPos + _overshootYAxis;
 
@@ -243,4 +264,4 @@ public class S_GrappinV2 : MonoBehaviour
     }
 }
 
-    
+

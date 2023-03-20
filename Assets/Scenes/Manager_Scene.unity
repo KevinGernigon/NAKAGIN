@@ -11134,12 +11134,10 @@ MonoBehaviour:
   _grappingTransform: {fileID: 3956388861597576755}
   lr: {fileID: 3956388862421184067}
   _HUDCrossHairLock: {fileID: 4854074002402946533}
+  _aniamCrossHair: {fileID: 4854074002289892962}
   _whatIsTarget:
     serializedVersion: 2
     m_Bits: 4352
-  LayerToExempt:
-    serializedVersion: 2
-    m_Bits: 3639
   Everything:
     serializedVersion: 2
     m_Bits: 2147483647
@@ -11153,6 +11151,7 @@ MonoBehaviour:
   _isGrappling: 0
   isIncreaseFOV: 0
   _isDecreaseRbDrag: 0
+  _isHUD: 0
   _isHookingHUD: 0
   _isAimForgivenessActive: 0
   IncrementValue: 0
@@ -11229,6 +11228,7 @@ MonoBehaviour:
   ScriptWallRun: {fileID: 3956388861518991237}
   GrapplingScript: {fileID: 3956388861518991238}
   AccelerationScript: {fileID: 3956388861518991359}
+  SlideScript: {fileID: 0}
   _orientation: {fileID: 3956388862463579861}
   _player: {fileID: 3956388862188452566}
   _valueRaycast: 0.4
@@ -11248,7 +11248,6 @@ MonoBehaviour:
   _isHigherThan: 0
   _isAccelerating: 0
   _isDecelerating: 0
-  _isWhatIsWallOnGround: 0
 --- !u!4 &3956388861518991358
 Transform:
   m_ObjectHideFlags: 0
