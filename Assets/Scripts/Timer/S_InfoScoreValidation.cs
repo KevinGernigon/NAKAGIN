@@ -167,9 +167,10 @@ public class S_InfoScoreValidation : MonoBehaviour
             {
                 _runStart = false;
 
-                ScriptTimer.TimerReset();
-
-                S_RunCheckPointManagerValidation.FintimerRespawn();
+                
+                //ScriptTimer.TimerReset()
+                //S_RunCheckPointManagerValidation.FintimerRespawn();
+                S_RunCheckPointManagerValidation.DeathPlayer();
             }
 
         }

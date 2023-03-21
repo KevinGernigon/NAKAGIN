@@ -10,6 +10,9 @@ public class S_Timer : MonoBehaviour
     private GameObject _TimerAffichage;
     private TMP_Text _textTimer;
 
+    private Animator _animaHUDTimer;
+
+
     private float _timeReflevel1 = 0f;
     private float _timeReflevel2 = 0f;
 
@@ -22,12 +25,15 @@ public class S_Timer : MonoBehaviour
     public bool _timerPlay = false;
 
 
+    [SerializeField] private Color _warningcolor = Color.red;
+    private Color _saveColor;
 
     private void Awake()
     {
-         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
-         _textTimer = _referenceInterface._timerText;
-
+        _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
+        _textTimer = _referenceInterface._timerText;
+        _animaHUDTimer = _referenceInterface._HUDtimer;
+        _saveColor = _textTimer.color;
     }
 
 
@@ -96,6 +102,14 @@ public class S_Timer : MonoBehaviour
     }
 
 
+    public void WarningTimer()
+    {
+        _animaHUDTimer.Play("A_Timer");
+        _textTimer.color = _warningcolor;
+    }
+
+
+
     public void TimerStart()
     {
         if (!_timerPlay)
@@ -127,7 +141,10 @@ public class S_Timer : MonoBehaviour
         _timerTime = 0f;
 
         _textTimer.text = "";
-       
+        _textTimer.color = _saveColor;
+
+        _animaHUDTimer.Rebind();
+
         _startTime = Time.time;
         _stopTime = 0f;
 

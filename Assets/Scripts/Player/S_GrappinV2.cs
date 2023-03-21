@@ -148,7 +148,7 @@ public class S_GrappinV2 : MonoBehaviour
                 MissGrapple();
         }
         else
-            MissGrapple();
+            MissGrapple(); 
 
 
         lr.enabled = true;
@@ -160,8 +160,8 @@ public class S_GrappinV2 : MonoBehaviour
 
     private void HUDCrosshair()
     {
-       if (!_isHookingHUD)
-       {
+        if (!_isHookingHUD)
+        {
             if (_isHUD)
             {
                 _HUDCrossHairLock.SetActive(true);
@@ -200,7 +200,7 @@ public class S_GrappinV2 : MonoBehaviour
     {
         grapplePoint = _camera.position + _camera.forward * _maxGrappleDistance;
         PlayerSoundScript.RewindSound();
-        Invoke(nameof(StopGrapple), _grappleDelayTime);
+        Invoke(nameof(StopGrapple), _grapplingCd);
     }
 
 
@@ -236,7 +236,7 @@ public class S_GrappinV2 : MonoBehaviour
         _pm.JumpToPosition(grapplePoint, highestPointOnArc);
 
         Invoke(nameof(StopGrapple), 1f);
-        Invoke(nameof(HUDManager), 3f);
+        Invoke(nameof(HUDManager), _grappleDelayTime);
     }
 
     public void StopGrapple()

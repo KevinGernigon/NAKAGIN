@@ -14,6 +14,9 @@ public class S_GestionScene : MonoBehaviour
     private GameObject _camera;
     private S_PlayerCam _playerCam; 
     private TMP_Text _textTimer;
+    private Color _savecolor;
+
+
     [SerializeField] private Transform _spawnPoint;
 
     [Header("Reset Wall")]
@@ -29,7 +32,7 @@ public class S_GestionScene : MonoBehaviour
         _playerCam = _camera.GetComponent<S_PlayerCam>();
 
         _textTimer = _referenceInterface._timerText;
-
+        _savecolor = _textTimer.color;
     }
 
     private void Start()
@@ -43,13 +46,14 @@ public class S_GestionScene : MonoBehaviour
         Physics.SyncTransforms();
 
         _textTimer.text = "";
+        _textTimer.color = _savecolor;
 
     }
 
-    public void ResetEventOnRun()
+    
+    public void ResetEventOnRun()           //call a la mort du joueur!
     { 
         _moduleManager.ResetPlatformRotation();
-
     }
 
 
