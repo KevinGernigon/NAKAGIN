@@ -11320,7 +11320,6 @@ MonoBehaviour:
   _isHookingHUD: 0
   _isAimForgivenessActive: 0
   IncrementValue: 0
-  maxPoints: 0
 --- !u!54 &3956388861518991356
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -11367,21 +11366,22 @@ MonoBehaviour:
   _lastState: 0
   _groundDrag: 10
   _airSpeed: 20
-  _jumpForce: 35
+  _jumpForce: 28
+  valJump: 28
   _jumpCount: 0
   _jumpCooldown: 0.25
   _airMultiplier: 3
   _readyToJump: 0
-  _crouchSpeed: 3.5
-  _crouchYScale: 0.5
-  _crouchKey: 99
   _playerHeight: 2
   _whatIsGround:
     serializedVersion: 2
-    m_Bits: 19456
+    m_Bits: 17408
   _whatIsWall:
     serializedVersion: 2
     m_Bits: 2048
+  Everything:
+    serializedVersion: 2
+    m_Bits: 129847
   _isGrounded: 0
   _maxSlopeAngle: 50
   _slopeVectorDownValue: 150
@@ -11394,7 +11394,7 @@ MonoBehaviour:
   ScriptWallRun: {fileID: 3956388861518991237}
   GrapplingScript: {fileID: 3956388861518991238}
   AccelerationScript: {fileID: 3956388861518991359}
-  SlideScript: {fileID: 0}
+  SlideScript: {fileID: 3956388861518991235}
   _orientation: {fileID: 3956388862463579861}
   _player: {fileID: 3956388862188452566}
   _valueRaycast: 0.4
@@ -11414,6 +11414,7 @@ MonoBehaviour:
   _isHigherThan: 0
   _isAccelerating: 0
   _isDecelerating: 0
+  _whatIsWallOnGround: 0
 --- !u!4 &3956388861518991358
 Transform:
   m_ObjectHideFlags: 0
