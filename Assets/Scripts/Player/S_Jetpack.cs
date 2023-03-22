@@ -27,7 +27,7 @@ public class S_Jetpack : MonoBehaviour
     private S_PlayerSound PlayerSoundScript;
 
     [Header("HUD")]
-    [SerializeField]  private GameObject _HUDJetpackWarning;
+    [SerializeField] private GameObject _HUDJetpackWarning;
 
 
     [Header("Time Value")]
