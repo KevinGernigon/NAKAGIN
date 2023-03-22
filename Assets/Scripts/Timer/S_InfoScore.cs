@@ -68,7 +68,7 @@ public class S_InfoScore : MonoBehaviour
             GetBestTimePlayer();
        }
        
-        
+
        RaycastHit hit;
        if (Physics.Raycast(_referenceInterface._CameraGameObject.transform.position, _referenceInterface._CameraGameObject.transform.forward, out hit, 30, Everything))
        {
@@ -78,6 +78,7 @@ public class S_InfoScore : MonoBehaviour
 
             if (hit.collider.gameObject.layer == whatIsInformative && hit.collider.gameObject == _detectionRunBox)
             {
+
                 ShowTimerChallenge();
                 AfficheBesttimeplayer();
             }
@@ -92,8 +93,7 @@ public class S_InfoScore : MonoBehaviour
                     _aniamHUDInfoRun.Play("A_InfoScoreOpen");
                     _isAnimPlaying = false;
                 }
-
-                //StopAllCoroutines();
+   
             }
             else if (!_isAnimPlaying)
             {
@@ -112,7 +112,7 @@ public class S_InfoScore : MonoBehaviour
         }
     }
 
-
+    /*
     IEnumerator AffichageHUDInfoRun()
     {
       
@@ -127,7 +127,7 @@ public class S_InfoScore : MonoBehaviour
         yield return new WaitForSeconds(1f);
 
         _HUDInfoScore.SetActive(false);
-    }
+    }*/
 
     private void ShowTimerChallenge()
     {
