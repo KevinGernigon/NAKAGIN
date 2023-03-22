@@ -21,7 +21,6 @@ public class S_GrappinV2 : MonoBehaviour
 
     [Header("Layer")]
     [SerializeField] private LayerMask _whatIsTarget;
-    [SerializeField] private LayerMask LayerToExempt;
     [SerializeField] private LayerMask Everything;
     [SerializeField] private LayerMask _whatIsGround;
 
@@ -64,10 +63,10 @@ public class S_GrappinV2 : MonoBehaviour
 
         RaycastHit DebugHit;
 
-        //if(Physics.Raycast(_camera.position, _camera.forward, _maxGrappleDistance, 1 << LayerMask.NameToLayer("WhatIsTarget")))
         if (Physics.Raycast(_camera.position, _camera.forward, out DebugHit, _maxGrappleDistance, Everything))
         {
             int whatIsTarget = LayerMask.NameToLayer("WhatIsTarget");
+
             if (DebugHit.collider.gameObject.layer == whatIsTarget)
             {
                 Debug.DrawRay(_camera.position, _camera.forward * _maxGrappleDistance, Color.blue);

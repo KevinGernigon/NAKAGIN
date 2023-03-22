@@ -12,6 +12,9 @@ public class S_ReferenceInterface : Manager
     public Transform _playerTransform;
     public Rigidbody _playerRigidbody;
 
+    [Header("Refs Death")]
+    public S_DeathPlayer deathPlayer;
+
     [Header("Refs Orentiation")]
 
     public Transform _orientationTransform;
@@ -24,6 +27,7 @@ public class S_ReferenceInterface : Manager
 
     [Header("Refs Jetpack")]
     public S_Jetpack _Jetpack;
+
 
     [Header("Refs UI")]
 
@@ -46,6 +50,7 @@ public class S_ReferenceInterface : Manager
 
     [Header("Refs InputManager")]
     public S_InputManager _InputManager;
+
 
     [Header("Audio")]
     public S_PlayerSound PlayerSoundScript;
