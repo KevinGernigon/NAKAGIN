@@ -41,23 +41,20 @@ public class S_PlayerMovement : MonoBehaviour
 
     [Header("Jumping")]
     [SerializeField] private float _jumpForce;
+    [SerializeField] private float valJump;
     [SerializeField] private int _jumpCount;
     [SerializeField] private float _jumpCooldown;
     [SerializeField] private float _airMultiplier;
     public bool _readyToJump;
 
-    [Header("Crouching")]
-    [SerializeField] private float _crouchSpeed;
-    [SerializeField] private float _crouchYScale;
     private float _startYScale;
 
-    [Header("Keybinds")]
-    public KeyCode _crouchKey = KeyCode.LeftControl;
 
     [Header("Ground Check")]
     [SerializeField] private float _playerHeight;
     [SerializeField] private LayerMask _whatIsGround;
     [SerializeField] private LayerMask _whatIsWall;
+    [SerializeField] private LayerMask Everything;
     public bool _isGrounded;
 
     [Header("Slope Handling")]
@@ -135,6 +132,7 @@ public class S_PlayerMovement : MonoBehaviour
 
     public bool _isAccelerating;
     public bool _isDecelerating;
+    public bool _whatIsWallOnGround;
 
     int i = 0;
     private void Start()
@@ -163,15 +161,25 @@ public class S_PlayerMovement : MonoBehaviour
             _isSlopePositive = false;
 
         //Ground Check
-        _isGrounded = Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsGround);
-        //_isGrounded = Physics.CheckSphere(transform.position, 1.1f, _whatIsGround);
+        //_isGrounded = Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsGround);
+
+        if (Physics.CheckSphere(transform.position, 1.1f, _whatIsGround) || Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsWall)){
+            _isGrounded = true;
+        }
+        else
+            _isGrounded = false;
+        
+        if(Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsWall))
+        {
+            _whatIsWallOnGround = true;
+        }
 
         if (!_isGrounded && _jumpCount >= 0)
         {
             _jumpCount = 0;
             _jumpForce = 0;
         }
-        else _jumpForce = 35;
+        else _jumpForce = valJump;
         //_isGrounded = Physics.BoxCast(transform.position, Vector3.one, Vector3.down, Quaternion.identity, _playerHeight * 0.5f + _valueRaycast, _whatIsGround);
 
         InputCommand();
@@ -304,21 +312,7 @@ public class S_PlayerMovement : MonoBehaviour
                 canJumpLedge = false;
                 Invoke(nameof(ResetJump), _jumpCooldown);
             }
-        //When crouch
 
-        if (Input.GetKeyDown(_crouchKey))
-        //if (S_InputManager._slideInput)
-        {
-            transform.localScale = new Vector3(transform.localScale.x, _crouchYScale, transform.localScale.z);
-            //add force cuz floating
-            rb.AddForce(Vector3.down * 5f, ForceMode.Impulse);
-        }
-
-        if (Input.GetKeyUp(_crouchKey))
-        //if (!S_InputManager._slideInput)
-        {
-            transform.localScale = new Vector3(transform.localScale.x, _startYScale, transform.localScale.z);
-        }
     }
 
     private void StateHandler()
@@ -357,13 +351,6 @@ public class S_PlayerMovement : MonoBehaviour
             state = MovementState.sliding;
             //if(OnSlope() && rb.velocity.y > 0f)
             _desiredMoveSpeed = _walkSpeed * GetComponent<S_Sliding>()._slideForce;
-        }
-        //Mode - Crouch 
-        else if (Input.GetKey(_crouchKey))
-        //else if (S_InputManager._slideInput)
-        {
-            state = MovementState.crouching;
-            _desiredMoveSpeed = _crouchSpeed;
         }
         //Mode - Sprint
         /*else if (_isGrounded && Input.GetKey(_sprintKey) && !_isWallRunning)
@@ -540,35 +527,32 @@ public class S_PlayerMovement : MonoBehaviour
         _jumpCount++;
 
         PlayerSoundScript.JumpSound();
-        
-        if(_isSliding && OnSlope())
+        if (!OnSlope() && _whatIsWallOnGround)
         {
-            Debug.Log("Jump V1");
+            rb.AddForce(transform.up * _jumpForce * 1.5f, ForceMode.Impulse);
+        }
+        else if(_isSliding && OnSlope())
+        {
             rb.AddForce(transform.up * _jumpForce * 1.5f, ForceMode.Impulse);
         }
         else if (OnSlope() && !_isSliding)
         {
-            Debug.Log("Jump V3");
             rb.AddForce(transform.up * _jumpForce * 1.15f, ForceMode.Impulse);
         }
         else if (_isSliding && !OnSlope())
         {
-            Debug.Log("Jump V4");
             rb.AddForce(transform.up * _jumpForce * 0.8f, ForceMode.Impulse);
         }
         else if (_isDashing)
         {
-            Debug.Log("Jump V5");
             rb.AddForce(transform.up * _jumpForce * (0.8f-ScriptDash._dashDuration), ForceMode.Impulse);
         }
         else if (GetSlopeMoveDirection(_moveDirection).y != 0 || _isGrounded)
         {
-            Debug.Log("Jump V6");
             rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
         }
         else if (!canJumpLedge)
         {
-            Debug.Log("Jump V7");
             _exitingSlope = true;
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
             //rb.velocity = new Vector3(rb.velocity.x, ??, rb.velocity.z);
