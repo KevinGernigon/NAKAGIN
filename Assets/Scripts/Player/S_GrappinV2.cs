@@ -46,6 +46,7 @@ public class S_GrappinV2 : MonoBehaviour
     public bool _isAimForgivenessActive;
     public System.Action updateAction;
     public int IncrementValue;
+    public int maxPoints;
     private void Awake()
     {
         _rb = GetComponent<Rigidbody>();
@@ -97,14 +98,12 @@ public class S_GrappinV2 : MonoBehaviour
         if (_grapplingCdTimer > 0)
             _grapplingCdTimer -= Time.deltaTime;
 
-        //updateAction?.Invoke();
 
     }
 
     private void LateUpdate()
     {
         if(_isGrappling)
-            //lr.SetPosition(1000, _grappingTransform.position);
             lr.SetPosition(0, _grappingTransform.position);
     }
     private void StartGrapple()
@@ -151,8 +150,7 @@ public class S_GrappinV2 : MonoBehaviour
             lr.enabled = true;
             lr.SetPosition(1, grapplePoint);
             var finalPosition = grapplePoint;
-            /*SetGraplin(finalPosition);
-            updateAction = () => SetGraplin(finalPosition);*/
+            //SetGraplin(finalPosition);
     }
 
     private void HUDCrosshair()
@@ -191,16 +189,16 @@ public class S_GrappinV2 : MonoBehaviour
         var tempTime = Time.time;
         for (int y = 0; y < lr.positionCount; y++)
         {
-            //var tempPosition = Vector3.Lerp(_grappingTransform.position, finalPos, i);
-            var tempPosition = Vector3.Lerp(finalPos, _grappingTransform.position, i);
+            var tempPosition = Vector3.Lerp(_grappingTransform.position, finalPos, i);
+            //var tempPosition = Vector3.Lerp(finalPos, _grappingTransform.position, i);
             tempPosition = new Vector3(tempPosition.x, tempPosition.y + Mathf.Cos(5 * Time.time * i) * 0.1f, tempPosition.z);
             lr.SetPosition(y, tempPosition);
             i = (float)y / (float)lr.positionCount;
         }
 
         lr.SetPosition(lr.positionCount - 1, _grappingTransform.position);
-   
     }*/
+
     private void ExecuteGrapple()
     {
         _isHookingHUD = true;

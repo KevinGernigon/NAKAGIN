@@ -33,8 +33,6 @@ public class S_DestructibleObject : MonoBehaviour
     {
         //SceneManager dans Respawn
         //Recup player death dans gestion scene
-        ResetWall();
-
         if (PlayerMovement._isDashing)
         {
             GetComponent<BoxCollider>().isTrigger = true;
@@ -45,6 +43,7 @@ public class S_DestructibleObject : MonoBehaviour
 
     public void ResetWall()
     {
+            
             GetComponent<Renderer>().enabled = true;
     }
 }

@@ -9588,25 +9588,23 @@ MonoBehaviour:
   _whatIsTarget:
     serializedVersion: 2
     m_Bits: 4352
-  LayerToExempt:
-    serializedVersion: 2
-    m_Bits: 3639
   Everything:
     serializedVersion: 2
-    m_Bits: 2147483647
+    m_Bits: 65334
   _whatIsGround:
     serializedVersion: 2
     m_Bits: 1025
   _maxGrappleDistance: 45.2
   _grappleDelayTime: 0.25
   _overshootYAxis: 2
-  _grapplingCd: 1
+  _grapplingCd: 0.5
   _isGrappling: 0
   isIncreaseFOV: 0
   _isDecreaseRbDrag: 0
   _isHookingHUD: 0
   _isAimForgivenessActive: 0
   IncrementValue: 0
+  maxPoints: 0
 --- !u!54 &3956388861518991356
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -9680,6 +9678,7 @@ MonoBehaviour:
   ScriptWallRun: {fileID: 3956388861518991237}
   GrapplingScript: {fileID: 3956388861518991238}
   AccelerationScript: {fileID: 3956388861518991359}
+  SlideScript: {fileID: 0}
   _orientation: {fileID: 3956388862463579861}
   _player: {fileID: 3956388862188452566}
   _valueRaycast: 0.4
@@ -9699,7 +9698,6 @@ MonoBehaviour:
   _isHigherThan: 0
   _isAccelerating: 0
   _isDecelerating: 0
-  _isWhatIsWallOnGround: 0
 --- !u!4 &3956388861518991358
 Transform:
   m_ObjectHideFlags: 0
