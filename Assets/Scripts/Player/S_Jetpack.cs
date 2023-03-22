@@ -43,6 +43,7 @@ public class S_Jetpack : MonoBehaviour
     private bool _isSoundActive;
     
     [SerializeField] private bool _isJetpackAvaible;
+    [SerializeField] private bool _isTimerReach;
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -63,21 +64,21 @@ public class S_Jetpack : MonoBehaviour
             _timerJetpack += Time.deltaTime;
             if (_timerJetpack < _maxTimerJetpack && _timerJetpack != 0)
             {
-                _isJetpackAvaible = false;
+                 _isTimerReach = false;
             }
             else
             {
-                _isJetpackAvaible = true;
+                 _isTimerReach = true;
             }
         }
         else
         {
             _timerJetpack = 0;
-            _isJetpackAvaible = true;
+            _isTimerReach = true;
         }
 
 
-        if (S_InputManager._playerInputAction.Player.Jetpack.triggered && _isJetpackAvaible)
+        if (S_InputManager._playerInputAction.Player.Jetpack.triggered && _isJetpackAvaible && _isTimerReach)
         {
             if (S_InputManager._jetpackActive)
             {
@@ -114,13 +115,13 @@ public class S_Jetpack : MonoBehaviour
     {
         if (GrappinScript._isHookingHUD) return;
 
-        if (ScriptBatteryManager._nbrBattery <= 0 && _isJetpackAvaible && !_isSoundActive)
+        if (ScriptBatteryManager._nbrBattery <= 0 && _isJetpackAvaible && !_isSoundActive && !_isTimerReach)
         {
             PlayerSoundScript.NoBatterySound();
             StartCoroutine(EndSoundCoroutine());
         }
 
-        if (_isTriggerBoxTrue && ScriptBatteryManager._nbrBattery >= 1)
+        if (_isTriggerBoxTrue && ScriptBatteryManager._nbrBattery >= 1 && _isTimerReach)
         {
             PlayerSoundScript.JetpackSound();
             ScriptBatteryManager.UseOneBattery();
@@ -128,7 +129,7 @@ public class S_Jetpack : MonoBehaviour
         }
 
 
-        if (!_isTriggerBoxTrue && !_isMaxForce && ScriptBatteryManager._nbrBattery >= 1)
+        if (!_isTriggerBoxTrue && !_isMaxForce && ScriptBatteryManager._nbrBattery >= 1 && _isTimerReach)
         {
             PlayerSoundScript.JetpackSound();
             ScriptBatteryManager.UseOneBattery();
