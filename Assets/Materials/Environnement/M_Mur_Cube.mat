@@ -21,9 +21,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: M_Mur_Cube
-  m_Shader: {fileID: -6465566751694194690, guid: 1bfa9235df236da439bd51cfd4d9dbf0, type: 3}
-  m_ValidKeywords:
-  - _USE_FRESNEL
+  m_Shader: {fileID: -6465566751694194690, guid: 0fa990d84004125498a3dea93f019d52, type: 3}
+  m_ValidKeywords: []
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -39,7 +38,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _Albedo:
-        m_Texture: {fileID: 2800000, guid: 182854284bf9b3947b83ada92a0995c1, type: 3}
+        m_Texture: {fileID: 2800000, guid: bce769d8d367ea44da72fdb0986300ea, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Ambient_Occlusion:
+        m_Texture: {fileID: 2800000, guid: 10085f983d589e64a9a496e66dbe7a64, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -66,6 +69,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Emissive:
+        m_Texture: {fileID: 2800000, guid: 4f9f17f3e6cb8c147ba25a403d251c1c, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _GlossinessMap:
         m_Texture: {fileID: 2800000, guid: eb2d57b72b5d193429f00d2c757dfe0d, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -74,8 +81,16 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Metallic:
+        m_Texture: {fileID: 2800000, guid: 2228038ef88bf914ab54c4177d8f5da9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _MetallicGlossMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Normal:
+        m_Texture: {fileID: 2800000, guid: 5a9ad7a10843bff41a2cf80efbb5f54f, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _NormalMap:
@@ -88,6 +103,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _ParallaxMap:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Roughness:
+        m_Texture: {fileID: 2800000, guid: 31b59d71ce26a4a488787385fb9eb056, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _SmoothnessMap:
@@ -133,6 +152,7 @@ Material:
     m_Ints: []
     m_Floats:
     - _AOPower: 1
+    - _ActivateEmissive: 1
     - _ActivateSmoothness: 1
     - _ActivateSpecular: 1
     - _AlphaClip: 0
@@ -156,6 +176,7 @@ Material:
     - _QueueOffset: 0
     - _ReceiveShadows: 1
     - _Rim_Strenght: 0.593
+    - _RoughnessPower: 1
     - _Smoothness: 23.36
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
