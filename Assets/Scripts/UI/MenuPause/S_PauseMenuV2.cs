@@ -69,7 +69,7 @@ public class S_PauseMenuV2 : MonoBehaviour
         if (S_InputManager._playerInputAction.UI.Pause.triggered)
         {
             if (!S_InputManager._playerEnable)
-            {   
+            {
                 _isSetting = false;
                 ResumeGame();    
             }
@@ -128,6 +128,7 @@ public class S_PauseMenuV2 : MonoBehaviour
             LastSelectButton = FirstSelectButtonPause;
         }
 
+        
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
@@ -143,12 +144,14 @@ public class S_PauseMenuV2 : MonoBehaviour
     {
         if (!_ischoose)
         {
+              Debug.Log("ResumeGame");
             PlayerSound.UnPauseSound();
             StartCoroutine(waitcastchoose());
 
             S_InputManager.DesactivePause();
 
-            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.lockState = CursorLockMode.Confined;
+            //Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
 
             _pauseMenuHUD.SetActive(false);

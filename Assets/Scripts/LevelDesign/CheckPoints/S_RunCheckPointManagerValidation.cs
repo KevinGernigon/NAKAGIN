@@ -79,7 +79,6 @@ public class S_RunCheckPointManagerValidation : MonoBehaviour
     }
     public void DeathPlayer()
     {
-
         StartCoroutine(WaitToRespawn());
     }
 

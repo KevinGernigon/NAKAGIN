@@ -10,24 +10,28 @@ public class S_Timer : MonoBehaviour
     private GameObject _TimerAffichage;
     private TMP_Text _textTimer;
 
+    private Animator _animaHUDTimer;
+
     private float _timeReflevel1 = 0f;
     private float _timeReflevel2 = 0f;
-
 
     public float _hours, _minutes, _seconds, _milliseconds;
     public float _timerTime;
     
     public float _startTime, _stopTime;
-
     public bool _timerPlay = false;
 
+    [SerializeField] private Color _warningcolor = Color.red;
+    private Color _saveColor;
 
+    private bool DebuggerStartStop;
 
     private void Awake()
     {
-         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
-         _textTimer = _referenceInterface._timerText;
-
+        _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
+        _textTimer = _referenceInterface._timerText;
+        _animaHUDTimer = _referenceInterface._HUDtimer;
+        _saveColor = _textTimer.color;
     }
 
 
@@ -36,10 +40,31 @@ public class S_Timer : MonoBehaviour
     {
         _timerTime = Time.time;
 
+        S_Debugger.UpdatableLog("Timer ", "", Color.white);
+        S_Debugger.AddButton("Start / Stop", DebuggerTimer);
     }
+
+    private void DebuggerTimer()
+    {
+        if (DebuggerStartStop)
+        {
+            S_Debugger.UpdatableLog("Timer ", "Start", Color.white);
+            TimerStart();
+            DebuggerStartStop = false;
+        }
+        else
+        {
+            S_Debugger.UpdatableLog("Timer ", "Stop",Color.cyan);
+            TimerStop();
+            DebuggerStartStop = true;
+        }
+
+    }
+
 
     private void Update()
     {
+
         if (_timerPlay) // affichage 
         {
              _timerTime = _stopTime + (Time.time) -(_startTime);
@@ -96,6 +121,14 @@ public class S_Timer : MonoBehaviour
     }
 
 
+    public void WarningTimer()
+    {
+        _animaHUDTimer.Play("A_Timer");
+        _textTimer.color = _warningcolor;
+    }
+
+
+
     public void TimerStart()
     {
         if (!_timerPlay)
@@ -127,7 +160,10 @@ public class S_Timer : MonoBehaviour
         _timerTime = 0f;
 
         _textTimer.text = "";
-       
+        _textTimer.color = _saveColor;
+
+        _animaHUDTimer.Rebind();
+
         _startTime = Time.time;
         _stopTime = 0f;
 

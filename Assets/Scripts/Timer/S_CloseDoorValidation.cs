@@ -10,9 +10,7 @@ public class S_CloseDoorValidation : MonoBehaviour
     [SerializeField] private S_Timer ScriptTimer;
 
     [Header("Sliding Door Configs")]
-
     [SerializeField] private Transform _doorLvl1;
-
     [SerializeField] private Vector3 _slideDirection = Vector3.down;
 
     [Header("Metrix")]
@@ -24,10 +22,8 @@ public class S_CloseDoorValidation : MonoBehaviour
     private Vector3 _startPositionDoorLvl1;
 
     public bool _DoorIsOpen;
-   
 
     private bool _DoorMooving = false;
-
 
     private Coroutine _animationCoroutine;
 
@@ -57,7 +53,7 @@ public class S_CloseDoorValidation : MonoBehaviour
 
         if (ScriptInfoScore._runStart && (ScriptTimer._timerTime > ScriptInfoScore._level1Time - _timeAfterClose) && !_DoorMooving)
         {
-
+            ScriptTimer.WarningTimer();
             ClosedDoorLvl1(_speedClosing);
 
         }

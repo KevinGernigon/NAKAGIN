@@ -30,7 +30,7 @@ public class S_ReferenceInterface : Manager
 
 
     [Header("Refs UI")]
-
+    public Animator _HUDtimer;
     public TMP_Text _timerText;
 
     public GameObject HUD_InteractGenerateurEnable;

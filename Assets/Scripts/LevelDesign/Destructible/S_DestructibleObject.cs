@@ -10,15 +10,20 @@ public class S_DestructibleObject : MonoBehaviour
     private S_ReferenceInterface ReferenceInterface;
     private S_PlayerMovement PlayerMovement;
     private S_PlayerSound PlayerSoundScript;
+    private S_DeathPlayer DeathPlayer;
     private GameObject Camera;
-
-    private void Awake()
+    private bool _isDisable = false;
+      private void Awake()
     {
         ReferenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
         Player = ReferenceInterface._playerGameObject;
+        DeathPlayer = ReferenceInterface.deathPlayer;
+
+
         PlayerMovement = Player.GetComponent<S_PlayerMovement>();
         Camera = ReferenceInterface._CameraGameObject;
         PlayerSoundScript = Player.GetComponent<S_PlayerSound>();
+
 
     }
     private void OnTriggerEnter(Collider other)
@@ -26,16 +31,19 @@ public class S_DestructibleObject : MonoBehaviour
         if (other.GetComponent<Collider>().tag == "Player")
         {
             GetComponent<Renderer>().enabled = false;
+            GetComponent<BoxCollider>().enabled = false;
+            _isDisable = true;
         }
     }
 
     private void Update()
     {
-        //SceneManager dans Respawn
-        //Recup player death dans gestion scene
-        ResetWall();
+        if(DeathPlayer.playerIsDead && _isDisable)
+        {
+            ResetWall();
+        }
 
-        if (PlayerMovement._isDashing)
+        if (PlayerMovement._isDashing && !_isDisable)
         {
             GetComponent<BoxCollider>().isTrigger = true;
         }
@@ -43,8 +51,14 @@ public class S_DestructibleObject : MonoBehaviour
             GetComponent<BoxCollider>().isTrigger = false;
     }
 
+
+
+
+
     public void ResetWall()
     {
-            GetComponent<Renderer>().enabled = true;
+        GetComponent<Renderer>().enabled = true;
+        GetComponent<BoxCollider>().enabled = true;
+        _isDisable = false;
     }
 }
