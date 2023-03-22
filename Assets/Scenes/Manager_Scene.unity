@@ -2458,7 +2458,7 @@ MonoBehaviour:
   startEvents:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7675437208059186813}
+      - m_Target: {fileID: 7523266708936471356}
         m_TargetAssemblyTypeName: S_SceneManager, Assembly-CSharp
         m_MethodName: LoadGame
         m_Mode: 1
@@ -8681,7 +8681,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2022550259}
   - component: {fileID: 7523266708936471355}
-  - component: {fileID: 7675437208059186813}
+  - component: {fileID: 7523266708936471356}
   - component: {fileID: 5818174136600349220}
   m_Layer: 0
   m_Name: --- MANAGER ---
@@ -19389,6 +19389,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _managers: []
+--- !u!114 &7523266708936471356
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2022550258}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1634caa98270f842944e56e71208175, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sceneToStart: Tom_Scene
+  categoryToDisplay: 6
 --- !u!4 &7603735524108175075
 Transform:
   m_ObjectHideFlags: 0
@@ -19436,20 +19450,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &7675437208059186813
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2022550258}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f1634caa98270f842944e56e71208175, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sceneToStart: Tom_Scene
-  categoryToDisplay: 6
 --- !u!1 &7777727511360918156
 GameObject:
   m_ObjectHideFlags: 0
