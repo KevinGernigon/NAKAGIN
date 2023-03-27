@@ -464,7 +464,7 @@ public class S_PlayerMovement : MonoBehaviour
             rb.AddForce(Vector3.down * _slopeVectorDownValue, ForceMode.Force);
             if (rb.velocity.y > 0 && _isSliding)
             {
-                rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 15f, ForceMode.Force);
+                rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 12.5f, ForceMode.Force);
             }
             else if(_isSliding)
                 rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 20f, ForceMode.Force);
