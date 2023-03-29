@@ -168,11 +168,12 @@ public class S_PlayerMovement : MonoBehaviour
         }
         else
             _isGrounded = false;
-        
-        if(Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsWall))
+
+        if (Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsWall))
         {
             _whatIsWallOnGround = true;
         }
+        else _whatIsWallOnGround = false;
 
         if (!_isGrounded && _jumpCount >= 0)
         {
