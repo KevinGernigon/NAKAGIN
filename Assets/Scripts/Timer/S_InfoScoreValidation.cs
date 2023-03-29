@@ -24,13 +24,15 @@ public class S_InfoScoreValidation : MonoBehaviour
     [SerializeField] private LayerMask Everything;
     public bool _isAnimPlaying = false;
     [SerializeField] private Animator _aniamHUDInfoRun;
+    [SerializeField] private Animator _animOpenCLoseInfo;
 
     [SerializeField] private S_RunCheckPointManagerValidation S_RunCheckPointManagerValidation;
 
     public float _level1Time = 10f;
     private float _level2Time = 0f;
     private float _level1Timeminutes, _level1Timeseconds, _level1Timemilliseconds;
-   
+    private bool _infoisclosed = true;
+
 
     private void Awake()
     {
@@ -66,27 +68,54 @@ public class S_InfoScoreValidation : MonoBehaviour
 
                 if (_isAnimPlaying)
                 {
+                    StopAllCoroutines();
+                    _animOpenCLoseInfo.Rebind();
+
                     _aniamHUDInfoRun.Rebind();
-                    _aniamHUDInfoRun.Play("A_InfoScoreOpenValidation");
+                    _aniamHUDInfoRun.Play("A_InfoScoreWaitValidation");
                     _isAnimPlaying = false;
+
+                    if (_infoisclosed)
+                    {
+                        _animOpenCLoseInfo.Play("A_InfoScoreOpen");
+                        _infoisclosed = false;
+                    }
                 }
             }
             else if (!_isAnimPlaying)
             {
+                StopAllCoroutines();
+                _animOpenCLoseInfo.Rebind();
+
                 _aniamHUDInfoRun.Rebind();
-                _aniamHUDInfoRun.Play("A_InfoScoreClosing");
+                _aniamHUDInfoRun.Play("A_InfoScoreWaitClose");
                 _isAnimPlaying = true;
+
+                if (!_infoisclosed)
+                {
+                    StartCoroutine(AffichageHUDInfoRun());
+                }
             }
 
         }
         else if (!_isAnimPlaying)
-        {   
+        {
+            StopAllCoroutines();
+            _animOpenCLoseInfo.Rebind();
+
             _aniamHUDInfoRun.Rebind();
-            _aniamHUDInfoRun.Play("A_InfoScoreClosing");
+            _aniamHUDInfoRun.Play("A_InfoScoreWaitClose");
             _isAnimPlaying = true;
         }
     }
 
+    IEnumerator AffichageHUDInfoRun()
+    {
+        yield return new WaitForSeconds(1f);
+        _animOpenCLoseInfo.Play("A_InfoScoreClosing");
+        _infoisclosed = true;
+
+    }
 
     private void ShowTimerChallenge()
     {
@@ -167,9 +196,10 @@ public class S_InfoScoreValidation : MonoBehaviour
             {
                 _runStart = false;
 
-                
+
                 //ScriptTimer.TimerReset()
                 //S_RunCheckPointManagerValidation.FintimerRespawn();
+                S_RunCheckPointManagerValidation.checkpointCapsule.position = S_RunCheckPointManagerValidation._spawnRunCapsule.position;
                 S_RunCheckPointManagerValidation.DeathPlayer();
             }
 

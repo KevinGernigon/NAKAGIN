@@ -42,15 +42,12 @@ public class S_PauseMenuV2 : MonoBehaviour
     private void Awake()
     {
         
-}
+    }
 
     void Start()
     {
-
-
         _pauseMenuHUD.SetActive(false);
         ResetPauseHUD();
-
     }
 
 

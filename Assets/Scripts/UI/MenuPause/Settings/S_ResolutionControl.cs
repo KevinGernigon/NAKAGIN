@@ -14,6 +14,9 @@ public class S_ResolutionControl : MonoBehaviour
     private int _currentResolutionIndex = 0;
 
     [SerializeField] private bool _isFullScreen = true;
+    [SerializeField] private GameObject _HUDDash; 
+    private bool _athDashDisable = true;
+
 
     private void Start()
     {
@@ -59,7 +62,16 @@ public class S_ResolutionControl : MonoBehaviour
     }
 
 
+    public void SetATHDash()
+    {
+        _athDashDisable = !_athDashDisable;
 
+        if (_athDashDisable)
+            _HUDDash.SetActive(true);
+        else
+            _HUDDash.SetActive(false);
+
+    }
 
 
 
