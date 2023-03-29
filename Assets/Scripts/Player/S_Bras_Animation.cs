@@ -33,14 +33,14 @@ public class S_Bras_Animation : MonoBehaviour
             _arms_Mesh.SetActive(true);
             int random = Random.Range(1, 3);
             _isAnimated = true;
-            arms_AC.Play("A_Arms_Left_0" + random.ToString(), 0, 0.0f);
+            arms_AC.Play("A_Left_Arm_Plateforme_0" + random.ToString(), 0, 0.0f);
         }
         else if (S_InputManager._playerInputAction.Player.MoveModuleRight.triggered && _isAnimated == false)
         {
             _arms_Mesh.SetActive(true);
             int random = Random.Range(1, 3);
             _isAnimated = true;
-            arms_AC.Play("A_Arms_Right_0" + random.ToString(), 0, 0.0f);
+            arms_AC.Play("A_Right_Arm_Plateforme_0" + random.ToString(), 0, 0.0f);
         }
         else if (arms_AC.GetCurrentAnimatorStateInfo(0).normalizedTime > 1.0f)
         {
