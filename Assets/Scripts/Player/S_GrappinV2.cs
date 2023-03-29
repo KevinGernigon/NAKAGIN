@@ -194,6 +194,7 @@ public class S_GrappinV2 : MonoBehaviour
         yield return new WaitForSeconds(0.3f);
         _isHUD = false;
         _isAimForgivenessActive = false;
+        grapplePoint = grapplePoint;
     }
 
     private void MissGrapple()
