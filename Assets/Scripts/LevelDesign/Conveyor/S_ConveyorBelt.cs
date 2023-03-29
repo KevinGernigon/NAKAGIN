@@ -16,7 +16,7 @@ public class S_ConveyorBelt : MonoBehaviour
         StartCoroutine(ConveyorCraft());
     }
 
-    IEnumerator ConveyorCraft()
+    /* IEnumerator ConveyorCraft()
     {
         while (_isTrue)
         {
@@ -30,5 +30,21 @@ public class S_ConveyorBelt : MonoBehaviour
             _isTrue = false;
         }
 
+    } */
+
+    IEnumerator ConveyorCraft()
+    {
+        while (_isTrue){
+            for (int i = 0; i < 20; i++)
+            {
+                var DollyCart = Instantiate(Platform, StartPos);
+                DollyCart.GetComponent<Cinemachine.CinemachineDollyCart>().m_Position += i;
+                yield return new WaitForSeconds(0.2f);
+                if(DollyCart.GetComponent<Cinemachine.CinemachineDollyCart>().m_Position >= CinemachineSP.PathLength){
+                    Destroy(this);
+                    DollyCart.GetComponent<Cinemachine.CinemachineDollyCart>().m_Position = 0;
+                }
+            }
+        }
     }
 }

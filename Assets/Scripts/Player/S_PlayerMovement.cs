@@ -464,7 +464,7 @@ public class S_PlayerMovement : MonoBehaviour
             rb.AddForce(Vector3.down * _slopeVectorDownValue, ForceMode.Force);
             if (rb.velocity.y > 0 && _isSliding)
             {
-                rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 15f, ForceMode.Force);
+                rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 12.5f, ForceMode.Force);
             }
             else if(_isSliding)
                 rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 20f, ForceMode.Force);
@@ -533,7 +533,7 @@ public class S_PlayerMovement : MonoBehaviour
         }
         else if(_isSliding && OnSlope())
         {
-            rb.AddForce(transform.up * _jumpForce * 1.5f, ForceMode.Impulse);
+            rb.AddForce(transform.up * _jumpForce * 1.2f, ForceMode.Impulse);
         }
         else if (OnSlope() && !_isSliding)
         {
@@ -541,7 +541,7 @@ public class S_PlayerMovement : MonoBehaviour
         }
         else if (_isSliding && !OnSlope())
         {
-            rb.AddForce(transform.up * _jumpForce * 0.8f, ForceMode.Impulse);
+            rb.AddForce(transform.up * _jumpForce * 1f, ForceMode.Impulse);
         }
         else if (_isDashing)
         {
