@@ -14,7 +14,9 @@ public class S_ConsoleFinRun : MonoBehaviour
 
     public InputActionReference ActionRef = null;
 
-    [SerializeField] private S_GenerateurEnergetique _GenerateurEnergetique;
+    [SerializeField] private S_GenerateurEnergetique _GenerateurEnergetique01;
+    [SerializeField] private S_GenerateurEnergetique _GenerateurEnergetique02;
+    [SerializeField] private S_GenerateurEnergetique _GenerateurEnergetique03;
 
     [SerializeField] private bool _consoleActive = false;
     [SerializeField] private bool _OnTrigger = false;
@@ -52,7 +54,11 @@ public class S_ConsoleFinRun : MonoBehaviour
             //Son
             PlayerSoundScript.ValidationConsoleSound();
             _consoleActive = true;
-            _GenerateurEnergetique.ChargeUp();
+
+            _GenerateurEnergetique01.ChargeUp();
+            _GenerateurEnergetique02.ChargeUp();
+            _GenerateurEnergetique03.ChargeUp();
+
 
             _HUD_Interaction.SetActive(false);
 
