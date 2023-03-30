@@ -80,8 +80,10 @@ public class S_PlayerMovement : MonoBehaviour
     [SerializeField] private S_GrappinV2 GrapplingScript;
     [SerializeField] private S_Accelaration AccelerationScript;
     [SerializeField] private S_Sliding SlideScript;
+    [SerializeField] private S_PlayerCam PlayerCamScript;
     [SerializeField] private Transform _orientation;
     [SerializeField] private GameObject _player;
+    [SerializeField] private Animator _arms_AC;
 
     [Header("Raycast")]
     [SerializeField] private float _valueRaycast;
@@ -173,6 +175,10 @@ public class S_PlayerMovement : MonoBehaviour
         {
             _whatIsWallOnGround = true;
         }
+        else
+        {
+            _whatIsWallOnGround = false;
+        }
 
         if (!_isGrounded && _jumpCount >= 0)
         {
@@ -195,15 +201,40 @@ public class S_PlayerMovement : MonoBehaviour
             _isDecelerating = true;
             AccelerationScript.VarianceVitesse();
             PlayerSoundScript.EndSoundWalk();
+
+            if (_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Arms_Jump_Down") 
+            {
+                if (_arms_AC.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                {
+                    _arms_AC.Play("A_Arms_Idle_Placeholder");
+                }
+            }
+            else
+            {
+                _arms_AC.Play("A_Arms_Idle_Placeholder");
+            }
+
             rb.drag = _groundDrag + 10;
             _isMoving = false;
         }
         else if (state == MovementState.walking && !GrapplingScript._isDecreaseRbDrag)
         {
+            if (S_InputManager._playerInputAction.Player.Jump.ReadValue<float>() == 1) return;
             _isAccelerating = true;
             _isDecelerating = false;
             AccelerationScript.VarianceVitesse();
             PlayerSoundScript.WalkSound();
+            if (_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Arms_Jump_Down")
+            {
+                if (_arms_AC.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                {
+                    _arms_AC.Play("A_Arms_Running");
+                }
+            }
+            else
+            {
+                _arms_AC.Play("A_Arms_Running");
+            }
             rb.drag = _groundDrag;
             _isMoving = true;
         }
@@ -217,6 +248,17 @@ public class S_PlayerMovement : MonoBehaviour
         if (state == MovementState.air)
         {
             PlayerSoundScript.EndSoundWalk();
+            if(_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Arms_Jump_Impulse")
+            {
+                if (_arms_AC.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                {
+                    _arms_AC.Play("A_Arms_Jump_Idle");
+                }
+            }
+            else if(!_arms_AC.IsInTransition(0))
+            {
+                _arms_AC.Play("A_Arms_Jump_Idle");
+            }
             _desiredMoveSpeed = _airSpeed;
 
         }
@@ -251,6 +293,7 @@ public class S_PlayerMovement : MonoBehaviour
                         //Debug.Log("GroundContact");
                         _isHigherThan = false;
                         PlayerSoundScript.LandingSound();
+                        _arms_AC.Play("A_Arms_Jump_Down");
                         i = 0;
                     }
                    
@@ -327,6 +370,10 @@ public class S_PlayerMovement : MonoBehaviour
         //Mode - Dashing
         if (_isDashing)
         {
+            if (!_arms_AC.IsInTransition(0))
+            {
+                _arms_AC.Play("A_Arms_Wall_Destruction_01");
+            }
             state = MovementState.dashing;
             _desiredMoveSpeed = _dashSpeed;
             _speedChangeFactor = _dashSpeedChangeFactor;
@@ -334,6 +381,7 @@ public class S_PlayerMovement : MonoBehaviour
         //Mode - Climbing
         else if (_isClimbing)
         {
+            _arms_AC.Play("A_Arms_Climb");
             state = MovementState.climbing;
             _desiredMoveSpeed = _climbUpSpeed;
         }
@@ -341,6 +389,9 @@ public class S_PlayerMovement : MonoBehaviour
         //Mode - WallRunning
         else if (_isWallRunning)
         {
+            if (ScriptWallRun._isWallLeft) _arms_AC.Play("A_Left_Arm_Wall_Grab");
+            else if (ScriptWallRun._isWallRight) _arms_AC.Play("A_Right_Arm_Wall_Grab");
+
             state = MovementState.wallrunning;
             _desiredMoveSpeed = _wallRunSpeed;
         }
@@ -526,6 +577,7 @@ public class S_PlayerMovement : MonoBehaviour
 
         _jumpCount++;
 
+        _arms_AC.Play("A_Arms_Jump_Impulse");
         PlayerSoundScript.JumpSound();
         if (!OnSlope() && _whatIsWallOnGround)
         {
