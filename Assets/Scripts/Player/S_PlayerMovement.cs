@@ -163,7 +163,7 @@ public class S_PlayerMovement : MonoBehaviour
         //Ground Check
         //_isGrounded = Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsGround);
 
-        if (Physics.CheckSphere(transform.position, 1.1f, _whatIsGround) || Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsWall)){
+        if (Physics.CheckSphere(transform.position, 1.1f, _whatIsGround) && Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsGround) || Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsWall)){
             _isGrounded = true;
         }
         else
