@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class S_ReferenceInterface : Manager
 {
@@ -19,15 +20,11 @@ public class S_ReferenceInterface : Manager
 
     public Transform _orientationTransform;
 
-
     [Header("Refs Camera")]
-
     public GameObject _CameraGameObject;
-
 
     [Header("Refs Jetpack")]
     public S_Jetpack _Jetpack;
-
 
     [Header("Refs UI")]
     public Animator _HUDtimer;
@@ -37,7 +34,6 @@ public class S_ReferenceInterface : Manager
     public GameObject HUD_InteractGenerateurDisable;
 
     [Header("Refs UI")]
-
     public GameObject _UICanvas;
     public GameObject _UIStartHUD;
     public GameObject HUD_Death;
@@ -47,9 +43,11 @@ public class S_ReferenceInterface : Manager
     public GameObject EventSystem;
     public S_BatteryManager _BatteryManager;
 
-
     [Header("Refs InputManager")]
     public S_InputManager _InputManager;
+
+    [Header("Refs Gestionnaire Scene")]
+    public S_GestionnaireScene _GestionnaireScene;
 
 
     [Header("Audio")]
