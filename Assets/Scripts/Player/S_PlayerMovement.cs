@@ -224,16 +224,19 @@ public class S_PlayerMovement : MonoBehaviour
             _isDecelerating = false;
             AccelerationScript.VarianceVitesse();
             PlayerSoundScript.WalkSound();
-            if (_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Arms_Jump_Down")
+            if (state != MovementState.wallrunning && state != MovementState.sliding)
             {
-                if (_arms_AC.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                if (_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Arms_Jump_Down")
+                {
+                    if (_arms_AC.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                    {
+                        _arms_AC.Play("A_Arms_Running");
+                    }
+                }
+                else
                 {
                     _arms_AC.Play("A_Arms_Running");
                 }
-            }
-            else
-            {
-                _arms_AC.Play("A_Arms_Running");
             }
             rb.drag = _groundDrag;
             _isMoving = true;
@@ -399,6 +402,8 @@ public class S_PlayerMovement : MonoBehaviour
         //Mode - Slide
         else if (_isSliding)
         {
+            if (PlayerCamScript._RandomCount == 1) _arms_AC.Play("A_Left_Arm_Slide_Fall");
+            else if (PlayerCamScript._RandomCount == 2) _arms_AC.Play("A_Right_Arm_Slide_Fall");
             state = MovementState.sliding;
             //if(OnSlope() && rb.velocity.y > 0f)
             _desiredMoveSpeed = _walkSpeed * GetComponent<S_Sliding>()._slideForce;

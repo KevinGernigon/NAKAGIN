@@ -1372,7 +1372,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 919407d4c36737546b5c082877411006, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.72
+      value: -0.8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 919407d4c36737546b5c082877411006, type: 3}
       propertyPath: m_LocalPosition.z
@@ -10864,12 +10864,12 @@ MonoBehaviour:
   _dashDuration: 0.4
   _dashUpgradeForce: 0
   _limitDash: 1
-  _hudDashFleche1: {fileID: 251943337}
-  _hudDashFleche2: {fileID: 2100156648}
-  _hudDashFleche3: {fileID: 1874568450}
-  _hudDashJauge1: {fileID: 1180618409}
-  _hudDashJauge2: {fileID: 1038144548}
-  _hudDashJauge3: {fileID: 1632910936}
+  _hudDashFleche1: {fileID: 878054269}
+  _hudDashFleche2: {fileID: 1479650523}
+  _hudDashFleche3: {fileID: 1501678712}
+  _hudDashJauge1: {fileID: 884136019}
+  _hudDashJauge2: {fileID: 908806398}
+  _hudDashJauge3: {fileID: 971582855}
   _isUsingCameraForward: 0
   _isAllowingAllDirections: 1
   _isDisablingGravity: 1
@@ -10930,7 +10930,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   S_InputManager: {fileID: 6554351822182483883}
   _orientation: {fileID: 3956388862463579861}
-  _anim_bras: {fileID: 0}
+  _anim_bras: {fileID: 1259658536}
   _playerObj: {fileID: 3956388862188452567}
   _maxSlideTime: 0.75
   _SlideValue: 5
@@ -11106,7 +11106,7 @@ MonoBehaviour:
     m_Bits: 2048
   Everything:
     serializedVersion: 2
-    m_Bits: 129847
+    m_Bits: 0
   _isGrounded: 0
   _maxSlopeAngle: 50
   _slopeVectorDownValue: 150
@@ -11120,6 +11120,7 @@ MonoBehaviour:
   GrapplingScript: {fileID: 3956388861518991238}
   AccelerationScript: {fileID: 3956388861518991359}
   SlideScript: {fileID: 3956388861518991235}
+  PlayerCamScript: {fileID: 3956388862051146013}
   _orientation: {fileID: 3956388862463579861}
   _player: {fileID: 3956388862188452566}
   _arms_AC: {fileID: 1259658537}
@@ -11296,6 +11297,7 @@ MonoBehaviour:
   _isActive: 0
   boolChangement: 0
   _eventSystem: {fileID: 8483312902858541999}
+  _RandomCount: 0
 --- !u!114 &3956388862051146014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13644,7 +13646,7 @@ MonoBehaviour:
   _orientationTransform: {fileID: 3956388862463579861}
   _CameraGameObject: {fileID: 3956388862051146017}
   _Jetpack: {fileID: 3956388861518991232}
-  _HUDtimer: {fileID: 685570908}
+  _HUDtimer: {fileID: 0}
   _timerText: {fileID: 3866988027243813316}
   HUD_InteractGenerateurEnable: {fileID: 4854074002027236645}
   HUD_InteractGenerateurDisable: {fileID: 4854074001331407576}
@@ -18657,8 +18659,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1634caa98270f842944e56e71208175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToStart: IA_Scene
-  categoryToDisplay: 11
+  sceneToStart: Tom_Scene
+  categoryToDisplay: 6
 --- !u!224 &8483312901068040650
 RectTransform:
   m_ObjectHideFlags: 0
@@ -19106,7 +19108,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _resolutionDropdown: {fileID: 6017809255539452149}
   _isFullScreen: 1
-  _HUDDash: {fileID: 1781406754}
+  _HUDDash: {fileID: 0}
 --- !u!114 &8483312902858542001
 MonoBehaviour:
   m_ObjectHideFlags: 0
