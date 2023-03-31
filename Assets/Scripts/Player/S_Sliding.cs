@@ -11,6 +11,7 @@ public class S_Sliding : MonoBehaviour
     [SerializeField] private Transform _orientation;
     [SerializeField] private GameObject _anim_bras;
     [SerializeField] private Transform _playerObj;
+    [SerializeField] private S_PlayerCam ScriptPlayerCam;
 
     private Rigidbody rb;
     private S_PlayerMovement _pm;
@@ -110,6 +111,8 @@ public class S_Sliding : MonoBehaviour
         if (_pm._isGrounded == true)
         {
             PlayerSoundScript.SlideSound();
+            if (ScriptPlayerCam._RandomCount == 1) _anim_bras.GetComponent<Animator>().Play("A_Left_Arm_Slide_Fall");
+            else if (ScriptPlayerCam._RandomCount == 2) _anim_bras.GetComponent<Animator>().Play("A_Right_Arm_Slide_Fall");
             _pm._isSliding = true;
             _playerObj.localScale = new Vector3(_playerObj.localScale.x, _slideYScale, _playerObj.localScale.z);
             _anim_bras.transform.localScale = new Vector3(_anim_bras.transform.localScale.x, _slideYScale, _anim_bras.transform.localScale.z);
@@ -150,6 +153,9 @@ public class S_Sliding : MonoBehaviour
     public void StopSlide()
     {
         PlayerSoundScript.EndSoundSlide();
+
+        if (ScriptPlayerCam._RandomCount == 1) _anim_bras.GetComponent<Animator>().Play("A_Left_Arm_Slide_Up");
+        else if (ScriptPlayerCam._RandomCount == 2) _anim_bras.GetComponent<Animator>().Play("A_Right_Slide_Up");
         _pm._isSliding = false;
         _slidingCdTimer = _slidingCdMax;
         _playerObj.localScale = new Vector3(_playerObj.localScale.x, _startYScale, _playerObj.localScale.z);

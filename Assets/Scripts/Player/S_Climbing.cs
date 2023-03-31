@@ -13,6 +13,7 @@ public class S_Climbing : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     [SerializeField] private S_Dash ScriptDash;
     [SerializeField] private S_Accelaration AccelerationScript;
+    [SerializeField] private Animator _arms_AC;
 
     public S_PlayerMovement pm;
     [SerializeField] private LayerMask _whatIsClimbable;
@@ -145,6 +146,8 @@ public class S_Climbing : MonoBehaviour
 
     private void StartClimbing()
     {
+        _arms_AC.Play("A_Arms_Climb");
+
         pm._walkSpeed = 40;
         _isClimbing = true;
         pm._isClimbing = true;

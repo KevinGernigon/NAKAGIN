@@ -58,7 +58,7 @@ public class S_PlayerCam : MonoBehaviour
     [SerializeField]
     private GameObject _eventSystem;
 
-    private int _RandomCount;
+    public int _RandomCount;
     private bool _isRandomNumber;
     public float tilt { get; private set; }
 

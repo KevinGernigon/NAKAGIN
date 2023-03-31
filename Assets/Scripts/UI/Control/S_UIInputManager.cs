@@ -89,8 +89,5 @@ public class S_UIInputManager : MonoBehaviour
             _HUD_InteractionGenerateurEnableController.SetActive(true);
 
         }
-
-
-
     }
 }

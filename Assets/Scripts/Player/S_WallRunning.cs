@@ -65,6 +65,7 @@ public class S_WallRunning : MonoBehaviour
     private S_PlayerMovement pm;
     [SerializeField] private S_Climbing ClimbScript;
     private Rigidbody rb;
+    [SerializeField] private Animator _arms_AC;
 
     private bool _isJumpForgivenessActive;
     private bool canWallJumpLedge;
@@ -286,6 +287,18 @@ public class S_WallRunning : MonoBehaviour
         //forward force
         rb.AddForce(_wallForward * _wallRunForce, ForceMode.Force);
         PlayerSoundScript.WallRunSound();
+        /*if (_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Left_Arm_Wall_Grab" || _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Left_Arm_Wall_Run" || _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Right_Arm_Wall_Grab" || _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Right_Arm_Wall_Run")
+        {
+            if (_isWallLeft && _arms_AC.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1) _arms_AC.Play("A_Left_Arm_Wall_Grab");
+            else if (_isWallRight && _arms_AC.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1) _arms_AC.Play("A_Right_Arm_Wall_Grab");
+        }
+        else*/
+        if(_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Left_Arm_Wall_Grab" && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Left_Arm_Wall_Run" && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Right_Arm_Wall_Grab" && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Right_Arm_Wall_Run")
+        {
+            if (_isWallLeft) _arms_AC.Play("A_Left_Arm_Wall_Grab");
+            else if (_isWallRight) _arms_AC.Play("A_Right_Arm_Wall_Grab");
+        }
+
 
         //upwards/downwards force
         if (_isWallRunEnding)
@@ -334,6 +347,8 @@ public class S_WallRunning : MonoBehaviour
     private void WallJump()
     {
         PlayerSoundScript.JumpSound();
+        if (_isWallLeft) _arms_AC.Play("A_Left_Arm_Wall_Jump");
+        else if (_isWallRight) _arms_AC.Play("A_Right_Arm_Wall_Jump");
         _isJumpForgivenessActive = false;
         canWallJumpLedge = false;
         bool firstJump = true;

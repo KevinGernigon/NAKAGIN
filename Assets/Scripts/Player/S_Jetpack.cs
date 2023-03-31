@@ -15,6 +15,7 @@ public class S_Jetpack : MonoBehaviour
     private S_Dash ScriptDash;
     private S_GrappinV2 GrappinScript;
     [SerializeField] private S_BatteryManager ScriptBatteryManager;
+    [SerializeField] private Animator _arms_AC;
 
     [Header("Jetpack")]
     [SerializeField] private float _jetpackForce;
@@ -124,6 +125,7 @@ public class S_Jetpack : MonoBehaviour
         if (_isTriggerBoxTrue && ScriptBatteryManager._nbrBattery >= 1 && _isTimerReach)
         {
             PlayerSoundScript.JetpackSound();
+            _arms_AC.Play("A_Arms_Jetpack");
             ScriptBatteryManager.UseOneBattery();
             JetPackUsage();
         }
@@ -132,6 +134,7 @@ public class S_Jetpack : MonoBehaviour
         if (!_isTriggerBoxTrue && !_isMaxForce && ScriptBatteryManager._nbrBattery >= 1 && _isTimerReach)
         {
             PlayerSoundScript.JetpackSound();
+            _arms_AC.Play("A_Arms_Jetpack");
             ScriptBatteryManager.UseOneBattery();
             JetPackUsage();
 
@@ -183,6 +186,7 @@ public class S_Jetpack : MonoBehaviour
         {
             _HUDJetpackWarning.SetActive(true);
             PlayerSoundScript.StartSauvetageSound();
+            _arms_AC.Play("A_Arms_Jetpack_Save");
 
         }
 
