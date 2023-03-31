@@ -2538,6 +2538,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera_IA Variant_01
       objectReference: {fileID: 0}
+    - target: {fileID: 7076728873154205268, guid: 1ddaeb973075273428a1922bc4b08383, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7601592137224490222, guid: 1ddaeb973075273428a1922bc4b08383, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -13228,6 +13232,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Camera_IA Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7076728873154205268, guid: 1ddaeb973075273428a1922bc4b08383, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7601592137224490222, guid: 1ddaeb973075273428a1922bc4b08383, type: 3}
       propertyPath: m_RootOrder
       value: 4
@@ -22724,8 +22732,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0aaea683a9359554ba6d73d1ed252cbb, type: 2}
-  - {fileID: 2100000, guid: 602d7f371d5b68c4686b2befe55487f6, type: 2}
+  - {fileID: 2100000, guid: eb663005b4ff84f439d0e45810a903b5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22767,8 +22774,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0aaea683a9359554ba6d73d1ed252cbb, type: 2}
-  - {fileID: 2100000, guid: 602d7f371d5b68c4686b2befe55487f6, type: 2}
+  - {fileID: 2100000, guid: eb663005b4ff84f439d0e45810a903b5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -22936,7 +22942,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1159233635578063285}
-  m_Mesh: {fileID: 4684580648327018082, guid: bae706b9a82cb354e94bdc731c4c92f4, type: 3}
+  m_Mesh: {fileID: 4684580648327018082, guid: 40de67e2e9a594f48ae43a84c20097f2, type: 3}
 --- !u!1 &3965320518883171120
 GameObject:
   m_ObjectHideFlags: 0
@@ -22991,8 +22997,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0aaea683a9359554ba6d73d1ed252cbb, type: 2}
-  - {fileID: 2100000, guid: 602d7f371d5b68c4686b2befe55487f6, type: 2}
+  - {fileID: 2100000, guid: eb663005b4ff84f439d0e45810a903b5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -23514,8 +23519,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 0aaea683a9359554ba6d73d1ed252cbb, type: 2}
-  - {fileID: 2100000, guid: 602d7f371d5b68c4686b2befe55487f6, type: 2}
+  - {fileID: 2100000, guid: eb663005b4ff84f439d0e45810a903b5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
