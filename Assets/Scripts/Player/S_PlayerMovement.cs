@@ -201,18 +201,7 @@ public class S_PlayerMovement : MonoBehaviour
             _isDecelerating = true;
             AccelerationScript.VarianceVitesse();
             PlayerSoundScript.EndSoundWalk();
-
-            if (_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Arms_Jump_Down") 
-            {
-                if (_arms_AC.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-                {
-                    _arms_AC.Play("A_Arms_Idle_Placeholder");
-                }
-            }
-            else
-            {
-                _arms_AC.Play("A_Arms_Idle_Placeholder");
-            }
+            _arms_AC.Play("A_Arms_Idle_Placeholder");
 
             rb.drag = _groundDrag + 10;
             _isMoving = false;
@@ -224,20 +213,13 @@ public class S_PlayerMovement : MonoBehaviour
             _isDecelerating = false;
             AccelerationScript.VarianceVitesse();
             PlayerSoundScript.WalkSound();
-            if (state != MovementState.wallrunning && state != MovementState.sliding)
+
+            if(_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Arms_Jump_Down")
             {
-                if (_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Arms_Jump_Down")
-                {
-                    if (_arms_AC.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-                    {
-                        _arms_AC.Play("A_Arms_Running");
-                    }
-                }
-                else
-                {
-                    _arms_AC.Play("A_Arms_Running");
-                }
+                if(_arms_AC.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1) _arms_AC.Play("A_Arms_Running");
             }
+            else if(_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Arms_Running") _arms_AC.Play("A_Arms_Running");
+
             rb.drag = _groundDrag;
             _isMoving = true;
         }
@@ -251,17 +233,7 @@ public class S_PlayerMovement : MonoBehaviour
         if (state == MovementState.air)
         {
             PlayerSoundScript.EndSoundWalk();
-            if(_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Arms_Jump_Impulse")
-            {
-                if (_arms_AC.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-                {
-                    _arms_AC.Play("A_Arms_Jump_Idle");
-                }
-            }
-            else if(!_arms_AC.IsInTransition(0))
-            {
-                _arms_AC.Play("A_Arms_Jump_Idle");
-            }
+            _arms_AC.Play("A_Arms_Jump_Idle");
             _desiredMoveSpeed = _airSpeed;
 
         }
@@ -373,10 +345,6 @@ public class S_PlayerMovement : MonoBehaviour
         //Mode - Dashing
         if (_isDashing)
         {
-            if (!_arms_AC.IsInTransition(0))
-            {
-                _arms_AC.Play("A_Arms_Wall_Destruction_01");
-            }
             state = MovementState.dashing;
             _desiredMoveSpeed = _dashSpeed;
             _speedChangeFactor = _dashSpeedChangeFactor;
@@ -384,7 +352,6 @@ public class S_PlayerMovement : MonoBehaviour
         //Mode - Climbing
         else if (_isClimbing)
         {
-            _arms_AC.Play("A_Arms_Climb");
             state = MovementState.climbing;
             _desiredMoveSpeed = _climbUpSpeed;
         }
@@ -392,9 +359,6 @@ public class S_PlayerMovement : MonoBehaviour
         //Mode - WallRunning
         else if (_isWallRunning)
         {
-            if (ScriptWallRun._isWallLeft) _arms_AC.Play("A_Left_Arm_Wall_Grab");
-            else if (ScriptWallRun._isWallRight) _arms_AC.Play("A_Right_Arm_Wall_Grab");
-
             state = MovementState.wallrunning;
             _desiredMoveSpeed = _wallRunSpeed;
         }
@@ -402,8 +366,6 @@ public class S_PlayerMovement : MonoBehaviour
         //Mode - Slide
         else if (_isSliding)
         {
-            if (PlayerCamScript._RandomCount == 1) _arms_AC.Play("A_Left_Arm_Slide_Fall");
-            else if (PlayerCamScript._RandomCount == 2) _arms_AC.Play("A_Right_Arm_Slide_Fall");
             state = MovementState.sliding;
             //if(OnSlope() && rb.velocity.y > 0f)
             _desiredMoveSpeed = _walkSpeed * GetComponent<S_Sliding>()._slideForce;

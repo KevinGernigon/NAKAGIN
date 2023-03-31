@@ -11003,6 +11003,7 @@ MonoBehaviour:
   orientation: {fileID: 3956388862463579861}
   playerCam: {fileID: 3956388862051146012}
   ScriptBatteryManager: {fileID: 8483312902858541986}
+  _arms_AC: {fileID: 1648485650}
   _jetpackForce: 100
   _jetpackUpwardForce: 140
   _dividePer: 2
@@ -11029,6 +11030,7 @@ MonoBehaviour:
   S_InputManager: {fileID: 6554351822182483883}
   orientation: {fileID: 3956388862463579861}
   playerCam: {fileID: 3956388862051146012}
+  _arms_AC: {fileID: 1648485650}
   _dashForce: 200
   _dashUpwardForce: 0
   _dashDuration: 0.4
@@ -11066,6 +11068,7 @@ MonoBehaviour:
   rb: {fileID: 3956388861518991356}
   ScriptDash: {fileID: 3956388861518991233}
   AccelerationScript: {fileID: 3956388861518991359}
+  _arms_AC: {fileID: 1648485650}
   pm: {fileID: 3956388861518991357}
   _whatIsClimbable:
     serializedVersion: 2
@@ -11102,6 +11105,7 @@ MonoBehaviour:
   _orientation: {fileID: 3956388862463579861}
   _anim_bras: {fileID: 1648485649}
   _playerObj: {fileID: 3956388862188452567}
+  ScriptPlayerCam: {fileID: 3956388862051146013}
   _maxSlideTime: 0.75
   _SlideValue: 5
   _slideForce: 0.5
@@ -11175,6 +11179,7 @@ MonoBehaviour:
   _gravityCounterForce: 55
   _orientation: {fileID: 3956388862463579861}
   ClimbScript: {fileID: 3956388861518991234}
+  _arms_AC: {fileID: 1648485650}
 --- !u!114 &3956388861518991238
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11193,6 +11198,7 @@ MonoBehaviour:
   _camera: {fileID: 3956388862051146012}
   _grappingTransform: {fileID: 3956388861597576755}
   lr: {fileID: 3956388862421184067}
+  _arms_Ac: {fileID: 1648485650}
   _HUDCrossHairLock: {fileID: 4854074002402946533}
   _aniamCrossHair: {fileID: 4854074002289892962}
   _whatIsTarget:

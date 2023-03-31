@@ -12,6 +12,7 @@ public class S_GrappinV2 : MonoBehaviour
     [SerializeField] private Transform _camera;
     [SerializeField] private Transform _grappingTransform;
     [SerializeField] private LineRenderer lr;
+    [SerializeField] private Animator _arms_Ac;
 
     [Header("Audio")]
     private S_PlayerSound PlayerSoundScript;
@@ -120,6 +121,7 @@ public class S_GrappinV2 : MonoBehaviour
         }*/
 
         PlayerSoundScript.RopeSound();
+        _arms_Ac.Play("A_Arms_Grab");
         _isGrappling = true;
         _pm._isFreezing = true;
         RaycastHit hit;
