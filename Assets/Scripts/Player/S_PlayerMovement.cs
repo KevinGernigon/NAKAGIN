@@ -201,7 +201,15 @@ public class S_PlayerMovement : MonoBehaviour
             _isDecelerating = true;
             AccelerationScript.VarianceVitesse();
             PlayerSoundScript.EndSoundWalk();
-            _arms_AC.Play("A_Arms_Idle_Placeholder");
+            _arms_AC.SetBool("stoppedMoving", true);
+/*            if (!_arms_AC.GetBool("gotOnGround"))
+            {
+                if (_arms_AC.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
+                {
+                    _arms_AC.Play("A_Arms_Idle_Placeholder");
+                }
+            }
+            else _arms_AC.Play("A_Arms_Idle_Placeholder");*/
 
             rb.drag = _groundDrag + 10;
             _isMoving = false;
@@ -213,12 +221,21 @@ public class S_PlayerMovement : MonoBehaviour
             _isDecelerating = false;
             AccelerationScript.VarianceVitesse();
             PlayerSoundScript.WalkSound();
-
-            if(_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Arms_Jump_Down")
-            {
-                if(_arms_AC.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1) _arms_AC.Play("A_Arms_Running");
+            _arms_AC.SetBool("startMoving", true);
+            if (!_arms_AC.IsInTransition(0) && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Arms_Running")
+            {   
+                _arms_AC.Play("A_Arms_Running");
             }
-            else if(_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Arms_Running") _arms_AC.Play("A_Arms_Running");
+
+/*            if(!_arms_AC.GetBool("gotOnGround"))
+            {
+                if (_arms_AC.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !_arms_AC.IsInTransition(0))
+                {
+                    _arms_AC.SetBool("gotOnGround", false);
+                    _arms_AC.Play("A_Arms_Running");
+                }
+            }
+            else if(_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Arms_Running") _arms_AC.Play("A_Arms_Running");*/
 
             rb.drag = _groundDrag;
             _isMoving = true;
@@ -233,7 +250,7 @@ public class S_PlayerMovement : MonoBehaviour
         if (state == MovementState.air)
         {
             PlayerSoundScript.EndSoundWalk();
-            _arms_AC.Play("A_Arms_Jump_Idle");
+            if (_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Arms_Jump_Impulse" && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Arms_Jump_Idle") _arms_AC.Play("A_Arms_Jump_Idle");
             _desiredMoveSpeed = _airSpeed;
 
         }
@@ -268,7 +285,8 @@ public class S_PlayerMovement : MonoBehaviour
                         //Debug.Log("GroundContact");
                         _isHigherThan = false;
                         PlayerSoundScript.LandingSound();
-                        _arms_AC.Play("A_Arms_Jump_Down");
+                        _arms_AC.SetBool("gotOnGround", true);
+                        
                         i = 0;
                     }
                    
