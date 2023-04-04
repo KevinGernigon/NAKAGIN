@@ -54,7 +54,6 @@ public class S_InfoScore : MonoBehaviour
     {
         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
         _playerContent = _referenceInterface._playerTransform;
-       
     }
 
     private void Start()
@@ -264,40 +263,63 @@ public class S_InfoScore : MonoBehaviour
             timePlayer = ScriptTimer._timerTime;
 
 
+            if (timePlayer < _bestTime || _bestTime == 0f)
+            {
+                    
+                 _bestTime = timePlayer;
+
+                 _bestTimeminutes = ScriptTimer._minutes;
+                 _bestTimeseconds = ScriptTimer._seconds;
+                 _bestTimemilliseconds = ScriptTimer._milliseconds;    
+            }
+
+
+            if (timePlayer < _level1Time)
+            {
+                    // ajout chemin vers les recompenses en cas de victoire 
+                    _Lvl1Win = true;
+            }
+            /*else
+            {
+                    _runStart = false;
+
+                    ScriptTimer.TimerReset();
+
+                    S_RunCheckPointManager.FintimerRespawn();
+
+            }*/
+
+            if(timePlayer < _level2Time)
+            {
+                    _Lvl2Win = true;
+
+            }          
+        }
+    }
+    public void ChargeSave(float timeSave)
+    {
+        timePlayer = timeSave;
+
         if (timePlayer < _bestTime || _bestTime == 0f)
         {
-                    
-             _bestTime = timePlayer;
 
-             _bestTimeminutes = ScriptTimer._minutes;
-             _bestTimeseconds = ScriptTimer._seconds;
-             _bestTimemilliseconds = ScriptTimer._milliseconds;
-             
+            _bestTime = timePlayer;
+
+            _bestTimeminutes = (int)(timeSave / 60f) % 60;
+            _bestTimeseconds = (int)(timeSave % 60f);
+            _bestTimemilliseconds = (int)(timeSave * 1000f) % 1000;
         }
-
 
         if (timePlayer < _level1Time)
         {
-                // ajout chemin vers les recompenses en cas de victoire 
-                _Lvl1Win = true;
+            // ajout chemin vers les recompenses en cas de victoire 
+            _Lvl1Win = true;
         }
-        /*else
+
+        if (timePlayer < _level2Time)
         {
-                _runStart = false;
+            _Lvl2Win = true;
 
-                ScriptTimer.TimerReset();
-
-                S_RunCheckPointManager.FintimerRespawn();
-
-        }*/
-
-        if(timePlayer < _level2Time)
-        {
-                _Lvl2Win = true;
-
-        }          
-    }
-            
-
+        }
     }
 }

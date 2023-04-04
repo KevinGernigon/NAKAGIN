@@ -15,13 +15,15 @@ public class S_GestionMenu : MonoBehaviour
         _InputManager = _referenceInterface._InputManager;
         _disableManager = _referenceInterface.DisableManager;
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
     }
 
 
     private void Start()
     {
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
+
         _disableManager.SetActive(false);
         _InputManager.ActivePause();
 
