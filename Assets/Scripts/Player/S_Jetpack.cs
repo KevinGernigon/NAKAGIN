@@ -149,15 +149,19 @@ public class S_Jetpack : MonoBehaviour
         float i;
 
 
-            if (Mathf.Abs(_rb.velocity.y) <= 20)
+            if (Mathf.Abs(_rb.velocity.y) <= 15)
                 {
                     i = 25;
                 }
             else
                 {
-                    i = Mathf.Abs(_rb.velocity.y) * 1.2f;
+                    i = Mathf.Abs(_rb.velocity.y) * 1.3f;
                 }
 
+            if(i > 60)
+            {
+                i = 60;
+            }
             Vector3 forceToApply = (forwardT.forward * _jetpackForce) / _dividePer + (forwardT.up * _jetpackUpwardForce) / _dividePer * i / 20f;
             saveForceToApplyOnGround = forceToApply;
 

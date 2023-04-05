@@ -55,6 +55,7 @@ public class S_PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask _whatIsGround;
     [SerializeField] private LayerMask _whatIsWall;
     [SerializeField] private LayerMask Everything;
+    [SerializeField] private LayerMask EverythingExceptWalkable;
     public bool _isGrounded;
 
     [Header("Slope Handling")]
@@ -162,17 +163,16 @@ public class S_PlayerMovement : MonoBehaviour
 
         //Ground Check
         //_isGrounded = Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsGround);
-
-        if (Physics.CheckSphere(transform.position, 1.1f, _whatIsGround) || Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsWall)){
+        if (Physics.CheckSphere(transform.position, 1.1f, _whatIsGround) && Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsGround) || Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsWall)){
             _isGrounded = true;
         }
-        else
-            _isGrounded = false;
+        else _isGrounded = false;
         
         if(Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsWall))
         {
             _whatIsWallOnGround = true;
         }
+        else _whatIsWallOnGround = false;
 
         if (!_isGrounded && _jumpCount >= 0)
         {
@@ -529,30 +529,37 @@ public class S_PlayerMovement : MonoBehaviour
         PlayerSoundScript.JumpSound();
         if (!OnSlope() && _whatIsWallOnGround)
         {
+            Debug.Log("JumpV1");
             rb.AddForce(transform.up * _jumpForce * 1.5f, ForceMode.Impulse);
         }
         else if(_isSliding && OnSlope())
         {
+            Debug.Log("JumpV2");
             rb.AddForce(transform.up * _jumpForce * 1.2f, ForceMode.Impulse);
         }
         else if (OnSlope() && !_isSliding)
         {
+            Debug.Log("JumpV3");
             rb.AddForce(transform.up * _jumpForce * 1.15f, ForceMode.Impulse);
         }
         else if (_isSliding && !OnSlope())
         {
+            Debug.Log("JumpV4");
             rb.AddForce(transform.up * _jumpForce * 1f, ForceMode.Impulse);
         }
         else if (_isDashing)
         {
+            Debug.Log("JumpV5");
             rb.AddForce(transform.up * _jumpForce * (0.8f-ScriptDash._dashDuration), ForceMode.Impulse);
         }
         else if (GetSlopeMoveDirection(_moveDirection).y != 0 || _isGrounded)
         {
+            Debug.Log("JumpV6");
             rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
         }
         else if (!canJumpLedge)
         {
+            Debug.Log("JumpV7");
             _exitingSlope = true;
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
             //rb.velocity = new Vector3(rb.velocity.x, ??, rb.velocity.z);
