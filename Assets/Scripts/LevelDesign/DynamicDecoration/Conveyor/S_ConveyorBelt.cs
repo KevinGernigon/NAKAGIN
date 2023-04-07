@@ -5,18 +5,62 @@ using UnityEngine;
 public class S_ConveyorBelt : MonoBehaviour
 {
     [SerializeField] private GameObject Platform;
+    [SerializeField] private GameObject PlatformWBox;
     [SerializeField] private Transform StartPos;
     [SerializeField] private Cinemachine.CinemachineDollyCart CinemachineDC;
     [SerializeField] private Cinemachine.CinemachineSmoothPath CinemachineSP;
 
+    public float TimeToDestroy; 
+
     private bool _isTrue;
+    private bool isSpawnable;
+    private bool _isBoxSpawnable;
+
     private void Start()
     {
         _isTrue = true;
-        StartCoroutine(ConveyorCraft());
+        isSpawnable = true;
+        _isBoxSpawnable = true;
     }
 
-    IEnumerator ConveyorCraft()
+    private void FixedUpdate(){
+        CraftConveyor();
+    }
+
+    private void CraftConveyor(){
+        if (isSpawnable){
+            var randomNumber = Random.Range(1,6);
+            if(randomNumber <= 4){
+                var PlatformVar = Instantiate(Platform, StartPos);
+                PlatformVar.GetComponent<Cinemachine.CinemachineDollyCart>().m_Position = 0;
+                StartCoroutine(ConveyorCraft());
+                    Destroy(PlatformVar, 10f);
+            }
+            else{
+                if(_isBoxSpawnable){
+                    var PlatformBoxVar = Instantiate(PlatformWBox, StartPos);
+                    PlatformBoxVar.GetComponent<Cinemachine.CinemachineDollyCart>().m_Position = 0;
+                    StartCoroutine(BoxCraft());
+                        Destroy(PlatformBoxVar, 10f);    
+                }
+            }
+
+    }
+
+    IEnumerator ConveyorCraft(){
+                isSpawnable = false;
+                yield return new WaitForSeconds(0.25f);
+                isSpawnable = true;
+        }
+    IEnumerator BoxCraft(){
+        _isBoxSpawnable = false;
+        yield return new WaitForSeconds(1.5f);
+        _isBoxSpawnable = true;
+    }    
+    }
+}
+
+    /* IEnumerator ConveyorCraft()
     {
         while (_isTrue)
         {
@@ -30,7 +74,7 @@ public class S_ConveyorBelt : MonoBehaviour
             _isTrue = false;
         }
 
-    }
+    } */
 
     /* IEnumerator ConveyorCraft()
     {
@@ -47,4 +91,3 @@ public class S_ConveyorBelt : MonoBehaviour
             }
         }
     } */
-}

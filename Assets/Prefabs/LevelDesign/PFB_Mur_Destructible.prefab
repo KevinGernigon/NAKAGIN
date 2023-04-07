@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &1706433983824704182
+--- !u!1 &7573191102582631407
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,48 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1706433983824704169}
-  - component: {fileID: 1706433983824704170}
-  - component: {fileID: 1706433983824704171}
-  - component: {fileID: 1706433983824704168}
-  - component: {fileID: 1706433983824704173}
+  - component: {fileID: 7084920337710084437}
+  - component: {fileID: 6196225310173265648}
+  - component: {fileID: 8221775625472019002}
+  - component: {fileID: 7338625484200615258}
+  - component: {fileID: 7338625484200615262}
   m_Layer: 13
-  m_Name: PFB_DestructibleWall
+  m_Name: PFB_Mur_Destructible
   m_TagString: Destructible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &1706433983824704169
+--- !u!4 &7084920337710084437
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1706433983824704182}
+  m_GameObject: {fileID: 7573191102582631407}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.18, y: 22.88, z: 25.04}
-  m_LocalScale: {x: 1, y: 5.3821, z: 5.4477706}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &1706433983824704170
+--- !u!33 &6196225310173265648
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1706433983824704182}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &1706433983824704171
+  m_GameObject: {fileID: 7573191102582631407}
+  m_Mesh: {fileID: 2006712116175944778, guid: 002c4586d4ded2f46bc9a66fdb8cfa23, type: 3}
+--- !u!23 &8221775625472019002
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1706433983824704182}
+  m_GameObject: {fileID: 7573191102582631407}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -63,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3161b1fd5c24cf34bb423431fb13c596, type: 2}
+  - {fileID: -1494972012236529663, guid: 002c4586d4ded2f46bc9a66fdb8cfa23, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,28 +85,32 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1706433983824704168
-BoxCollider:
+--- !u!64 &7338625484200615258
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1706433983824704182}
+  m_GameObject: {fileID: 7573191102582631407}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1706433983824704173
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 2006712116175944778, guid: 002c4586d4ded2f46bc9a66fdb8cfa23, type: 3}
+--- !u!114 &7338625484200615262
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1706433983824704182}
+  m_GameObject: {fileID: 7573191102582631407}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 87184c4efce79ca4f9d6281135b1c853, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DestructibleWall: {fileID: 6196225310173265648}
+  DestructedWall: {fileID: -4073235024087719596, guid: 000f83b27fdf8214cae9896dd85bf33a, type: 3}
+  OriginalDestructibleWall: {fileID: 2006712116175944778, guid: 002c4586d4ded2f46bc9a66fdb8cfa23, type: 3}
