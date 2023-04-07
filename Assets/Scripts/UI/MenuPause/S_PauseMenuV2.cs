@@ -141,7 +141,7 @@ public class S_PauseMenuV2 : MonoBehaviour
     {
         if (!_ischoose)
         {
-              Debug.Log("ResumeGame");
+            
             PlayerSound.UnPauseSound();
             StartCoroutine(waitcastchoose());
 
@@ -169,7 +169,7 @@ public class S_PauseMenuV2 : MonoBehaviour
     {
         if (!_ischoose)
         {
-            Debug.Log("RestartLevel");
+           
 
             ResumeGame();
             Restart();

@@ -6,19 +6,20 @@ using TMPro;
 
 public class S_InfoScore : MonoBehaviour
 {
-
+    [Header("Ref Script")]
     private S_ReferenceInterface _referenceInterface;
-
-    [SerializeField]private S_Timer ScriptTimer;
-
     private Transform _playerContent;
+    [SerializeField]private S_Timer ScriptTimer;
     [SerializeField] private Transform _respawnplayer;
 
+    [Header("Console Generateur")]
+    [SerializeField] private S_ConsoleFinRun _consoleFinRun;
+
+    [Header("Info Run")]
     public bool _runStart;
     public bool _Lvl2Win;
     public bool _Lvl1Win;
     [SerializeField] private string _nameRun;
-
     [SerializeField] private TMP_Text _NameRunTxt;
     [SerializeField] private TMP_Text _level1TimerTxt;
     [SerializeField] private TMP_Text _level2TimerTxt;
@@ -32,17 +33,14 @@ public class S_InfoScore : MonoBehaviour
     public bool _isAnimPlaying = false;
     private bool _infoisclosed = true;
 
-    [Header("Affichage UI")]
-
-    [SerializeField] private GameObject _HUDInfoScore;
-    [SerializeField] private Animator _aniamHUDInfoRun;
-    [SerializeField] private Animator _animOpenCLoseInfo;
-
-
     [SerializeField] private GameObject _detectionRunBox;
     [SerializeField] private LayerMask _whatIsInformative;
     [SerializeField] private LayerMask Everything;
 
+    [Header("Affichage UI")]
+    [SerializeField] private GameObject _HUDInfoScore;
+    [SerializeField] private Animator _aniamHUDInfoRun;
+    [SerializeField] private Animator _animOpenCLoseInfo;
 
 
     private float _level1Timeminutes, _level1Timeseconds, _level1Timemilliseconds;
@@ -278,17 +276,9 @@ public class S_InfoScore : MonoBehaviour
             {
                     // ajout chemin vers les recompenses en cas de victoire 
                     _Lvl1Win = true;
+                    _consoleFinRun.consoleOpen = true;
             }
-            /*else
-            {
-                    _runStart = false;
-
-                    ScriptTimer.TimerReset();
-
-                    S_RunCheckPointManager.FintimerRespawn();
-
-            }*/
-
+           
             if(timePlayer < _level2Time)
             {
                     _Lvl2Win = true;
@@ -314,6 +304,8 @@ public class S_InfoScore : MonoBehaviour
         {
             // ajout chemin vers les recompenses en cas de victoire 
             _Lvl1Win = true;
+            _consoleFinRun.consoleOpen = true;
+
         }
 
         if (timePlayer < _level2Time)

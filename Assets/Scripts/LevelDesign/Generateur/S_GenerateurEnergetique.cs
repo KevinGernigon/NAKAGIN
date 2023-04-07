@@ -17,20 +17,25 @@ public class S_GenerateurEnergetique : MonoBehaviour
     [SerializeField] private float DefaultCharge = 0f;
     [SerializeField] private float ChargeEnergetique = 0f;
     [SerializeField] private bool _OnTrigger = false;
-
-
-    [SerializeField] private GameObject _indicateurCharge1;
-    [SerializeField] private GameObject _indicateurCharge2;
-    [SerializeField] private GameObject _indicateurCharge3;
-
-
+    [Header("Mesh Renderer")]
+    [SerializeField] private MeshRenderer _generateurRendererDeploie;
+    [SerializeField] private MeshRenderer _generateurRendererpart1;
+    [SerializeField] private MeshRenderer _generateurRendererpart2;
+    [SerializeField] private MeshRenderer _generateurRendererpart3;
+    [SerializeField] private MeshRenderer _ecrant;
+    [Header("Materials")]
+    [SerializeField] private Material _emissiveDefaultMat;
+    [SerializeField] private Material _emissiveDisableMat;
+    [SerializeField] private Material _ecrantDefault;
+    [Header("Texture")]
+    [SerializeField] private Texture _1BatTexture;
+    [SerializeField] private Texture _2BatTexture;
+    [SerializeField] private Texture _3BatTexture;
+    [Header("Autre")]
     [SerializeField] private LayerMask _whatIsInteractable;
-
     private GameObject _HUD_InteractGenerateurEnable;
     private GameObject _HUD_InteractGenerateurDisable;
-
     public InputActionReference ActionRef = null;
-
     private bool _isSoundRunning = false;
     private bool _isSoundRunning0Bat = false;
     //private TMP_Text _TextInteraction;
@@ -52,9 +57,16 @@ public class S_GenerateurEnergetique : MonoBehaviour
     private void Start()
     {
         ChargeEnergetique = DefaultCharge;
-        _indicateurCharge1.GetComponent<Renderer>().material.color = new Color(255, 0, 0);
-        _indicateurCharge2.GetComponent<Renderer>().material.color = new Color(255, 0, 0);
-        _indicateurCharge3.GetComponent<Renderer>().material.color = new Color(255, 0, 0);
+
+        _generateurRendererpart1.material = _emissiveDisableMat;
+        _generateurRendererpart2.material = _emissiveDisableMat;
+        _generateurRendererpart3.material = _emissiveDisableMat;
+
+        _generateurRendererDeploie.material = _emissiveDisableMat;
+
+       
+        _ecrantDefault = _emissiveDisableMat;
+      
     }
 
 
@@ -140,15 +152,32 @@ public class S_GenerateurEnergetique : MonoBehaviour
     public void ChargeUp()
     {
         ChargeEnergetique += 1f;
+        
+        _generateurRendererDeploie.material = _emissiveDefaultMat;
+       
+        if (ChargeEnergetique == 1)
+        {
+            _generateurRendererpart1.material = _emissiveDefaultMat;
 
-        if(ChargeEnergetique == 1)
-            _indicateurCharge1.GetComponent<Renderer>().material.color = new Color(0, 255, 0);
+            _ecrantDefault = _emissiveDefaultMat;
+            _ecrantDefault.SetTexture("1batTex", _1BatTexture);
+        }
         if (ChargeEnergetique == 2)
-            _indicateurCharge2.GetComponent<Renderer>().material.color = new Color(0, 255, 0);
-        if (ChargeEnergetique == 3)
-            _indicateurCharge3.GetComponent<Renderer>().material.color = new Color(0, 255, 0);
-    }
+        {
+            _generateurRendererpart2.material = _emissiveDefaultMat;
 
+            _ecrantDefault = _emissiveDefaultMat;
+            _ecrantDefault.SetTexture("2batTex", _2BatTexture);
+        }
+
+        if (ChargeEnergetique == 3)
+        {
+            _generateurRendererpart3.material = _emissiveDefaultMat;
+
+            _ecrantDefault = _emissiveDefaultMat;
+            _ecrantDefault.SetTexture("3batTex", _3BatTexture);
+        }
+    }
 
 
 
@@ -157,11 +186,12 @@ public class S_GenerateurEnergetique : MonoBehaviour
 
       //Son Interaction Generateur 
 
-      if ( _referenceInterface._BatteryManager._nbrBattery < ChargeEnergetique )
-      {
+        if ( _referenceInterface._BatteryManager._nbrBattery < ChargeEnergetique )
+        {
             _referenceInterface._BatteryManager._nbrBattery = ChargeEnergetique;
-      }
+        }
     }
+
 
     IEnumerator WaitUntilEndSound()
     {
