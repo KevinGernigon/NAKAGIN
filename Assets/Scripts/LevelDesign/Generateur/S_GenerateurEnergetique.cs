@@ -22,15 +22,14 @@ public class S_GenerateurEnergetique : MonoBehaviour
     [SerializeField] private MeshRenderer _generateurRendererpart1;
     [SerializeField] private MeshRenderer _generateurRendererpart2;
     [SerializeField] private MeshRenderer _generateurRendererpart3;
-    [SerializeField] private MeshRenderer _ecrant;
+    [SerializeField] private MeshRenderer _ecran;
     [Header("Materials")]
     [SerializeField] private Material _emissiveDefaultMat;
     [SerializeField] private Material _emissiveDisableMat;
-    [SerializeField] private Material _ecrantDefault;
-    [Header("Texture")]
-    [SerializeField] private Texture _1BatTexture;
-    [SerializeField] private Texture _2BatTexture;
-    [SerializeField] private Texture _3BatTexture;
+    [SerializeField] private Material _ecranDefault;
+    [SerializeField] private Material _ecranActive;
+    [SerializeField] private Material _2BatTexture;
+    [SerializeField] private Material _3BatTexture;
     [Header("Autre")]
     [SerializeField] private LayerMask _whatIsInteractable;
     private GameObject _HUD_InteractGenerateurEnable;
@@ -64,8 +63,7 @@ public class S_GenerateurEnergetique : MonoBehaviour
 
         _generateurRendererDeploie.material = _emissiveDisableMat;
 
-       
-        _ecrantDefault = _emissiveDisableMat;
+        _ecran.material = _ecranDefault;
       
     }
 
@@ -158,24 +156,23 @@ public class S_GenerateurEnergetique : MonoBehaviour
         if (ChargeEnergetique == 1)
         {
             _generateurRendererpart1.material = _emissiveDefaultMat;
-
-            _ecrantDefault = _emissiveDefaultMat;
-            _ecrantDefault.SetTexture("1batTex", _1BatTexture);
+           
+            _ecran.material = _ecranActive;
         }
+
         if (ChargeEnergetique == 2)
         {
             _generateurRendererpart2.material = _emissiveDefaultMat;
 
-            _ecrantDefault = _emissiveDefaultMat;
-            _ecrantDefault.SetTexture("2batTex", _2BatTexture);
+            _ecran.material = _2BatTexture;
+            
         }
 
         if (ChargeEnergetique == 3)
         {
             _generateurRendererpart3.material = _emissiveDefaultMat;
 
-            _ecrantDefault = _emissiveDefaultMat;
-            _ecrantDefault.SetTexture("3batTex", _3BatTexture);
+            _ecran.material = _3BatTexture;
         }
     }
 
