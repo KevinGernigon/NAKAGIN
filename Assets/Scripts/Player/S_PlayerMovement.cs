@@ -55,6 +55,7 @@ public class S_PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask _whatIsGround;
     [SerializeField] private LayerMask _whatIsWall;
     [SerializeField] private LayerMask Everything;
+    [SerializeField] private LayerMask EverythingExceptWalkable;
     public bool _isGrounded;
 
     [Header("Slope Handling")]
@@ -80,10 +81,8 @@ public class S_PlayerMovement : MonoBehaviour
     [SerializeField] private S_GrappinV2 GrapplingScript;
     [SerializeField] private S_Accelaration AccelerationScript;
     [SerializeField] private S_Sliding SlideScript;
-    [SerializeField] private S_PlayerCam PlayerCamScript;
     [SerializeField] private Transform _orientation;
     [SerializeField] private GameObject _player;
-    [SerializeField] private Animator _arms_AC;
 
     [Header("Raycast")]
     [SerializeField] private float _valueRaycast;
@@ -164,21 +163,16 @@ public class S_PlayerMovement : MonoBehaviour
 
         //Ground Check
         //_isGrounded = Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsGround);
-
-        if (Physics.CheckSphere(transform.position, 1.1f, _whatIsGround) || Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsWall)){
+        if (Physics.CheckSphere(transform.position, 1.1f, _whatIsGround) && Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsGround) || Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsWall)){
             _isGrounded = true;
         }
-        else
-            _isGrounded = false;
+        else _isGrounded = false;
         
         if(Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsWall))
         {
             _whatIsWallOnGround = true;
         }
-        else
-        {
-            _whatIsWallOnGround = false;
-        }
+        else _whatIsWallOnGround = false;
 
         if (!_isGrounded && _jumpCount >= 0)
         {
@@ -201,42 +195,15 @@ public class S_PlayerMovement : MonoBehaviour
             _isDecelerating = true;
             AccelerationScript.VarianceVitesse();
             PlayerSoundScript.EndSoundWalk();
-            _arms_AC.SetBool("stoppedMoving", true);
-/*            if (!_arms_AC.GetBool("gotOnGround"))
-            {
-                if (_arms_AC.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1)
-                {
-                    _arms_AC.Play("A_Arms_Idle_Placeholder");
-                }
-            }
-            else _arms_AC.Play("A_Arms_Idle_Placeholder");*/
-
             rb.drag = _groundDrag + 10;
             _isMoving = false;
         }
         else if (state == MovementState.walking && !GrapplingScript._isDecreaseRbDrag)
         {
-            if (S_InputManager._playerInputAction.Player.Jump.ReadValue<float>() == 1) return;
             _isAccelerating = true;
             _isDecelerating = false;
             AccelerationScript.VarianceVitesse();
             PlayerSoundScript.WalkSound();
-            _arms_AC.SetBool("startMoving", true);
-            if (!_arms_AC.IsInTransition(0) && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Arms_Running")
-            {   
-                _arms_AC.Play("A_Arms_Running");
-            }
-
-/*            if(!_arms_AC.GetBool("gotOnGround"))
-            {
-                if (_arms_AC.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1 && !_arms_AC.IsInTransition(0))
-                {
-                    _arms_AC.SetBool("gotOnGround", false);
-                    _arms_AC.Play("A_Arms_Running");
-                }
-            }
-            else if(_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Arms_Running") _arms_AC.Play("A_Arms_Running");*/
-
             rb.drag = _groundDrag;
             _isMoving = true;
         }
@@ -250,7 +217,6 @@ public class S_PlayerMovement : MonoBehaviour
         if (state == MovementState.air)
         {
             PlayerSoundScript.EndSoundWalk();
-            if (_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Arms_Jump_Impulse" && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Arms_Jump_Idle") _arms_AC.Play("A_Arms_Jump_Idle");
             _desiredMoveSpeed = _airSpeed;
 
         }
@@ -285,8 +251,6 @@ public class S_PlayerMovement : MonoBehaviour
                         //Debug.Log("GroundContact");
                         _isHigherThan = false;
                         PlayerSoundScript.LandingSound();
-                        _arms_AC.SetBool("gotOnGround", true);
-                        
                         i = 0;
                     }
                    
@@ -562,34 +526,40 @@ public class S_PlayerMovement : MonoBehaviour
 
         _jumpCount++;
 
-        _arms_AC.Play("A_Arms_Jump_Impulse");
         PlayerSoundScript.JumpSound();
         if (!OnSlope() && _whatIsWallOnGround)
         {
+            Debug.Log("JumpV1");
             rb.AddForce(transform.up * _jumpForce * 1.5f, ForceMode.Impulse);
         }
         else if(_isSliding && OnSlope())
         {
+            Debug.Log("JumpV2");
             rb.AddForce(transform.up * _jumpForce * 1.2f, ForceMode.Impulse);
         }
         else if (OnSlope() && !_isSliding)
         {
+            Debug.Log("JumpV3");
             rb.AddForce(transform.up * _jumpForce * 1.15f, ForceMode.Impulse);
         }
         else if (_isSliding && !OnSlope())
         {
+            Debug.Log("JumpV4");
             rb.AddForce(transform.up * _jumpForce * 1f, ForceMode.Impulse);
         }
         else if (_isDashing)
         {
+            Debug.Log("JumpV5");
             rb.AddForce(transform.up * _jumpForce * (0.8f-ScriptDash._dashDuration), ForceMode.Impulse);
         }
         else if (GetSlopeMoveDirection(_moveDirection).y != 0 || _isGrounded)
         {
+            Debug.Log("JumpV6");
             rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
         }
         else if (!canJumpLedge)
         {
+            Debug.Log("JumpV7");
             _exitingSlope = true;
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
             //rb.velocity = new Vector3(rb.velocity.x, ??, rb.velocity.z);

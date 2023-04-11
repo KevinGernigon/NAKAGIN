@@ -11242,7 +11242,10 @@ MonoBehaviour:
     m_Bits: 2048
   Everything:
     serializedVersion: 2
-    m_Bits: 129847
+    m_Bits: 2147483647
+  EverythingExceptWalkable:
+    serializedVersion: 2
+    m_Bits: 0
   _isGrounded: 0
   _maxSlopeAngle: 50
   _slopeVectorDownValue: 150
