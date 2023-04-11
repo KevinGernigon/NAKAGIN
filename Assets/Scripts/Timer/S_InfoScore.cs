@@ -6,19 +6,20 @@ using TMPro;
 
 public class S_InfoScore : MonoBehaviour
 {
-
+    [Header("Ref Script")]
     private S_ReferenceInterface _referenceInterface;
-
-    [SerializeField]private S_Timer ScriptTimer;
-
     private Transform _playerContent;
+    [SerializeField]private S_Timer ScriptTimer;
     [SerializeField] private Transform _respawnplayer;
 
+    [Header("Console Generateur")]
+    [SerializeField] private S_ConsoleFinRun _consoleFinRun;
+
+    [Header("Info Run")]
     public bool _runStart;
     public bool _Lvl2Win;
     public bool _Lvl1Win;
     [SerializeField] private string _nameRun;
-
     [SerializeField] private TMP_Text _NameRunTxt;
     [SerializeField] private TMP_Text _level1TimerTxt;
     [SerializeField] private TMP_Text _level2TimerTxt;
@@ -32,17 +33,14 @@ public class S_InfoScore : MonoBehaviour
     public bool _isAnimPlaying = false;
     private bool _infoisclosed = true;
 
-    [Header("Affichage UI")]
-
-    [SerializeField] private GameObject _HUDInfoScore;
-    [SerializeField] private Animator _aniamHUDInfoRun;
-    [SerializeField] private Animator _animOpenCLoseInfo;
-
-
     [SerializeField] private GameObject _detectionRunBox;
     [SerializeField] private LayerMask _whatIsInformative;
     [SerializeField] private LayerMask Everything;
 
+    [Header("Affichage UI")]
+    [SerializeField] private GameObject _HUDInfoScore;
+    [SerializeField] private Animator _aniamHUDInfoRun;
+    [SerializeField] private Animator _animOpenCLoseInfo;
 
 
     private float _level1Timeminutes, _level1Timeseconds, _level1Timemilliseconds;
@@ -54,7 +52,6 @@ public class S_InfoScore : MonoBehaviour
     {
         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
         _playerContent = _referenceInterface._playerTransform;
-       
     }
 
     private void Start()
@@ -264,40 +261,57 @@ public class S_InfoScore : MonoBehaviour
             timePlayer = ScriptTimer._timerTime;
 
 
+            if (timePlayer < _bestTime || _bestTime == 0f)
+            {
+                    
+                 _bestTime = timePlayer;
+
+                 _bestTimeminutes = ScriptTimer._minutes;
+                 _bestTimeseconds = ScriptTimer._seconds;
+                 _bestTimemilliseconds = ScriptTimer._milliseconds;    
+            }
+
+
+            if (timePlayer < _level1Time)
+            {
+                    // ajout chemin vers les recompenses en cas de victoire 
+                    _Lvl1Win = true;
+                    _consoleFinRun.consoleOpen = true;
+            }
+           
+            if(timePlayer < _level2Time)
+            {
+                    _Lvl2Win = true;
+
+            }          
+        }
+    }
+    public void ChargeSave(float timeSave)
+    {
+        timePlayer = timeSave;
+
         if (timePlayer < _bestTime || _bestTime == 0f)
         {
-                    
-             _bestTime = timePlayer;
 
-             _bestTimeminutes = ScriptTimer._minutes;
-             _bestTimeseconds = ScriptTimer._seconds;
-             _bestTimemilliseconds = ScriptTimer._milliseconds;
-             
+            _bestTime = timePlayer;
+
+            _bestTimeminutes = (int)(timeSave / 60f) % 60;
+            _bestTimeseconds = (int)(timeSave % 60f);
+            _bestTimemilliseconds = (int)(timeSave * 1000f) % 1000;
         }
-
 
         if (timePlayer < _level1Time)
         {
-                // ajout chemin vers les recompenses en cas de victoire 
-                _Lvl1Win = true;
+            // ajout chemin vers les recompenses en cas de victoire 
+            _Lvl1Win = true;
+            _consoleFinRun.consoleOpen = true;
+
         }
-        /*else
+
+        if (timePlayer < _level2Time)
         {
-                _runStart = false;
+            _Lvl2Win = true;
 
-                ScriptTimer.TimerReset();
-
-                S_RunCheckPointManager.FintimerRespawn();
-
-        }*/
-
-        if(timePlayer < _level2Time)
-        {
-                _Lvl2Win = true;
-
-        }          
-    }
-            
-
+        }
     }
 }
