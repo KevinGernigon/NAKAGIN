@@ -60,8 +60,14 @@ public class S_Jetpack : MonoBehaviour
     {
         /*if (Input.GetButtonDown("Jetpack") && _isJetpackAvaible)
             JetpackFunction();*/
-        if (!_pm._isGrounded)
+        if (!_pm._isGrounded && !_pm._isWallRunning)
         {
+            if(!_pm._isWallRunning){
+                _maxTimerJetpack = 0.5f;
+            }
+            else
+                _maxTimerJetpack = 0.3f;
+
             _timerJetpack += Time.deltaTime;
             if (_timerJetpack < _maxTimerJetpack && _timerJetpack != 0)
             {
@@ -114,7 +120,7 @@ public class S_Jetpack : MonoBehaviour
     }
     public void JetpackFunction()
     {
-        if (GrappinScript._isHookingHUD) return;
+        if (!GrappinScript._isJetpackAvaible) return;
 
         if (ScriptBatteryManager._nbrBattery <= 0 && _isJetpackAvaible && !_isSoundActive && !_isTimerReach)
         {

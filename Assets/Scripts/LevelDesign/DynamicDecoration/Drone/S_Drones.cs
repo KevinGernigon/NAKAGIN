@@ -10,6 +10,7 @@ public class S_Drones : MonoBehaviour
     [SerializeField] private Cinemachine.CinemachineSmoothPath CinemachineSP;
 
     private Transform EndPos;
+    public float spawnTime;
     private bool isSpawnable;
     private bool _isTrue;
     private void Start()
@@ -36,7 +37,7 @@ public class S_Drones : MonoBehaviour
     IEnumerator DronesCraft()
     {
                 isSpawnable = false;
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(spawnTime);
                 isSpawnable = true;
     }
 

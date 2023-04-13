@@ -228,8 +228,8 @@ public class S_PlayerMovement : MonoBehaviour
         if (state == MovementState.air)
         {
             PlayerSoundScript.EndSoundWalk();
-            if (_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Arms_Jump_Impulse" && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Arms_Jump_Idle") 
-                _arms_AC.Play("A_Arms_Jump_Idle");
+            //if (_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Arms_Jump_Impulse" && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Arms_Jump_Idle") 
+                //_arms_AC.Play("A_Arms_Jump_Idle");
             _desiredMoveSpeed = _airSpeed;
 
         }
@@ -549,7 +549,11 @@ public class S_PlayerMovement : MonoBehaviour
         }
         else if(_isSliding && OnSlope())
         {
-            rb.AddForce(transform.up * _jumpForce * 1.2f, ForceMode.Impulse);
+            if(rb.velocity.y < 0)
+                rb.AddForce(transform.up * _jumpForce * 2f, ForceMode.Impulse);
+            else if(rb.velocity.y > 0){
+                rb.AddForce(transform.up * _jumpForce * 1f, ForceMode.Impulse);
+            }
         }
         else if (OnSlope() && !_isSliding)
         {

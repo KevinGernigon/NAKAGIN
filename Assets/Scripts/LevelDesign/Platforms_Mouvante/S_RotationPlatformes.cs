@@ -40,22 +40,7 @@ public class S_RotationPlatformes : MonoBehaviour
 
     void Update()
     {
-        if (_startMoving == true)
-        {
-            
-            if (_alpha >= 1)
-            {
-                i = 1;
-            }
-
-            if (_alpha >= 0.9f && i == 1)
-            {
-                i = 0;
-                PlayerSoundScript.EndPlatformMovingSound();
-                PlayerSoundScript.EndingPlatformMovingSound();
-            }
-        }
-
+        
         if (_isTrigger)
         {
             
@@ -78,6 +63,25 @@ public class S_RotationPlatformes : MonoBehaviour
 
             }
 
+        }
+
+    }
+
+    private void FixedUpdate() {
+        if (_startMoving == true)
+        {
+            
+            if (_alpha >= 1)
+            {
+                i = 1;
+            }
+
+            if (_alpha >= 0.9f && i == 1)
+            {
+                i = 0;
+                PlayerSoundScript.EndPlatformMovingSound();
+                PlayerSoundScript.EndingPlatformMovingSound();
+            }
         }
 
     }
