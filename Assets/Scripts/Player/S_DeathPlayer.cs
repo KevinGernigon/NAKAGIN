@@ -6,7 +6,7 @@ using TMPro;
 public class S_DeathPlayer : MonoBehaviour
 {
     public bool playerIsDead = false;
-    public int DeadCount = 0;
+    public int DeadCount;
 
     [SerializeField] private Rigidbody _rbplayer;
     [SerializeField] private S_PlayerCam _playerCam;
@@ -28,7 +28,7 @@ public class S_DeathPlayer : MonoBehaviour
         Physics.SyncTransforms();
     }
 
-    private void NewRobotsName()
+    public void NewRobotsName()
     {
         if(DeadCount < 10)
             _robotName.text = "_00" + DeadCount;

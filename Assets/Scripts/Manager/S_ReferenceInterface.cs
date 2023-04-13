@@ -6,9 +6,10 @@ using UnityEngine.UI;
 
 public class S_ReferenceInterface : Manager
 {
+    [Header("Refs DisableManager")]
+    public GameObject DisableManager;
 
     [Header("Refs PlayerContent")]
-
     public GameObject _playerGameObject;
     public Transform _playerTransform;
     public Rigidbody _playerRigidbody;
@@ -17,7 +18,6 @@ public class S_ReferenceInterface : Manager
     public S_DeathPlayer deathPlayer;
 
     [Header("Refs Orentiation")]
-
     public Transform _orientationTransform;
 
     [Header("Refs Camera")]
@@ -39,7 +39,6 @@ public class S_ReferenceInterface : Manager
     public GameObject HUD_Death;
 
     [Header("Refs Battery")]
-
     public GameObject EventSystem;
     public S_BatteryManager _BatteryManager;
 

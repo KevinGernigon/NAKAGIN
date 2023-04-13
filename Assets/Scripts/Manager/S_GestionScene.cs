@@ -7,20 +7,27 @@ public class S_GestionScene : MonoBehaviour
 {
 
     private S_ReferenceInterface _referenceInterface;
-    
+
     [Header("Reset Player")]
     private Transform _playerTransform;
     private Rigidbody _playerRb;
     private GameObject _camera;
-    private S_PlayerCam _playerCam; 
+    private S_PlayerCam _playerCam;
     private TMP_Text _textTimer;
     private Color _savecolor;
-
-
     [SerializeField] private Transform _spawnPoint;
 
     [Header("Reset Wall")]
     [SerializeField] private S_ModuleManager _moduleManager;
+
+    [Header("Info ManagerRun")]
+    [SerializeField] private float _bestTimeSaveRun1;
+    [SerializeField] private S_InfoScore _ManagerRun1;
+    [SerializeField] private float _bestTimeSaveRun2;
+    [SerializeField] private S_InfoScore _ManagerRun2;
+    [SerializeField] private float _bestTimeSaveRun3;
+    [SerializeField] private S_InfoScore _ManagerRun3;
+
 
     private void Awake()
     {
@@ -33,6 +40,8 @@ public class S_GestionScene : MonoBehaviour
 
         _textTimer = _referenceInterface._timerText;
         _savecolor = _textTimer.color;
+
+
     }
 
     private void Start()
@@ -48,6 +57,19 @@ public class S_GestionScene : MonoBehaviour
         _textTimer.text = "";
         _textTimer.color = _savecolor;
 
+
+        if (_bestTimeSaveRun1 != 0f)
+        {
+            _ManagerRun1.ChargeSave(_bestTimeSaveRun1);
+        }
+        if (_bestTimeSaveRun2 != 0f)
+        {
+            _ManagerRun2.ChargeSave(_bestTimeSaveRun2);
+        }
+        if (_bestTimeSaveRun3 != 0f)
+        {
+            _ManagerRun3.ChargeSave(_bestTimeSaveRun3);
+        }
     }
 
     
@@ -55,6 +77,7 @@ public class S_GestionScene : MonoBehaviour
     { 
         _moduleManager.ResetPlatformRotation();
     }
+
 
 
 
