@@ -191,7 +191,7 @@ public class S_PlayerMovement : MonoBehaviour
 
         //handle drag
         //if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && state == MovementState.walking && !Input.GetButton("Jump") && !GrapplingScript._isDecreaseRbDrag)
-        if (_horizontalInput == 0 && _verticalInput == 0 && state == MovementState.walking && S_InputManager._playerInputAction.Player.Jump.ReadValue<float>() == 0 && !GrapplingScript._isDecreaseRbDrag)
+        if (_horizontalInput == 0 && _verticalInput == 0 && state == MovementState.walking && !GrapplingScript._isDecreaseRbDrag  && S_InputManager._playerInputAction.Player.Jump.ReadValue<float>() == 0)
         {
             _isAccelerating = false;
             _isDecelerating = true;
@@ -203,8 +203,6 @@ public class S_PlayerMovement : MonoBehaviour
         }
         else if (state == MovementState.walking && !GrapplingScript._isDecreaseRbDrag)
         {
-            if (S_InputManager._playerInputAction.Player.Jump.ReadValue<float>() == 1) return;
-
             _isAccelerating = true;
             _isDecelerating = false;
             AccelerationScript.VarianceVitesse();
