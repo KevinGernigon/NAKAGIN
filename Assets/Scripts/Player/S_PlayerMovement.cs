@@ -126,7 +126,7 @@ public class S_PlayerMovement : MonoBehaviour
     public bool _ResetDashSpeed;
     private bool _isEnableMovementOnNextTouch;
     private float _saveWalkSpeed;
-    private bool canJumpLedge;
+    public bool canJumpLedge;
     private float _timerJump;
     public bool _isButtonEnabled;
     public bool _isSlopePositive;
@@ -151,6 +151,7 @@ public class S_PlayerMovement : MonoBehaviour
         _upgradeSpeedValue = 1;
         _isButtonEnabled = true;
         _isDecelerating = false;
+        canJumpLedge = false;
     }
 
     private void Update()
@@ -167,8 +168,11 @@ public class S_PlayerMovement : MonoBehaviour
         //_isGrounded = Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsGround);
         if (Physics.CheckSphere(transform.position, 1.1f, _whatIsGround) && Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsGround) || Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsWall)){
             _isGrounded = true;
+            _timerJump = 0f;
         }
-        else _isGrounded = false;
+        else {
+            _isGrounded = false;
+        }
         
         if(Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.5f + _valueRaycast, _whatIsWall))
         {
@@ -176,7 +180,10 @@ public class S_PlayerMovement : MonoBehaviour
         }
         else _whatIsWallOnGround = false;
 
-        if (!_isGrounded && _jumpCount >= 0)
+        if(canJumpLedge){
+            _jumpForce = valJump;
+        }
+        else if (!_isGrounded && _jumpCount >= 0 && !canJumpLedge)
         {
             _jumpCount = 0;
             _jumpForce = 0;
@@ -281,7 +288,7 @@ public class S_PlayerMovement : MonoBehaviour
             rb.velocity += Vector3.up * Physics.gravity.y * _fallMultiplier * Time.deltaTime;
         }
 
-        if (!_isGrounded && _jumpCount == 0)
+        if (!_isGrounded && _jumpCount == 0 )
         {
             _timerJump += Time.deltaTime;
             if (_timerJump < _jumpCooldown - 0.01f && _readyToJump)
@@ -291,7 +298,11 @@ public class S_PlayerMovement : MonoBehaviour
             else
                 canJumpLedge = false;
         }
-        else _timerJump = 0f;
+            else
+                canJumpLedge = false;
+
+
+            
 
         //if (Input.GetButton("Vertical"))
         if (_verticalInput != 0 )
@@ -321,7 +332,6 @@ public class S_PlayerMovement : MonoBehaviour
             {
                 _readyToJump = false;
                 Jump();
-                canJumpLedge = false;
                 Invoke(nameof(ResetJump), _jumpCooldown);
             }
 
@@ -569,8 +579,9 @@ public class S_PlayerMovement : MonoBehaviour
         {
             rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
         }
-        else if (!canJumpLedge)
+        else if (canJumpLedge)
         {
+            Debug.Log("???");
             _exitingSlope = true;
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
             //rb.velocity = new Vector3(rb.velocity.x, ??, rb.velocity.z);
@@ -583,8 +594,6 @@ public class S_PlayerMovement : MonoBehaviour
         _readyToJump = true;
 
         _exitingSlope = false;
-
-        canJumpLedge = true;
     }
 
     public void JumpToPosition(Vector3 targetPosition, float trajectoryHeight)
