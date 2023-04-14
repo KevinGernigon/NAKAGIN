@@ -178,7 +178,7 @@ public class S_GenerateurEnergetique : MonoBehaviour
 
 
 
-    private void ReloadBattery()
+    public void ReloadBattery()
     {
 
       //Son Interaction Generateur 
