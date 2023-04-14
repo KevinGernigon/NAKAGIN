@@ -10,7 +10,7 @@ public class S_Debugger : MonoBehaviour
     private Dictionary<string, DEBUG_MESSAGE> objectStack;
     private Dictionary<string, UnityAction> actionStack;
     public Color defaultColor = Color.white;
-    private bool toogle;
+    private bool toogle = false;
 
 
     private void Awake()

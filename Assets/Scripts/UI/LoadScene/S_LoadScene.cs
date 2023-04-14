@@ -11,8 +11,6 @@ public class S_LoadScene : MonoBehaviour
     private S_ReferenceInterface _referenceInterface;
     private S_GestionnaireScene _GestionnaireScene;
 
-    [SerializeField] private int _sceneId;
-
 
     private void Awake()
     {
@@ -20,10 +18,12 @@ public class S_LoadScene : MonoBehaviour
         _GestionnaireScene = _referenceInterface._GestionnaireScene;
     }
 
-
-    private void OnTriggerEnter(Collider other)
+    public void LoadScene(int _sceneId)
     {
-       _GestionnaireScene.LoadNewScene(_sceneId); 
+        _GestionnaireScene.LoadNewScene(_sceneId);
     }
+
+
+  
 
 }

@@ -8,7 +8,6 @@ public class S_ShowConsole : MonoBehaviour
     
     
     [SerializeField] private S_BatteryManager Battery;
-    [SerializeField] private S_Timer Timer;
     private bool _unlimitedBat;
 
 

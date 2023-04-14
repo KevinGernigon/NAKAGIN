@@ -7,8 +7,13 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material #36
-    second: {fileID: 2100000, guid: eb663005b4ff84f439d0e45810a903b5, type: 2}
+      name: Base
+    second: {fileID: 2100000, guid: 9782c4c8b50c0b146aba396780cd3d13, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Emissive
+    second: {fileID: 2100000, guid: 602d7f371d5b68c4686b2befe55487f6, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

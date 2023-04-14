@@ -6,18 +6,15 @@ using UnityEngine.SceneManagement;
 
 public enum DisplayCategory
 {
-    Corentin_Scene, Kiki_Scene, Alexis_Scene, Assets_Scene, MAIN_VerticalSlice, Killian_Scene, Tom_Scene, Playtest_Scene, Maxime_Scene, Kevin_Scene, Tuto_Scene, IA_Scene
+    Corentin_Scene, Kiki_Scene, Alexis_Scene, Assets_Scene, MAIN_VerticalSlice, Killian_Scene, Tom_Scene, Tom_Test_Scene, Playtest_Scene, Maxime_Scene, Kevin_Scene, Tuto_Scene, IA_Scene, MainMenu
 }
 
 
 public class S_SceneManager : Manager
 {
-
     public string sceneToStart;
 
-
     [SerializeField] private DisplayCategory categoryToDisplay;
-
 
     public void LoadMainMenu()
     {
@@ -27,30 +24,18 @@ public class S_SceneManager : Manager
     public void LoadGame()
     {
         SceneManager.LoadScene(sceneToStart);
+        gameObject.SetActive(true);
 
-        //SceneManager.LoadScene("Tom_Scene");
-
-        if(sceneToStart == "Tom_Scene")
+        if(sceneToStart == "Tom_Test_Scene")
         {
             SceneManager.LoadScene("Asset_Scene", LoadSceneMode.Additive);
         }
-/*
-        sceneToStart = "Tom_Scene";
 
-        SceneManager.LoadScene(sceneToStart);
-
-        //SceneManager.LoadScene("Tom_Scene");
-        if (sceneToStart == "Tom_Scene")
+        /*if (sceneToStart == "MainMenu")
         {
-            SceneManager.LoadScene("Asset_Scene", LoadSceneMode.Additive);
-            SceneManager.LoadScene("TestPost_Process", LoadSceneMode.Additive);
-        }
-
-*/
-
+            gameObject.SetActive(false);
+        } */
     }
-
-
 }
 
 

@@ -38,11 +38,13 @@ public class S_GrappinV2 : MonoBehaviour
     [Header("Cooldown")]
     [SerializeField] private float _grapplingCd;
     private float _grapplingCdTimer;
+    [SerializeField] private float _timerBeforeUsingJetpack;
 
     [Header("Boolean")]
     public bool _isGrappling;
     public bool isIncreaseFOV;
     public bool _isDecreaseRbDrag;
+    public bool _isJetpackAvaible;
 
     public bool _isHUD = false;
     public bool _isHookingHUD = false;
@@ -55,6 +57,7 @@ public class S_GrappinV2 : MonoBehaviour
         _pm = GetComponent<S_PlayerMovement>();
         PlayerSoundScript = GetComponent<S_PlayerSound>();
         _isHUD = false;
+        _isJetpackAvaible = true;
     }
 
     private void Update()
@@ -119,7 +122,7 @@ public class S_GrappinV2 : MonoBehaviour
         if (Physics.Raycast(_camera.position, _camera.forward, out noTarget, _maxGrappleDistance, ~_whatIsTarget))
         {
         }*/
-
+        _isJetpackAvaible = false;
         PlayerSoundScript.RopeSound();
         _arms_Ac.Play("A_Arms_Grab");
         _isGrappling = true;
@@ -203,6 +206,7 @@ public class S_GrappinV2 : MonoBehaviour
         grapplePoint = _camera.position + _camera.forward * _maxGrappleDistance;
         PlayerSoundScript.RewindSound();
         Invoke(nameof(StopGrapple), _grapplingCd);
+        Invoke(nameof(ResetJetpack), _timerBeforeUsingJetpack/2);
     }
 
 
@@ -239,6 +243,7 @@ public class S_GrappinV2 : MonoBehaviour
 
         Invoke(nameof(StopGrapple), 1f);
         Invoke(nameof(HUDManager), _grappleDelayTime);
+        Invoke(nameof(ResetJetpack), _timerBeforeUsingJetpack);
     }
 
     public void StopGrapple()
@@ -263,6 +268,10 @@ public class S_GrappinV2 : MonoBehaviour
     public void HUDManager()
     {
         _isHookingHUD = false;
+    }
+
+    public void ResetJetpack(){
+        _isJetpackAvaible = true;
     }
 }
 
