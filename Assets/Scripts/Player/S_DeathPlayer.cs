@@ -31,11 +31,11 @@ public class S_DeathPlayer : MonoBehaviour
     public void NewRobotsName()
     {
         if(DeadCount < 10)
-            _robotName.text = "_00" + DeadCount;
+            _robotName.text = "00" + DeadCount;
         else if(DeadCount < 100)
-            _robotName.text = "_0" + DeadCount;
+            _robotName.text = "0" + DeadCount;
         else
-            _robotName.text = "_" + DeadCount;
+            _robotName.text = "" + DeadCount;
     }
 
 }

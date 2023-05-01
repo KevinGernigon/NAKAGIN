@@ -16,22 +16,21 @@ public class S_InfoScoreValidation : MonoBehaviour
 
     public bool _runStart;
 
-    [SerializeField] private GameObject _HUDInfoScore;
-    [SerializeField] private TMP_Text _level1TimerTxt;
-
     [SerializeField] private GameObject _detectionRunBox;
     [SerializeField] private LayerMask _whatIsInformativeValidation;
     [SerializeField] private LayerMask Everything;
-    public bool _isAnimPlaying = false;
-    [SerializeField] private Animator _aniamHUDInfoRun;
-    [SerializeField] private Animator _animOpenCLoseInfo;
 
+    [Header("Affichage UI")]
+    [SerializeField] private TMP_Text _level1TimerTxt;
+    [SerializeField] private Animator _animOpenCLoseInfo;
+    
+    [Header("Info Run")]
     [SerializeField] private S_RunCheckPointManagerValidation S_RunCheckPointManagerValidation;
 
     public float _level1Time = 10f;
     private float _level2Time = 0f;
     private float _level1Timeminutes, _level1Timeseconds, _level1Timemilliseconds;
-    private bool _infoisclosed = true;
+
 
 
     private void Awake()
@@ -62,60 +61,18 @@ public class S_InfoScoreValidation : MonoBehaviour
                 ShowTimerChallenge();
                 
             }
+
             if (hit.collider.gameObject.layer == whatIsInformativeValidation)
             {
-                _HUDInfoScore.SetActive(true);
-
-                if (_isAnimPlaying)
-                {
-                    StopAllCoroutines();
-                    _animOpenCLoseInfo.Rebind();
-
-                    _aniamHUDInfoRun.Rebind();
-                    _aniamHUDInfoRun.Play("A_InfoScoreWaitValidation");
-                    _isAnimPlaying = false;
-
-                    if (_infoisclosed)
-                    {
-                        _animOpenCLoseInfo.Play("A_InfoScoreOpen");
-                        _infoisclosed = false;
-                    }
-                }
+                _animOpenCLoseInfo.SetBool("IsOpen", true);                //_animOpenCLoseInfo.Play("A_InfoRunOpen");
             }
-            else if (!_isAnimPlaying)
+            else
             {
-                StopAllCoroutines();
-                _animOpenCLoseInfo.Rebind();
-
-                _aniamHUDInfoRun.Rebind();
-                _aniamHUDInfoRun.Play("A_InfoScoreWaitClose");
-                _isAnimPlaying = true;
-
-                if (!_infoisclosed)
-                {
-                    StartCoroutine(AffichageHUDInfoRun());
-                }
+                _animOpenCLoseInfo.SetBool("IsOpen", false);                //_animOpenCLoseInfo.Play("A_InfoRunClose");
             }
-
-        }
-        else if (!_isAnimPlaying)
-        {
-            StopAllCoroutines();
-            _animOpenCLoseInfo.Rebind();
-
-            _aniamHUDInfoRun.Rebind();
-            _aniamHUDInfoRun.Play("A_InfoScoreWaitClose");
-            _isAnimPlaying = true;
         }
     }
 
-    IEnumerator AffichageHUDInfoRun()
-    {
-        yield return new WaitForSeconds(1f);
-        _animOpenCLoseInfo.Play("A_InfoScoreClosing");
-        _infoisclosed = true;
-
-    }
 
     private void ShowTimerChallenge()
     {

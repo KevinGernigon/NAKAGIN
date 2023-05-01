@@ -47,7 +47,7 @@ public class S_GenerateurEnergetique : MonoBehaviour
         Player = _referenceInterface._playerGameObject;
         PlayerSoundScript = Player.GetComponent<S_PlayerSound>();
         _HUD_InteractGenerateurEnable = _referenceInterface.HUD_InteractGenerateurEnable;
-        _HUD_InteractGenerateurDisable = _referenceInterface.HUD_InteractGenerateurDisable;
+        //_HUD_InteractGenerateurDisable = _referenceInterface.HUD_InteractGenerateurDisable;
 
         //_TextInteraction = _HUD_InteractGenerateurEnable.GetComponentInChildren<TMP_Text>();
     }
@@ -126,8 +126,8 @@ public class S_GenerateurEnergetique : MonoBehaviour
                 if (ChargeEnergetique > 0)
                     _HUD_InteractGenerateurEnable.SetActive(true);
 
-                if(ChargeEnergetique == 0)
-                    _HUD_InteractGenerateurDisable.SetActive(true);
+               // if(ChargeEnergetique == 0)
+                    //_HUD_InteractGenerateurDisable.SetActive(true);
 
 
                 //_referenceInterface._InputManager.DesactiveJetpackInput();
@@ -139,8 +139,7 @@ public class S_GenerateurEnergetique : MonoBehaviour
 
             _OnTrigger = false;
             _HUD_InteractGenerateurEnable.SetActive(false);
-            _HUD_InteractGenerateurDisable.SetActive(false);
-            //_referenceInterface._InputManager.ActiveJetpackInput();
+            //_HUD_InteractGenerateurDisable.SetActive(false);
 
         }
     }

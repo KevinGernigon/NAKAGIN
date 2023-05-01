@@ -30,16 +30,15 @@ public class S_InfoScore : MonoBehaviour
     private float _bestTime = 0f;
     private float timePlayer;
     public bool endRun = false;
-    public bool _isAnimPlaying = false;
-    private bool _infoisclosed = true;
+    private S_PauseMenuV2 S_PauseMenuV2;
 
     [SerializeField] private GameObject _detectionRunBox;
     [SerializeField] private LayerMask _whatIsInformative;
     [SerializeField] private LayerMask Everything;
 
     [Header("Affichage UI")]
-    [SerializeField] private GameObject _HUDInfoScore;
-    [SerializeField] private Animator _aniamHUDInfoRun;
+
+    [SerializeField] private GameObject _HUDInfoScoreRun;
     [SerializeField] private Animator _animOpenCLoseInfo;
 
 
@@ -52,6 +51,7 @@ public class S_InfoScore : MonoBehaviour
     {
         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
         _playerContent = _referenceInterface._playerTransform;
+        S_PauseMenuV2 = _referenceInterface.EventSystem.GetComponent<S_PauseMenuV2>();
     }
 
     private void Start()
@@ -68,78 +68,47 @@ public class S_InfoScore : MonoBehaviour
             GetBestTimePlayer();
        }
        
-
+       
        RaycastHit hit;
        if (Physics.Raycast(_referenceInterface._CameraGameObject.transform.position, _referenceInterface._CameraGameObject.transform.forward, out hit, 30, Everything))
        {
             int whatIsInformative = LayerMask.NameToLayer("WhatIsInformative");
             //Debug.Log(hit.collider.gameObject);
 
-
-            if (hit.collider.gameObject.layer == whatIsInformative && hit.collider.gameObject == _detectionRunBox)
+            if (S_PauseMenuV2._isPaused)
             {
-
-                ShowTimerChallenge();
-                AfficheBesttimeplayer();
+                _HUDInfoScoreRun.SetActive(false);
             }
-
-            if (hit.collider.gameObject.layer == whatIsInformative)
+            else
             {
-                _HUDInfoScore.SetActive(true);
+                _HUDInfoScoreRun.SetActive(true);
 
-                if (_isAnimPlaying)
+                if (hit.collider.gameObject.layer == whatIsInformative && hit.collider.gameObject == _detectionRunBox)
                 {
-                    StopAllCoroutines();
-                    _animOpenCLoseInfo.Rebind();
-
-                    _aniamHUDInfoRun.Rebind();            
-                    _aniamHUDInfoRun.Play("A_InfoScoreWait");
-                    _isAnimPlaying = false;
-
-                    if (_infoisclosed)
-                    {
-                        _animOpenCLoseInfo.Play("A_InfoScoreOpen");
-                        _infoisclosed = false;
-                    }
-
+                        ShowTimerChallenge();
+                        AfficheBesttimeplayer();
                 }
-   
-            }
-            else if (!_isAnimPlaying)
-            {
-                StopAllCoroutines();
-                _animOpenCLoseInfo.Rebind();
 
-                _aniamHUDInfoRun.Rebind();
-                _aniamHUDInfoRun.Play("A_InfoScoreWaitClose");
-                _isAnimPlaying = true;
-
-                if (!_infoisclosed)
+                if (hit.collider.gameObject.layer == whatIsInformative)
+                { 
+                    _animOpenCLoseInfo.SetBool("IsOpen", true);                //_animOpenCLoseInfo.Play("A_InfoRunOpen");
+                }
+                else
                 {
-                    StartCoroutine(AffichageHUDInfoRun());
+                    _animOpenCLoseInfo.SetBool("IsOpen", false);                //_animOpenCLoseInfo.Play("A_InfoRunClose"); 
                 }
             }
        }
-       else if (!_isAnimPlaying)
-       {
-            StopAllCoroutines();
-            _animOpenCLoseInfo.Rebind();
+    } 
 
-            _aniamHUDInfoRun.Rebind();
-            StartCoroutine(AffichageHUDInfoRun());
-            _aniamHUDInfoRun.Play("A_InfoScoreWaitClose");
-            _isAnimPlaying = true;
-        }
-    }
 
-    
-    IEnumerator AffichageHUDInfoRun()
-    {       
-        yield return new WaitForSeconds(1f);
-        _animOpenCLoseInfo.Play("A_InfoScoreClosing");
-        _infoisclosed = true;
 
-    }
+
+
+
+
+
+
 
     private void ShowTimerChallenge()
     {

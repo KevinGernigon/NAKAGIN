@@ -12,9 +12,9 @@ public class S_AfficheTextTuto : MonoBehaviour
 
     [SerializeField] private GameObject _textzone1act;
     [SerializeField] private GameObject _textzone2act;
-
-
-
+    [SerializeField] private GameObject _simpleTextZone;
+    [Header("0 Action")]
+    [SerializeField] private TMP_Text _simpleText;
     [Header("1 Action")]
     [SerializeField] private TMP_Text _textPrefixe_InfoTuto1Action;
     [SerializeField] private TMP_Text _textSuffixe_InfoTuto1Action;
@@ -42,8 +42,20 @@ public class S_AfficheTextTuto : MonoBehaviour
 
         if (_ontrigger)
         {
-            if(SO_TutoAffichage._nbrAction < 2)
+
+            if (SO_TutoAffichage._nbrAction < 1)
             {
+                _simpleTextZone.SetActive(true);
+                _textzone1act.SetActive(false);
+                _textzone2act.SetActive(false);
+
+                _simpleText.text = SO_TutoAffichage._radicalTextAffiche;
+
+            }
+
+            if (SO_TutoAffichage._nbrAction > 0 && SO_TutoAffichage._nbrAction < 2)
+            {
+                _simpleTextZone.SetActive(false);
                 _textzone1act.SetActive(true);
                 _textzone2act.SetActive(false);
 
@@ -74,6 +86,7 @@ public class S_AfficheTextTuto : MonoBehaviour
 
             if (SO_TutoAffichage._nbrAction >= 2)
             {
+                _simpleTextZone.SetActive(false);
                 _textzone1act.SetActive(false);
                 _textzone2act.SetActive(true);
 
@@ -109,7 +122,9 @@ public class S_AfficheTextTuto : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (SO_TutoAffichage._nbrAction < 2)
+        if(SO_TutoAffichage._nbrAction < 1)
+            _simpleTextZone.SetActive(true);
+        else if (SO_TutoAffichage._nbrAction > 0 && SO_TutoAffichage._nbrAction < 2)
             _textzone1act.SetActive(true);
         else
             _textzone2act.SetActive(true);
@@ -119,6 +134,7 @@ public class S_AfficheTextTuto : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
+        _simpleTextZone.SetActive(false);
         _textzone1act.SetActive(false);
         _textzone2act.SetActive(false);
         _ontrigger = false;

@@ -11,6 +11,8 @@ public class S_Timer : MonoBehaviour
     private TMP_Text _textTimer;
 
     private Animator _animaHUDTimer;
+    private Animator _HUDTimerOpen;
+    private bool _HUDTimerIsClose = true;
 
     private float _timeReflevel1 = 0f;
     private float _timeReflevel2 = 0f;
@@ -32,6 +34,7 @@ public class S_Timer : MonoBehaviour
         _textTimer = _referenceInterface._timerText;
         _animaHUDTimer = _referenceInterface._HUDtimer;
         _saveColor = _textTimer.color;
+        _HUDTimerOpen = _referenceInterface._HUDTimerFont;
     }
 
 
@@ -133,6 +136,12 @@ public class S_Timer : MonoBehaviour
     {
         if (!_timerPlay)
         {
+           if(_HUDTimerIsClose)
+           {
+                
+                _HUDTimerOpen.Play("A_TimerOpen");
+                _HUDTimerIsClose = false;
+           }
 
             _timerPlay = true;
             _startTime = Time.time;
@@ -144,7 +153,7 @@ public class S_Timer : MonoBehaviour
     {
         if (_timerPlay)
         {
-            
+
             _timerPlay = false;
             _stopTime = _timerTime;
 
@@ -155,7 +164,13 @@ public class S_Timer : MonoBehaviour
     }
     public void TimerReset()
     {
-        
+        if (!_HUDTimerIsClose)
+        {
+
+            _HUDTimerOpen.Play("A_TimerClose");
+            _HUDTimerIsClose = true;
+        }
+
         _timerPlay = false;
         _timerTime = 0f;
 

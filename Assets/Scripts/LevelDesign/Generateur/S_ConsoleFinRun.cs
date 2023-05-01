@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
+using UnityEngine.UI;
 
 public class S_ConsoleFinRun : MonoBehaviour
 {
@@ -36,15 +37,27 @@ public class S_ConsoleFinRun : MonoBehaviour
 
 
     private GameObject _HUD_Interaction;
-    private TMP_Text _TextInteraction;
+    private TMP_Text _textInteraction;
+    private GameObject _imageInteraction;
+    private Animator _AnimInfoTuto;
+    [SerializeField] private bool _isOnSphereTrigger;
 
     private void Awake()
     {
         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
-        _HUD_Interaction = _referenceInterface.HUD_InteractGenerateurEnable;
+
+
+
         Player = _referenceInterface._playerGameObject;
         PlayerSoundScript = Player.GetComponent<S_PlayerSound>();
-        _TextInteraction = _HUD_Interaction.GetComponentInChildren<TMP_Text>();
+
+        /* _HUD_Interaction = _referenceInterface.HUD_InteractGenerateurEnable;
+         _TextInteraction = _HUD_Interaction.GetComponentInChildren<TMP_Text>();*/
+
+        _AnimInfoTuto = _referenceInterface.animInfo;
+        _HUD_Interaction = _referenceInterface.HUD_InteractGenerateurEnable;
+        _textInteraction = _referenceInterface.TextInteraction;
+        _imageInteraction = _referenceInterface.ImageInteraction;
     }
 
 
@@ -81,20 +94,28 @@ public class S_ConsoleFinRun : MonoBehaviour
                     {
                         if (_referenceInterface._InputManager._playerInput.currentControlScheme == "KeyboardAndMouse")
                         {
+                            _imageInteraction.SetActive(false);
+
                             int bindingIndex = ActionRef.action.GetBindingIndexForControl(ActionRef.action.controls[0]);
-                            _TextInteraction.text = InputControlPath.ToHumanReadableString(
+                            _textInteraction.text = InputControlPath.ToHumanReadableString(
                             ActionRef.action.bindings[bindingIndex].effectivePath,
                             InputControlPath.HumanReadableStringOptions.OmitDevice
                             );
+
                            //_TextInteraction.text = _referenceInterface._InputManager._playerInputAction.Player.Interaction;
                            //Insert text ou Image lier a l'interaction 
+
                         }
                         if (_referenceInterface._InputManager._playerInput.currentControlScheme == "Gamepad")
                         {
-                            _TextInteraction.text = "Y";
-                            //Image lier a l'interaction 
+
+                            _textInteraction.text = "Y";
+                            _imageInteraction.SetActive(true);
+                            
                         }
                         _HUD_Interaction.SetActive(true);
+                        if(_isOnSphereTrigger)
+                            _AnimInfoTuto.SetBool("IsOpen", true);                //  _AnimInfoTuto.Play("A_TooltipOpen");
                     }
                      _referenceInterface._InputManager.DesactiveJetpackInput();
                 }    
@@ -104,7 +125,9 @@ public class S_ConsoleFinRun : MonoBehaviour
                 _OnTrigger = false;
                 if (!_consoleActive)
                     _HUD_Interaction.SetActive(false);
-            
+                if (_isOnSphereTrigger)
+                    _AnimInfoTuto.SetBool("IsOpen", false);                //_AnimInfoTuto.Play("A_TooltipClose");
+
                 _referenceInterface._InputManager.ActiveJetpackInput();
             }
         }
@@ -123,6 +146,8 @@ public class S_ConsoleFinRun : MonoBehaviour
             }
 
             _HUD_Interaction.SetActive(false);
+            if (_isOnSphereTrigger)
+                _AnimInfoTuto.SetBool("IsOpen", false);                //_AnimInfoTuto.Play("A_TooltipClose");
 
             _screenInfo.material = _actvMatInfo;
         }
@@ -135,6 +160,7 @@ public class S_ConsoleFinRun : MonoBehaviour
             _animOuverture.Rebind();
             _animOuverture.Play("A_Ouverture");
         }
+            _isOnSphereTrigger = true ;
     }
 
     public void Replit()
@@ -144,6 +170,7 @@ public class S_ConsoleFinRun : MonoBehaviour
             _animOuverture.Rebind();
             _animOuverture.Play("A_Fermeture");
         }
+            _isOnSphereTrigger = false;
     }
    
 

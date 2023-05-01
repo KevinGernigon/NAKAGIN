@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d68ff524ac9df04ba746aab87a7db99, type: 3}
+  m_Name: SO_RotationPlateforme
+  m_EditorClassIdentifier: 
+  _prefixTextAffiche: Press |
+  _radicalTextAffiche: or
+  _suffixTextAffiche: '| to turn platforms'
+  _nbrAction: 2
+  _actionRef:
+  - {fileID: 639577811012261809, guid: 1dc3547fc040ca944893b97ee388a4da, type: 3}
+  - {fileID: -1191100749091732378, guid: 1dc3547fc040ca944893b97ee388a4da, type: 3}
+  _nameButtonGamepad:
+  - LB
+  - RB
+  _ImageGamepad:
+  - {fileID: 21300000, guid: 8dba8cf602bc36c47abde9c9d2452a8c, type: 3}
+  - {fileID: 21300000, guid: 97fb2d4cc96d9784f9ec2fa7e1fb8411, type: 3}

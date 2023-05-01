@@ -18,6 +18,7 @@ public class S_PauseMenuV2 : MonoBehaviour
 
     [SerializeField] private GameObject _pauseInterface;
     [SerializeField] private GameObject _settingsInterface;
+    [SerializeField] private GameObject _helpsettings;
 
     [SerializeField] private S_BatteryManager _BatteryManager;
 
@@ -34,6 +35,7 @@ public class S_PauseMenuV2 : MonoBehaviour
     private bool _isSetting = false;
     private bool _ischoose;
     public bool _IsRestart = false;
+
     [SerializeField] private bool ControllerActive = true;
 
     [Header("Reset")]
@@ -63,17 +65,66 @@ public class S_PauseMenuV2 : MonoBehaviour
             }
         }
 
-        if (S_InputManager._playerInputAction.UI.Pause.triggered)
-        {
-            if (!S_InputManager._playerEnable)
-            {
-                _isSetting = false;
-                ResumeGame();    
-            }
 
+        if (S_InputManager._playerInput.currentControlScheme == "Gamepad")
+        {
+            _helpsettings.SetActive(true);
+
+            if (S_InputManager._playerInputAction.UI.Cancel.triggered)
+            {
+                if (!S_InputManager._playerEnable)
+                {
+                    if(_isSetting)
+                    {
+                        _isSetting = false;
+                        _settingsInterface.SetActive(false);
+                        _pauseInterface.SetActive(true);
+                        PauseGame();
+                    }
+                    else
+                    {
+                        _isSetting = false;
+                        ResumeGame();    
+                    }
+                }
+            }
+            if (S_InputManager._playerInputAction.UI.Pause.triggered)
+            {
+                if (!S_InputManager._playerEnable)
+                {
+                    {
+                        _isSetting = false;
+                        ResumeGame();
+                    }
+                }
+            }
+        }
+        if (S_InputManager._playerInput.currentControlScheme == "KeyboardAndMouse")
+        {
+            _helpsettings.SetActive(false);
+
+            if (S_InputManager._playerInputAction.UI.Cancel.triggered)
+            {
+                if (!S_InputManager._playerEnable)
+                {
+                    if (_isSetting)
+                    {
+                        _isSetting = false;
+                        _settingsInterface.SetActive(false);
+                        _pauseInterface.SetActive(true);
+                        PauseGame();
+                    }
+                    else
+                    {
+                        _isSetting = false;
+                        ResumeGame();
+                    }
+                }
+            }
         }
 
-        if (S_InputManager._playerInput.currentControlScheme == "Gamepad" && ControllerActive && _isPaused && !_isSetting)
+
+            if (S_InputManager._playerInput.currentControlScheme == "Gamepad" && ControllerActive && _isPaused && !_isSetting)
         {
             if (EventSystem.current.currentSelectedGameObject == null)
                 LastSelectButton = FirstSelectButtonPause;
@@ -193,7 +244,6 @@ public class S_PauseMenuV2 : MonoBehaviour
 
     public void Setting()
     {
-
         _isSetting = true;
 
         if (S_InputManager._playerInput.currentControlScheme == "Gamepad")

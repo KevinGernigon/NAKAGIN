@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d68ff524ac9df04ba746aab87a7db99, type: 3}
+  m_Name: SO_Jetpack
+  m_EditorClassIdentifier: 
+  _prefixTextAffiche: Press |
+  _radicalTextAffiche: +
+  _suffixTextAffiche: '| to use Jetpack'
+  _nbrAction: 2
+  _actionRef:
+  - {fileID: 6352287577829428506, guid: 1dc3547fc040ca944893b97ee388a4da, type: 3}
+  - {fileID: -886553970962707723, guid: 1dc3547fc040ca944893b97ee388a4da, type: 3}
+  _nameButtonGamepad:
+  - Space
+  - LT
+  _ImageGamepad:
+  - {fileID: 21300000, guid: 5608b2f5d63843c45a612dc89f697574, type: 3}
+  - {fileID: 21300000, guid: 0c1430358050fee4b8698217d4212458, type: 3}
