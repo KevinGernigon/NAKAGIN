@@ -188,6 +188,7 @@ public class S_PlayerMovement : MonoBehaviour
         SpeedControl();
         StateHandler();
 
+        if (GetComponent<Rigidbody>().velocity == Vector3.zero) _arms_AC.SetBool("stoppedMoving", true);
 
         //handle drag
         //if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && state == MovementState.walking && !Input.GetButton("Jump") && !GrapplingScript._isDecreaseRbDrag)
@@ -197,7 +198,7 @@ public class S_PlayerMovement : MonoBehaviour
             _isDecelerating = true;
             AccelerationScript.VarianceVitesse();
             PlayerSoundScript.EndSoundWalk();
-            _arms_AC.SetBool("stoppedMoving", true);
+            //_arms_AC.SetBool("stoppedMoving", true);
             rb.drag = _groundDrag + 10;
             _isMoving = false;
         }
@@ -210,7 +211,7 @@ public class S_PlayerMovement : MonoBehaviour
             AccelerationScript.VarianceVitesse();
             PlayerSoundScript.WalkSound();
             _arms_AC.SetBool("startMoving", true);
-            if (!_arms_AC.IsInTransition(0) && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Arms_Running")
+            if (!_arms_AC.IsInTransition(0) && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Arms_Running" && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Arms_Jetpack")
             {   
                 _arms_AC.Play("A_Arms_Running");
             }
@@ -249,6 +250,7 @@ public class S_PlayerMovement : MonoBehaviour
     {
         MovingPlayer();
 
+        if (state == MovementState.air) _arms_AC.SetBool("isInAir", true);
 
         if (state == MovementState.air || _isHigherThan)
         {
