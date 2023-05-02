@@ -26,7 +26,7 @@ RenderSettings:
   m_AmbientIntensity: 1
   m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
-  m_SkyboxMaterial: {fileID: 10304, guid: 0000000000000000f000000000000000, type: 0}
+  m_SkyboxMaterial: {fileID: 2100000, guid: b04a67310d401f4429f41695a374d84e, type: 2}
   m_HaloStrength: 0.5
   m_FlareStrength: 1
   m_FlareFadeSpeed: 3
@@ -98,7 +98,7 @@ LightmapSettings:
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
   m_LightingDataAsset: {fileID: 112000000, guid: 618a3934bdbc179479e272b2d2e7205b, type: 2}
-  m_LightingSettings: {fileID: 0}
+  m_LightingSettings: {fileID: 4890085278179872738, guid: 374d548e19b794a48927f70d06a5f1fa, type: 2}
 --- !u!196 &4
 NavMeshSettings:
   serializedVersion: 2
@@ -1100,67 +1100,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1001 &99485824
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: 69b771a7be1c5f9459bbac356478199b, type: 3}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 69b771a7be1c5f9459bbac356478199b, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -41.16
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 69b771a7be1c5f9459bbac356478199b, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 16.37
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 69b771a7be1c5f9459bbac356478199b, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 8.87
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 69b771a7be1c5f9459bbac356478199b, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: -0.3207321
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 69b771a7be1c5f9459bbac356478199b, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: -0.24243946
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 69b771a7be1c5f9459bbac356478199b, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0.7304217
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 69b771a7be1c5f9459bbac356478199b, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: -0.55212146
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 69b771a7be1c5f9459bbac356478199b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 74.171
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 69b771a7be1c5f9459bbac356478199b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 227.413
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: 69b771a7be1c5f9459bbac356478199b, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -7511558181221131132, guid: 69b771a7be1c5f9459bbac356478199b, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: c38e55e009bc6d54d880d7955a9b1894, type: 2}
-    - target: {fileID: 919132149155446097, guid: 69b771a7be1c5f9459bbac356478199b, type: 3}
-      propertyPath: m_Name
-      value: OBJ_Salle_IA_07
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 69b771a7be1c5f9459bbac356478199b, type: 3}
 --- !u!1 &111024762
 GameObject:
   m_ObjectHideFlags: 0
