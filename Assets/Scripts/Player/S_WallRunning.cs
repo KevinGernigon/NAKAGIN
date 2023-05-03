@@ -293,11 +293,13 @@ public class S_WallRunning : MonoBehaviour
             else if (_isWallRight && _arms_AC.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1) _arms_AC.Play("A_Right_Arm_Wall_Grab");
         }
         else*/
-        if(_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Left_Arm_Wall_Grab" && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Left_Arm_Wall_Run" && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Right_Arm_Wall_Grab" && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Right_Arm_Wall_Run")
+        /*if(_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Left_Arm_Wall_Grab" && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Left_Arm_Wall_Run" && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Right_Arm_Wall_Grab" && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Right_Arm_Wall_Run")
         {
             if (_isWallLeft) _arms_AC.Play("A_Left_Arm_Wall_Grab");
             else if (_isWallRight) _arms_AC.Play("A_Right_Arm_Wall_Grab");
-        }
+        }*/
+        if (_isWallLeft) _arms_AC.SetBool("leftWall", true);
+        else if (_isWallRight) _arms_AC.SetBool("rightWall", true);
 
 
         //upwards/downwards force
@@ -328,6 +330,8 @@ public class S_WallRunning : MonoBehaviour
 
     private void StopWallRun()
     {
+        _arms_AC.SetBool("rightWall", false);
+        _arms_AC.SetBool("leftWall", false);
         PlayerSoundScript.EndWallRunSound();
         pm._isWallRunning = false;
         ClimbScript._maxWallLookAngle = 30f;

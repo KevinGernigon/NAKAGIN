@@ -176,7 +176,7 @@ public class S_Dash : MonoBehaviour
         else _dashCdTimer = _dashCd;
 
         PlayerSoundScript.DashSound();
-        _arms_AC.Play("A_Arms_Wall_Destruction_01");
+        _arms_AC.SetBool("dashing", true);
         _limitDash--;
         _pm._isDashing = true;
         //_pm._readyToJump = false;
