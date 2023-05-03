@@ -14,4 +14,5 @@ public class SO_TutoAffichage : ScriptableObject
     public InputActionReference[] _actionRef;
     public string[] _nameButtonGamepad;
     public Sprite[] _ImageGamepad;
+    public Sprite[] _ImageKeyboard;
 };

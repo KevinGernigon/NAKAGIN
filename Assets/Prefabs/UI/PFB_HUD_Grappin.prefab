@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2833650670599812980}
   - component: {fileID: 2833650670599812981}
   - component: {fileID: -8810575046293140609}
+  - component: {fileID: 3539049340003845758}
   m_Layer: 0
   m_Name: PFB_HUD_Grappin
   m_TagString: Untagged
@@ -91,4 +92,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offset: {x: 0, y: 0, z: 0}
   ScriptOnCamera: {fileID: 2446309363874294653, guid: 255a5047a94e7eb44b96fd501c4256d4, type: 3}
+  LeDaron: {fileID: 0}
   ObjectToFollow: {fileID: 0}
+  _anim: {fileID: 3539049340003845758}
+--- !u!95 &3539049340003845758
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2833650670599812983}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0a300ad48b0de3f40a72ac1fe3a574eb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

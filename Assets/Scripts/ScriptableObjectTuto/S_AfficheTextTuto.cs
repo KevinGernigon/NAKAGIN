@@ -71,10 +71,16 @@ public class S_AfficheTextTuto : MonoBehaviour
                 else
                 {
                     _text1Action.text = SO_TutoAffichage._prefixTextAffiche + " " + InputControlPath.ToHumanReadableString(SO_TutoAffichage._actionRef[0].action.bindings[SO_TutoAffichage._actionRef[0].action.GetBindingIndexForControl(SO_TutoAffichage._actionRef[0].action.controls[0])].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + " " + SO_TutoAffichage._suffixTextAffiche;
-
+                    /*
                     _textPrefixe_InfoTuto1Action.text = "";
                     _imageGamepadGO1Action.SetActive(false);
-                    _textSuffixe_InfoTuto1Action.text = "";
+                    _textSuffixe_InfoTuto1Action.text = "";*/
+
+                    _textPrefixe_InfoTuto1Action.text = SO_TutoAffichage._prefixTextAffiche;
+                    _imageGamepad1Action.sprite = SO_TutoAffichage._ImageKeyboard[0];
+                    _imageGamepadGO1Action.SetActive(true);
+                    _textSuffixe_InfoTuto1Action.text = SO_TutoAffichage._suffixTextAffiche;
+
                 }
                 if (SO_TutoAffichage._actionRef[0].action.triggered)
                 {

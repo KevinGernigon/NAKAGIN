@@ -28,7 +28,7 @@ public class S_GrappinV2 : MonoBehaviour
     [SerializeField] private LayerMask _whatIsGround;
 
     [Header("Grappling Hook Ref")]
-    [SerializeField] private float _maxGrappleDistance;
+     public float _maxGrappleDistance;
     [SerializeField] private float _grappleDelayTime;
     [SerializeField] private float _overshootYAxis;
 

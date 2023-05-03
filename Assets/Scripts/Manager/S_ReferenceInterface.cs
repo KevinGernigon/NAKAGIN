@@ -39,6 +39,8 @@ public class S_ReferenceInterface : Manager
     public GameObject _UICanvas;
     public GameObject _UIStartHUD;
     public GameObject HUD_Death;
+    public GameObject HUDGrappin;
+
 
     [Header("Refs UI InfoTuto")]
     public GameObject infoTuto;
@@ -66,6 +68,7 @@ public class S_ReferenceInterface : Manager
     [Header("Refs Battery")]
     public GameObject EventSystem;
     public S_BatteryManager _BatteryManager;
+    public TMP_Text Nb_Generators;
 
     [Header("Refs InputManager")]
     public S_InputManager _InputManager;

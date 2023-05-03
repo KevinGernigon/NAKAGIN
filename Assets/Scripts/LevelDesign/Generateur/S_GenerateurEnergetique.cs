@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.InputSystem;
 using TMPro;
 
@@ -14,9 +15,10 @@ public class S_GenerateurEnergetique : MonoBehaviour
     private S_PlayerSound PlayerSoundScript;
 
     [Header("Charge Energetique")]
-    [SerializeField] private float DefaultCharge = 0f;
-    [SerializeField] private float ChargeEnergetique = 0f;
+    [SerializeField] private int DefaultCharge = 0;
+    [SerializeField] private int ChargeEnergetique = 0;
     [SerializeField] private bool _OnTrigger = false;
+    private TMP_Text _nb_Generators;
     [Header("Mesh Renderer")]
     [SerializeField] private MeshRenderer _generateurRendererDeploie;
     [SerializeField] private MeshRenderer _generateurRendererpart1;
@@ -48,7 +50,7 @@ public class S_GenerateurEnergetique : MonoBehaviour
         PlayerSoundScript = Player.GetComponent<S_PlayerSound>();
         _HUD_InteractGenerateurEnable = _referenceInterface.HUD_InteractGenerateurEnable;
         //_HUD_InteractGenerateurDisable = _referenceInterface.HUD_InteractGenerateurDisable;
-
+        _nb_Generators = _referenceInterface.Nb_Generators;
         //_TextInteraction = _HUD_InteractGenerateurEnable.GetComponentInChildren<TMP_Text>();
     }
 
@@ -56,6 +58,8 @@ public class S_GenerateurEnergetique : MonoBehaviour
     private void Start()
     {
         ChargeEnergetique = DefaultCharge;
+
+        _nb_Generators.text = ""+ ChargeEnergetique;
 
         _generateurRendererpart1.material = _emissiveDisableMat;
         _generateurRendererpart2.material = _emissiveDisableMat;
@@ -148,8 +152,9 @@ public class S_GenerateurEnergetique : MonoBehaviour
     
     public void ChargeUp()
     {
-        ChargeEnergetique += 1f;
-        
+        ChargeEnergetique += 1;
+        _nb_Generators.text = ""+ChargeEnergetique;
+
         _generateurRendererDeploie.material = _emissiveDefaultMat;
        
         if (ChargeEnergetique == 1)

@@ -10,6 +10,10 @@ public class S_CameraIA : MonoBehaviour
     [SerializeField] private Transform _eyes1;
     [SerializeField] private Transform _eyes2;
     [SerializeField] private Transform _eyes3;
+
+    [SerializeField] private Material _Texturedefault;
+    [SerializeField] private Material _TextureDetecte;
+
     private Transform _setpositionoeil1;
     private Transform _setpositionoeil2;
     private Transform _setpositionoeil3;
@@ -44,6 +48,12 @@ public class S_CameraIA : MonoBehaviour
 
         if (_cameraIAisTarget)
         {
+
+            gameObject.GetComponent<Renderer>().material = _TextureDetecte;
+            _eyes1.GetComponent<Renderer>().material = _TextureDetecte;
+            _eyes2.GetComponent<Renderer>().material = _TextureDetecte;
+            _eyes3.GetComponent<Renderer>().material = _TextureDetecte;
+
             _animCam.enabled = false;
             _eyes1.LookAt(target);
             _eyes2.LookAt(target);
@@ -55,9 +65,15 @@ public class S_CameraIA : MonoBehaviour
 
         if (!_cameraIAisTarget && _reset)
         {
-           /* _eyes1.rotation = Quaternion.Lerp(_eyes1.rotation, _setpositionoeil1.rotation, timecount * 0.01f);
-            _eyes2.rotation = Quaternion.Lerp(_eyes2.rotation, _setpositionoeil2.rotation, timecount * 0.01f);
-            _eyes3.rotation = Quaternion.Lerp(_eyes2.rotation, _setpositionoeil3.rotation, timecount * 0.01f);*/
+            /* _eyes1.rotation = Quaternion.Lerp(_eyes1.rotation, _setpositionoeil1.rotation, timecount * 0.01f);
+             _eyes2.rotation = Quaternion.Lerp(_eyes2.rotation, _setpositionoeil2.rotation, timecount * 0.01f);
+             _eyes3.rotation = Quaternion.Lerp(_eyes2.rotation, _setpositionoeil3.rotation, timecount * 0.01f);*/
+
+
+            gameObject.GetComponent<Renderer>().material = _Texturedefault;;
+            _eyes1.GetComponent<Renderer>().material = _Texturedefault;
+            _eyes2.GetComponent<Renderer>().material = _Texturedefault;
+            _eyes3.GetComponent<Renderer>().material = _Texturedefault;
 
             _eyes1 = _setpositionoeil1;
             _eyes2 = _setpositionoeil2;
@@ -95,7 +111,8 @@ public class S_CameraIA : MonoBehaviour
     }
     private void RandomDelayBetweenAnim()
     {
-        _delayBtwAnim = Random.Range(5f, 10.0f);
+        //_delayBtwAnim = Random.Range(5f, 10.0f);
+        _delayBtwAnim = 0.2f;
     }
 
 

@@ -11,6 +11,9 @@ public class S_ObjectOnCamera : MonoBehaviour
     [SerializeField] private Collider _triggerUI;
     [SerializeField] private Collider _collider;
     [SerializeField] private GameObject _HUDGrappin;
+    [SerializeField] private S_ObjectOnCamera _Self;
+
+    private S_GrappinV2 _s_GrappinV2;
 
     private GameObject _eventSystem;
     private S_PauseMenuV2 S_PauseMenuV2;
@@ -24,13 +27,16 @@ public class S_ObjectOnCamera : MonoBehaviour
     [SerializeField] public Transform lookat;
 
     Plane[] cameraFrustum;
-    private bool _seePlayer;
+    [SerializeField] private bool _seePlayer;
     private GameObject _UI;
     private Camera _mainCamera;
-    private bool _createdUI;
+    public bool _createdUI;
+    public bool _playAnimation;
     private float _timeoffset = 0;
     private bool _inRange;
+    private bool _onDestroy;
 
+    [SerializeField] private LayerMask Everything;
 
     private void Awake()
     {
@@ -39,8 +45,10 @@ public class S_ObjectOnCamera : MonoBehaviour
         _canvasUIGameObject = _referenceInterface._UICanvas;
 
         _canvasUI = _canvasUIGameObject.GetComponent<Canvas>();
-        _GrappinUI = _referenceInterface._UIStartHUD;
+        _GrappinUI = _referenceInterface.HUDGrappin;
         S_PauseMenuV2 = _referenceInterface.EventSystem.GetComponent<S_PauseMenuV2>();
+
+        _s_GrappinV2 = _referenceInterface._playerGameObject.GetComponent<S_GrappinV2>();
     }
 
 
@@ -56,7 +64,7 @@ public class S_ObjectOnCamera : MonoBehaviour
 
         var bounds = _collider.bounds;
         cameraFrustum = GeometryUtility.CalculateFrustumPlanes(_mainCamera);
-        if (GeometryUtility.TestPlanesAABB(cameraFrustum, bounds) && _inRange == true && !S_PauseMenuV2._isPaused && !S_PauseMenuV2._IsRestart)
+        if (GeometryUtility.TestPlanesAABB(cameraFrustum, bounds) && _inRange == true && !S_PauseMenuV2._isPaused && !S_PauseMenuV2._IsRestart && _seePlayer)
         {
             CreateUI();
             _UI.GetComponent<S_Follow_UI>().ObjectToFollow = lookat;
@@ -66,30 +74,50 @@ public class S_ObjectOnCamera : MonoBehaviour
         }
         else
         {
-            Destroy(_UI);
-            _createdUI = false;
+            StartCoroutine(PlayAnimationClose());            
         }
 
         if (S_PauseMenuV2._IsRestart)
+        {
             DestroyUIGrappin();
+        }
     }
+
+    IEnumerator PlayAnimationClose()
+    {
+        _onDestroy = true;
+        _playAnimation = false;
+        yield return new WaitForSeconds(0.25f);
+        _createdUI = false;
+        DestroyUIGrappin();
+    }
+
+
 
     void CreateUI()
     {
         if (_createdUI == false)
         {
             _UI = Instantiate(_HUDGrappin, _GrappinUI.transform);
+            _UI.GetComponent<S_Follow_UI>()._GOGrappin = _Self;
             _createdUI = true;
+            _playAnimation = true;
         }
     }
 
     void CheckWalls()
     {
-        var ray = new Ray(_playerContent.transform.position, _collider.transform.position);
+        //var ray = new Ray(_mainCamera.transform.position, gameObject.transform.position);
+        var ray = new Ray(gameObject.transform.position, (_mainCamera.transform.position - gameObject.transform.position));
+
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit))
+        if (Physics.Raycast(ray, out hit,_s_GrappinV2._maxGrappleDistance, Everything))
         {
-            if (hit.collider != _collider)
+            Debug.Log(hit.collider);
+
+            int _whatIsPlayer = LayerMask.NameToLayer("WhatIsPlayer");
+            
+            if (hit.collider.gameObject.layer != _whatIsPlayer)
             {
                 _seePlayer = false;
             }
@@ -130,8 +158,9 @@ public class S_ObjectOnCamera : MonoBehaviour
     }
     public void DestroyUIGrappin()
     {
-        Destroy(_UI);
         _createdUI = false;
+        _playAnimation = false;
+        Destroy(_UI);
     }
 
 }

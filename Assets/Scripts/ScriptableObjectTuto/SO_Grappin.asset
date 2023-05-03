@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _prefixTextAffiche: Press |
   _radicalTextAffiche: 
-  _suffixTextAffiche: '| to use hook on icon '
+  _suffixTextAffiche: 'to use hook on icon '
   _nbrAction: 1
   _actionRef:
   - {fileID: 7906925047919739667, guid: 1dc3547fc040ca944893b97ee388a4da, type: 3}
@@ -22,3 +22,5 @@ MonoBehaviour:
   - RT
   _ImageGamepad:
   - {fileID: 21300000, guid: 14585165aeae5544289fff014c0e872a, type: 3}
+  _ImageKeyboard:
+  - {fileID: 21300000, guid: dcd86610b9c64bc41ab92a5246425bb7, type: 3}
