@@ -113,7 +113,7 @@ public class S_ObjectOnCamera : MonoBehaviour
         RaycastHit hit;
         if (Physics.Raycast(ray, out hit,_s_GrappinV2._maxGrappleDistance, Everything))
         {
-            Debug.Log(hit.collider);
+            //Debug.Log(hit.collider);
 
             int _whatIsPlayer = LayerMask.NameToLayer("WhatIsPlayer");
             

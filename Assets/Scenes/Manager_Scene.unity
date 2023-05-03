@@ -24652,20 +24652,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   S_InputManager: {fileID: 5753515745760673438}
-  _HUD_InteractionGenerateurEnableKeyboard: {fileID: 0}
-  _HUD_InteractionGenerateurEnableController: {fileID: 0}
   _HUDBackgroundTouchKeyboard: {fileID: 1525915805604528479}
   _HUDBackgroundTouchController: {fileID: 1125442751}
-  _HUDButtonJetpackKeyboard: {fileID: 0}
-  _HUDButtonJetpackController: {fileID: 0}
-  _HUDButtonDashKeyboard: {fileID: 0}
-  _HUDButtonDashController: {fileID: 0}
-  _HUDButtonGrappinKeyboard: {fileID: 0}
-  _HUDButtonGrappinController: {fileID: 0}
-  _HUDButtontournPlatformeGaucheKeyboard: {fileID: 0}
-  _HUDButtontournPlatformeGaucheContoller: {fileID: 0}
-  _HUDButtontournPlatformeDroiteKeyboard: {fileID: 0}
-  _HUDButtontournPlatformeDroiteController: {fileID: 0}
 --- !u!1 &1525915806002011074
 GameObject:
   m_ObjectHideFlags: 0
@@ -39499,20 +39487,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   S_InputManager: {fileID: 6554351822182483883}
-  _HUD_InteractionGenerateurEnableKeyboard: {fileID: 4854074002358645128}
-  _HUD_InteractionGenerateurEnableController: {fileID: 792971838}
   _HUDBackgroundTouchKeyboard: {fileID: 4854074001372135071}
   _HUDBackgroundTouchController: {fileID: 1557699622}
-  _HUDButtonJetpackKeyboard: {fileID: 733835827}
-  _HUDButtonJetpackController: {fileID: 139454752}
-  _HUDButtonDashKeyboard: {fileID: 1498366929}
-  _HUDButtonDashController: {fileID: 192058586}
-  _HUDButtonGrappinKeyboard: {fileID: 2082855260}
-  _HUDButtonGrappinController: {fileID: 331112419}
-  _HUDButtontournPlatformeGaucheKeyboard: {fileID: 1449599546}
-  _HUDButtontournPlatformeGaucheContoller: {fileID: 1362234499}
-  _HUDButtontournPlatformeDroiteKeyboard: {fileID: 169983593}
-  _HUDButtontournPlatformeDroiteController: {fileID: 936997484}
 --- !u!222 &8512180969686974325
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -41103,8 +41079,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1634caa98270f842944e56e71208175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToStart: Corentin_Scene
-  categoryToDisplay: 0
+  sceneToStart: Tom_Test_Scene
+  categoryToDisplay: 7
 --- !u!114 &9026664326187928078
 MonoBehaviour:
   m_ObjectHideFlags: 0
