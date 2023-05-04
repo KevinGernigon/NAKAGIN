@@ -12,9 +12,9 @@ public class S_JumpPadV2 : MonoBehaviour
     private S_PlayerSound PlayerSoundScript;
 
     private Transform _orientationPlayer = null;
-    private GameObject _playerContent = null;
+    private Rigidbody _playerContent = null;
 
-
+    [SerializeField] private float _globalPowerDivision = 25f;
 
 
 
@@ -22,31 +22,33 @@ public class S_JumpPadV2 : MonoBehaviour
     {
 
         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
-        _playerContent = _referenceInterface._playerGameObject;
+        _playerContent = _referenceInterface._playerRigidbody;
         _orientationPlayer = _referenceInterface._orientationTransform;
         _pm = _playerContent.GetComponent<S_PlayerMovement>();
         PlayerSoundScript = _playerContent.GetComponent<S_PlayerSound>();
     }
 
 
-    private void OnCollisionEnter(Collision collision)
+
+    private void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject == _playerContent)
-        {
+        if (other.tag == "Player")
+        {      
             PlayerSoundScript.JumppadSound();
-            GameObject _bouncer = collision.gameObject;
-            Rigidbody _rb = _bouncer.GetComponent<Rigidbody>();
+            //GameObject _bouncer = other.gameObject;
+            //Rigidbody _rb = _bouncer.GetComponent<Rigidbody>();
+            Rigidbody _rb = _playerContent;
 
             if (_pm._isSliding || _pm._isDashing)
             {
-                _rb.AddForce(Vector3.up * _BounceHight * 0.7f);
-                _rb.AddForce(_orientationPlayer.forward * _BounceFront * 0.7f);
+                _rb.AddForce(Vector3.up * _BounceHight * 0.7f / _globalPowerDivision, ForceMode.Impulse);
+                _rb.AddForce(_orientationPlayer.forward * _BounceFront * 0.7f / _globalPowerDivision, ForceMode.Impulse);
             }
             else
             {
-                _rb.AddForce(Vector3.up * _BounceHight);
-                _rb.AddForce(_orientationPlayer.forward * _BounceFront);
-            }
+                _rb.AddForce(Vector3.up * _BounceHight / _globalPowerDivision, ForceMode.Impulse);
+                _rb.AddForce(_orientationPlayer.forward * _BounceFront / _globalPowerDivision, ForceMode.Impulse);
+            }     
         }
     }
 }

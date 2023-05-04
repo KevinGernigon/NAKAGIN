@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2d68ff524ac9df04ba746aab87a7db99, type: 3}
   m_Name: SO_RotationPlateforme
   m_EditorClassIdentifier: 
-  _prefixTextAffiche: Press |
+  _prefixTextAffiche: 
   _radicalTextAffiche: or
-  _suffixTextAffiche: to turn platforms
+  _suffixTextAffiche: Rotate Platforms
   _nbrAction: 2
   _actionRef:
   - {fileID: 639577811012261809, guid: 1dc3547fc040ca944893b97ee388a4da, type: 3}
@@ -26,5 +26,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 8dba8cf602bc36c47abde9c9d2452a8c, type: 3}
   - {fileID: 21300000, guid: 97fb2d4cc96d9784f9ec2fa7e1fb8411, type: 3}
   _ImageKeyboard:
-  - {fileID: 21300000, guid: dcd86610b9c64bc41ab92a5246425bb7, type: 3}
-  - {fileID: 21300000, guid: dcd86610b9c64bc41ab92a5246425bb7, type: 3}
+  - {fileID: 21300000, guid: 56ce376ee3fb0d0429eff252e7b3b6bd, type: 3}
+  - {fileID: 21300000, guid: 398406b32a88e854cba520b41b4345e1, type: 3}
+  _ImageMode: 1

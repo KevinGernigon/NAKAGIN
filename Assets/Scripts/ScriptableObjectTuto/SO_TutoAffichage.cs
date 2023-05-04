@@ -15,4 +15,7 @@ public class SO_TutoAffichage : ScriptableObject
     public string[] _nameButtonGamepad;
     public Sprite[] _ImageGamepad;
     public Sprite[] _ImageKeyboard;
+
+    public bool _ImageMode;
+
 };
