@@ -141,7 +141,7 @@ public class S_PauseMenuV2 : MonoBehaviour
     {
         if (!_ischoose)
         {
-              Debug.Log("ResumeGame");
+            
             PlayerSound.UnPauseSound();
             StartCoroutine(waitcastchoose());
 
@@ -169,7 +169,7 @@ public class S_PauseMenuV2 : MonoBehaviour
     {
         if (!_ischoose)
         {
-            Debug.Log("RestartLevel");
+           
 
             ResumeGame();
             Restart();
@@ -180,7 +180,7 @@ public class S_PauseMenuV2 : MonoBehaviour
             Scene _scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene("Manager_Scene");
             SceneManager.LoadScene(_scene.name);
-            if(_scene.name == "Tom_Scene")
+            if(_scene.name == "Tom_Test_Scene")
                 SceneManager.LoadScene("Asset_Scene", LoadSceneMode.Additive);
 
            
