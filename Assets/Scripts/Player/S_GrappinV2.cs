@@ -124,7 +124,7 @@ public class S_GrappinV2 : MonoBehaviour
         }*/
         _isJetpackAvaible = false;
         PlayerSoundScript.RopeSound();
-        _arms_Ac.Play("A_Arms_Grab");
+        _arms_Ac.SetBool("grabbing", true);
         _isGrappling = true;
         _pm._isFreezing = true;
         RaycastHit hit;

@@ -332,6 +332,7 @@ public class S_WallRunning : MonoBehaviour
     {
         _arms_AC.SetBool("rightWall", false);
         _arms_AC.SetBool("leftWall", false);
+        _arms_AC.SetBool("stopWallRun", true);
         PlayerSoundScript.EndWallRunSound();
         pm._isWallRunning = false;
         ClimbScript._maxWallLookAngle = 30f;
@@ -351,8 +352,9 @@ public class S_WallRunning : MonoBehaviour
     private void WallJump()
     {
         PlayerSoundScript.JumpSound();
-        if (_isWallLeft) _arms_AC.Play("A_Left_Arm_Wall_Jump");
-        else if (_isWallRight) _arms_AC.Play("A_Right_Arm_Wall_Jump");
+        /*if (_isWallLeft) _arms_AC.Play("A_Left_Arm_Wall_Jump");
+        else _arms_AC.Play("A_Right_Arm_Wall_Jump");*/
+        _arms_AC.SetBool("hasWallJumped", true);
         _isJumpForgivenessActive = false;
         canWallJumpLedge = false;
         bool firstJump = true;

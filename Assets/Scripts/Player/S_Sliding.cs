@@ -154,8 +154,8 @@ public class S_Sliding : MonoBehaviour
     {
         PlayerSoundScript.EndSoundSlide();
 
-        if (ScriptPlayerCam._RandomCount == 1) _anim_bras.GetComponent<Animator>().Play("A_Left_Arm_Slide_Up");
-        else if (ScriptPlayerCam._RandomCount == 2) _anim_bras.GetComponent<Animator>().Play("A_Right_Slide_Up");
+        /*if (ScriptPlayerCam._RandomCount == 1) _anim_bras.GetComponent<Animator>().Play("A_Left_Arm_Slide_Up");
+        else if (ScriptPlayerCam._RandomCount == 2) _anim_bras.GetComponent<Animator>().Play("A_Right_Slide_Up");*/
         _pm._isSliding = false;
         _slidingCdTimer = _slidingCdMax;
         _playerObj.localScale = new Vector3(_playerObj.localScale.x, _startYScale, _playerObj.localScale.z);
