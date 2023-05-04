@@ -127,10 +127,10 @@ MeshCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7198430330356165891}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -1524291413884963827, guid: 556461faeaa45884c96a10606419f376, type: 3}
 --- !u!114 &28488987585104409
@@ -147,20 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _BounceHight: 4500
   _BounceFront: 2500
---- !u!136 &3860771185172171253
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7198430330356165891}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 7.14
-  m_Height: 2.63
-  m_Direction: 1
-  m_Center: {x: 0.000009536743, y: 0.4706831, z: 0.0000059288864}
+  _globalPowerDivision: 31
 --- !u!1 &8320914171217557822 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4117768985574711843, guid: 556461faeaa45884c96a10606419f376, type: 3}

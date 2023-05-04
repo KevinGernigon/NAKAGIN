@@ -36,7 +36,7 @@ public class S_SlomotionTuto : MonoBehaviour
             _timerCd = 0;
             _istrigger = false;
 
-            _isPlay = true;
+            //_isPlay = true;
         }
     }
     private void FixedUpdate()
