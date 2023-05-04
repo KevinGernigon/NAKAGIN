@@ -87,40 +87,37 @@ public class S_AffichageInfoTuto : MonoBehaviour
                 _textzone1act.SetActive(true);
                 _textzone2act.SetActive(false);
 
-                if (_referenceInterface._InputManager._playerInput.currentControlScheme == "Gamepad")
-                {
-                    //_textPrefixe_InfoTuto1Action.text = SO_TutoAffichage._prefixTextAffiche;
-                    _imageGamepad1Action.sprite = SO_TutoAffichage._ImageGamepad[0];
-                    _imageGamepadGO1Action.SetActive(true);
-                    _textSuffixe_InfoTuto1Action.text = SO_TutoAffichage._suffixTextAffiche;
+                    if (_referenceInterface._InputManager._playerInput.currentControlScheme == "Gamepad")
+                    {
+                        //_textPrefixe_InfoTuto1Action.text = SO_TutoAffichage._prefixTextAffiche;
+                        _imageGamepad1Action.sprite = SO_TutoAffichage._ImageGamepad[0];
+                        _imageGamepadGO1Action.SetActive(true);
+                        _textSuffixe_InfoTuto1Action.text = SO_TutoAffichage._suffixTextAffiche;
 
-                    _text1Action.text = "";
-                }
-                else
-                {
-                    //_text1Action.text = SO_TutoAffichage._prefixTextAffiche + " " + InputControlPath.ToHumanReadableString(SO_TutoAffichage._actionRef[0].action.bindings[SO_TutoAffichage._actionRef[0].action.GetBindingIndexForControl(SO_TutoAffichage._actionRef[0].action.controls[0])].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + " " + SO_TutoAffichage._suffixTextAffiche;
-                    _text1Action.text = InputControlPath.ToHumanReadableString(SO_TutoAffichage._actionRef[0].action.bindings[SO_TutoAffichage._actionRef[0].action.GetBindingIndexForControl(SO_TutoAffichage._actionRef[0].action.controls[0])].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice);
+                        _text1Action.text = "";
+                    }
+                    else
+                    {
+                        if (SO_TutoAffichage._ImageMode)
+                        {
 
-                    //_textPrefixe_InfoTuto1Action.text = SO_TutoAffichage._prefixTextAffiche;
-                    _imageGamepad1Action.sprite = SO_TutoAffichage._ImageKeyboard[0];
-                    _imageGamepadGO1Action.SetActive(true);
-                    _textSuffixe_InfoTuto1Action.text = SO_TutoAffichage._suffixTextAffiche;
+                            //_text1Action.text = SO_TutoAffichage._prefixTextAffiche + " " + InputControlPath.ToHumanReadableString(SO_TutoAffichage._actionRef[0].action.bindings[SO_TutoAffichage._actionRef[0].action.GetBindingIndexForControl(SO_TutoAffichage._actionRef[0].action.controls[0])].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + " " + SO_TutoAffichage._suffixTextAffiche;
+                            //_textPrefixe_InfoTuto1Action.text = SO_TutoAffichage._prefixTextAffiche;
+                        
+                            _imageGamepadGO1Action.SetActive(true);
+                            _imageGamepad1Action.sprite = SO_TutoAffichage._ImageKeyboard[0];
+                            _textSuffixe_InfoTuto1Action.text = SO_TutoAffichage._suffixTextAffiche;
+                            _text1Action.text = "";
 
-                   // _text1Action.text = "";
-                
+                    }
+                        else
+                        {
+                            _imageGamepadGO1Action.SetActive(false);
+                            _text1Action.text = InputControlPath.ToHumanReadableString(SO_TutoAffichage._actionRef[0].action.bindings[SO_TutoAffichage._actionRef[0].action.GetBindingIndexForControl(SO_TutoAffichage._actionRef[0].action.controls[0])].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice);
+                            _textSuffixe_InfoTuto1Action.text = SO_TutoAffichage._suffixTextAffiche;
 
-
-                /*_textPrefixe_InfoTuto1Action.text = "";
-                _imageGamepadGO1Action.SetActive(false);
-                _textSuffixe_InfoTuto1Action.text = "";*/
-            }
-                /*
-                if (SO_TutoAffichage._actionRef[0].action.triggered)
-                {
-
-                    _textzone1act.SetActive(false);
-                    _ontrigger = false;
-                }*/
+                        }
+                    }
             }
 
             if (SO_TutoAffichage._nbrAction >= 2)
@@ -138,33 +135,29 @@ public class S_AffichageInfoTuto : MonoBehaviour
                     _image2Gamepad2Action.sprite = SO_TutoAffichage._ImageGamepad[1];
                     _textSuffixe_InfoTuto2Action.text = SO_TutoAffichage._suffixTextAffiche;
 
-                    _text2Action.text = "";
+                    //_text2Action.text = "";
                 }
                 else
                 {
-                    //_text2Action.text = SO_TutoAffichage._prefixTextAffiche + " " + InputControlPath.ToHumanReadableString(SO_TutoAffichage._actionRef[0].action.bindings[SO_TutoAffichage._actionRef[0].action.GetBindingIndexForControl(SO_TutoAffichage._actionRef[0].action.controls[0])].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + " " + SO_TutoAffichage._radicalTextAffiche + " " + InputControlPath.ToHumanReadableString(SO_TutoAffichage._actionRef[1].action.bindings[SO_TutoAffichage._actionRef[1].action.GetBindingIndexForControl(SO_TutoAffichage._actionRef[1].action.controls[0])].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + " " + SO_TutoAffichage._suffixTextAffiche;
-                    
-                    //_textPrefixe_InfoTuto2Action.text = SO_TutoAffichage._prefixTextAffiche;
-                    _images2Action.SetActive(true);
-                    _image1Gamepad2Action.sprite = SO_TutoAffichage._ImageKeyboard[0];
-                    _textRadical_InfoTuto2Action.text = SO_TutoAffichage._radicalTextAffiche;
-                    _image2Gamepad2Action.sprite = SO_TutoAffichage._ImageKeyboard[1];
-                    _textSuffixe_InfoTuto2Action.text = SO_TutoAffichage._suffixTextAffiche;
+                    if (SO_TutoAffichage._ImageMode)
+                    {
 
-                    _text2Action.text = "";
 
-                    /*_textPrefixe_InfoTuto2Action.text = "";
-                    _images2Action.SetActive(false);
-                    _textSuffixe_InfoTuto2Action.text = "";*/
+                        //_textPrefixe_InfoTuto2Action.text = SO_TutoAffichage._prefixTextAffiche;
+                        _images2Action.SetActive(true);
+                        _image1Gamepad2Action.sprite = SO_TutoAffichage._ImageKeyboard[0];
+                        _textRadical_InfoTuto2Action.text = SO_TutoAffichage._radicalTextAffiche;
+                        _image2Gamepad2Action.sprite = SO_TutoAffichage._ImageKeyboard[1];
+                        _textSuffixe_InfoTuto2Action.text = SO_TutoAffichage._suffixTextAffiche;
+
+                        _text2Action.text = "";
+                    }
+                    else
+                    {
+                        _text2Action.text = SO_TutoAffichage._prefixTextAffiche + " " + InputControlPath.ToHumanReadableString(SO_TutoAffichage._actionRef[0].action.bindings[SO_TutoAffichage._actionRef[0].action.GetBindingIndexForControl(SO_TutoAffichage._actionRef[0].action.controls[0])].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + " " + SO_TutoAffichage._radicalTextAffiche + " " + InputControlPath.ToHumanReadableString(SO_TutoAffichage._actionRef[1].action.bindings[SO_TutoAffichage._actionRef[1].action.GetBindingIndexForControl(SO_TutoAffichage._actionRef[1].action.controls[0])].effectivePath, InputControlPath.HumanReadableStringOptions.OmitDevice) + " " + SO_TutoAffichage._suffixTextAffiche;
+                        _images2Action.SetActive(false);
+                    }
                 }
-                /*
-                if (SO_TutoAffichage._actionRef[0].action.triggered)
-                {
-                    _textzone2act.SetActive(false);
-                    _ontrigger = false;
-                    
-                }*/
-
             }
         }
     }
