@@ -9,6 +9,8 @@ public class S_ConsoleFinRun : MonoBehaviour
 {
     private S_ReferenceInterface _referenceInterface;
     private GameObject Player;
+    [SerializeField] private GameObject _energetiqueDoor;
+    private bool _activeEnergetiqueDoor;
 
     [Header("Audio")]
     private S_PlayerSound PlayerSoundScript;
@@ -74,6 +76,14 @@ public class S_ConsoleFinRun : MonoBehaviour
             _screenInfo.material = _actvMatInfo;
         }
 
+        if(_activeEnergetiqueDoor)
+        {
+            _energetiqueDoor.SetActive(true);
+        }
+        else
+        {
+            _energetiqueDoor.SetActive(false);
+        }
     }
 
     private void Update()
@@ -146,10 +156,15 @@ public class S_ConsoleFinRun : MonoBehaviour
             }
 
             _HUD_Interaction.SetActive(false);
+
             if (_isOnSphereTrigger)
                 _AnimInfoTuto.SetBool("IsOpen", false);                //_AnimInfoTuto.Play("A_TooltipClose");
 
             _screenInfo.material = _actvMatInfo;
+
+            _activeEnergetiqueDoor = true;
+            _energetiqueDoor.SetActive(true);
+
         }
     }
 
@@ -173,5 +188,6 @@ public class S_ConsoleFinRun : MonoBehaviour
             _isOnSphereTrigger = false;
     }
    
+    
 
 }

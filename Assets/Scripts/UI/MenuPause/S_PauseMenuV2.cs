@@ -265,9 +265,11 @@ public class S_PauseMenuV2 : MonoBehaviour
     {
         if (!_ischoose)
         {
+            ResumeGame();
             StartCoroutine(waitcastchoose());
             Time.timeScale = 1f;
-            SceneManager.LoadScene("MainMenu_Scene");
+            //SceneManager.LoadScene("MainMenu_Scene");
+
         }
     }
 

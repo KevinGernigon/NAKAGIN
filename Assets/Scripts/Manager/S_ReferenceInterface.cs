@@ -38,6 +38,12 @@ public class S_ReferenceInterface : Manager
 
     public GameObject _UICanvas;
     public GameObject _UIStartHUD;
+    public GameObject _UIPauseHUD;
+    public GameObject _UIFinDemoHUD;
+    public GameObject _UISettingsInterface;
+    public GameObject _UIVideoSettings;
+    public GameObject _UIVideoButton;
+
     public GameObject HUD_Death;
     public GameObject HUDGrappin;
 
@@ -75,6 +81,7 @@ public class S_ReferenceInterface : Manager
 
     [Header("Refs Gestionnaire Scene")]
     public S_GestionnaireScene _GestionnaireScene;
+    public S_FinDemo _FinDemo;
 
     [Header("Audio")]
     public S_PlayerSound PlayerSoundScript;

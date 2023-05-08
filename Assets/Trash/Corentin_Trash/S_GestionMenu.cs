@@ -7,6 +7,7 @@ public class S_GestionMenu : MonoBehaviour
     private S_ReferenceInterface _referenceInterface;
     private S_InputManager _InputManager;
     private GameObject _disableManager;
+    private GameObject _UI;
 
         
     private void Awake()
@@ -14,7 +15,7 @@ public class S_GestionMenu : MonoBehaviour
         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
         _InputManager = _referenceInterface._InputManager;
         _disableManager = _referenceInterface.DisableManager;
-
+        _UI = _referenceInterface._UICanvas;
     }
 
 
@@ -33,5 +34,6 @@ public class S_GestionMenu : MonoBehaviour
     {
         _disableManager.SetActive(true);
         _InputManager.DesactivePause();
+        _UI.SetActive(true);
     }
 }
