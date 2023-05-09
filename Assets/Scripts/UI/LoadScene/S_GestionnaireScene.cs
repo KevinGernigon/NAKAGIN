@@ -9,6 +9,23 @@ public class S_GestionnaireScene : MonoBehaviour
 
     [SerializeField] private GameObject _loadingScreen;
     [SerializeField] private Image _loadingBarFill;
+    [SerializeField] private S_PauseMenuV2 S_PauseMenuV2;
+    public bool InMenu;
+
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            InMenu = true;
+            S_PauseMenuV2._ischoose = false;
+        }
+        else
+        {
+            InMenu = false;
+        }
+    }
+
+
 
     public void LoadNewScene(int sceneId)
     {

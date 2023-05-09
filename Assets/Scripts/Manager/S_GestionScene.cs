@@ -7,6 +7,7 @@ public class S_GestionScene : MonoBehaviour
 {
 
     private S_ReferenceInterface _referenceInterface;
+    private S_InputManager _InputManager;
 
     [Header("Reset Player")]
     private Transform _playerTransform;
@@ -32,6 +33,8 @@ public class S_GestionScene : MonoBehaviour
     private void Awake()
     {
         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
+        _InputManager = _referenceInterface._InputManager;
+
         _playerTransform = _referenceInterface._playerTransform;
         _playerRb = _referenceInterface._playerRigidbody;
 
@@ -46,6 +49,11 @@ public class S_GestionScene : MonoBehaviour
 
     private void Start()
     {
+        _InputManager.DesactivePause();
+  
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
+
         _playerTransform.position = _spawnPoint.position;
 
         _playerRb.velocity = new Vector3(0, 0, 0);

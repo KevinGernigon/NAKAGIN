@@ -8,6 +8,7 @@ public class S_GestionMenu : MonoBehaviour
     private S_InputManager _InputManager;
     private GameObject _disableManager;
     private GameObject _UI;
+    private GameObject _loadingScreen;
 
         
     private void Awake()
@@ -16,6 +17,7 @@ public class S_GestionMenu : MonoBehaviour
         _InputManager = _referenceInterface._InputManager;
         _disableManager = _referenceInterface.DisableManager;
         _UI = _referenceInterface._UICanvas;
+        _loadingScreen = _referenceInterface._LoadingScreen;
     }
 
 
@@ -24,16 +26,17 @@ public class S_GestionMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         Cursor.visible = true;
 
-
+        _loadingScreen.SetActive(false);
         _disableManager.SetActive(false);
-        _InputManager.ActivePause();
+        //_InputManager.ActivePause();
 
     }
 
     public void EndScene()
     {
         _disableManager.SetActive(true);
-        _InputManager.DesactivePause();
+       //_InputManager.DesactivePause();
         _UI.SetActive(true);
+
     }
 }

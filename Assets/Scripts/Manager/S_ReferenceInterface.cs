@@ -44,6 +44,7 @@ public class S_ReferenceInterface : Manager
     public GameObject _UIVideoSettings;
     public GameObject _UIVideoButton;
 
+    public GameObject _LoadingScreen;
     public GameObject HUD_Death;
     public GameObject HUDGrappin;
 

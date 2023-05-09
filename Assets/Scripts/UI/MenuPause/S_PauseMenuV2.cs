@@ -13,6 +13,7 @@ public class S_PauseMenuV2 : MonoBehaviour
     [SerializeField] private S_PlayerSound PlayerSound;
 
     [Header("Other")]
+    [SerializeField] private S_GestionnaireScene S_GestionnaireScene;
     [SerializeField] private GameObject _pauseMenuHUD;
     [SerializeField] private GameObject _startGameHUD;
 
@@ -21,7 +22,7 @@ public class S_PauseMenuV2 : MonoBehaviour
     [SerializeField] private GameObject _helpsettings;
 
     [SerializeField] private S_BatteryManager _BatteryManager;
-
+    
     [Header("HUD")]
 
     [SerializeField] private EventSystem _eventSystem;
@@ -33,8 +34,9 @@ public class S_PauseMenuV2 : MonoBehaviour
 
     public bool _isPaused = false;
     private bool _isSetting = false;
-    private bool _ischoose;
+    public bool _ischoose;
     public bool _IsRestart = false;
+    
 
     [SerializeField] private bool ControllerActive = true;
 
@@ -48,6 +50,7 @@ public class S_PauseMenuV2 : MonoBehaviour
 
     void Start()
     {
+        //_ischoose = false ;
         _pauseMenuHUD.SetActive(false);
         ResetPauseHUD();
     }
@@ -55,6 +58,10 @@ public class S_PauseMenuV2 : MonoBehaviour
 
     void Update()
     {
+        if (S_GestionnaireScene.InMenu)
+        {
+            _ischoose = false;
+        }
 
         if (S_InputManager._playerInputAction.Player.Pause.triggered)
         {
@@ -269,7 +276,6 @@ public class S_PauseMenuV2 : MonoBehaviour
             StartCoroutine(waitcastchoose());
             Time.timeScale = 1f;
             //SceneManager.LoadScene("MainMenu_Scene");
-
         }
     }
 
