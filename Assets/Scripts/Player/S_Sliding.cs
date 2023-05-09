@@ -111,6 +111,7 @@ public class S_Sliding : MonoBehaviour
         if (_pm._isGrounded == true)
         {
             PlayerSoundScript.SlideSound();
+            _anim_bras.GetComponent<Animator>().SetBool("isExitingSlope", false);
             if (ScriptPlayerCam._RandomCount == 1) _anim_bras.GetComponent<Animator>().Play("A_Left_Arm_Slide_Fall");
             else if (ScriptPlayerCam._RandomCount == 2) _anim_bras.GetComponent<Animator>().Play("A_Right_Arm_Slide_Fall");
             _pm._isSliding = true;

@@ -256,12 +256,12 @@ public class S_PlayerMovement : MonoBehaviour
     {
         MovingPlayer();
 
-        if (state == MovementState.air && !_arms_AC.GetBool("dashing")) _arms_AC.SetBool("isInAir", true);
-        else _arms_AC.SetBool("isInAir", false);
+        //if (state == MovementState.air && !_arms_AC.GetBool("dashing")) _arms_AC.SetBool("isInAir", true);
+        //else _arms_AC.SetBool("isInAir", false);
         if (state == MovementState.climbing) _arms_AC.SetBool("startMoving", false);
         if (state == MovementState.walking)
         {
-            _arms_AC.SetBool("isInAir", false);
+            //_arms_AC.SetBool("isInAir", false);
             _arms_AC.SetBool("startMoving", true);
         }
 
