@@ -37,7 +37,8 @@ public class S_GestionnaireScene : MonoBehaviour
     {
         _loadingScreen.SetActive(true);
         AsyncOperation operation1 = SceneManager.LoadSceneAsync(sceneId);
-        if (sceneId == 2)
+
+        if (sceneId == 3)
         {
             AsyncOperation operation2 = SceneManager.LoadSceneAsync("Asset_Scene", LoadSceneMode.Additive);
 
