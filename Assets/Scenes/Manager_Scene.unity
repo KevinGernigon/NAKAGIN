@@ -47245,6 +47245,7 @@ MonoBehaviour:
   _isFreezing: 0
   _isGrappleActive: 0
   _ResetDashSpeed: 0
+  canJumpLedge: 0
   _isButtonEnabled: 0
   _isSlopePositive: 0
   _isMoving: 0
@@ -49086,6 +49087,7 @@ MonoBehaviour:
   _isFreezing: 0
   _isGrappleActive: 0
   _ResetDashSpeed: 0
+  canJumpLedge: 0
   _isButtonEnabled: 0
   _isSlopePositive: 0
   _isMoving: 0
@@ -60372,8 +60374,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1634caa98270f842944e56e71208175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToStart: MainMenu
-  categoryToDisplay: 13
+  sceneToStart: Killian_Scene
+  categoryToDisplay: 6
 --- !u!114 &9026664326187928078
 MonoBehaviour:
   m_ObjectHideFlags: 0
