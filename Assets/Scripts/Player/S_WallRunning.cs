@@ -259,6 +259,9 @@ public class S_WallRunning : MonoBehaviour
     {
         pm._isWallRunning = true;
 
+        if (_isWallLeft) _arms_AC.SetBool("leftWall", true);
+        else if (_isWallRight) _arms_AC.SetBool("rightWall", true);
+
         _wallRunTimer = _maxWallRunTime;
 
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
@@ -298,8 +301,7 @@ public class S_WallRunning : MonoBehaviour
             if (_isWallLeft) _arms_AC.Play("A_Left_Arm_Wall_Grab");
             else if (_isWallRight) _arms_AC.Play("A_Right_Arm_Wall_Grab");
         }*/
-        if (_isWallLeft) _arms_AC.SetBool("leftWall", true);
-        else if (_isWallRight) _arms_AC.SetBool("rightWall", true);
+        
 
 
         //upwards/downwards force

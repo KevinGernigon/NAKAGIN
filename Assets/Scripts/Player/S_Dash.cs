@@ -177,6 +177,7 @@ public class S_Dash : MonoBehaviour
 
         PlayerSoundScript.DashSound();
         _arms_AC.SetBool("dashing", true);
+        _arms_AC.SetBool("stoppedMoving", false);
         _limitDash--;
         _pm._isDashing = true;
         //_pm._readyToJump = false;
