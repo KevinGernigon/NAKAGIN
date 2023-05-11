@@ -237,10 +237,14 @@ public class S_PauseMenuV2 : MonoBehaviour
             _IsRestart = false;
             Scene _scene = SceneManager.GetActiveScene();
             SceneManager.LoadScene("Manager_Scene");
-            SceneManager.LoadScene(_scene.name);
-            if(_scene.name == "Tom_Test_Scene")
-                SceneManager.LoadScene("Asset_Scene", LoadSceneMode.Additive);
 
+            SceneManager.LoadScene(_scene.name);
+            if(_scene.name == "Kilian_Scene")
+            {
+                SceneManager.LoadScene("Asset_Scene", LoadSceneMode.Additive);
+                SceneManager.LoadScene("Light_Scene", LoadSceneMode.Additive);
+            }
+                
            
           
 
