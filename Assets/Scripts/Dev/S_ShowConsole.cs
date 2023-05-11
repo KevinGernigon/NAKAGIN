@@ -15,7 +15,7 @@ public class S_ShowConsole : MonoBehaviour
     void Start()
     {
 
-        Debug.developerConsoleVisible = true;
+        Debug.developerConsoleVisible = false;
       
       /*S_Debugger.AddButton("Scene Maxime", ChangeSceneMaxime);
         S_Debugger.AddButton("Scene GD", ChangeSceneGD);

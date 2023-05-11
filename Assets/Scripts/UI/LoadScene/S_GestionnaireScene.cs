@@ -9,6 +9,23 @@ public class S_GestionnaireScene : MonoBehaviour
 
     [SerializeField] private GameObject _loadingScreen;
     [SerializeField] private Image _loadingBarFill;
+    [SerializeField] private S_PauseMenuV2 S_PauseMenuV2;
+    public bool InMenu;
+
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene().name == "MainMenu")
+        {
+            InMenu = true;
+            S_PauseMenuV2._ischoose = false;
+        }
+        else
+        {
+            InMenu = false;
+        }
+    }
+
+
 
     public void LoadNewScene(int sceneId)
     {
@@ -20,7 +37,8 @@ public class S_GestionnaireScene : MonoBehaviour
     {
         _loadingScreen.SetActive(true);
         AsyncOperation operation1 = SceneManager.LoadSceneAsync(sceneId);
-        if (sceneId == 2)
+
+        if (sceneId == 3)
         {
             AsyncOperation operation2 = SceneManager.LoadSceneAsync("Asset_Scene", LoadSceneMode.Additive);
 

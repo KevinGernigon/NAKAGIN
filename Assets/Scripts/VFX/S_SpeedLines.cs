@@ -11,8 +11,11 @@ public class S_SpeedLines : MonoBehaviour
     [SerializeField]
     private S_PlayerMovement _playerMovement;
 
+    [SerializeField] private S_PauseMenuV2 S_PauseMenuV2;
+
     [Header("InputManager")]
     [SerializeField] private S_InputManager S_InputManager;
+    [SerializeField] private S_GestionnaireScene S_GestionnaireScene;
 
 
     private void Start()
@@ -54,6 +57,17 @@ public class S_SpeedLines : MonoBehaviour
             //_shaderMat.SetFloat("_SL_LineDensity", 0.45f / 2 * (playerVelocityx + playerVelocityy + playerVelocityz + 0.1f * _increaseSpeedLines));
             _shaderMat.SetFloat("_SL_LineDensity", 0);
         }
+
+        if(S_GestionnaireScene.InMenu)
+        {
+            _shaderMat.SetFloat("_Activate_SpeedLines", 0);
+        }
+        else
+        {
+            _shaderMat.SetFloat("_Activate_SpeedLines", 1);
+        }
+
+
     }
 
     /*IEnumerator incrementSpeedLines()

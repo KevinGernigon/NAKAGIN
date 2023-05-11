@@ -160,6 +160,7 @@ public class S_ObjectOnCamera : MonoBehaviour
     {
         _createdUI = false;
         _playAnimation = false;
+        StopAllCoroutines();
         Destroy(_UI);
     }
 
