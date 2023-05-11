@@ -41,7 +41,8 @@ public class S_GestionScene : MonoBehaviour
         _textTimer = _referenceInterface._timerText;
         _savecolor = _textTimer.color;
 
-
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
     }
 
     private void Start()
