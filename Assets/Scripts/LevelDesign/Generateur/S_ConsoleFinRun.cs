@@ -9,7 +9,7 @@ public class S_ConsoleFinRun : MonoBehaviour
 {
     private S_ReferenceInterface _referenceInterface;
     private GameObject Player;
-    [SerializeField] private GameObject _energetiqueDoor;
+    [SerializeField] private GameObject[] _energetiqueDoor;
     private bool _activeEnergetiqueDoor;
 
     [Header("Audio")]
@@ -78,11 +78,17 @@ public class S_ConsoleFinRun : MonoBehaviour
 
         if(_activeEnergetiqueDoor)
         {
-            _energetiqueDoor.SetActive(true);
+            for (int i = 0; i < _energetiqueDoor.Length; i++)
+            {
+                _energetiqueDoor[i].SetActive(true);
+            }
         }
         else
         {
-            _energetiqueDoor.SetActive(false);
+            for (int i = 0; i < _energetiqueDoor.Length; i++)
+            {
+                _energetiqueDoor[i].SetActive(false);
+            }
         }
     }
 
@@ -163,7 +169,11 @@ public class S_ConsoleFinRun : MonoBehaviour
             _screenInfo.material = _actvMatInfo;
 
             _activeEnergetiqueDoor = true;
-            _energetiqueDoor.SetActive(true);
+            for (int i = 0; i < _energetiqueDoor.Length; i++)
+            {
+                _energetiqueDoor[i].SetActive(true);
+            }
+           
 
         }
     }
