@@ -85,7 +85,7 @@ public class S_Jetpack : MonoBehaviour
         }
 
 
-        if (S_InputManager._playerInputAction.Player.Jetpack.triggered && _isJetpackAvaible && _isTimerReach)
+        if (S_InputManager._playerInputAction.Player.Jetpack.triggered && _isJetpackAvaible)
         {
             if (S_InputManager._jetpackActive)
             {
@@ -122,13 +122,13 @@ public class S_Jetpack : MonoBehaviour
     {
         if (!GrappinScript._isJetpackAvaible) return;
 
-        if (ScriptBatteryManager._nbrBattery <= 0 && _isJetpackAvaible && !_isSoundActive && !_isTimerReach)
+        if (ScriptBatteryManager._nbrBattery <= 0 && _isJetpackAvaible && !_isSoundActive)
         {
             PlayerSoundScript.NoBatterySound();
             StartCoroutine(EndSoundCoroutine());
         }
 
-        if (_isTriggerBoxTrue && ScriptBatteryManager._nbrBattery >= 1 && _isTimerReach)
+        if (_isTriggerBoxTrue && ScriptBatteryManager._nbrBattery >= 1)
         {
             PlayerSoundScript.JetpackSound();
             _arms_AC.Play("A_Arms_Jetpack");
@@ -137,7 +137,7 @@ public class S_Jetpack : MonoBehaviour
         }
 
 
-        if (!_isTriggerBoxTrue && !_isMaxForce && ScriptBatteryManager._nbrBattery >= 1 && _isTimerReach)
+        if (!_isTriggerBoxTrue && !_isMaxForce && ScriptBatteryManager._nbrBattery >= 1)
         {
             PlayerSoundScript.JetpackSound();
             _arms_AC.Play("A_Arms_Jetpack");
@@ -157,6 +157,9 @@ public class S_Jetpack : MonoBehaviour
         forwardT = orientation;
         float i;
 
+            if(!_isTimerReach){
+                i = 25;
+            }
 
             if (Mathf.Abs(_rb.velocity.y) <= 15)
                 {
@@ -167,10 +170,16 @@ public class S_Jetpack : MonoBehaviour
                     i = Mathf.Abs(_rb.velocity.y) * 1.3f;
                 }
 
-            if(i > 60)
+            if(i > 80)
             {
-                i = 60;
+                i = 80;
             }
+
+            
+            if(_pm._isGrounded && _isTimerReach){
+                i = 35;
+            }
+
             Vector3 forceToApply = (forwardT.forward * _jetpackForce) / _dividePer + (forwardT.up * _jetpackUpwardForce) / _dividePer * i / 20f;
             saveForceToApplyOnGround = forceToApply;
 

@@ -557,15 +557,21 @@ public class S_PlayerMovement : MonoBehaviour
         }
         else if(_isSliding && OnSlope())
         {
-            if(rb.velocity.y < 0)
+            if(rb.velocity.y < 0){
                 rb.AddForce(transform.up * _jumpForce * 2f, ForceMode.Impulse);
+            }
             else if(rb.velocity.y > 0){
                 rb.AddForce(transform.up * _jumpForce * 1f, ForceMode.Impulse);
             }
         }
         else if (OnSlope() && !_isSliding)
         {
-            rb.AddForce(transform.up * _jumpForce * 1.15f, ForceMode.Impulse);
+            if(rb.velocity.y < 0){
+                rb.AddForce(transform.up * _jumpForce * 1.6f, ForceMode.Impulse);
+            }
+            else if(rb.velocity.y > 0){
+                rb.AddForce(transform.up * _jumpForce * 1f, ForceMode.Impulse);
+            }
         }
         else if (_isSliding && !OnSlope())
         {
