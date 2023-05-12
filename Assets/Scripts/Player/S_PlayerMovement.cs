@@ -155,6 +155,9 @@ public class S_PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        _arms_AC.SetFloat("moveSpeed", 1.0f / 55.0f * _moveSpeed);
+        Debug.Log(_arms_AC.GetFloat("moveSpeed"));
+
         if (GetSlopeMoveDirection(_moveDirection).y >= 0f && OnSlope())
         {
             _isSlopePositive = true;
