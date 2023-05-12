@@ -8,8 +8,8 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: b1926ac1beec1294ea58ea3d620dc819
-  m_OcclusionCullingData: {fileID: 36300000, guid: ff97bc0d374311c448cd82f25e237f18, type: 2}
+  m_SceneGUID: 00000000000000000000000000000000
+  m_OcclusionCullingData: {fileID: 0}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -47032,7 +47032,7 @@ MonoBehaviour:
   _grappleDelayTime: 0.25
   _overshootYAxis: 2
   _grapplingCd: 0.5
-  _timerBeforeUsingJetpack: 3
+  _timerBeforeUsingJetpack: 2.5
   _isGrappling: 0
   isIncreaseFOV: 0
   _isDecreaseRbDrag: 0
@@ -47094,8 +47094,8 @@ MonoBehaviour:
   playerCam: {fileID: 2579101208533770281}
   ScriptBatteryManager: {fileID: 1525915805904549653}
   _arms_AC: {fileID: 1525915804920973518}
-  _jetpackForce: 100
-  _jetpackUpwardForce: 140
+  _jetpackForce: 2
+  _jetpackUpwardForce: 3
   _dividePer: 2
   _jetPackSave: 0
   _HUDJetpackWarning: {fileID: 1525915805086998668}
@@ -47103,6 +47103,7 @@ MonoBehaviour:
   _timerMaxCd: 3
   _timerJetpack: 0
   _maxTimerJetpack: 0.3
+  _isPadUsed: 0
   _isJetpackAvaible: 0
   _isTimerReach: 0
 --- !u!114 &2579101206841898678
@@ -48784,6 +48785,7 @@ MonoBehaviour:
   _timerMaxCd: 1
   _timerJetpack: 0
   _maxTimerJetpack: 0.3
+  _isPadUsed: 0
   _isJetpackAvaible: 0
   _isTimerReach: 0
 --- !u!114 &3956388861518991233
@@ -58046,7 +58048,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1634caa98270f842944e56e71208175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToStart: MainMenu
+  sceneToStart: Tuto_Scene
   categoryToDisplay: 13
 --- !u!114 &7523266708936471357
 MonoBehaviour:
@@ -60374,8 +60376,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1634caa98270f842944e56e71208175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToStart: Kilian_Scene
-  categoryToDisplay: 6
+  sceneToStart: MainMenu
+  categoryToDisplay: 15
 --- !u!114 &9026664326187928078
 MonoBehaviour:
   m_ObjectHideFlags: 0

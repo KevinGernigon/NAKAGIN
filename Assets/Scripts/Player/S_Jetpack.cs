@@ -42,6 +42,7 @@ public class S_Jetpack : MonoBehaviour
     private bool _isTriggerBoxTrue;
     private bool _isMaxForce;
     private bool _isSoundActive;
+    public bool _isPadUsed = false;
     
     [SerializeField] private bool _isJetpackAvaible;
     [SerializeField] private bool _isTimerReach;
@@ -52,6 +53,7 @@ public class S_Jetpack : MonoBehaviour
         PlayerSoundScript = GetComponent<S_PlayerSound>();
         GrappinScript = GetComponent<S_GrappinV2>();
         ScriptDash = GetComponent<S_Dash>();
+
         _isJetpackAvaible = true;
     }
 
@@ -85,7 +87,7 @@ public class S_Jetpack : MonoBehaviour
         }
 
 
-        if (S_InputManager._playerInputAction.Player.Jetpack.triggered && _isJetpackAvaible)
+        if (S_InputManager._playerInputAction.Player.Jetpack.triggered && _isJetpackAvaible && !_isPadUsed)
         {
             if (S_InputManager._jetpackActive)
             {
@@ -157,31 +159,37 @@ public class S_Jetpack : MonoBehaviour
         forwardT = orientation;
         float i;
 
-            if(!_isTimerReach){
-                i = 25;
+            if (_pm._isGrounded && _isTimerReach && !_pm._isDashing)
+            {
+                i = 35;
             }
-
-            if (Mathf.Abs(_rb.velocity.y) <= 15)
+            else if (_pm._isDashing)
+            {
+                i = 20;
+            }
+            else if(!_isTimerReach){
+                i = 20;
+            }
+            else if (Mathf.Abs(_rb.velocity.y) <= 15)
                 {
                     i = 25;
                 }
             else
                 {
-                    i = Mathf.Abs(_rb.velocity.y) * 1.3f;
+                    i = Mathf.Abs(_rb.velocity.y) * 1.5f;
                 }
 
-            if(i > 80)
+            if(i >= 85)
             {
-                i = 80;
+                i = 85;
             }
 
             
-            if(_pm._isGrounded && _isTimerReach){
-                i = 35;
-            }
+            
 
-            Vector3 forceToApply = (forwardT.forward * _jetpackForce) / _dividePer + (forwardT.up * _jetpackUpwardForce) / _dividePer * i / 20f;
-            saveForceToApplyOnGround = forceToApply;
+            //Vector3 forceToApply = (forwardT.forward * _jetpackForce) / _dividePer + (forwardT.up * _jetpackUpwardForce) / _dividePer * i / 20f;
+            _rb.AddForce((Vector3.forward * _jetpackForce) + ((Vector3.up * _jetpackUpwardForce) *i), ForceMode.Impulse);
+            //saveForceToApplyOnGround = forceToApply;
 
             StartCoroutine(waitForBoolean());
             Invoke(nameof(DelayedJetpackForce), 0.025f);
