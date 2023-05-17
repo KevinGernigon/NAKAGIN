@@ -8,8 +8,8 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: b1926ac1beec1294ea58ea3d620dc819
+  m_OcclusionCullingData: {fileID: 36300000, guid: ff97bc0d374311c448cd82f25e237f18, type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -12142,7 +12142,7 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 656420907}
   m_Template: {fileID: 1758291621}
-  m_CaptionText: {fileID: 0}
+  m_CaptionText: {fileID: 1431520503}
   m_CaptionImage: {fileID: 0}
   m_Placeholder: {fileID: 0}
   m_ItemText: {fileID: 1547209150}
@@ -28090,7 +28090,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Resolution
+  m_text: Option A
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 635363d51efbb244d9443c502dbd2fd1, type: 2}
   m_sharedMaterial: {fileID: -8314028425301193847, guid: 635363d51efbb244d9443c502dbd2fd1, type: 2}
@@ -41902,7 +41902,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1525915805086998668
 GameObject:
   m_ObjectHideFlags: 0

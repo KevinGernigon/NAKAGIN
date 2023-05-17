@@ -8,8 +8,8 @@ OcclusionCullingSettings:
     smallestOccluder: 5
     smallestHole: 0.25
     backfaceThreshold: 100
-  m_SceneGUID: 00000000000000000000000000000000
-  m_OcclusionCullingData: {fileID: 0}
+  m_SceneGUID: 02ec5c1f70a4d8c4a8127ab2f1e0b393
+  m_OcclusionCullingData: {fileID: 36300000, guid: ff97bc0d374311c448cd82f25e237f18, type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -139,7 +139,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &953086
 Transform:
@@ -297,6 +297,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 777b8b277b3ec24449bae5bc8e5c04b0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 777b8b277b3ec24449bae5bc8e5c04b0, type: 3}
 --- !u!4 &5113064 stripped
@@ -362,7 +366,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &20984658
 Transform:
@@ -477,7 +481,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &22827958
 Transform:
@@ -871,6 +875,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Mur
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 777b8b277b3ec24449bae5bc8e5c04b0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 777b8b277b3ec24449bae5bc8e5c04b0, type: 3}
 --- !u!4 &32087182 stripped
@@ -894,7 +902,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &36598827
 Transform:
@@ -1009,7 +1017,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!114 &38401881
 MonoBehaviour:
@@ -1192,6 +1200,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Ground
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: ac8fc20acfc91a54cb8c88f71611f6b5, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ac8fc20acfc91a54cb8c88f71611f6b5, type: 3}
 --- !u!4 &43520957 stripped
@@ -1349,7 +1361,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &51590455
 Transform:
@@ -1466,7 +1478,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &70055264
 Transform:
@@ -1675,6 +1687,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_10
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
 --- !u!4 &80402566 stripped
@@ -1736,6 +1752,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
@@ -1816,7 +1836,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &89728236
 Transform:
@@ -1927,7 +1947,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1999239086}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &89810144
 MonoBehaviour:
@@ -2239,7 +2259,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1362362077}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &101673320
 GameObject:
@@ -2257,7 +2277,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &101673321
 Transform:
@@ -2373,7 +2393,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &115611778
 Transform:
@@ -2488,7 +2508,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &118410035
 Transform:
@@ -2688,6 +2708,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Pilone_cube_17
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af7240e2713bf544898b31dc65f91825, type: 3}
 --- !u!1 &132324078
@@ -2706,7 +2730,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &132324079
 Transform:
@@ -2872,6 +2896,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Bloc_Vitre_07
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2de887396fbdbd54f8fb79775e1218b4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2de887396fbdbd54f8fb79775e1218b4, type: 3}
 --- !u!1 &137422675
@@ -2987,7 +3015,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1362362077}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 112.19299, y: 3.9589996, z: 10.751007}
 --- !u!1 &146634435
 GameObject:
@@ -3120,7 +3148,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &146919624
 Transform:
@@ -3385,7 +3413,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &154787528
 Transform:
@@ -3611,103 +3639,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 2de887396fbdbd54f8fb79775e1218b4, type: 3}
   m_PrefabInstance: {fileID: 2129558041}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &182122457
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 182122461}
-  - component: {fileID: 182122460}
-  - component: {fileID: 182122459}
-  - component: {fileID: 182122458}
-  m_Layer: 0
-  m_Name: Cube_02
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
---- !u!65 &182122458
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 182122457}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &182122459
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 182122457}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &182122460
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 182122457}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &182122461
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 182122457}
-  m_LocalRotation: {x: 0.38211825, y: -0.050179582, z: 0.020785054, w: 0.9225159}
-  m_LocalPosition: {x: -209.68, y: 37.869995, z: -22.324883}
-  m_LocalScale: {x: 8.337326, y: 8.040625, z: 13.415723}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 698443703}
-  m_RootOrder: 2
-  m_LocalEulerAnglesHint: {x: 45, y: -6.227, z: 0}
 --- !u!1001 &183099707
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3774,6 +3705,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
       propertyPath: m_Name
       value: OBJ_Pilone_cube_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af7240e2713bf544898b31dc65f91825, type: 3}
@@ -3913,7 +3848,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &200818823
 Transform:
@@ -4028,7 +3963,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &216442747
 Transform:
@@ -4144,7 +4079,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &218220392
 Transform:
@@ -4343,6 +4278,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Pilone_cube_12
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af7240e2713bf544898b31dc65f91825, type: 3}
 --- !u!4 &230980184 stripped
@@ -4417,6 +4356,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_02
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
 --- !u!4 &234209399 stripped
@@ -4478,6 +4421,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
@@ -4670,6 +4617,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Pilone_cube
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af7240e2713bf544898b31dc65f91825, type: 3}
 --- !u!4 &244478481 stripped
@@ -4731,6 +4682,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
@@ -4871,7 +4826,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &260856762
 Transform:
@@ -4986,7 +4941,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &273479668
 Transform:
@@ -5140,6 +5095,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_03
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
 --- !u!4 &278188438 stripped
@@ -5147,103 +5106,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
   m_PrefabInstance: {fileID: 278188437}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &280864462
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 280864466}
-  - component: {fileID: 280864465}
-  - component: {fileID: 280864464}
-  - component: {fileID: 280864463}
-  m_Layer: 0
-  m_Name: Cube_04
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
---- !u!65 &280864463
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 280864462}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &280864464
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 280864462}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &280864465
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 280864462}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &280864466
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 280864462}
-  m_LocalRotation: {x: -0, y: 0.20807283, z: -0, w: 0.97811335}
-  m_LocalPosition: {x: -205.8, y: 58.9, z: 6.199997}
-  m_LocalScale: {x: -19.8, y: 112.28, z: 48.09999}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 698443703}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 24.019, z: 0}
 --- !u!1001 &302556334
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5298,6 +5160,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_11
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
@@ -5488,6 +5354,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Pilone_cube_02
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af7240e2713bf544898b31dc65f91825, type: 3}
 --- !u!4 &310288832 stripped
@@ -5593,6 +5463,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
       propertyPath: m_Name
       value: OBJ_Pilone_cube_13
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af7240e2713bf544898b31dc65f91825, type: 3}
@@ -5780,7 +5654,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5825,6 +5699,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
@@ -5922,6 +5800,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
       propertyPath: m_Name
       value: OBJ_Lampe_Petit
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
@@ -6062,7 +5944,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &352257745
 Transform:
@@ -6216,6 +6098,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_03
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
 --- !u!4 &369015655 stripped
@@ -6356,7 +6242,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &374658213
 Transform:
@@ -6487,7 +6373,6 @@ Transform:
   - {fileID: 122583082}
   - {fileID: 1710321583}
   - {fileID: 385571837}
-  - {fileID: 1221149273}
   m_Father: {fileID: 704199161}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -6557,6 +6442,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
       propertyPath: m_Name
       value: OBJ_Pilone_cube_18
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af7240e2713bf544898b31dc65f91825, type: 3}
@@ -6681,6 +6570,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_08
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
@@ -6884,7 +6777,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &388230575
 Transform:
@@ -6999,7 +6892,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &396409660
 Transform:
@@ -7383,6 +7276,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Mur_01
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 777b8b277b3ec24449bae5bc8e5c04b0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 777b8b277b3ec24449bae5bc8e5c04b0, type: 3}
 --- !u!4 &427502298 stripped
@@ -7390,6 +7287,75 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 777b8b277b3ec24449bae5bc8e5c04b0, type: 3}
   m_PrefabInstance: {fileID: 427502297}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &428944715
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1659722852460887500, guid: 78b535fe6c64bd04e81ce0ce76e9dc7e, type: 3}
+      propertyPath: m_Name
+      value: PFB_Porte_HUB
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659722852460887501, guid: 78b535fe6c64bd04e81ce0ce76e9dc7e, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659722852460887501, guid: 78b535fe6c64bd04e81ce0ce76e9dc7e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 28.32
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659722852460887501, guid: 78b535fe6c64bd04e81ce0ce76e9dc7e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 8.96
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659722852460887501, guid: 78b535fe6c64bd04e81ce0ce76e9dc7e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 66.94
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659722852460887501, guid: 78b535fe6c64bd04e81ce0ce76e9dc7e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.97937423
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659722852460887501, guid: 78b535fe6c64bd04e81ce0ce76e9dc7e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659722852460887501, guid: 78b535fe6c64bd04e81ce0ce76e9dc7e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.20205489
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659722852460887501, guid: 78b535fe6c64bd04e81ce0ce76e9dc7e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659722852460887501, guid: 78b535fe6c64bd04e81ce0ce76e9dc7e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659722852460887501, guid: 78b535fe6c64bd04e81ce0ce76e9dc7e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 23.314
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659722852460887501, guid: 78b535fe6c64bd04e81ce0ce76e9dc7e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1659722853554475037, guid: 78b535fe6c64bd04e81ce0ce76e9dc7e, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: c6dd7373e2ac69c43b16e5fae19e370f, type: 2}
+    - target: {fileID: 1659722853723059543, guid: 78b535fe6c64bd04e81ce0ce76e9dc7e, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 235bc4196ceba4d4d895572acb058f7d, type: 2}
+    - target: {fileID: 2002392050611086796, guid: 78b535fe6c64bd04e81ce0ce76e9dc7e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 78b535fe6c64bd04e81ce0ce76e9dc7e, type: 3}
 --- !u!1 &447400839
 GameObject:
   m_ObjectHideFlags: 0
@@ -7406,7 +7372,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &447400840
 Transform:
@@ -7687,6 +7653,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Pilone_cube_09
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af7240e2713bf544898b31dc65f91825, type: 3}
 --- !u!4 &450558260 stripped
@@ -7748,6 +7718,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_11
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
@@ -7811,6 +7785,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_03
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
 --- !u!4 &463981959 stripped
@@ -7827,7 +7805,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
       propertyPath: m_LocalScale.x
@@ -7884,6 +7862,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_06
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
@@ -7949,6 +7931,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 75665454c6d27a44b84ef98277a15881, type: 3}
       propertyPath: m_Name
       value: OBJ_Bloc_Cable_06
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 75665454c6d27a44b84ef98277a15881, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75665454c6d27a44b84ef98277a15881, type: 3}
@@ -8029,6 +8015,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_03
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
@@ -8554,6 +8544,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Mur_05
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 777b8b277b3ec24449bae5bc8e5c04b0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 777b8b277b3ec24449bae5bc8e5c04b0, type: 3}
 --- !u!4 &514099368 stripped
@@ -8577,7 +8571,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &515668395
 Transform:
@@ -8708,7 +8702,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1999239086}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &520944600
 MonoBehaviour:
@@ -8847,6 +8841,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Mur_06
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 777b8b277b3ec24449bae5bc8e5c04b0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 777b8b277b3ec24449bae5bc8e5c04b0, type: 3}
 --- !u!4 &523949573 stripped
@@ -8967,7 +8965,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1362362077}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 62.385, y: -14.98, z: -11.083}
 --- !u!1 &532829570
 GameObject:
@@ -8985,7 +8983,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &532829571
 Transform:
@@ -9139,6 +9137,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_02
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
 --- !u!4 &534993818 stripped
@@ -9162,7 +9164,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &538407198
 Transform:
@@ -9290,8 +9292,8 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 43520957}
-  m_Father: {fileID: 1999239086}
-  m_RootOrder: 0
+  m_Father: {fileID: 1221149273}
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &560196317 stripped
 Transform:
@@ -9314,7 +9316,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &560358427
 Transform:
@@ -9467,6 +9469,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_09
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
@@ -9621,7 +9627,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1362362077}
-  m_RootOrder: 13
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &572027364
 MonoBehaviour:
@@ -9726,7 +9732,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &576266331
 Transform:
@@ -9880,6 +9886,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_14
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
 --- !u!4 &584556484 stripped
@@ -9903,7 +9913,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &600112695
 Transform:
@@ -10058,6 +10068,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_01
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
 --- !u!4 &604058406 stripped
@@ -10074,7 +10088,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
       propertyPath: m_RootOrder
-      value: 11
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
       propertyPath: m_LocalPosition.x
@@ -10119,6 +10133,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
@@ -10179,7 +10197,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &618128202
 Transform:
@@ -10344,6 +10362,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
       propertyPath: m_Name
       value: OBJ_Lampe_Spot
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
@@ -10582,6 +10604,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Bloc_Vitre_08
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2de887396fbdbd54f8fb79775e1218b4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2de887396fbdbd54f8fb79775e1218b4, type: 3}
 --- !u!1 &632431290
@@ -10600,7 +10626,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &632431291
 Transform:
@@ -10730,7 +10756,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1362362077}
-  m_RootOrder: 10
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &636422799
 MonoBehaviour:
@@ -10845,7 +10871,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1362362077}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &638964992
 MonoBehaviour:
@@ -10945,7 +10971,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &648448008
 Transform:
@@ -11099,6 +11125,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_02
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
 --- !u!4 &665082968 stripped
@@ -11122,7 +11152,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &677831008
 Transform:
@@ -11392,6 +11422,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_12
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
 --- !u!4 &691533010 stripped
@@ -11434,46 +11468,6 @@ Transform:
   m_Father: {fileID: 704199161}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &698443702
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 698443703}
-  m_Layer: 0
-  m_Name: ---Run_1_Bloking
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
-  m_IsActive: 0
---- !u!4 &698443703
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 698443702}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -308.6, z: -0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 1156971219}
-  - {fileID: 964931819}
-  - {fileID: 182122461}
-  - {fileID: 1231834460}
-  - {fileID: 280864466}
-  - {fileID: 1422714061}
-  - {fileID: 1933969022}
-  - {fileID: 1841451862}
-  - {fileID: 1647935108}
-  m_Father: {fileID: 1362362077}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &704199160
 GameObject:
   m_ObjectHideFlags: 0
@@ -11506,8 +11500,9 @@ Transform:
   - {fileID: 1653158479}
   - {fileID: 376180074}
   - {fileID: 697383563}
+  - {fileID: 1221149273}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &704353996
 GameObject:
@@ -11618,6 +11613,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_09
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
@@ -11912,6 +11911,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_07
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
 --- !u!4 &717917758 stripped
@@ -11973,6 +11976,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_06
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
@@ -12113,7 +12120,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &735270647
 Transform:
@@ -12267,6 +12274,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_10
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
 --- !u!4 &738673655 stripped
@@ -12407,7 +12418,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &742279060
 Transform:
@@ -12754,7 +12765,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &780450884
 Transform:
@@ -12924,7 +12935,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &785771194
 Transform:
@@ -13078,6 +13089,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_04
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
 --- !u!4 &794388642 stripped
@@ -13106,7 +13121,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &823715657
 Transform:
@@ -13601,6 +13616,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_09
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
 --- !u!4 &842399944 stripped
@@ -13624,7 +13643,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &843434918
 Transform:
@@ -13740,7 +13759,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &843499685
 Transform:
@@ -14064,6 +14083,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_12
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
 --- !u!4 &855419618 stripped
@@ -14137,6 +14160,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
       propertyPath: m_Name
       value: OBJ_Pilone_cube_15
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af7240e2713bf544898b31dc65f91825, type: 3}
@@ -14322,6 +14349,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Pilone_cube_14
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af7240e2713bf544898b31dc65f91825, type: 3}
 --- !u!4 &858942568 stripped
@@ -14442,7 +14473,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1362362077}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &860829060
 GameObject:
@@ -14623,6 +14654,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Bloc_Cable_07
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 75665454c6d27a44b84ef98277a15881, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75665454c6d27a44b84ef98277a15881, type: 3}
 --- !u!4 &878849790 stripped
@@ -14664,7 +14699,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &881675380
 Transform:
@@ -14779,7 +14814,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &884362498
 Transform:
@@ -14894,7 +14929,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &907248779
 Transform:
@@ -15218,6 +15253,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_08
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
 --- !u!4 &931377819 stripped
@@ -15241,7 +15280,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &932548205
 Transform:
@@ -15471,7 +15510,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &952198882
 Transform:
@@ -15687,103 +15726,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &964931815
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 964931819}
-  - component: {fileID: 964931818}
-  - component: {fileID: 964931817}
-  - component: {fileID: 964931816}
-  m_Layer: 0
-  m_Name: Cube_01
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
---- !u!65 &964931816
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 964931815}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &964931817
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 964931815}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &964931818
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 964931815}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &964931819
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 964931815}
-  m_LocalRotation: {x: -0.38211825, y: -0.050179597, z: -0.020785058, w: 0.9225159}
-  m_LocalPosition: {x: -209.68, y: 24.050003, z: -22.324883}
-  m_LocalScale: {x: 8.337326, y: 8.040625, z: 13.415723}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 698443703}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: -45, y: -6.227, z: 0}
 --- !u!4 &968998707 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
@@ -15959,6 +15901,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Petit
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
 --- !u!4 &975114649 stripped
@@ -15983,7 +15929,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &975234295
 Transform:
@@ -16079,7 +16025,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &978927321
 Transform:
@@ -16199,7 +16145,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &996419780
 Transform:
@@ -16406,6 +16352,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_02
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
 --- !u!4 &1002490522 stripped
@@ -16468,6 +16418,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_06
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
 --- !u!4 &1011114082 stripped
@@ -16491,7 +16445,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1011907369
 Transform:
@@ -16645,6 +16599,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Mur_04
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 777b8b277b3ec24449bae5bc8e5c04b0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 777b8b277b3ec24449bae5bc8e5c04b0, type: 3}
 --- !u!4 &1014619505 stripped
@@ -16668,7 +16626,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1015126347
 Transform:
@@ -16822,6 +16780,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Mur_03
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 777b8b277b3ec24449bae5bc8e5c04b0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 777b8b277b3ec24449bae5bc8e5c04b0, type: 3}
 --- !u!4 &1022664645 stripped
@@ -16888,6 +16850,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
 --- !u!4 &1023034643 stripped
@@ -16911,7 +16877,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1033751608
 Transform:
@@ -17026,7 +16992,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1034045110
 Transform:
@@ -17180,6 +17146,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Spot
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
 --- !u!4 &1037222371 stripped
@@ -17254,6 +17224,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Bloc_Cable_05
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 75665454c6d27a44b84ef98277a15881, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75665454c6d27a44b84ef98277a15881, type: 3}
 --- !u!4 &1037509900 stripped
@@ -17295,7 +17269,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1039022472
 Transform:
@@ -17557,7 +17531,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1071392454
 Transform:
@@ -17712,6 +17686,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_02
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
 --- !u!4 &1108910606 stripped
@@ -17735,7 +17713,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1110540786
 Transform:
@@ -17883,7 +17861,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1127270087
 Transform:
@@ -18069,6 +18047,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Spot
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
 --- !u!4 &1147269702 stripped
@@ -18130,6 +18112,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
@@ -18308,103 +18294,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &1156971215
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1156971219}
-  - component: {fileID: 1156971218}
-  - component: {fileID: 1156971217}
-  - component: {fileID: 1156971216}
-  m_Layer: 0
-  m_Name: Cube
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
---- !u!65 &1156971216
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1156971215}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1156971217
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1156971215}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1156971218
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1156971215}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1156971219
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1156971215}
-  m_LocalRotation: {x: 0.38211825, y: -0.050179582, z: 0.020785054, w: 0.9225159}
-  m_LocalPosition: {x: -209.27, y: 24.050003, z: -33.26}
-  m_LocalScale: {x: 8.337326, y: 8.040625, z: 13.415723}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 698443703}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 45, y: -6.227, z: 0}
 --- !u!1 &1164018584
 GameObject:
   m_ObjectHideFlags: 0
@@ -18421,7 +18310,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1164018585
 Transform:
@@ -18576,6 +18465,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_07
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
 --- !u!4 &1176760418 stripped
@@ -18716,7 +18609,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1183010929
 Transform:
@@ -18871,6 +18764,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_02
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
 --- !u!4 &1188718323 stripped
@@ -18933,6 +18830,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_13
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
 --- !u!4 &1189900532 stripped
@@ -18949,7 +18850,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
       propertyPath: m_LocalPosition.x
@@ -18994,6 +18895,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
@@ -19184,7 +19089,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1221149272}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -19201,106 +19106,10 @@ Transform:
   - {fileID: 89728236}
   - {fileID: 975234295}
   - {fileID: 1430132177}
-  m_Father: {fileID: 376180074}
+  - {fileID: 557516310}
+  m_Father: {fileID: 704199161}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1231834456
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1231834460}
-  - component: {fileID: 1231834459}
-  - component: {fileID: 1231834458}
-  - component: {fileID: 1231834457}
-  m_Layer: 0
-  m_Name: Cube_03
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
---- !u!65 &1231834457
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1231834456}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1231834458
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1231834456}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1231834459
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1231834456}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1231834460
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1231834456}
-  m_LocalRotation: {x: -0.38211825, y: -0.050179597, z: -0.020785058, w: 0.9225159}
-  m_LocalPosition: {x: -209.27, y: 37.869995, z: -33.26}
-  m_LocalScale: {x: 8.337326, y: 8.040625, z: 13.415723}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 698443703}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: -45, y: -6.227, z: 0}
 --- !u!1 &1233469585
 GameObject:
   m_ObjectHideFlags: 0
@@ -19317,7 +19126,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1233469586
 Transform:
@@ -19471,6 +19280,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_05
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
 --- !u!4 &1240048959 stripped
@@ -19532,6 +19345,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_02
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
@@ -19648,7 +19465,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1266904834
 Transform:
@@ -19878,7 +19695,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1275905501
 Transform:
@@ -20028,7 +19845,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!114 &1278217866
 MonoBehaviour:
@@ -20149,7 +19966,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1301317257
 Transform:
@@ -20379,7 +20196,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1305162809
 Transform:
@@ -20495,7 +20312,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1315817184
 Transform:
@@ -20842,7 +20659,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1324237830
 Transform:
@@ -20951,7 +20768,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
       propertyPath: m_LocalScale.x
@@ -21008,6 +20825,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_07
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
@@ -21071,6 +20892,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_01
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
 --- !u!4 &1325681438 stripped
@@ -21133,6 +20958,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_03
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
 --- !u!4 &1332322188 stripped
@@ -21156,7 +20985,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1338378722
 Transform:
@@ -21387,7 +21216,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1348692119
 Transform:
@@ -21657,6 +21486,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_02
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
 --- !u!4 &1359533269 stripped
@@ -21731,6 +21564,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Pilone_cube_05
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af7240e2713bf544898b31dc65f91825, type: 3}
 --- !u!4 &1361671886 stripped
@@ -21767,7 +21604,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 489629459}
-  - {fileID: 698443703}
   - {fileID: 527650817}
   - {fileID: 137422678}
   - {fileID: 93817927}
@@ -21849,6 +21685,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
       propertyPath: m_Name
       value: OBJ_Pilone_cube_07
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af7240e2713bf544898b31dc65f91825, type: 3}
@@ -22029,6 +21869,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Mur_02
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 777b8b277b3ec24449bae5bc8e5c04b0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 777b8b277b3ec24449bae5bc8e5c04b0, type: 3}
 --- !u!4 &1371579305 stripped
@@ -22052,7 +21896,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1377819560
 Transform:
@@ -22167,7 +22011,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1381128700
 Transform:
@@ -22282,7 +22126,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1390563463
 Transform:
@@ -22564,6 +22408,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Bloc_Vitre_09
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2de887396fbdbd54f8fb79775e1218b4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2de887396fbdbd54f8fb79775e1218b4, type: 3}
 --- !u!1 &1404004710
@@ -22637,7 +22485,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1407510491
 Transform:
@@ -22757,7 +22605,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1415566490
 Transform:
@@ -22856,103 +22704,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &1422714057
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1422714061}
-  - component: {fileID: 1422714060}
-  - component: {fileID: 1422714059}
-  - component: {fileID: 1422714058}
-  m_Layer: 0
-  m_Name: Cube_05
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
---- !u!65 &1422714058
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1422714057}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1422714059
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1422714057}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1422714060
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1422714057}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1422714061
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1422714057}
-  m_LocalRotation: {x: -0, y: -0.007594797, z: -0, w: 0.9999712}
-  m_LocalPosition: {x: -213.66, y: 58.9, z: -59.05}
-  m_LocalScale: {x: -12.760002, y: 112.28, z: 48.100006}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 698443703}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: -0.87, z: 0}
 --- !u!1 &1430132176
 GameObject:
   m_ObjectHideFlags: 0
@@ -22970,7 +22721,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1430132177
 Transform:
@@ -23066,7 +22817,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1440789244
 Transform:
@@ -23296,7 +23047,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1446969065
 Transform:
@@ -23449,6 +23200,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
@@ -23704,7 +23459,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1455786905
 Transform:
@@ -23870,6 +23625,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Pilone_cube_10
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af7240e2713bf544898b31dc65f91825, type: 3}
 --- !u!4 &1470570695 stripped
@@ -23893,7 +23652,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1482433543
 Transform:
@@ -24048,6 +23807,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_02
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
 --- !u!4 &1484736073 stripped
@@ -24071,7 +23834,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1485076946
 Transform:
@@ -24358,6 +24121,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_03
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
 --- !u!1 &1535372500
@@ -24407,7 +24174,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1544263494
 Transform:
@@ -24714,6 +24481,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_01
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
 --- !u!4 &1560782942 stripped
@@ -24871,6 +24642,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
@@ -25176,6 +24951,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Bloc_Vitre_11
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2de887396fbdbd54f8fb79775e1218b4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2de887396fbdbd54f8fb79775e1218b4, type: 3}
 --- !u!1 &1600605077
@@ -25476,7 +25255,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1362362077}
-  m_RootOrder: 9
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1615900319
 MonoBehaviour:
@@ -25631,7 +25410,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1636546321
 Transform:
@@ -25746,7 +25525,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!114 &1647396933
 MonoBehaviour:
@@ -25846,89 +25625,6 @@ Transform:
   m_Father: {fileID: 1037222371}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 37.29, y: -16.38, z: 13.228}
---- !u!1 &1647935107
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1647935108}
-  - component: {fileID: 1647935110}
-  - component: {fileID: 1647935109}
-  m_Layer: 0
-  m_Name: Cylinder_01
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1647935108
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1647935107}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -402.1, y: 497.2, z: 62.7}
-  m_LocalScale: {x: 450, y: 1, z: 450}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 698443703}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &1647935109
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1647935107}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1647935110
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1647935107}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1649391455
 GameObject:
   m_ObjectHideFlags: 0
@@ -26213,7 +25909,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1660006399
 Transform:
@@ -26328,7 +26024,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1662036664
 Transform:
@@ -26560,7 +26256,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1674928059
 Transform:
@@ -26714,6 +26410,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_16
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
 --- !u!4 &1675291769 stripped
@@ -26737,7 +26437,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1684312862
 Transform:
@@ -27006,6 +26706,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_06
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
 --- !u!4 &1702260185 stripped
@@ -27029,7 +26733,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1708942577
 Transform:
@@ -27234,6 +26938,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Pilone_cube_16
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af7240e2713bf544898b31dc65f91825, type: 3}
 --- !u!1 &1716181258
@@ -27367,7 +27075,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1717503280
 Transform:
@@ -27535,6 +27243,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Pilone_cube_04
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af7240e2713bf544898b31dc65f91825, type: 3}
 --- !u!4 &1739321981 stripped
@@ -27551,7 +27263,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
       propertyPath: m_LocalScale.x
@@ -27608,6 +27320,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_04
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
@@ -27702,7 +27418,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1999239086}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1759829718
 MonoBehaviour:
@@ -27876,6 +27592,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_01
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
 --- !u!4 &1766436872 stripped
@@ -27899,7 +27619,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1771059185
 Transform:
@@ -28063,6 +27783,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
 --- !u!4 &1777842621 stripped
@@ -28203,7 +27927,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1785877642
 Transform:
@@ -28358,6 +28082,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Spot
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
 --- !u!4 &1797765097 stripped
@@ -28436,7 +28164,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1803888518
 Transform:
@@ -28591,6 +28319,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Mur_02
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 777b8b277b3ec24449bae5bc8e5c04b0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 777b8b277b3ec24449bae5bc8e5c04b0, type: 3}
 --- !u!4 &1805379720 stripped
@@ -28629,7 +28361,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1999239086}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1807386485
 MonoBehaviour:
@@ -28767,6 +28499,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_01
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
@@ -28907,7 +28643,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1822857552
 Transform:
@@ -29073,6 +28809,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Pilone_cube_03
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af7240e2713bf544898b31dc65f91825, type: 3}
 --- !u!4 &1824226929 stripped
@@ -29194,91 +28934,8 @@ Transform:
   m_Children:
   - {fileID: 838437258}
   m_Father: {fileID: 1362362077}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!1 &1841451861
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1841451862}
-  - component: {fileID: 1841451864}
-  - component: {fileID: 1841451863}
-  m_Layer: 0
-  m_Name: Cylinder
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1841451862
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1841451861}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -402.1, y: -95.3, z: 62.7}
-  m_LocalScale: {x: 450, y: 1, z: 450}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 698443703}
-  m_RootOrder: 7
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!23 &1841451863
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1841451861}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1841451864
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1841451861}
-  m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &1842459481
 GameObject:
   m_ObjectHideFlags: 0
@@ -29462,6 +29119,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Pilone_cube_16
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af7240e2713bf544898b31dc65f91825, type: 3}
 --- !u!1 &1867528395
@@ -29644,7 +29305,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
       propertyPath: m_LocalScale.x
@@ -29705,6 +29366,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
@@ -29767,6 +29432,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 94f42526ecc215f4e8be88392edfe3b7, type: 3}
       propertyPath: m_Name
       value: OBJ_VAR_3_Tuyau_0_LOD
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 94f42526ecc215f4e8be88392edfe3b7, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94f42526ecc215f4e8be88392edfe3b7, type: 3}
@@ -30090,7 +29759,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1895799710
 Transform:
@@ -30280,6 +29949,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
 --- !u!4 &1902433816 stripped
@@ -30342,6 +30015,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_02
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
 --- !u!1 &1920384602
@@ -30360,7 +30037,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!114 &1920384603
 MonoBehaviour:
@@ -30527,6 +30204,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Pilone_cube_08
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af7240e2713bf544898b31dc65f91825, type: 3}
 --- !u!4 &1923802558 stripped
@@ -30550,7 +30231,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1924474634
 Transform:
@@ -30649,103 +30330,6 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
---- !u!1 &1933969018
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1933969022}
-  - component: {fileID: 1933969021}
-  - component: {fileID: 1933969020}
-  - component: {fileID: 1933969019}
-  m_Layer: 0
-  m_Name: Cube_06
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
---- !u!65 &1933969019
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1933969018}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &1933969020
-MeshRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1933969018}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 3
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 0
-  m_AdditionalVertexStreams: {fileID: 0}
---- !u!33 &1933969021
-MeshFilter:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1933969018}
-  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &1933969022
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1933969018}
-  m_LocalRotation: {x: -0, y: -0.007594797, z: -0, w: 0.9999712}
-  m_LocalPosition: {x: -214.14, y: 81.7, z: -27.75}
-  m_LocalScale: {x: -12.760001, y: 83, z: 48.100002}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 698443703}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: -0.87, z: 0}
 --- !u!1 &1945605445
 GameObject:
   m_ObjectHideFlags: 0
@@ -30762,7 +30346,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1945605446
 Transform:
@@ -30877,7 +30461,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1946324672
 Transform:
@@ -31087,6 +30671,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Mur_01
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 777b8b277b3ec24449bae5bc8e5c04b0, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 777b8b277b3ec24449bae5bc8e5c04b0, type: 3}
 --- !u!4 &1952065537 stripped
@@ -31161,6 +30749,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Bloc_Vitre_10
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2de887396fbdbd54f8fb79775e1218b4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2de887396fbdbd54f8fb79775e1218b4, type: 3}
 --- !u!1001 &1955324652
@@ -31230,6 +30822,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Pilone_cube_06
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af7240e2713bf544898b31dc65f91825, type: 3}
 --- !u!4 &1955324653 stripped
@@ -31285,7 +30881,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &1974105398
 Transform:
@@ -31439,6 +31035,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Petit
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
 --- !u!4 &1977327809 stripped
@@ -31501,6 +31101,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_05
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
 --- !u!4 &1978020031 stripped
@@ -31562,6 +31166,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
       propertyPath: m_Name
       value: OBJ_Lampe_Petit
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
@@ -31637,6 +31245,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Pilone_cube_17
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af7240e2713bf544898b31dc65f91825, type: 3}
 --- !u!1 &1999239085
@@ -31667,7 +31279,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 557516310}
   - {fileID: 329983446}
   - {fileID: 1807386484}
   - {fileID: 89810143}
@@ -31747,6 +31358,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
       propertyPath: m_Name
       value: OBJ_Pilone_cube_11
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af7240e2713bf544898b31dc65f91825, type: 3}
@@ -31918,7 +31533,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &2005514405
 Transform:
@@ -32084,6 +31699,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Pilone_cube_18
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af7240e2713bf544898b31dc65f91825, type: 3}
 --- !u!1 &2022856615
@@ -32222,7 +31841,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &2033519140
 Transform:
@@ -32492,6 +32111,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_06
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
 --- !u!4 &2035870141 stripped
@@ -32530,7 +32153,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1999239086}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2036822473
 MonoBehaviour:
@@ -32630,7 +32253,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &2038873885
 Transform:
@@ -32796,6 +32419,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Pilone_cube_15
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: af7240e2713bf544898b31dc65f91825, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af7240e2713bf544898b31dc65f91825, type: 3}
 --- !u!1 &2050039399
@@ -32814,7 +32441,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &2050039400
 Transform:
@@ -32968,6 +32595,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_04
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
 --- !u!4 &2056606797 stripped
@@ -33029,6 +32660,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_05
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
@@ -33168,7 +32803,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &2084528372
 Transform:
@@ -33299,7 +32934,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1362362077}
-  m_RootOrder: 8
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &2089892713
 MonoBehaviour:
@@ -33604,6 +33239,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Lampe_Spot_08
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1a282cd85427e047a7d94834b08f271, type: 3}
 --- !u!4 &2108717298 stripped
@@ -33627,7 +33266,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &2109657880
 Transform:
@@ -33858,7 +33497,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &2119907997
 Transform:
@@ -33973,7 +33612,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &2124524586
 Transform:
@@ -34126,6 +33765,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
       propertyPath: m_Name
       value: OBJ_Lampe_Petit_15
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aedb19d7395dffe4e9c6178342814a93, type: 3}
@@ -34316,6 +33959,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OBJ_Bloc_Vitre_06
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 2de887396fbdbd54f8fb79775e1218b4, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 18
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2de887396fbdbd54f8fb79775e1218b4, type: 3}
 --- !u!1 &2137233920
@@ -34334,7 +33981,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 18
   m_IsActive: 1
 --- !u!4 &2137233921
 Transform:
