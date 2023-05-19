@@ -259,6 +259,9 @@ public class S_WallRunning : MonoBehaviour
     {
         pm._isWallRunning = true;
 
+        if (_isWallLeft) _arms_AC.SetBool("leftWall", true);
+        else if (_isWallRight) _arms_AC.SetBool("rightWall", true);
+
         _wallRunTimer = _maxWallRunTime;
 
         rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
@@ -293,11 +296,12 @@ public class S_WallRunning : MonoBehaviour
             else if (_isWallRight && _arms_AC.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1) _arms_AC.Play("A_Right_Arm_Wall_Grab");
         }
         else*/
-        if(_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Left_Arm_Wall_Grab" && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Left_Arm_Wall_Run" && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Right_Arm_Wall_Grab" && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Right_Arm_Wall_Run")
+        /*if(_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Left_Arm_Wall_Grab" && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Left_Arm_Wall_Run" && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Right_Arm_Wall_Grab" && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Right_Arm_Wall_Run")
         {
             if (_isWallLeft) _arms_AC.Play("A_Left_Arm_Wall_Grab");
             else if (_isWallRight) _arms_AC.Play("A_Right_Arm_Wall_Grab");
-        }
+        }*/
+        
 
 
         //upwards/downwards force
@@ -328,6 +332,9 @@ public class S_WallRunning : MonoBehaviour
 
     private void StopWallRun()
     {
+        _arms_AC.SetBool("rightWall", false);
+        _arms_AC.SetBool("leftWall", false);
+        _arms_AC.SetBool("stopWallRun", true);
         PlayerSoundScript.EndWallRunSound();
         pm._isWallRunning = false;
         ClimbScript._maxWallLookAngle = 30f;
@@ -347,8 +354,9 @@ public class S_WallRunning : MonoBehaviour
     private void WallJump()
     {
         PlayerSoundScript.JumpSound();
-        if (_isWallLeft) _arms_AC.Play("A_Left_Arm_Wall_Jump");
-        else if (_isWallRight) _arms_AC.Play("A_Right_Arm_Wall_Jump");
+        /*if (_isWallLeft) _arms_AC.Play("A_Left_Arm_Wall_Jump");
+        else _arms_AC.Play("A_Right_Arm_Wall_Jump");*/
+        _arms_AC.SetBool("hasWallJumped", true);
         _isJumpForgivenessActive = false;
         canWallJumpLedge = false;
         bool firstJump = true;

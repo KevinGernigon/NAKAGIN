@@ -46,6 +46,9 @@ public class S_Jetpack : MonoBehaviour
     
     [SerializeField] private bool _isJetpackAvaible;
     [SerializeField] private bool _isTimerReach;
+
+    private string _jetpackAnim = "jetpack";
+
     void Start()
     {
         _rb = GetComponent<Rigidbody>();
@@ -99,6 +102,7 @@ public class S_Jetpack : MonoBehaviour
     {
         if (_isTriggerBoxTrue)
         {
+            _jetpackAnim = "jetpackSave";
             _isJetpackAvaible = true;
             ScriptDash._limitDash = 0;
             if (ScriptBatteryManager._nbrBattery >= 1)
@@ -116,6 +120,7 @@ public class S_Jetpack : MonoBehaviour
         }
         else if (!_isTriggerBoxTrue)
         {
+            _jetpackAnim = "jetpack";
             _timerCd = 0;
             Time.timeScale = 1f;
         }
@@ -134,6 +139,7 @@ public class S_Jetpack : MonoBehaviour
         {
             PlayerSoundScript.JetpackSound();
             _arms_AC.Play("A_Arms_Jetpack");
+            //_arms_AC.SetBool(_jetpackAnim, true);
             ScriptBatteryManager.UseOneBattery();
             JetPackUsage();
         }
@@ -143,6 +149,7 @@ public class S_Jetpack : MonoBehaviour
         {
             PlayerSoundScript.JetpackSound();
             _arms_AC.Play("A_Arms_Jetpack");
+            //_arms_AC.SetBool(_jetpackAnim, true);
             ScriptBatteryManager.UseOneBattery();
             JetPackUsage();
 

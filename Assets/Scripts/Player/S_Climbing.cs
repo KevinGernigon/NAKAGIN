@@ -146,8 +146,8 @@ public class S_Climbing : MonoBehaviour
 
     private void StartClimbing()
     {
-        _arms_AC.Play("A_Arms_Climb");
-
+        //_arms_AC.Play("A_Arms_Climb");
+        _arms_AC.SetBool("climbing", true);
         pm._walkSpeed = 40;
         _isClimbing = true;
         pm._isClimbing = true;
