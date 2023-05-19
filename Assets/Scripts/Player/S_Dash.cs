@@ -13,6 +13,7 @@ public class S_Dash : MonoBehaviour
     private Rigidbody _rb;
     private S_PlayerMovement _pm;
     private S_GrappinV2 _grappinScript;
+    private S_Jetpack _jetpackScript;
     [SerializeField] private Animator _arms_AC;
 
     [Header("Dashing")]
