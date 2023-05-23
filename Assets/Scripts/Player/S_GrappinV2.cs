@@ -128,17 +128,8 @@ public class S_GrappinV2 : MonoBehaviour
         _isGrappling = true;
         _pm._isFreezing = true;
         RaycastHit hit;
-        if (_isAimForgivenessActive)
-        {
-            Debug.Log("????????????");
-            _isDecreaseRbDrag = true;
-            _pm.Jump();
-            grapplePoint = previousGrapplePoint;
-            PlayerSoundScript.ImpactHookSound();
-            Invoke(nameof(ExecuteGrapple), _grappleDelayTime);
-        }
-        //if(Physics.Raycast(_camera.position, _camera.forward, out hit, _maxGrappleDistance, 1 << LayerMask.NameToLayer("WhatIsTarget")))
-        else if (Physics.Raycast(_camera.position, _camera.forward, out hit, _maxGrappleDistance, Everything))
+
+        if (Physics.Raycast(_camera.position, _camera.forward, out hit, _maxGrappleDistance, Everything))
         {
             int whatIsTarget = LayerMask.NameToLayer("WhatIsTarget");
             if (hit.collider.gameObject.layer == whatIsTarget)
@@ -152,6 +143,16 @@ public class S_GrappinV2 : MonoBehaviour
             else
                 MissGrapple();
         }
+        else if (_isAimForgivenessActive)
+        {
+            Debug.Log("????????????");
+            _isDecreaseRbDrag = true;
+            _pm.Jump();
+            grapplePoint = previousGrapplePoint;
+            PlayerSoundScript.ImpactHookSound();
+            Invoke(nameof(ExecuteGrapple), _grappleDelayTime);
+        }
+        //if(Physics.Raycast(_camera.position, _camera.forward, out hit, _maxGrappleDistance, 1 << LayerMask.NameToLayer("WhatIsTarget")))
         else
             MissGrapple(); 
 
