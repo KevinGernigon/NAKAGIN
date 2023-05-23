@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 112000002, guid: 85aa7d2e10d603a45ba973eb5522b489, type: 2}
+  m_LightingDataAsset: {fileID: 112000006, guid: 4c551408d1d3446419004265b2712717, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: 911362b5e65099d4da14e0b96a324b78, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -12142,7 +12142,7 @@ MonoBehaviour:
   m_Interactable: 1
   m_TargetGraphic: {fileID: 656420907}
   m_Template: {fileID: 1758291621}
-  m_CaptionText: {fileID: 0}
+  m_CaptionText: {fileID: 1431520503}
   m_CaptionImage: {fileID: 0}
   m_Placeholder: {fileID: 0}
   m_ItemText: {fileID: 1547209150}
@@ -12158,7 +12158,19 @@ MonoBehaviour:
       m_Image: {fileID: 0}
   m_OnValueChanged:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1525915805904549674}
+        m_TargetAssemblyTypeName: S_ResolutionControl, Assembly-CSharp
+        m_MethodName: SetResolution
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   m_AlphaFadeSpeed: 0.15
 --- !u!224 &656420906
 RectTransform:
@@ -16309,7 +16321,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.57022077, g: 0.7584769, b: 0.8113208, a: 1}
+  m_Color: {r: 0.5529412, g: 0.79215693, b: 0.8470589, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -25369,7 +25381,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1303857798
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28078,7 +28090,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: OPTION A
+  m_text: Option A
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 635363d51efbb244d9443c502dbd2fd1, type: 2}
   m_sharedMaterial: {fileID: -8314028425301193847, guid: 635363d51efbb244d9443c502dbd2fd1, type: 2}
@@ -39356,7 +39368,7 @@ MonoBehaviour:
   onValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1525915805904549674}
         m_TargetAssemblyTypeName: S_ResolutionControl, Assembly-CSharp
         m_MethodName: SetFullscrenn
         m_Mode: 0
@@ -40535,7 +40547,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.40000004, g: 0.84313726, b: 0.9960785, a: 1}
+  m_Color: {r: 0.54901963, g: 0.79215693, b: 0.8588236, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -41890,7 +41902,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1525915805086998668
 GameObject:
   m_ObjectHideFlags: 0
@@ -47032,7 +47044,7 @@ MonoBehaviour:
   _grappleDelayTime: 0.25
   _overshootYAxis: 2
   _grapplingCd: 0.5
-  _timerBeforeUsingJetpack: 3
+  _timerBeforeUsingJetpack: 2.5
   _isGrappling: 0
   isIncreaseFOV: 0
   _isDecreaseRbDrag: 0
@@ -47094,8 +47106,8 @@ MonoBehaviour:
   playerCam: {fileID: 2579101208533770281}
   ScriptBatteryManager: {fileID: 1525915805904549653}
   _arms_AC: {fileID: 1525915804920973518}
-  _jetpackForce: 100
-  _jetpackUpwardForce: 140
+  _jetpackForce: 2
+  _jetpackUpwardForce: 3
   _dividePer: 2
   _jetPackSave: 0
   _HUDJetpackWarning: {fileID: 1525915805086998668}
@@ -47103,6 +47115,7 @@ MonoBehaviour:
   _timerMaxCd: 3
   _timerJetpack: 0
   _maxTimerJetpack: 0.3
+  _isPadUsed: 0
   _isJetpackAvaible: 0
   _isTimerReach: 0
 --- !u!114 &2579101206841898678
@@ -47245,6 +47258,7 @@ MonoBehaviour:
   _isFreezing: 0
   _isGrappleActive: 0
   _ResetDashSpeed: 0
+  canJumpLedge: 0
   _isButtonEnabled: 0
   _isSlopePositive: 0
   _isMoving: 0
@@ -48707,7 +48721,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.57022077, g: 0.7584769, b: 0.8113208, a: 1}
+  m_Color: {r: 0.5529412, g: 0.79215693, b: 0.8470589, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -48783,6 +48797,7 @@ MonoBehaviour:
   _timerMaxCd: 1
   _timerJetpack: 0
   _maxTimerJetpack: 0.3
+  _isPadUsed: 0
   _isJetpackAvaible: 0
   _isTimerReach: 0
 --- !u!114 &3956388861518991233
@@ -49086,6 +49101,7 @@ MonoBehaviour:
   _isFreezing: 0
   _isGrappleActive: 0
   _ResetDashSpeed: 0
+  canJumpLedge: 0
   _isButtonEnabled: 0
   _isSlopePositive: 0
   _isMoving: 0
@@ -49861,7 +49877,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.40000004, g: 0.84313726, b: 0.9960785, a: 1}
+  m_Color: {r: 0.54901963, g: 0.79215693, b: 0.8588236, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -57541,7 +57557,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.40000004, g: 0.84313726, b: 0.9960785, a: 1}
+  m_Color: {r: 0.54901963, g: 0.79215693, b: 0.8588236, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -57904,7 +57920,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.57022077, g: 0.7584769, b: 0.8113208, a: 1}
+  m_Color: {r: 0.5529412, g: 0.79215693, b: 0.8470589, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -58044,7 +58060,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1634caa98270f842944e56e71208175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToStart: MainMenu
+  sceneToStart: Tuto_Scene
   categoryToDisplay: 13
 --- !u!114 &7523266708936471357
 MonoBehaviour:
@@ -59010,7 +59026,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.57022077, g: 0.7584769, b: 0.8113208, a: 1}
+  m_Color: {r: 0.5529412, g: 0.79215693, b: 0.8470589, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -60373,7 +60389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sceneToStart: MainMenu
-  categoryToDisplay: 13
+  categoryToDisplay: 15
 --- !u!114 &9026664326187928078
 MonoBehaviour:
   m_ObjectHideFlags: 0

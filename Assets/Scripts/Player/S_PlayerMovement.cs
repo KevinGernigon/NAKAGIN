@@ -156,6 +156,9 @@ public class S_PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        _arms_AC.SetFloat("moveSpeed", 1.0f / 55.0f * _moveSpeed);
+        Debug.Log(_arms_AC.GetFloat("moveSpeed"));
+
         if (GetSlopeMoveDirection(_moveDirection).y >= 0f && OnSlope())
         {
             _isSlopePositive = true;
@@ -195,7 +198,13 @@ public class S_PlayerMovement : MonoBehaviour
         SpeedControl();
         StateHandler();
 
+        var roundedVelocity = new Vector3(Mathf.Round(GetComponent<Rigidbody>().velocity.x), Mathf.Round(GetComponent<Rigidbody>().velocity.y), Mathf.Round(GetComponent<Rigidbody>().velocity.z));
 
+        if (roundedVelocity == Vector3.zero)
+        {
+            _arms_AC.SetBool("startMoving", false);
+            _arms_AC.SetBool("stoppedMoving", true);
+        }
         //handle drag
         //if (!Input.GetButton("Horizontal") && !Input.GetButton("Vertical") && state == MovementState.walking && !Input.GetButton("Jump") && !GrapplingScript._isDecreaseRbDrag)
         if (_horizontalInput == 0 && _verticalInput == 0 && state == MovementState.walking && !GrapplingScript._isDecreaseRbDrag  && S_InputManager._playerInputAction.Player.Jump.ReadValue<float>() == 0)
@@ -204,7 +213,7 @@ public class S_PlayerMovement : MonoBehaviour
             _isDecelerating = true;
             AccelerationScript.VarianceVitesse();
             PlayerSoundScript.EndSoundWalk();
-            _arms_AC.SetBool("stoppedMoving", true);
+            //_arms_AC.SetBool("stoppedMoving", true);
             rb.drag = _groundDrag + 10;
             _isMoving = false;
         }
@@ -214,11 +223,12 @@ public class S_PlayerMovement : MonoBehaviour
             _isDecelerating = false;
             AccelerationScript.VarianceVitesse();
             PlayerSoundScript.WalkSound();
+            _arms_AC.SetBool("stoppedMoving", false);
             _arms_AC.SetBool("startMoving", true);
-            if (!_arms_AC.IsInTransition(0) && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Arms_Running")
+            /*if (!_arms_AC.IsInTransition(0) && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Arms_Running" && _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Arms_Jetpack")
             {   
                 _arms_AC.Play("A_Arms_Running");
-            }
+            }*/
 
             rb.drag = _groundDrag;
             _isMoving = true;
@@ -254,6 +264,16 @@ public class S_PlayerMovement : MonoBehaviour
     {
         MovingPlayer();
 
+        //if (state == MovementState.air && !_arms_AC.GetBool("dashing")) _arms_AC.SetBool("isInAir", true);
+        //else _arms_AC.SetBool("isInAir", false);
+        if (state == MovementState.air) _arms_AC.SetBool("isInAir", true);
+        if (state == MovementState.climbing) _arms_AC.SetBool("startMoving", false);
+        if (state == MovementState.walking)
+        {
+            //_arms_AC.SetBool("isInAir", false);
+            _arms_AC.SetBool("startMoving", true);
+        }
+        if (state == MovementState.sliding) _arms_AC.SetBool("startMoving", false);
 
         if (state == MovementState.air || _isHigherThan)
         {
@@ -269,6 +289,7 @@ public class S_PlayerMovement : MonoBehaviour
                         //Debug.Log("GroundContact");
                         _isHigherThan = false;
                         PlayerSoundScript.LandingSound();
+                        _arms_AC.SetBool("isInAir", false);
                         _arms_AC.SetBool("gotOnGround", true);
                         i = 0;
                     }
@@ -706,4 +727,9 @@ public class S_PlayerMovement : MonoBehaviour
 
         return velocityXZ + velocityY;
     }  
+
+    public void armAnimToPlay(string animName)
+    {
+        _arms_AC.SetBool(animName, true);
+    }
 }
