@@ -14,7 +14,7 @@ public class S_DeathPlayer : MonoBehaviour
 
     public float TimeToRespawnPlayer = 2f;
 
-    public void RespawnPlayer()
+    public void RespawnPlayer(Transform RespawnOrientation)
     {
         DeadCount += 1;
         NewRobotsName();
@@ -22,8 +22,8 @@ public class S_DeathPlayer : MonoBehaviour
         _rbplayer.velocity = new Vector3(0, 0, 0);
 
         //Player Camera rest
-        var x = this.transform.rotation.eulerAngles.x;
-        var y = this.transform.rotation.eulerAngles.y;
+        var x = RespawnOrientation.rotation.eulerAngles.x;
+        var y = RespawnOrientation.rotation.eulerAngles.y;
         _playerCam.CameraReset(x, y);
         Physics.SyncTransforms();
     }

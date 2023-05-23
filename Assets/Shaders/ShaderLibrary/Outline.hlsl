@@ -3,6 +3,8 @@
 TEXTURE2D(_CameraColorTexture);
 SAMPLER(sampler_CameraColorTexture);
 float4 _CameraColorTexture_TexelSize;
+TEXTURE2D(_StencilValue);
+SAMPLER(sampler_StencilValue);
 
 //TEXTURE2D(_CameraDepthTexture2);
 //UNITY_DECLARE_DEPTH_TEXTURE(_CameraDepthTexture);
@@ -27,6 +29,7 @@ float3 DecodeNormal(float4 enc)
 void Outline_float(float2 UV, float OutlineThickness, float DepthSensitivity, float NormalsSensitivity, float ColorSensitivity, float4 OutlineColor, out float4 Out)
 {
     //UnityTexture2D _CameraDepthTexture = SampleSceneDepth(UV);
+    float stencil = SAMPLE_TEXTURE2D(_StencilValue, sampler_StencilValue, UV).r;
     
     float halfScaleFloor = floor(OutlineThickness * 0.5);
     float halfScaleCeil = ceil(OutlineThickness * 0.5);
@@ -72,5 +75,9 @@ void Outline_float(float2 UV, float OutlineThickness, float DepthSensitivity, fl
     float edge = max(edgeDepth, max(edgeNormal, edgeColor));
 
     float4 original = SAMPLE_TEXTURE2D(_CameraColorTexture, sampler_CameraColorTexture, uvSamples[0]);
+    
+    if(stencil > 1)
+        discard;
+    
     Out = ((1 - edge) * original) + (edge * lerp(original, OutlineColor, OutlineColor.a));
 }

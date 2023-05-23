@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public enum DisplayCategory
 {
-    Corentin_Scene, Kiki_Scene, HUB, Alexis_Scene, Assets_Scene, MAIN_VerticalSlice, Killian_Scene, Tom_Scene, Tom_Test_Scene, Playtest_Scene, Maxime_Scene, Kevin_Scene, Tuto_Scene, IA_Scene, MainMenu, Light_Scene, Run_2, Decor_Scene
+    Corentin_Scene, Kiki_Scene, HUB, Alexis_Scene, Assets_Scene, MAIN_VerticalSlice, Kilian_Scene, Killian_Scene, Tom_Scene, Tom_Test_Scene, Playtest_Scene, Maxime_Scene, Kevin_Scene, Tuto_Scene, IA_Scene, MainMenu, Light_Scene, Run_2, Decor_Scene
 }
 
 
@@ -26,12 +26,12 @@ public class S_SceneManager : Manager
         SceneManager.LoadScene(sceneToStart);
         gameObject.SetActive(true);
 
-        if(sceneToStart == "HUB")
+        if(sceneToStart == "Kilian_Scene")
         {
             SceneManager.LoadScene("Asset_Scene", LoadSceneMode.Additive);
             SceneManager.LoadScene("Light_Scene", LoadSceneMode.Additive);
             //zSceneManager.LoadScene("Run_2", LoadSceneMode.Additive);
-            SceneManager.LoadScene("Decor_Scene", LoadSceneMode.Additive);
+            //SceneManager.LoadScene("Decor_Scene", LoadSceneMode.Additive);
         }
 
         /*if (sceneToStart == "MainMenu")

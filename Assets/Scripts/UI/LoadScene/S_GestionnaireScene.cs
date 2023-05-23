@@ -41,10 +41,11 @@ public class S_GestionnaireScene : MonoBehaviour
         if (sceneId == 3)
         {
             AsyncOperation operation2 = SceneManager.LoadSceneAsync("Asset_Scene", LoadSceneMode.Additive);
+            AsyncOperation operation3 = SceneManager.LoadSceneAsync("Light_Scene", LoadSceneMode.Additive);
 
             while (!operation1.isDone || !operation2.isDone)
             {
-                float progressValue = Mathf.Clamp01(operation1.progress + operation2.progress / 1.8f);
+                float progressValue = Mathf.Clamp01(operation1.progress + operation2.progress + operation3.progress / 2.7f);
                 _loadingBarFill.fillAmount = progressValue; 
             
                 yield return new WaitForSeconds(0.01f);

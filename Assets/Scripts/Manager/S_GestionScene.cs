@@ -9,6 +9,8 @@ public class S_GestionScene : MonoBehaviour
     private S_ReferenceInterface _referenceInterface;
     private S_InputManager _InputManager;
 
+    [SerializeField] Texture2D cursor;
+
     [Header("Reset Player")]
     private Transform _playerTransform;
     private Rigidbody _playerRb;
@@ -44,6 +46,9 @@ public class S_GestionScene : MonoBehaviour
         _textTimer = _referenceInterface._timerText;
         _savecolor = _textTimer.color;
 
+
+        
+        //Cursor.SetCursor(cursor, Vector3.zero, CursorMode.ForceSoftware);
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
     }
