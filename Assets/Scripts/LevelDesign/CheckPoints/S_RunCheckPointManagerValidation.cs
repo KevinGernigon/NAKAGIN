@@ -47,14 +47,14 @@ public class S_RunCheckPointManagerValidation : MonoBehaviour
     public void FintimerRespawn()
     { 
         _playerContent.position = _spawnRunCapsule.position;
-        _deathPlayer.RespawnPlayer();
+        _deathPlayer.RespawnPlayer(_playerContent);
     }
 
 
     public void DeathRespawn()
     {
         _playerContent.position = checkpointCapsule.position;
-        _deathPlayer.RespawnPlayer();
+        _deathPlayer.RespawnPlayer(_playerContent);
     }
 
 

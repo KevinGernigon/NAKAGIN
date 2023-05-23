@@ -13,6 +13,7 @@ public class S_Dash : MonoBehaviour
     private Rigidbody _rb;
     private S_PlayerMovement _pm;
     private S_GrappinV2 _grappinScript;
+    private S_Jetpack _jetpackScript;
     [SerializeField] private Animator _arms_AC;
 
     [Header("Dashing")]
@@ -176,7 +177,8 @@ public class S_Dash : MonoBehaviour
         else _dashCdTimer = _dashCd;
 
         PlayerSoundScript.DashSound();
-        _arms_AC.Play("A_Arms_Wall_Destruction_01");
+        _arms_AC.SetBool("dashing", true);
+        _arms_AC.SetBool("stoppedMoving", false);
         _limitDash--;
         _pm._isDashing = true;
         //_pm._readyToJump = false;

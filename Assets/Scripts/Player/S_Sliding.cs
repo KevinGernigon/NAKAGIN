@@ -111,6 +111,7 @@ public class S_Sliding : MonoBehaviour
         if (_pm._isGrounded == true)
         {
             PlayerSoundScript.SlideSound();
+            _anim_bras.GetComponent<Animator>().SetBool("isExitingSlope", false);
             if (ScriptPlayerCam._RandomCount == 1) _anim_bras.GetComponent<Animator>().Play("A_Left_Arm_Slide_Fall");
             else if (ScriptPlayerCam._RandomCount == 2) _anim_bras.GetComponent<Animator>().Play("A_Right_Arm_Slide_Fall");
             _pm._isSliding = true;
@@ -154,8 +155,9 @@ public class S_Sliding : MonoBehaviour
     {
         PlayerSoundScript.EndSoundSlide();
 
-        if (ScriptPlayerCam._RandomCount == 1) _anim_bras.GetComponent<Animator>().Play("A_Left_Arm_Slide_Up");
-        else if (ScriptPlayerCam._RandomCount == 2) _anim_bras.GetComponent<Animator>().Play("A_Right_Slide_Up");
+        /*if (ScriptPlayerCam._RandomCount == 1) _anim_bras.GetComponent<Animator>().Play("A_Left_Arm_Slide_Up");
+        else if (ScriptPlayerCam._RandomCount == 2) _anim_bras.GetComponent<Animator>().Play("A_Right_Slide_Up");*/
+        _anim_bras.GetComponent<Animator>().SetBool("isExitingSlope", true);
         _pm._isSliding = false;
         _slidingCdTimer = _slidingCdMax;
         _playerObj.localScale = new Vector3(_playerObj.localScale.x, _startYScale, _playerObj.localScale.z);
@@ -180,6 +182,5 @@ public class S_Sliding : MonoBehaviour
         yield return new WaitUntil(() => _pm._isGrounded);
         StartSlide();
     }
-
 
 }
