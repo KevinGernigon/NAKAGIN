@@ -86,6 +86,7 @@ public class S_PlayerMovement : MonoBehaviour
     [SerializeField] private GameObject _player;
     [SerializeField] private Animator _arms_AC;
 
+
     [Header("Raycast")]
     [SerializeField] private float _valueRaycast;
 
@@ -137,7 +138,12 @@ public class S_PlayerMovement : MonoBehaviour
     public bool _isDecelerating;
     public bool _whatIsWallOnGround;
 
+
+
     int i = 0;
+
+
+
     private void Start()
     {
         rb = GetComponent<Rigidbody>();
@@ -156,6 +162,8 @@ public class S_PlayerMovement : MonoBehaviour
 
     private void Update()
     {
+        
+
         _arms_AC.SetFloat("moveSpeed", 1.0f / 55.0f * _moveSpeed);
         Debug.Log(_arms_AC.GetFloat("moveSpeed"));
 

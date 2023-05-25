@@ -34,6 +34,8 @@ public class S_PlayerSound : MonoBehaviour
     [SerializeField] private AudioClip SauvetageClip;
     [SerializeField] private AudioClip NoBatteryClip;
     [SerializeField] private AudioClip ValidationConsoleClip;
+    [SerializeField] public AudioSource NoiseSource;
+    [SerializeField] public AudioSource TutoMusic;
 
 
     [Header("Bool")]
@@ -128,6 +130,21 @@ public class S_PlayerSound : MonoBehaviour
     public void ValidationConsoleSound()
     {
         SoundManager.PlayOneShot(ValidationConsoleClip);
+    }
+
+    /*public void ClickButton()
+    {
+        SoundManager.PlayOneShot()
+    }*/
+
+    public void Noise()
+    {
+        NoiseSource.Play();
+    }
+
+    public void PlayMusic()
+    {
+        TutoMusic.Play();
     }
 
     ////////////////////////
