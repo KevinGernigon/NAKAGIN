@@ -6,7 +6,8 @@ public class S_CheckPoint : MonoBehaviour
 {
     [SerializeField] private Transform _capsuleCheckpointArea;
     //[SerializeField] private Transform _capsuleRespawn;
-    [SerializeField]private S_RunCheckPointManager _RunCheckPointManager;
+    [SerializeField] private S_RunCheckPointManager _RunCheckPointManager;
+    [SerializeField] private Animator _Animcheckpoint;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -20,6 +21,8 @@ public class S_CheckPoint : MonoBehaviour
             _RunCheckPointManager.checkpointCapsule.transform.eulerAngles = new Vector3(_capsuleCheckpointArea.transform.rotation.eulerAngles.x, _capsuleCheckpointArea.transform.rotation.eulerAngles.y, _capsuleCheckpointArea.transform.rotation.eulerAngles.z);
             
             Physics.SyncTransforms();
+
+            _Animcheckpoint.SetBool("IsOpen", true);
         }
     }
 

@@ -27,6 +27,8 @@ public class S_ConsoleFinRun : MonoBehaviour
 
     [Header("Animation")]
     [SerializeField] private Animator _animOuverture;
+    [SerializeField] private Animator _animPipe1;
+    [SerializeField] private Animator _animPipe2;
 
     [Header("Mat Ecran Verouillage")]
     [SerializeField] private Renderer _screenVerrou;
@@ -173,7 +175,8 @@ public class S_ConsoleFinRun : MonoBehaviour
             {
                 _energetiqueDoor[i].SetActive(true);
             }
-           
+
+            EtatPipe();
 
         }
     }
@@ -198,6 +201,24 @@ public class S_ConsoleFinRun : MonoBehaviour
             _isOnSphereTrigger = false;
     }
    
-    
+    public void EtatPipe()
+    {
+        if(consoleOpen && !_consoleActive)
+        {
+            _animPipe1.SetBool("IsOpen", false);
+            _animPipe2.SetBool("IsOpen", false);
+        }
+        else
+        {
+            _animPipe1.SetBool("IsOpen", true);
+            _animPipe2.SetBool("IsOpen", true);
+        }
+    }
+
+    public void ResetPipe()
+    {
+        _animPipe1.SetBool("IsOpen", false);
+        _animPipe2.SetBool("IsOpen", false);
+    }
 
 }

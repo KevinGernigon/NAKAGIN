@@ -224,9 +224,8 @@ public class S_Jetpack : MonoBehaviour
 
         }
 
-            /* if (Input.GetButtonDown("Jetpack"))
-                 JetpackFunction();*/
-            if (S_InputManager._playerInputAction.Player.Jetpack.triggered)
+
+        if (S_InputManager._playerInputAction.Player.Jetpack.triggered)
         {
             if (S_InputManager._jetpackActive)
             { 
