@@ -21,11 +21,11 @@ public class S_SoundPerScene : MonoBehaviour
                 _isPlayingNoise = true;
                 GetComponent<S_PlayerSound>().NoiseSource.Play();
             }
-            if (!_isPlayingMusic)
+            /*if (!_isPlayingMusic)
             {
                 _isPlayingMusic = true;
                 GetComponent<S_PlayerSound>().TutoMusic.Play();
-            }
+            }*/
         }
         else
         {

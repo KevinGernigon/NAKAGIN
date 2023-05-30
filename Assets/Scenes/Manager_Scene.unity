@@ -39316,6 +39316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a4e48788b7082448b21357b065cf4a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _arms_AC: {fileID: 0}
   SoundManager: {fileID: 1292550630}
   WalkSoundManager: {fileID: 2086252404}
   SlideSoundManager: {fileID: 1468954361}
@@ -39344,6 +39345,8 @@ MonoBehaviour:
   ValidationConsoleClip: {fileID: 8300000, guid: da8014b511f897144b8fa32a756f1bd5, type: 3}
   NoiseSource: {fileID: 1381252075}
   TutoMusic: {fileID: 921625792}
+  ClimbClips: []
+  isPlayingClimb: 0
 --- !u!1 &2108982999
 GameObject:
   m_ObjectHideFlags: 0
@@ -44968,6 +44971,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a4e48788b7082448b21357b065cf4a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _arms_AC: {fileID: 1525915804920973518}
   SoundManager: {fileID: 1525915806586353875}
   WalkSoundManager: {fileID: 1525915806337652289}
   SlideSoundManager: {fileID: 1525915806745956300}
@@ -44996,6 +45000,12 @@ MonoBehaviour:
   ValidationConsoleClip: {fileID: 8300000, guid: da8014b511f897144b8fa32a756f1bd5, type: 3}
   NoiseSource: {fileID: 1381252075}
   TutoMusic: {fileID: 921625792}
+  ClimbClips:
+  - {fileID: 8300000, guid: 682d9a906f622b340af3a78cfab63cd0, type: 3}
+  - {fileID: 8300000, guid: 281858d12f4ebeb43aa2af257c363d0f, type: 3}
+  - {fileID: 8300000, guid: 2066f9f4e06bcb248bdb93978224ed8a, type: 3}
+  - {fileID: 8300000, guid: 6085f88b6a589f242aa21bad35b7cfec, type: 3}
+  isPlayingClimb: 0
 --- !u!82 &1525915806337652289
 AudioSource:
   m_ObjectHideFlags: 0
@@ -47553,6 +47563,7 @@ MonoBehaviour:
   ScriptDash: {fileID: 2579101206841898676}
   AccelerationScript: {fileID: 2579101206841898698}
   _arms_AC: {fileID: 1525915804920973518}
+  PlayerSoundScript: {fileID: 1525915806305755008}
   pm: {fileID: 2579101206841898696}
   _whatIsClimbable:
     serializedVersion: 2
@@ -49258,6 +49269,7 @@ MonoBehaviour:
   ScriptDash: {fileID: 3956388861518991233}
   AccelerationScript: {fileID: 3956388861518991359}
   _arms_AC: {fileID: 550072827}
+  PlayerSoundScript: {fileID: 0}
   pm: {fileID: 3956388861518991357}
   _whatIsClimbable:
     serializedVersion: 2

@@ -6,6 +6,8 @@ public class S_PlayerSound : MonoBehaviour
 {
     [Header("Reference")]
     private S_PlayerMovement PlayerMovement;
+    [SerializeField]
+    private Animator _arms_AC;
 
     [Header("Audio")]
     [SerializeField] private AudioSource SoundManager;
@@ -36,6 +38,7 @@ public class S_PlayerSound : MonoBehaviour
     [SerializeField] private AudioClip ValidationConsoleClip;
     [SerializeField] public AudioSource NoiseSource;
     [SerializeField] public AudioSource TutoMusic;
+    [SerializeField] private List<AudioClip> ClimbClips;
 
 
     [Header("Bool")]
@@ -44,6 +47,7 @@ public class S_PlayerSound : MonoBehaviour
     private bool _isPlayingPlatform = false;
     private bool _isPlayingWallRun = false;
     private bool _isPlayingSauvetage = false;
+    public bool isPlayingClimb = false;
 
     [Header("Timer")]
     private float timer = 2.56f;
@@ -145,6 +149,32 @@ public class S_PlayerSound : MonoBehaviour
     public void PlayMusic()
     {
         TutoMusic.Play();
+    }
+
+    public IEnumerator ClimbSounds()
+    {
+        isPlayingClimb = true;
+        bool WaitABit = true;
+        while (true)
+        {
+            if (WaitABit)
+            {
+                WaitABit = false;
+                yield return new WaitForSeconds(0.1f);
+            }
+            if (_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Arms_Climb")
+            {
+                var rand = Random.Range(0, 4);
+                SoundManager.PlayOneShot(ClimbClips[rand]);
+                yield return new WaitForSeconds(0.3f);
+            }
+            else
+            {
+                WaitABit = true;
+                isPlayingClimb = false;
+                break;
+            }
+        }
     }
 
     ////////////////////////

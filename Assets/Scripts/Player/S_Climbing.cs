@@ -14,6 +14,7 @@ public class S_Climbing : MonoBehaviour
     [SerializeField] private S_Dash ScriptDash;
     [SerializeField] private S_Accelaration AccelerationScript;
     [SerializeField] private Animator _arms_AC;
+    [SerializeField] private S_PlayerSound PlayerSoundScript;
 
     public S_PlayerMovement pm;
     [SerializeField] private LayerMask _whatIsClimbable;
@@ -148,6 +149,7 @@ public class S_Climbing : MonoBehaviour
     {
         //_arms_AC.Play("A_Arms_Climb");
         _arms_AC.SetBool("climbing", true);
+        if(PlayerSoundScript.isPlayingClimb == false) StartCoroutine(PlayerSoundScript.ClimbSounds());
         pm._walkSpeed = 40;
         _isClimbing = true;
         pm._isClimbing = true;
