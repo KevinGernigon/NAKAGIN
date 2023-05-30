@@ -140,6 +140,15 @@ public class S_GrappinV2 : MonoBehaviour
                 PlayerSoundScript.ImpactHookSound();
                 Invoke(nameof(ExecuteGrapple), _grappleDelayTime);
             }
+            else if (_isAimForgivenessActive)
+            {
+                Debug.Log("????????????");
+                _isDecreaseRbDrag = true;
+                _pm.Jump();
+                grapplePoint = previousGrapplePoint;
+                PlayerSoundScript.ImpactHookSound();
+                Invoke(nameof(ExecuteGrapple), _grappleDelayTime);
+            }
             else
                 MissGrapple();
         }
