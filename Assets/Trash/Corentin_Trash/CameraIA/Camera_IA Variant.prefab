@@ -102,10 +102,23 @@ BoxCollider:
   m_GameObject: {fileID: 7076728873154205268}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 5.5381646, y: 3.0016763, z: 3.0105352}
   m_Center: {x: 0.2762099, y: -0.24471119, z: 0.05660308}
+--- !u!135 &2944517448892872887
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7076728873154205268}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 2.54
+  m_Center: {x: -0.20256954, y: -0.070206925, z: 0.06638137}
 --- !u!95 &700373625
 Animator:
   serializedVersion: 4
@@ -146,3 +159,17 @@ MonoBehaviour:
   _animCam: {fileID: 700373625}
   _cameraIAisTarget: 0
   _delayBtwAnim: 0
+--- !u!64 &6797875322263571623
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7076728873154205268}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 3048581061611683640, guid: 7693d77ab6a34f545a3f07addf3e7248, type: 3}

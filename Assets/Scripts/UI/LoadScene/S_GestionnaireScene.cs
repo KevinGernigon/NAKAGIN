@@ -10,7 +10,13 @@ public class S_GestionnaireScene : MonoBehaviour
     [SerializeField] private GameObject _loadingScreen;
     [SerializeField] private Image _loadingBarFill;
     [SerializeField] private S_PauseMenuV2 S_PauseMenuV2;
+
+    [SerializeField] private GameObject DisablePlayer;
+
+
     public bool InMenu;
+
+
 
     private void Update()
     {
@@ -36,6 +42,8 @@ public class S_GestionnaireScene : MonoBehaviour
     IEnumerator LoadSceneAsync(int sceneId)
     {
         _loadingScreen.SetActive(true);
+        DisablePlayer.SetActive(false);
+
         AsyncOperation operation1 = SceneManager.LoadSceneAsync(sceneId);
 
         if (sceneId == 3)
@@ -49,7 +57,9 @@ public class S_GestionnaireScene : MonoBehaviour
                 _loadingBarFill.fillAmount = progressValue; 
             
                 yield return new WaitForSeconds(0.01f);
+
             }
+            DisablePlayer.SetActive(true);
         }
         else
         {
@@ -59,7 +69,9 @@ public class S_GestionnaireScene : MonoBehaviour
                 _loadingBarFill.fillAmount = progressValue;
 
                 yield return new WaitForSeconds(0.01f);
+                
             }
+            DisablePlayer.SetActive(true);
         }
 
         _loadingScreen.SetActive(false);
