@@ -25,6 +25,11 @@ public class S_InfoScore : MonoBehaviour
     [SerializeField] private TMP_Text _level2TimerTxt;
     [SerializeField] private TMP_Text _bestTimeTxt;
 
+    private bool _Run1;
+    private bool _Run2;
+    private bool _Run3;
+    private S_PlayFabManager PlayFabManager;
+
     public float _level1Time = 10f;
     public float _level2Time = 15f;
     private float _bestTime = 0f;
@@ -46,12 +51,14 @@ public class S_InfoScore : MonoBehaviour
     private float _level2Timeminutes, _level2Timeseconds, _level2Timemilliseconds;
     private float _bestTimeminutes, _bestTimeseconds, _bestTimemilliseconds;
 
+    private int _testleaderboard = 10;
 
     private void Awake()
     {
         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
         _playerContent = _referenceInterface._playerTransform;
         S_PauseMenuV2 = _referenceInterface.EventSystem.GetComponent<S_PauseMenuV2>();
+        PlayFabManager = _referenceInterface.PlayFabManager;
     }
 
     private void Start()
@@ -220,7 +227,25 @@ public class S_InfoScore : MonoBehaviour
 
         ScriptTimer.SetTimerRef(_level1Time, _level2Time);
         _runStart = true;
+        _Run1 = _Run2 = _Run3 = false;
     }
+
+    public void Run1()
+    {
+        _Run1 = true;
+        GetBestTimePlayer();
+    }
+    public void Run2()
+    {
+        _Run2 = true;
+        GetBestTimePlayer();
+    }
+    public void Run3()
+    {
+        _Run3 = true;
+        GetBestTimePlayer();
+    }
+
 
     public void GetBestTimePlayer()                //fonction lancé au passage de la trigger box stop de la run
     {
@@ -229,17 +254,39 @@ public class S_InfoScore : MonoBehaviour
             //_runStart = false;
             timePlayer = ScriptTimer._timerTime;
 
-
             if (timePlayer < _bestTime || _bestTime == 0f)
-            {
-                    
+                {
+
                  _bestTime = timePlayer;
 
                  _bestTimeminutes = ScriptTimer._minutes;
                  _bestTimeseconds = ScriptTimer._seconds;
-                 _bestTimemilliseconds = ScriptTimer._milliseconds;    
-            }
+                 _bestTimemilliseconds = ScriptTimer._milliseconds;
 
+
+                 if (_Run1 && timePlayer <= _level2Time)
+                 {
+                        int _leaderboardValueMinutes = (int)_bestTimeminutes * 60000;
+                        int _leaderboardValueSeconds = (int)_bestTimeseconds * 1000;
+                        int _leaderboardValueMS = (int)_bestTimemilliseconds;
+                        PlayFabManager.SendLeaderboardRun1(_leaderboardValueMinutes + _leaderboardValueSeconds + _leaderboardValueMS);
+                 }
+                 else if (_Run2 && timePlayer <= _level2Time)
+                 {
+                        int _leaderboardValueMinutes = (int)_bestTimeminutes * 60000;
+                        int _leaderboardValueSeconds = (int)_bestTimeseconds * 1000;
+                        int _leaderboardValueMS = (int)_bestTimemilliseconds;
+                        PlayFabManager.SendLeaderboardRun2(_leaderboardValueMinutes + _leaderboardValueSeconds + _leaderboardValueMS);
+                 }
+                 else if (_Run3 && timePlayer <= _level2Time)
+                 {
+                        int _leaderboardValueMinutes = (int)_bestTimeminutes * 60000;
+                        int _leaderboardValueSeconds = (int)_bestTimeseconds * 1000;
+                        int _leaderboardValueMS = (int)_bestTimemilliseconds;
+                        PlayFabManager.SendLeaderboardRun3(_leaderboardValueMinutes + _leaderboardValueSeconds + _leaderboardValueMS);
+                 }
+                 _Run1 = _Run2 = _Run3 = false;
+            }
 
             if (timePlayer < _level1Time)
             {

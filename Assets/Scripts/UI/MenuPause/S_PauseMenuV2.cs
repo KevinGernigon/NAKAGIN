@@ -22,6 +22,7 @@ public class S_PauseMenuV2 : MonoBehaviour
     [SerializeField] private GameObject _helpsettings;
 
     [SerializeField] private S_BatteryManager _BatteryManager;
+    [SerializeField] private S_Jetpack _Jetpack;
     
     [Header("HUD")]
 
@@ -316,6 +317,9 @@ public class S_PauseMenuV2 : MonoBehaviour
         _IsRestart = true ; 
         _BatteryManager._nbrBattery = 0;
         _settingsInterface.SetActive(false);
+
+        _Jetpack.BooleanTriggerBoxExit();
+
     }
 
 }
