@@ -87,6 +87,8 @@ public class S_ReferenceInterface : Manager
     public S_GestionnaireScene _GestionnaireScene;
     public S_FinDemo _FinDemo;
 
+    public S_PlayFabManager PlayFabManager;
+
     [Header("Audio")]
     public S_PlayerSound PlayerSoundScript;
     private void Awake()
