@@ -63,8 +63,10 @@ public class S_GestionScene : MonoBehaviour
         _playerTransform.position = _spawnPoint.position;
 
         _playerRb.velocity = new Vector3(0, 0, 0);
-        var x = this.transform.rotation.eulerAngles.x;
-        var y = this.transform.rotation.eulerAngles.y;
+
+        var x = _spawnPoint.transform.rotation.eulerAngles.x;
+        var y = _spawnPoint.transform.rotation.eulerAngles.y;
+
         _playerCam.CameraReset(x, y);
         Physics.SyncTransforms();
 

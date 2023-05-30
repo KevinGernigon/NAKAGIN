@@ -26,6 +26,9 @@ public class S_ReferenceInterface : Manager
     [Header("Refs Jetpack")]
     public S_Jetpack _Jetpack;
 
+    [Header("Refs Dash")]
+    public S_Dash _Dash;
+
     [Header("Refs UI Anim Timer")]
     public Animator _HUDtimer;
     public TMP_Text _timerText;
@@ -83,6 +86,8 @@ public class S_ReferenceInterface : Manager
     [Header("Refs Gestionnaire Scene")]
     public S_GestionnaireScene _GestionnaireScene;
     public S_FinDemo _FinDemo;
+
+    public S_PlayFabManager PlayFabManager;
 
     [Header("Audio")]
     public S_PlayerSound PlayerSoundScript;

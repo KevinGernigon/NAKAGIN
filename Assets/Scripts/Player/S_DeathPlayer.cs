@@ -11,13 +11,18 @@ public class S_DeathPlayer : MonoBehaviour
     [SerializeField] private Rigidbody _rbplayer;
     [SerializeField] private S_PlayerCam _playerCam;
     [SerializeField] private TMP_Text _robotName;
+    [SerializeField] private S_Dash _Dash;
+    [SerializeField] private S_GrappinV2 _GrappinV2;
 
     public float TimeToRespawnPlayer = 2f;
 
     public void RespawnPlayer(Transform RespawnOrientation)
     {
-        DeadCount += 1;
+        DeadCount++;
         NewRobotsName();
+
+        _Dash._limitDash = 3f;
+        _GrappinV2._isGrappling = false;
 
         _rbplayer.velocity = new Vector3(0, 0, 0);
 

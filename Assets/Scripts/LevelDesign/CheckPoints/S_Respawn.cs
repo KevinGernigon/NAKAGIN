@@ -10,6 +10,7 @@ public class S_Respawn : MonoBehaviour
 
     [SerializeField] private GameObject _managerRun;
     private S_RunCheckPointManager _runCheckPointManager;
+    private S_DeathPlayer _DeathPlayer;
 
 
     private void Awake()
@@ -18,12 +19,14 @@ public class S_Respawn : MonoBehaviour
        
         _runCheckPointManager = _managerRun.GetComponent<S_RunCheckPointManager>();
 
+        _DeathPlayer = _referenceInterface.deathPlayer;
+
     }
        
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !_DeathPlayer.playerIsDead)
         {
             /////Start Death/////
          
