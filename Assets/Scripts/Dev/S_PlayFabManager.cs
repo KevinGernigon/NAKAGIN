@@ -64,7 +64,6 @@ public class S_PlayFabManager : MonoBehaviour
         string name = null;
         if(result.InfoResultPayload.PlayerProfile != null){
             name = result.InfoResultPayload.PlayerProfile.DisplayName;
-            StartPositionValueExtend++;
         }
 
         if(name == null)
@@ -126,7 +125,7 @@ public class S_PlayFabManager : MonoBehaviour
         var request = new UpdatePlayerStatisticsRequest{
             Statistics = new List<StatisticUpdate> {
                 new StatisticUpdate{
-                    StatisticName = "Leaderboard3",
+                    StatisticName = "Leaderboard3Bis",
                     Value = score
                 }
             }
@@ -160,7 +159,7 @@ public class S_PlayFabManager : MonoBehaviour
 
     public void GetLeaderBoard3(){
         var request = new GetLeaderboardRequest{
-            StatisticName = "Leaderboard3",
+            StatisticName = "Leaderboard3Bis",
             StartPosition = StartPositionValueExtend,
             MaxResultsCount = 100
         };
@@ -187,7 +186,7 @@ public class S_PlayFabManager : MonoBehaviour
 
     public void GetLeaderboardAroundPlayer3(){
         var request = new GetLeaderboardAroundPlayerRequest{
-            StatisticName = "Leaderboard3",
+            StatisticName = "Leaderboard3Bis",
             MaxResultsCount = 3
         };
         PlayFabClientAPI.GetLeaderboardAroundPlayer(request, OnLeaderBoardAroundPlayerGet, OnLoginFailure);
