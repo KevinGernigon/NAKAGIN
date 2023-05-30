@@ -9,7 +9,7 @@ OcclusionCullingSettings:
     smallestHole: 0.25
     backfaceThreshold: 100
   m_SceneGUID: b1926ac1beec1294ea58ea3d620dc819
-  m_OcclusionCullingData: {fileID: 36300000, guid: ff97bc0d374311c448cd82f25e237f18, type: 2}
+  m_OcclusionCullingData: {fileID: 36300000, guid: a8eadb7ddeb4d394fbed6bd4d8e24e7f, type: 2}
 --- !u!104 &2
 RenderSettings:
   m_ObjectHideFlags: 0
@@ -14548,6 +14548,7 @@ MonoBehaviour:
   _loadingScreen: {fileID: 2024440297}
   _loadingBarFill: {fileID: 1857316848}
   S_PauseMenuV2: {fileID: 0}
+  DisablePlayer: {fileID: 0}
   InMenu: 0
 --- !u!1 &723343832
 GameObject:
@@ -30384,7 +30385,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1513862880
 RectTransform:
   m_ObjectHideFlags: 0
@@ -42262,6 +42263,7 @@ MonoBehaviour:
   _loadingScreen: {fileID: 1525915804844812368}
   _loadingBarFill: {fileID: 1525915805348902243}
   S_PauseMenuV2: {fileID: 1525915805904549652}
+  DisablePlayer: {fileID: 1525915806423748474}
   InMenu: 0
 --- !u!4 &1525915805074968542
 Transform:

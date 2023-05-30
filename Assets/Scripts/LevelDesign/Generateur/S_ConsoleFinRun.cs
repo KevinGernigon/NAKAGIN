@@ -103,7 +103,7 @@ public class S_ConsoleFinRun : MonoBehaviour
 
 
             RaycastHit hit;
-            if (Physics.Raycast(_referenceInterface._CameraGameObject.transform.position,_referenceInterface._CameraGameObject.transform.forward,out hit,5, _whatIsInteractable))
+            if (Physics.Raycast(_referenceInterface._CameraGameObject.transform.position,_referenceInterface._CameraGameObject.transform.forward,out hit,15, _whatIsInteractable))
             {
                 if(hit.collider.gameObject == gameObject)
                 {
@@ -113,6 +113,7 @@ public class S_ConsoleFinRun : MonoBehaviour
                         if (_referenceInterface._InputManager._playerInput.currentControlScheme == "KeyboardAndMouse")
                         {
                             _imageInteraction.SetActive(false);
+                            _textInteraction.gameObject.SetActive(true);
 
                             int bindingIndex = ActionRef.action.GetBindingIndexForControl(ActionRef.action.controls[0]);
                             _textInteraction.text = InputControlPath.ToHumanReadableString(
@@ -127,7 +128,8 @@ public class S_ConsoleFinRun : MonoBehaviour
                         if (_referenceInterface._InputManager._playerInput.currentControlScheme == "Gamepad")
                         {
 
-                            _textInteraction.text = "Y";
+                            _textInteraction.text = "Y"; 
+                            _textInteraction.gameObject.SetActive(false);
                             _imageInteraction.SetActive(true);
                             
                         }
