@@ -42,12 +42,12 @@ public class S_GestionnaireScene : MonoBehaviour
     IEnumerator LoadSceneAsync(int sceneId)
     {
         _loadingScreen.SetActive(true);
-        DisablePlayer.SetActive(false);
 
         AsyncOperation operation1 = SceneManager.LoadSceneAsync(sceneId);
 
         if (sceneId == 3)
         {
+            DisablePlayer.SetActive(false);
             AsyncOperation operation2 = SceneManager.LoadSceneAsync("Asset_Scene", LoadSceneMode.Additive);
             AsyncOperation operation3 = SceneManager.LoadSceneAsync("Light_Scene", LoadSceneMode.Additive);
 
@@ -71,7 +71,7 @@ public class S_GestionnaireScene : MonoBehaviour
                 yield return new WaitForSeconds(0.01f);
                 
             }
-            DisablePlayer.SetActive(true);
+            //DisablePlayer.SetActive(true);
         }
 
         _loadingScreen.SetActive(false);
