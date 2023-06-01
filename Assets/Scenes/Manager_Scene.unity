@@ -39316,6 +39316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a4e48788b7082448b21357b065cf4a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerMovement: {fileID: 0}
   _arms_AC: {fileID: 0}
   SoundManager: {fileID: 1292550630}
   WalkSoundManager: {fileID: 2086252404}
@@ -39346,6 +39347,7 @@ MonoBehaviour:
   NoiseSource: {fileID: 1381252075}
   TutoMusic: {fileID: 921625792}
   ClimbClips: []
+  landingClips: []
   isPlayingClimb: 0
 --- !u!1 &2108982999
 GameObject:
@@ -44971,6 +44973,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a4e48788b7082448b21357b065cf4a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  PlayerMovement: {fileID: 2579101206841898696}
   _arms_AC: {fileID: 1525915804920973518}
   SoundManager: {fileID: 1525915806586353875}
   WalkSoundManager: {fileID: 1525915806337652289}
@@ -45005,6 +45008,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 281858d12f4ebeb43aa2af257c363d0f, type: 3}
   - {fileID: 8300000, guid: 2066f9f4e06bcb248bdb93978224ed8a, type: 3}
   - {fileID: 8300000, guid: 6085f88b6a589f242aa21bad35b7cfec, type: 3}
+  landingClips:
+  - {fileID: 8300000, guid: 9beaf341922b0fe4faeef50b3009aaf1, type: 3}
+  - {fileID: 8300000, guid: b91bea3a36d646943a1ba43fdc66cb44, type: 3}
+  - {fileID: 8300000, guid: cd13c1180e5e93646886c67ba3ca0644, type: 3}
   isPlayingClimb: 0
 --- !u!82 &1525915806337652289
 AudioSource:
@@ -46595,9 +46602,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: f51bce04e81f38d4f88e1fa561e84b76, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 99f8ffd65e17f014ea984c3198c10fe5, type: 3}
   m_PlayOnAwake: 0
-  m_Volume: 0.2
+  m_Volume: 0
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -47405,6 +47412,7 @@ GameObject:
   - component: {fileID: 1525915806305755008}
   - component: {fileID: 2579101206841898698}
   - component: {fileID: 2579101206841898700}
+  - component: {fileID: 2579101206841898701}
   m_Layer: 9
   m_Name: PlayerContent
   m_TagString: Player
@@ -47727,6 +47735,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d58968d6378e1a44b4e20b1da598539, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2579101206841898701
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2579101206841898673}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc60e0d7f3fcc2c4daaa72274d1e41de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerMovement: {fileID: 2579101206841898696}
+  _arms_AC: {fileID: 1525915804920973518}
 --- !u!1 &2579101206931081904
 GameObject:
   m_ObjectHideFlags: 0

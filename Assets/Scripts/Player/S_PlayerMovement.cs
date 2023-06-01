@@ -139,7 +139,6 @@ public class S_PlayerMovement : MonoBehaviour
     public bool _whatIsWallOnGround;
 
 
-
     int i = 0;
 
 
@@ -158,6 +157,7 @@ public class S_PlayerMovement : MonoBehaviour
         _isButtonEnabled = true;
         _isDecelerating = false;
         canJumpLedge = false;
+
     }
 
     private void Update()
@@ -165,7 +165,7 @@ public class S_PlayerMovement : MonoBehaviour
         
 
         _arms_AC.SetFloat("moveSpeed", 1.0f / 55.0f * _moveSpeed);
-        Debug.Log(_arms_AC.GetFloat("moveSpeed"));
+        //Debug.Log(_arms_AC.GetFloat("moveSpeed"));
 
         if (GetSlopeMoveDirection(_moveDirection).y >= 0f && OnSlope())
         {
@@ -296,7 +296,7 @@ public class S_PlayerMovement : MonoBehaviour
                     {
                         //Debug.Log("GroundContact");
                         _isHigherThan = false;
-                        PlayerSoundScript.LandingSound();
+                        //PlayerSoundScript.LandingSound();
                         _arms_AC.SetBool("isInAir", false);
                         _arms_AC.SetBool("gotOnGround", true);
                         i = 0;
@@ -580,6 +580,7 @@ public class S_PlayerMovement : MonoBehaviour
         _arms_AC.Play("A_Arms_Jump_Impulse");
 
         PlayerSoundScript.JumpSound();
+        PlayerSoundScript.LandingSoundManager.volume = 0;
         if (!OnSlope() && _whatIsWallOnGround)
         {
             rb.AddForce(transform.up * _jumpForce * 1.5f, ForceMode.Impulse);
@@ -616,7 +617,7 @@ public class S_PlayerMovement : MonoBehaviour
         }
         else if (canJumpLedge)
         {
-            Debug.Log("???");
+            //Debug.Log("???");
             _exitingSlope = true;
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
             //rb.velocity = new Vector3(rb.velocity.x, ??, rb.velocity.z);
@@ -740,4 +741,6 @@ public class S_PlayerMovement : MonoBehaviour
     {
         _arms_AC.SetBool(animName, true);
     }
+
+    
 }
