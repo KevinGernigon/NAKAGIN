@@ -91,7 +91,7 @@ public class S_RotationPlatformes : MonoBehaviour
         PlayerSoundScript.PlatformMovingSound();
         var random = Random.Range(1, 2);
         //_arms_AC.SetBool("rightArmUse" + random.ToString(), true);
-        Player.GetComponent<S_PlayerMovement>().armAnimToPlay("rightArmUse" + random.ToString());
+        Player.GetComponent<S_PlayerMovement>().armAnimToPlay("leftArmUse" + random.ToString());
         while (_startMoving == true && _alpha < 1)
         {
             
@@ -106,7 +106,7 @@ public class S_RotationPlatformes : MonoBehaviour
         PlayerSoundScript.PlatformMovingSound();
         var random = Random.Range(1, 2);
         //_arms_AC.SetBool("leftArmUse" + random.ToString(), true);
-        Player.GetComponent<S_PlayerMovement>().armAnimToPlay("leftArmUse" + random.ToString());
+        Player.GetComponent<S_PlayerMovement>().armAnimToPlay("rightArmUse" + random.ToString());
         while (_startMoving == true && _alpha < 1)
         {
             
