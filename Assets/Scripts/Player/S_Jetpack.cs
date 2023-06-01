@@ -22,6 +22,7 @@ public class S_Jetpack : MonoBehaviour
     [SerializeField] private float _jetpackUpwardForce;
     [SerializeField] private float _dividePer;
     [SerializeField] private bool _jetPackSave;
+    [SerializeField] private float _valueJumpJetpack;
     private bool _isGravityDisable;
 
     [Header("Audio")]
@@ -65,8 +66,13 @@ public class S_Jetpack : MonoBehaviour
     {
         /*if (Input.GetButtonDown("Jetpack") && _isJetpackAvaible)
             JetpackFunction();*/
+        if(S_InputManager._playerInputAction.Player.Jump.triggered){
+            StartCoroutine(waitAfterJump());
+        }
+
         if (!_pm._isGrounded && !_pm._isWallRunning)
         {
+        
             if(!_pm._isWallRunning){
                 _maxTimerJetpack = 0.5f;
             }
@@ -83,11 +89,12 @@ public class S_Jetpack : MonoBehaviour
                  _isTimerReach = true;
             }
         }
-        else
-        {
+        else{
             _timerJetpack = 0;
             _isTimerReach = true;
         }
+
+        
 
 
         if (S_InputManager._playerInputAction.Player.Jetpack.triggered && _isJetpackAvaible && !_isPadUsed)
@@ -191,6 +198,13 @@ public class S_Jetpack : MonoBehaviour
                 i = 85;
             }
 
+            if(_isTriggerBoxTrue){
+                i = Mathf.Abs(_rb.velocity.y) * 1.5f;
+                if(i > 100){
+                    i = 100;
+                }
+            }
+
             
             
 
@@ -264,5 +278,11 @@ public class S_Jetpack : MonoBehaviour
         _isSoundActive = true;
         yield return new WaitForSeconds(2f);
         _isSoundActive = false;
+    }
+
+    IEnumerator waitAfterJump(){
+        _isJetpackAvaible = false;
+        yield return new WaitForSeconds(0.1f);
+        _isJetpackAvaible = true;
     }
 }

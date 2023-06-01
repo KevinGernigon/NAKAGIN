@@ -89,9 +89,8 @@ public class S_GrappinV2 : MonoBehaviour
             }
             else
             {
-                Debug.DrawRay(_camera.position, _camera.forward * _maxGrappleDistance, Color.red);
-                StartCoroutine(TimerGrapplingHook());
-
+                    Debug.DrawRay(_camera.position, _camera.forward * _maxGrappleDistance, Color.red);
+                    StartCoroutine(TimerGrapplingHook());
             }
         }
         else
@@ -139,28 +138,30 @@ public class S_GrappinV2 : MonoBehaviour
                 grapplePoint = hit.transform.position;
                 PlayerSoundScript.ImpactHookSound();
                 Invoke(nameof(ExecuteGrapple), _grappleDelayTime);
+                
             }
             else if (_isAimForgivenessActive)
-            {
-                Debug.Log("????????????");
-                _isDecreaseRbDrag = true;
-                _pm.Jump();
-                grapplePoint = previousGrapplePoint;
-                PlayerSoundScript.ImpactHookSound();
-                Invoke(nameof(ExecuteGrapple), _grappleDelayTime);
-            }
-            else
-                MissGrapple();
-        }
-        else if (_isAimForgivenessActive)
         {
-            Debug.Log("????????????");
+            Debug.Log("V1");
             _isDecreaseRbDrag = true;
             _pm.Jump();
             grapplePoint = previousGrapplePoint;
             PlayerSoundScript.ImpactHookSound();
             Invoke(nameof(ExecuteGrapple), _grappleDelayTime);
         }
+        else if (_isAimForgivenessActive)
+        {
+            Debug.Log("V2");
+            _isDecreaseRbDrag = true;
+            _pm.Jump();
+            grapplePoint = previousGrapplePoint;
+            PlayerSoundScript.ImpactHookSound();
+            Invoke(nameof(ExecuteGrapple), _grappleDelayTime);
+        }
+            else
+                MissGrapple();
+        }
+        
         //if(Physics.Raycast(_camera.position, _camera.forward, out hit, _maxGrappleDistance, 1 << LayerMask.NameToLayer("WhatIsTarget")))
         else
             MissGrapple();

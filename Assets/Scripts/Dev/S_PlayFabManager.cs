@@ -22,9 +22,11 @@ public class S_PlayFabManager : MonoBehaviour
     public Transform rowsParent1;
     public Transform rowsParent2;
     public Transform rowsParent3;
+
     [Header("Windows")]
     public GameObject nameWindow;
     public GameObject leaderboardWindow;
+
     [Header("Display name windows")]
     public TMP_InputField nameInput;
     public GameObject AlreadyUsed;
@@ -35,6 +37,8 @@ public class S_PlayFabManager : MonoBehaviour
     public Transform TransformOwnRank1;
     public Transform TransformOwnRank2;
     public Transform TransformOwnRank3;
+
+    [SerializeField] S_GestionnaireScene GestionnaireScene;
     
 
     string loggedInPlayFabId;
@@ -54,6 +58,13 @@ public class S_PlayFabManager : MonoBehaviour
                 GetPlayerProfile = true}
                 };
         PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginFailure);
+    }
+
+    public void Continue()
+    {
+        if(name != null){
+            GestionnaireScene.LoadNewScene(3);
+        }
     }
 
 #region Login
