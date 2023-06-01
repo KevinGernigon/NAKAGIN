@@ -28,6 +28,7 @@ public class S_GestionMenu : MonoBehaviour
 
         _loadingScreen.SetActive(false);
         _disableManager.SetActive(false);
+        _InputManager.ActivePause();
         //_InputManager.ActivePause();
 
     }
