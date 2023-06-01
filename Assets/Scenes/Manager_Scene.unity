@@ -18851,13 +18851,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 964588734}
+  - component: {fileID: 964588735}
   m_Layer: 5
   m_Name: LeaderBoardInterface
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &964588734
 RectTransform:
   m_ObjectHideFlags: 0
@@ -18881,6 +18882,14 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &964588735
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 964588733}
+  m_CullTransparentMesh: 1
 --- !u!1 &971582855
 GameObject:
   m_ObjectHideFlags: 0
@@ -37145,6 +37154,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1321436060838506078}
     - target: {fileID: 1870529170080034302, guid: 4745332e90005484fba7a57006ca7229, type: 3}
+      propertyPath: GestionnaireScene
+      value: 
+      objectReference: {fileID: 1525915805074968537}
+    - target: {fileID: 1870529170080034302, guid: 4745332e90005484fba7a57006ca7229, type: 3}
       propertyPath: TransformOwnRank1
       value: 
       objectReference: {fileID: 1321436062216956296}
@@ -46380,7 +46393,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: d9078dcb741aca7429deaed14b8253e5, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -46415,7 +46428,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!222 &1321436062455999220
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -48164,7 +48177,7 @@ MonoBehaviour:
   _loadingScreen: {fileID: 1525915804844812368}
   _loadingBarFill: {fileID: 1525915805348902243}
   S_PauseMenuV2: {fileID: 1525915805904549652}
-  DisablePlayer: {fileID: 1525915806423748474}
+  DisablePlayer: {fileID: 2579101206841898673}
   InMenu: 0
 --- !u!4 &1525915805074968542
 Transform:
@@ -48291,7 +48304,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &1525915805086998668
 GameObject:
   m_ObjectHideFlags: 0
@@ -53026,7 +53039,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1531373075185100451
 RectTransform:
   m_ObjectHideFlags: 0
@@ -53506,6 +53519,7 @@ MonoBehaviour:
   _jetpackUpwardForce: 3
   _dividePer: 2
   _jetPackSave: 0
+  _valueJumpJetpack: 0
   _HUDJetpackWarning: {fileID: 1525915805086998668}
   _timerCd: 0
   _timerMaxCd: 3
@@ -53616,7 +53630,7 @@ MonoBehaviour:
   _playerHeight: 2
   _whatIsGround:
     serializedVersion: 2
-    m_Bits: 17408
+    m_Bits: 148480
   _whatIsWall:
     serializedVersion: 2
     m_Bits: 2048
@@ -53626,6 +53640,9 @@ MonoBehaviour:
   EverythingExceptWalkable:
     serializedVersion: 2
     m_Bits: 17408
+  _whatIsRamp:
+    serializedVersion: 2
+    m_Bits: 131072
   _isGrounded: 0
   _maxSlopeAngle: 50
   _slopeVectorDownValue: 150
@@ -53640,6 +53657,7 @@ MonoBehaviour:
   AccelerationScript: {fileID: 2579101206841898698}
   SlideScript: {fileID: 2579101206841898678}
   PlayerCamScript: {fileID: 2579101208533770280}
+  RampScript: {fileID: 0}
   _orientation: {fileID: 2579101207784419296}
   _player: {fileID: 2579101208589140963}
   _arms_AC: {fileID: 1525915804920973518}
@@ -55168,6 +55186,7 @@ MonoBehaviour:
   _jetpackUpwardForce: 140
   _dividePer: 2
   _jetPackSave: 0
+  _valueJumpJetpack: 0
   _HUDJetpackWarning: {fileID: 4854074001246712156}
   _timerCd: 0
   _timerMaxCd: 1
@@ -55449,6 +55468,9 @@ MonoBehaviour:
   EverythingExceptWalkable:
     serializedVersion: 2
     m_Bits: 17408
+  _whatIsRamp:
+    serializedVersion: 2
+    m_Bits: 0
   _isGrounded: 0
   _maxSlopeAngle: 50
   _slopeVectorDownValue: 150
@@ -55463,6 +55485,7 @@ MonoBehaviour:
   AccelerationScript: {fileID: 3956388861518991359}
   SlideScript: {fileID: 3956388861518991235}
   PlayerCamScript: {fileID: 3956388862051146013}
+  RampScript: {fileID: 0}
   _orientation: {fileID: 3956388862463579861}
   _player: {fileID: 3956388862188452566}
   _arms_AC: {fileID: 550072827}
@@ -66742,8 +66765,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1634caa98270f842944e56e71208175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToStart: Kilian_Scene
-  categoryToDisplay: 6
+  sceneToStart: MainMenu
+  categoryToDisplay: 15
 --- !u!114 &9026664326187928078
 MonoBehaviour:
   m_ObjectHideFlags: 0
