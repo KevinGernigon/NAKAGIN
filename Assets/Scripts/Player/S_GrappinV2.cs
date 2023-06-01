@@ -217,7 +217,7 @@ public class S_GrappinV2 : MonoBehaviour
         grapplePoint = _camera.position + _camera.forward * _maxGrappleDistance;
         PlayerSoundScript.RewindSound();
         Invoke(nameof(StopGrapple), _grapplingCd);
-        Invoke(nameof(ResetJetpack), _timerBeforeUsingJetpack/2);
+        Invoke(nameof(ResetJetpack), 0.1f);
     }
 
 
