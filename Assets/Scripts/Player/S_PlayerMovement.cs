@@ -274,7 +274,17 @@ public class S_PlayerMovement : MonoBehaviour
 
         //if (state == MovementState.air && !_arms_AC.GetBool("dashing")) _arms_AC.SetBool("isInAir", true);
         //else _arms_AC.SetBool("isInAir", false);
-        if (state == MovementState.air) _arms_AC.SetBool("isInAir", true);
+        if (state == MovementState.air && GrapplingScript._isGrappling == false)
+        {
+            _arms_AC.SetBool("isInAir", true);
+            _arms_AC.SetBool("startMoving", false);
+            _arms_AC.SetBool("stoppedMoving", false);
+        }
+        else if (_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Arms_Grab" && state == MovementState.air)
+        {
+            if (_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Arms_Grab" && _arms_AC.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1) _arms_AC.SetBool("isInAir", true);
+            else _arms_AC.SetBool("isInAir", false);
+        }
         if (state == MovementState.climbing) _arms_AC.SetBool("startMoving", false);
         if (state == MovementState.walking)
         {
@@ -577,7 +587,8 @@ public class S_PlayerMovement : MonoBehaviour
 
         _jumpCount++;
 
-        _arms_AC.Play("A_Arms_Jump_Impulse");
+
+        if(!GrapplingScript._isGrappling)_arms_AC.Play("A_Arms_Jump_Impulse");
 
         PlayerSoundScript.JumpSound();
         PlayerSoundScript.LandingSoundManager.volume = 0;
