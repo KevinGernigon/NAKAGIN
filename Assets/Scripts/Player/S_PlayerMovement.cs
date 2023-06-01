@@ -83,7 +83,6 @@ public class S_PlayerMovement : MonoBehaviour
     [SerializeField] private S_Accelaration AccelerationScript;
     [SerializeField] private S_Sliding SlideScript;
     [SerializeField] private S_PlayerCam PlayerCamScript;
-    [SerializeField] private S_RampScript RampScript;
     [SerializeField] private Transform _orientation;
     [SerializeField] private GameObject _player;
     [SerializeField] private Animator _arms_AC;
