@@ -30,6 +30,7 @@ public class S_PlayFabManager : MonoBehaviour
     [Header("Display name windows")]
     public TMP_InputField nameInput;
     public GameObject AlreadyUsed;
+    public GameObject InvalidName;
 
     [Header("Own rank")]
     public GameObject OwnRankText;
@@ -42,6 +43,12 @@ public class S_PlayFabManager : MonoBehaviour
     
 
     string loggedInPlayFabId;
+
+    //ban words//
+    public TextAsset _bannedWordsText;
+    private string _bannedWords;
+    private string[] _bannedWordsList;
+    //fin ban words//
 
     public void Start(){
         if(name == null){
@@ -58,6 +65,11 @@ public class S_PlayFabManager : MonoBehaviour
                 GetPlayerProfile = true}
                 };
         PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginFailure);
+
+        //ban words//
+        _bannedWords = _bannedWordsText.text;
+        _bannedWordsList = _bannedWords.Split(",");
+        //fin ban words//
     }
 
     public void Continue()
@@ -93,10 +105,35 @@ public class S_PlayFabManager : MonoBehaviour
         Debug.LogError(error.GenerateErrorReport());
     }
 
+    //ban words//
+    public bool CompareToBannedWords(string name)
+    {
+        name = name.ToLower();
+        for (int i = 0; i < _bannedWordsList.Length; i++)
+        {
+            if (name.Contains(_bannedWordsList[i]))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    //fin ban words//
+
     public void SubmitNameButton(){
-        var request = new UpdateUserTitleDisplayNameRequest{
-            DisplayName = nameInput.text,
-        };
+        UpdateUserTitleDisplayNameRequest request;
+        if (CompareToBannedWords(nameInput.text))
+        {
+            request = new UpdateUserTitleDisplayNameRequest
+            {
+                DisplayName = nameInput.text,
+            };
+        }
+        else 
+        {
+            InvalidName.SetActive(true);
+            return; 
+        }
 
         PlayFabClientAPI.UpdateUserTitleDisplayName(request, OnDisplayNameUpdate, OnLoginFailure);
     }
@@ -104,6 +141,7 @@ public class S_PlayFabManager : MonoBehaviour
     void OnDisplayNameUpdate(UpdateUserTitleDisplayNameResult result){
         Debug.Log("Updated display name");
         AlreadyUsed.SetActive(false);
+        InvalidName.SetActive(false);
         nameWindow.SetActive(false);
 
     }
