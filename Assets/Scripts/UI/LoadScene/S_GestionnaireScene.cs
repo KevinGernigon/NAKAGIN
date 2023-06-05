@@ -18,6 +18,7 @@ public class S_GestionnaireScene : MonoBehaviour
 
 
     public bool InMenu;
+    public bool DisIntroGame;
 
 
 
@@ -91,4 +92,10 @@ public class S_GestionnaireScene : MonoBehaviour
 
         yield return null;
     }
+    
+    public void DisalbleIntro()
+    {
+        DisIntroGame = true;
+    }
+
 }
