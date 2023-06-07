@@ -31,7 +31,8 @@ public class S_SceneManager : Manager
             SceneManager.LoadScene("Asset_Scene", LoadSceneMode.Additive);
             SceneManager.LoadScene("Light_Scene", LoadSceneMode.Additive);
             //zSceneManager.LoadScene("Run_2", LoadSceneMode.Additive);
-            //SceneManager.LoadScene("Decor_Scene", LoadSceneMode.Additive);
+            SceneManager.LoadScene("Decor_Scene", LoadSceneMode.Additive);
+            SceneManager.LoadScene("Alexis_Scene", LoadSceneMode.Additive);
         }
 
         /*if (sceneToStart == "MainMenu")
