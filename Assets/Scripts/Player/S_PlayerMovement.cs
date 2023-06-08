@@ -42,7 +42,7 @@ public class S_PlayerMovement : MonoBehaviour
     [Header("Jumping")]
     [SerializeField] private float _jumpForce;
     [SerializeField] private float valJump;
-    [SerializeField] private int _jumpCount;
+    [SerializeField] public int _jumpCount;
     [SerializeField] private float _jumpCooldown;
     [SerializeField] private float _airMultiplier;
     public bool _readyToJump;
@@ -51,11 +51,12 @@ public class S_PlayerMovement : MonoBehaviour
 
 
     [Header("Ground Check")]
-    [SerializeField] private float _playerHeight;
+    [SerializeField] public float _playerHeight;
     [SerializeField] private LayerMask _whatIsGround;
     [SerializeField] private LayerMask _whatIsWall;
     [SerializeField] private LayerMask Everything;
     [SerializeField] private LayerMask EverythingExceptWalkable;
+    [SerializeField] private LayerMask _whatIsRamp;
     public bool _isGrounded;
 
     [Header("Slope Handling")]
@@ -87,7 +88,7 @@ public class S_PlayerMovement : MonoBehaviour
     [SerializeField] private Animator _arms_AC;
 
     [Header("Raycast")]
-    [SerializeField] private float _valueRaycast;
+    [SerializeField] public float _valueRaycast;
 
     [Header("AirTime")]
     private float _timeInAir = 0f;
@@ -157,7 +158,6 @@ public class S_PlayerMovement : MonoBehaviour
     private void Update()
     {
         _arms_AC.SetFloat("moveSpeed", 1.0f / 55.0f * _moveSpeed);
-        Debug.Log(_arms_AC.GetFloat("moveSpeed"));
 
         if (GetSlopeMoveDirection(_moveDirection).y >= 0f && OnSlope())
         {
@@ -505,15 +505,23 @@ public class S_PlayerMovement : MonoBehaviour
         if (OnSlope() && !_exitingSlope)
         {
             rb.AddForce(Vector3.down * _slopeVectorDownValue, ForceMode.Force);
-            if (rb.velocity.y > 0 && _isSliding)
-            {
-                rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 12.5f, ForceMode.Force);
-            }
-            else if(_isSliding)
-                rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 20f, ForceMode.Force);
-            else    
-                rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 15f, ForceMode.Force);
+            // if (rb.velocity.y > 0 && _isSliding)
+            // {
+            //     rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 12.5f, ForceMode.Force);
+            // }
+            // else if(_isSliding)
+            //     rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 20f, ForceMode.Force);
+            // else    
+            //     rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 15f, ForceMode.Force);
                 //rb.AddForce(_moveDirection.normalized * _moveSpeed * 20f * _upgradeSpeedValue, ForceMode.Force);
+
+                if(Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.7f + _valueRaycast, _whatIsRamp)){
+                    rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 12.5f, ForceMode.Force);
+                }
+                else if(_isSliding)
+                    rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 10f, ForceMode.Force);
+                else    
+                    rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 15f, ForceMode.Force);
         }
 
         else if (_isGrounded)
@@ -567,6 +575,8 @@ public class S_PlayerMovement : MonoBehaviour
             if (state == MovementState.air) return;
         }
 
+        if(Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.7f + _valueRaycast, _whatIsRamp)) return;
+
         _jumpCount++;
 
         _arms_AC.Play("A_Arms_Jump_Impulse");
@@ -612,7 +622,7 @@ public class S_PlayerMovement : MonoBehaviour
             _exitingSlope = true;
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
             //rb.velocity = new Vector3(rb.velocity.x, ??, rb.velocity.z);
-            rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
+            rb.AddForce(transform.up * _jumpForce * 0.7f, ForceMode.Impulse);
         }
     }
 
