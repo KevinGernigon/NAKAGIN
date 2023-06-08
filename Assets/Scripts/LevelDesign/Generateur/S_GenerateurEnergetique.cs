@@ -189,7 +189,14 @@ public class S_GenerateurEnergetique : MonoBehaviour
 
         if ( _referenceInterface._BatteryManager._nbrBattery < ChargeEnergetique )
         {
-            _referenceInterface._BatteryManager._nbrBattery = ChargeEnergetique;
+            //_referenceInterface._BatteryManager._nbrBattery = ChargeEnergetique;
+
+            for (int i = 0; i < ChargeEnergetique; i++)
+            {
+                _referenceInterface._BatteryManager.GetOneBattery();
+            }
+
+
         }
     }
 

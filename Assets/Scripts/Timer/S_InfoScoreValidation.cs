@@ -6,8 +6,8 @@ using TMPro;
 
 public class S_InfoScoreValidation : MonoBehaviour
 {
-
     private S_ReferenceInterface _referenceInterface;
+
 
     [SerializeField] private S_Timer ScriptTimer;
 
@@ -47,6 +47,7 @@ public class S_InfoScoreValidation : MonoBehaviour
         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
         _playerContent = _referenceInterface._playerTransform;
         S_PauseMenuV2 = _referenceInterface.EventSystem.GetComponent<S_PauseMenuV2>();
+
     }
 
     private void Start()
@@ -260,8 +261,11 @@ public class S_InfoScoreValidation : MonoBehaviour
 
                 //ScriptTimer.TimerReset()
                 //S_RunCheckPointManagerValidation.FintimerRespawn();
+
                 S_RunCheckPointManagerValidation.checkpointCapsule.position = S_RunCheckPointManagerValidation._spawnRunCapsule.position;
                 S_RunCheckPointManagerValidation.DeathPlayer();
+                ScriptTimer.RestWarning();
+                
             }
 
         }

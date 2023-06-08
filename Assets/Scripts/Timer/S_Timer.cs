@@ -8,6 +8,7 @@ public class S_Timer : MonoBehaviour
 {
     private S_ReferenceInterface _referenceInterface;
     private GameObject _TimerAffichage;
+    private GameObject _SignalAffichage;
     private TMP_Text _textTimer;
 
     private Animator _animaHUDTimer;
@@ -35,6 +36,7 @@ public class S_Timer : MonoBehaviour
         _animaHUDTimer = _referenceInterface._HUDtimer;
         _saveColor = _textTimer.color;
         _HUDTimerOpen = _referenceInterface._HUDTimerFont;
+        _SignalAffichage = _referenceInterface.SignalLost;
     }
 
 
@@ -126,10 +128,18 @@ public class S_Timer : MonoBehaviour
 
     public void WarningTimer()
     {
-        _animaHUDTimer.Play("A_Timer");
-        _textTimer.color = _warningcolor;
+        _SignalAffichage.SetActive(true);
+        _animaHUDTimer.SetBool("StopBoucle", true);
+        //_textTimer.color = _warningcolor;
     }
 
+    public void RestWarning()
+    {
+        _animaHUDTimer.SetBool("StopBoucle", false);
+        _textTimer.color = _saveColor;
+        //_SignalAffichage.SetActive(false);
+        _animaHUDTimer.Rebind();
+    }
 
 
     public void TimerStart()
@@ -138,11 +148,12 @@ public class S_Timer : MonoBehaviour
         {
            if(_HUDTimerIsClose)
            {
-                
                 _HUDTimerOpen.Play("A_TimerOpen");
                 _HUDTimerIsClose = false;
            }
 
+            RestWarning();
+            _textTimer.color = _saveColor;
             _timerPlay = true;
             _startTime = Time.time;
 
@@ -165,8 +176,7 @@ public class S_Timer : MonoBehaviour
     public void TimerReset()
     {
         if (!_HUDTimerIsClose)
-        {
-
+        {       
             _HUDTimerOpen.Play("A_TimerClose");
             _HUDTimerIsClose = true;
         }
@@ -177,7 +187,7 @@ public class S_Timer : MonoBehaviour
         _textTimer.text = "";
         _textTimer.color = _saveColor;
 
-        _animaHUDTimer.Rebind();
+        RestWarning();
 
         _startTime = Time.time;
         _stopTime = 0f;
