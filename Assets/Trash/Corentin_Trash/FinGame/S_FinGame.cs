@@ -114,7 +114,11 @@ public class S_FinGame : MonoBehaviour
     {
         _referenceInterface._InputManager._playerInput.DeactivateInput();
 
+        
         //Désactive l'ia qui eteint son oeil
+
+
+
 
         yield return new WaitForSeconds(5f);
 
