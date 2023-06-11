@@ -4,15 +4,70 @@ using UnityEngine;
 
 public class S_IALootYou : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private S_ReferenceInterface S_ReferenceInterface;
+    private Transform Player;
+
+    [SerializeField] private Transform _oeil;
+    private bool _isTarget;
+    private bool _IADisable;
+    private Transform _defaultPlacement;
+
+
+    private void Awake()
     {
-        
+        S_ReferenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
+
+        Player = S_ReferenceInterface._playerTransform;
+        _defaultPlacement = _oeil;
     }
 
-    // Update is called once per frame
-    void Update()
+
+
+    private void Update()
     {
-        
+        if (_isTarget)
+        {
+            _oeil.LookAt(Player);
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            DisableIA();
+        }
+
+        if (_IADisable)
+        {
+            _oeil.rotation = Quaternion.Lerp(_oeil.rotation, _defaultPlacement.rotation, Time.deltaTime);
+
+        }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        _isTarget = true;
+    }
+
+
+
+    private void OnTriggerExit(Collider other)
+    {
+       // _isTarget = false;
+    }
+
+    public void StopLookPlayer()
+    {
+        _isTarget = false;
+    }
+
+
+    public void DisableIA()
+    {
+        _isTarget = false;
+        _IADisable = true;
+        Debug.Log("Disable IA ");
+    }
+
+
 }
+
