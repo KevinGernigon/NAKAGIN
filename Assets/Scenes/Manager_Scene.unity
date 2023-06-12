@@ -54851,6 +54851,7 @@ MonoBehaviour:
   _jetpackUpwardForce: 3
   _dividePer: 2
   _jetPackSave: 0
+  _valueJumpJetpack: 0
   _HUDJetpackWarning: {fileID: 1525915805086998668}
   _timerCd: 0
   _timerMaxCd: 3
@@ -54971,6 +54972,9 @@ MonoBehaviour:
   EverythingExceptWalkable:
     serializedVersion: 2
     m_Bits: 17408
+  _whatIsRamp:
+    serializedVersion: 2
+    m_Bits: 0
   _isGrounded: 0
   _maxSlopeAngle: 50
   _slopeVectorDownValue: 150
@@ -56513,6 +56517,7 @@ MonoBehaviour:
   _jetpackUpwardForce: 140
   _dividePer: 2
   _jetPackSave: 0
+  _valueJumpJetpack: 0
   _HUDJetpackWarning: {fileID: 4854074001246712156}
   _timerCd: 0
   _timerMaxCd: 1
@@ -56794,6 +56799,9 @@ MonoBehaviour:
   EverythingExceptWalkable:
     serializedVersion: 2
     m_Bits: 17408
+  _whatIsRamp:
+    serializedVersion: 2
+    m_Bits: 0
   _isGrounded: 0
   _maxSlopeAngle: 50
   _slopeVectorDownValue: 150

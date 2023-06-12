@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public enum DisplayCategory
 {
-    Corentin_Scene, Kiki_Scene, HUB, Alexis_Scene, Assets_Scene, MAIN_VerticalSlice, Kilian_Scene, Killian_Scene, Tom_Scene, Tom_Test_Scene, Playtest_Scene, Maxime_Scene, Kevin_Scene, Tuto_Scene, IA_Scene, MainMenu, Light_Scene, Run_2, Decor_Scene
+    Corentin_Scene, Kiki_Scene, HUB, Alexis_Scene, Assets_Scene, MAIN_VerticalSlice, Kilian_Scene, Killian_Scene, Tom_Scene, Tom_Test_Scene, Playtest_Scene, Maxime_Scene, Kevin_Scene, Tuto_Scene, IA_Scene, MainMenu, Light_Scene, Run_2, Decor_Scene, Scene_IA_Fin
 }
 
 
