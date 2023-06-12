@@ -12,6 +12,7 @@ public class S_GestionMenu : MonoBehaviour
     private GameObject _UI;
     private GameObject _loadingScreen;
     [SerializeField]private Animator _animIntroGame;
+
         
     private void Awake()
     {
@@ -48,6 +49,7 @@ public class S_GestionMenu : MonoBehaviour
         _disableManager.SetActive(true);
        //_InputManager.DesactivePause();
         _UI.SetActive(true);
+
 
     }
 }

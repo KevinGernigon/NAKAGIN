@@ -8,6 +8,7 @@ public class S_IALootYou : MonoBehaviour
     private Transform Player;
 
     [SerializeField] private Transform _oeil;
+    [SerializeField] private Animator _animDisableIA;
     private bool _isTarget;
     private bool _IADisable;
     private Transform _defaultPlacement;
@@ -36,11 +37,6 @@ public class S_IALootYou : MonoBehaviour
             DisableIA();
         }
 
-        if (_IADisable)
-        {
-            _oeil.rotation = Quaternion.Lerp(_oeil.rotation, _defaultPlacement.rotation, Time.deltaTime);
-
-        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -52,8 +48,9 @@ public class S_IALootYou : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-       // _isTarget = false;
+        _isTarget = false;
     }
+
 
     public void StopLookPlayer()
     {
@@ -61,11 +58,13 @@ public class S_IALootYou : MonoBehaviour
     }
 
 
+
     public void DisableIA()
     {
-        _isTarget = false;
-        _IADisable = true;
-        Debug.Log("Disable IA ");
+        StopLookPlayer();
+
+        _animDisableIA.Play("");
+        
     }
 
 

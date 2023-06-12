@@ -4782,15 +4782,18 @@ MonoBehaviour:
   _startGameHUD: {fileID: 1729163926}
   _pauseInterface: {fileID: 875653530}
   _settingsInterface: {fileID: 556869074}
+  _leaderboardInterface: {fileID: 0}
   _helpsettings: {fileID: 723343832}
   _BatteryManager: {fileID: 246745749}
   _Jetpack: {fileID: 0}
   _eventSystem: {fileID: 246745748}
   FirstSelectButtonPause: {fileID: 772947170}
   FirstSelectButtonSetting: {fileID: 281134432}
+  FirstSelectButtonLeaderboard: {fileID: 0}
   _isPaused: 0
   _ischoose: 0
   _IsRestart: 0
+  _inMenu: 0
   ControllerActive: 1
   _player: {fileID: 2579101206841898673}
 --- !u!114 &246745748
@@ -8875,10 +8878,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 465600865}
+    m_SelectOnDown: {fileID: 1321436060896614110}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2
@@ -9648,10 +9651,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1085649502}
+    m_SelectOnDown: {fileID: 451134639}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2
@@ -23556,10 +23559,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 1321436060896614110}
+    m_SelectOnDown: {fileID: 465600865}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2
@@ -41417,7 +41420,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -340.2, y: 56.7}
+  m_AnchoredPosition: {x: -340.19995, y: 56.69995}
   m_SizeDelta: {x: 627, y: 55}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1977897309
@@ -46702,10 +46705,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 4
     m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
+    m_SelectOnUp: {fileID: 451134639}
+    m_SelectOnDown: {fileID: 1085649502}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
   m_Transition: 2
@@ -46733,10 +46736,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 964588733}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
+      - m_Target: {fileID: 1525915805904549652}
+        m_TargetAssemblyTypeName: S_PauseMenuV2, Assembly-CSharp
+        m_MethodName: CloseLeaderboard
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -50446,6 +50449,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
+      - m_Target: {fileID: 1525915805904549652}
+        m_TargetAssemblyTypeName: S_PauseMenuV2, Assembly-CSharp
+        m_MethodName: Leaderboard
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
       - m_Target: {fileID: 964588733}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -50457,6 +50472,42 @@ MonoBehaviour:
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1321436062360633763}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 1321436060654223767}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1321436061764225513}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
         m_CallState: 2
       - m_Target: {fileID: 140624635}
         m_TargetAssemblyTypeName: S_PlayFabManager, Assembly-CSharp
@@ -53051,7 +53102,7 @@ MonoBehaviour:
   _robotName: {fileID: 112333441}
   _Dash: {fileID: 2579101206841898676}
   _GrappinV2: {fileID: 2579101206841898675}
-  TimeToRespawnPlayer: 1.5
+  TimeToRespawnPlayer: 2
 --- !u!4 &1525915805431084094
 Transform:
   m_ObjectHideFlags: 0
@@ -53705,15 +53756,18 @@ MonoBehaviour:
   _startGameHUD: {fileID: 1525915806880708087}
   _pauseInterface: {fileID: 1525915806103139052}
   _settingsInterface: {fileID: 192083447}
+  _leaderboardInterface: {fileID: 964588733}
   _helpsettings: {fileID: 237398625}
   _BatteryManager: {fileID: 1525915805904549653}
   _Jetpack: {fileID: 2579101206841898677}
   _eventSystem: {fileID: 1525915805904549654}
   FirstSelectButtonPause: {fileID: 1525915806095392254}
   FirstSelectButtonSetting: {fileID: 556337474}
+  FirstSelectButtonLeaderboard: {fileID: 1085649500}
   _isPaused: 0
   _ischoose: 0
   _IsRestart: 0
+  _inMenu: 0
   ControllerActive: 1
   _player: {fileID: 2579101206841898673}
 --- !u!114 &1525915805904549653
@@ -61729,6 +61783,7 @@ MonoBehaviour:
   _timerText: {fileID: 6840585854347619831}
   _HUDTimerFont: {fileID: 7020286131832255078}
   SignalLost: {fileID: 1861527518}
+  _PauseMenuV2: {fileID: 1525915805904549652}
   HUD_InteractGenerateurEnable: {fileID: 913896073}
   TextInteraction: {fileID: 658683798}
   ImageInteraction: {fileID: 1275531010}
@@ -62085,6 +62140,7 @@ MonoBehaviour:
   _timerText: {fileID: 3866988027243813316}
   _HUDTimerFont: {fileID: 0}
   SignalLost: {fileID: 0}
+  _PauseMenuV2: {fileID: 0}
   HUD_InteractGenerateurEnable: {fileID: 4854074002027236645}
   TextInteraction: {fileID: 0}
   ImageInteraction: {fileID: 0}
@@ -69348,7 +69404,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8472884711563613599
 RectTransform:
   m_ObjectHideFlags: 0
@@ -69722,15 +69778,18 @@ MonoBehaviour:
   _startGameHUD: {fileID: 3866988026331340300}
   _pauseInterface: {fileID: 6017809254722329199}
   _settingsInterface: {fileID: 6017809254303229203}
+  _leaderboardInterface: {fileID: 0}
   _helpsettings: {fileID: 0}
   _BatteryManager: {fileID: 8483312902858541986}
   _Jetpack: {fileID: 0}
   _eventSystem: {fileID: 8483312902858541987}
   FirstSelectButtonPause: {fileID: 8895161898464408722}
   FirstSelectButtonSetting: {fileID: 6017809255789350454}
+  FirstSelectButtonLeaderboard: {fileID: 0}
   _isPaused: 0
   _ischoose: 0
   _IsRestart: 0
+  _inMenu: 0
   ControllerActive: 1
   _player: {fileID: 3956388861518991236}
 --- !u!114 &8483312902858541986
@@ -71428,8 +71487,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1634caa98270f842944e56e71208175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToStart: MainMenu
-  categoryToDisplay: 15
+  sceneToStart: Tuto_Scene
+  categoryToDisplay: 13
 --- !u!114 &9026664326187928078
 MonoBehaviour:
   m_ObjectHideFlags: 0

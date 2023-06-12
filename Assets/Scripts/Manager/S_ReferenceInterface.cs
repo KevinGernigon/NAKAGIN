@@ -37,6 +37,8 @@ public class S_ReferenceInterface : Manager
     public GameObject SignalLost;
 
     [Header("Refs UI")]
+    public S_PauseMenuV2 _PauseMenuV2;
+    [Header("Refs UI")]
     public GameObject HUD_InteractGenerateurEnable;
     public TMP_Text TextInteraction;
     public GameObject ImageInteraction;
