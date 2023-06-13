@@ -10,11 +10,15 @@ public class S_GestionnaireScene : MonoBehaviour
     [SerializeField] private GameObject _loadingScreen;
     [SerializeField] private Image _loadingBarFill;
     [SerializeField] private S_PauseMenuV2 S_PauseMenuV2;
+    [SerializeField] private S_InputManager _InputManager;
 
     [SerializeField] private GameObject DisablePlayer;
+    [SerializeField] private GameObject _controlerIMG;
+    [SerializeField] private GameObject _keyboardIMG;
 
 
     public bool InMenu;
+    public bool DisIntroGame;
 
 
 
@@ -42,6 +46,16 @@ public class S_GestionnaireScene : MonoBehaviour
     IEnumerator LoadSceneAsync(int sceneId)
     {
         _loadingScreen.SetActive(true);
+        if(_InputManager._playerInput.currentControlScheme == "Gamepad") 
+        {
+            _controlerIMG.SetActive(true);
+            _keyboardIMG.SetActive(false);
+        }
+        else
+        {
+            _keyboardIMG.SetActive(true);
+            _controlerIMG.SetActive(false);
+        }
 
         AsyncOperation operation1 = SceneManager.LoadSceneAsync(sceneId);
 
@@ -75,11 +89,13 @@ public class S_GestionnaireScene : MonoBehaviour
         }
 
         _loadingScreen.SetActive(false);
+
         yield return null;
     }
-
-    public string getCurrentScene()
+    
+    public void DisalbleIntro()
     {
-        return SceneManager.GetActiveScene().name;
+        DisIntroGame = true;
     }
+
 }

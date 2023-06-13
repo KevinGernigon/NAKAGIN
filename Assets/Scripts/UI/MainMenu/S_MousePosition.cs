@@ -37,7 +37,7 @@ public class S_MousePosition : MonoBehaviour
             {
                 _selectedGameObject = EventSystem.current.currentSelectedGameObject;
 
-                _nakagin.LookAt(_selectedGameObject.transform.position);
+                //_nakagin.LookAt(_selectedGameObject.transform.position);
             }
         }
 

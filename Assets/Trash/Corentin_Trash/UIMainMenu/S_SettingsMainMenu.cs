@@ -20,9 +20,15 @@ public class S_SettingsMainMenu : MonoBehaviour
 
     [SerializeField] private GameObject FirstSelectButtonMenu;
     [SerializeField] private GameObject _mainMenu;
+    [SerializeField] private GameObject FirstSelectButtonCredit;
+    [SerializeField] private GameObject CreditHUD;
+
+
     private GameObject FirstSelectButtonSettings;
-    private GameObject LastSelectButton;
     private GameObject LastSelectButtonSetting;
+    private GameObject LastSelectButtonCredit;
+
+    [SerializeField] private GameObject LastSelectButton;
 
     private bool ControllerActive = true;
 
@@ -37,6 +43,7 @@ public class S_SettingsMainMenu : MonoBehaviour
         VideoSettingsHUD = _referenceInterface._UIVideoSettings;
         StartHUD = _referenceInterface._UIStartHUD;
         FirstSelectButtonSettings = _referenceInterface._UIVideoButton;
+        _inMenu = _referenceInterface._PauseMenuV2._inMenu;
     }
 
 
@@ -44,6 +51,7 @@ public class S_SettingsMainMenu : MonoBehaviour
     {
         InMenu();
     }
+
     private void Update()
     {
         SwitchControlleMenuSettings();
@@ -52,7 +60,10 @@ public class S_SettingsMainMenu : MonoBehaviour
         {
             InMenu();
         }
-
+        if (_InputManager._playerInputAction.UI.Pause.triggered && (_inSetting || _inCredit))
+        {
+            InMenu();
+        }
 
     }
 
@@ -74,6 +85,14 @@ public class S_SettingsMainMenu : MonoBehaviour
             EventSystem.current.SetSelectedGameObject(LastSelectButtonSetting);
         }
 
+        if (_InputManager._playerInput.currentControlScheme == "Gamepad" && ControllerActive && _inCredit)
+        {
+            if (EventSystem.current.currentSelectedGameObject == null)
+                LastSelectButton = FirstSelectButtonCredit;
+            ControllerActive = false;
+            EventSystem.current.SetSelectedGameObject(LastSelectButton);
+        }
+
         if (_InputManager._playerInput.currentControlScheme == "KeyboardAndMouse" && !ControllerActive && _inMenu)
         {
             LastSelectButton = EventSystem.current.currentSelectedGameObject;
@@ -86,9 +105,21 @@ public class S_SettingsMainMenu : MonoBehaviour
             ControllerActive = true;
             EventSystem.current.SetSelectedGameObject(null);
         }
+        if (_InputManager._playerInput.currentControlScheme == "KeyboardAndMouse" && !ControllerActive && _inCredit)
+        {
+            LastSelectButton = EventSystem.current.currentSelectedGameObject;
+            ControllerActive = true;
+            EventSystem.current.SetSelectedGameObject(null);
+        }
 
 
     }
+
+    public void Menufalse()
+    {
+        _inMenu = false;
+    }
+
 
     public void InMenuSettings()
     {
@@ -121,11 +152,24 @@ public class S_SettingsMainMenu : MonoBehaviour
 
     public void InMenuCredit()
     {
-        _mainMenu.SetActive(false);
+        //_mainMenu.SetActive(false);
 
         _inSetting = false;
         _inCredit = true;
         _inMenu = false;
+
+        if (_InputManager._playerInput.currentControlScheme == "Gamepad")
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            EventSystem.current.SetSelectedGameObject(FirstSelectButtonCredit);
+            LastSelectButton = FirstSelectButtonCredit;
+
+        }
+        else
+        {
+            EventSystem.current.SetSelectedGameObject(null);
+            LastSelectButton = FirstSelectButtonCredit;
+        }
     }
 
 
@@ -133,6 +177,8 @@ public class S_SettingsMainMenu : MonoBehaviour
     public void InMenu()
     {
         _mainMenu.SetActive(true);
+
+        CreditHUD.SetActive(false);
 
         _inSetting = false;
         _inCredit = false;

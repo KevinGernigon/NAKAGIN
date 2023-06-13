@@ -31,6 +31,7 @@ public class S_Dash : MonoBehaviour
     [SerializeField] private GameObject _hudDashFleche1;
     [SerializeField] private GameObject _hudDashFleche2;
     [SerializeField] private GameObject _hudDashFleche3;
+    [SerializeField] private GameObject _hudDashFleche0;
     [Header("")]
     [SerializeField] private GameObject _hudDashJauge1;
     [SerializeField] private GameObject _hudDashJauge2;
@@ -87,6 +88,8 @@ public class S_Dash : MonoBehaviour
 
         if(_limitDash == 0)
         {
+            _hudDashFleche0.SetActive(true);
+
             _hudDashFleche3.SetActive(false);
             _hudDashFleche2.SetActive(false);
             _hudDashFleche1.SetActive(false);
@@ -97,6 +100,8 @@ public class S_Dash : MonoBehaviour
         }
         if (_limitDash == 1)
         {
+            _hudDashFleche0.SetActive(false);
+
             _hudDashFleche3.SetActive(false);
             _hudDashFleche2.SetActive(false);
             _hudDashFleche1.SetActive(true);
@@ -108,6 +113,8 @@ public class S_Dash : MonoBehaviour
         }
         if (_limitDash == 2)
         {
+            _hudDashFleche0.SetActive(false);
+
             _hudDashFleche3.SetActive(false);
             _hudDashFleche2.SetActive(true);
             _hudDashFleche1.SetActive(true);
@@ -119,14 +126,17 @@ public class S_Dash : MonoBehaviour
         }
         if (_limitDash == 3)
         {
+            _hudDashFleche0.SetActive(false);
+
             _hudDashFleche3.SetActive(true);
-            _hudDashFleche2.SetActive(true);
-            _hudDashFleche1.SetActive(true);
+            _hudDashFleche2.SetActive(false);
+            _hudDashFleche1.SetActive(false);
 
             _hudDashJauge3.SetActive(true);
-            _hudDashJauge2.SetActive(true);
-            _hudDashJauge1.SetActive(true);
+            _hudDashJauge2.SetActive(false);
+            _hudDashJauge1.SetActive(false);
         }
+       
 
 
 
