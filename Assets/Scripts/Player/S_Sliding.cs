@@ -108,12 +108,13 @@ public class S_Sliding : MonoBehaviour
     {
         if (_slidingCdTimer > 0) return;
 
-        if (_pm._isGrounded == true)
+        if (_pm._isGrounded == true || _pm.isOnRamp)
         {
             PlayerSoundScript.SlideSound();
             _anim_bras.GetComponent<Animator>().SetBool("isExitingSlope", false);
-            if (ScriptPlayerCam._RandomCount == 1) _anim_bras.GetComponent<Animator>().Play("A_Left_Arm_Slide_Fall");
-            else if (ScriptPlayerCam._RandomCount == 2) _anim_bras.GetComponent<Animator>().Play("A_Right_Arm_Slide_Fall");
+            int randomSlide = Random.Range(1, 3);
+            if (randomSlide == 1) _anim_bras.GetComponent<Animator>().Play("A_Left_Arm_Slide_Fall");
+            else if (randomSlide == 2) _anim_bras.GetComponent<Animator>().Play("A_Right_Arm_Slide_Fall");
             _pm._isSliding = true;
             _playerObj.localScale = new Vector3(_playerObj.localScale.x, _slideYScale, _playerObj.localScale.z);
             _anim_bras.transform.localScale = new Vector3(_anim_bras.transform.localScale.x, _slideYScale, _anim_bras.transform.localScale.z);

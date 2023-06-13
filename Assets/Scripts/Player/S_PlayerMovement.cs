@@ -54,6 +54,7 @@ public class S_PlayerMovement : MonoBehaviour
     [SerializeField] private float _playerHeight;
     [SerializeField] private LayerMask _whatIsGround;
     [SerializeField] private LayerMask _whatIsWall;
+    [SerializeField] private LayerMask _whatIsRamp;
     [SerializeField] private LayerMask Everything;
     [SerializeField] private LayerMask EverythingExceptWalkable;
     public bool _isGrounded;
@@ -137,6 +138,7 @@ public class S_PlayerMovement : MonoBehaviour
     public bool _isAccelerating;
     public bool _isDecelerating;
     public bool _whatIsWallOnGround;
+    public bool isOnRamp;
 
 
     int i = 0;
@@ -274,7 +276,7 @@ public class S_PlayerMovement : MonoBehaviour
 
         //if (state == MovementState.air && !_arms_AC.GetBool("dashing")) _arms_AC.SetBool("isInAir", true);
         //else _arms_AC.SetBool("isInAir", false);
-        if (state == MovementState.air && GrapplingScript._isGrappling == false)
+        if (state == MovementState.air && GrapplingScript._isGrappling == false && !isOnRamp)
         {
             _arms_AC.SetBool("isInAir", true);
             _arms_AC.SetBool("startMoving", false);
@@ -327,7 +329,7 @@ public class S_PlayerMovement : MonoBehaviour
             rb.velocity += Vector3.up * Physics.gravity.y * _fallMultiplier * Time.deltaTime;
         }
 
-        if (!_isGrounded && _jumpCount == 0 )
+        if (!_isGrounded && _jumpCount == 0)
         {
             _timerJump += Time.deltaTime;
             if (_timerJump < _jumpCooldown - 0.01f && _readyToJump)
@@ -340,11 +342,15 @@ public class S_PlayerMovement : MonoBehaviour
             else
                 canJumpLedge = false;
 
+        if (Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.7f + _valueRaycast, _whatIsRamp))
+        {
+            Debug.Log("is on ramp");
+            isOnRamp = true;
+        }
 
-            
 
-        //if (Input.GetButton("Vertical"))
-        if (_verticalInput != 0 )
+            //if (Input.GetButton("Vertical"))
+            if (_verticalInput != 0 )
         {
             _timerMaxSpeed += Time.deltaTime;
             if (_timerMaxSpeed >= _maxSpeedReachCooldown)
@@ -516,13 +522,19 @@ public class S_PlayerMovement : MonoBehaviour
         }
 
         //calculate movement direction 
+
+        /*if (!Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.7f + _valueRaycast, _whatIsRamp))
+        {
+            _arms_AC.SetBool("gotOnRamp1", false);
+            _arms_AC.SetBool("gotOnRamp2", false);
+        }*/
+
         
 
-
-        //on slope
-        if (OnSlope() && !_exitingSlope)
+            //on slope
+            if (OnSlope() && !_exitingSlope)
         {
-            rb.AddForce(Vector3.down * _slopeVectorDownValue, ForceMode.Force);
+            /*rb.AddForce(Vector3.down * _slopeVectorDownValue, ForceMode.Force);
             if (rb.velocity.y > 0 && _isSliding)
             {
                 rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 12.5f, ForceMode.Force);
@@ -530,12 +542,34 @@ public class S_PlayerMovement : MonoBehaviour
             else if(_isSliding)
                 rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 20f, ForceMode.Force);
             else    
+                rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 15f, ForceMode.Force);*/
+            //rb.AddForce(_moveDirection.normalized * _moveSpeed * 20f * _upgradeSpeedValue, ForceMode.Force);
+
+            if (Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.7f + _valueRaycast, _whatIsRamp))
+            {
+                Debug.Log("is on ramp");
+                isOnRamp = true;
+                /*int randomSlide = Random.Range(1, 3);
+                if (_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Arms_Left_Slide_Idle" || _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Arms_Right_Slide_Idle")
+                {
+                    if (randomSlide == 1) _arms_AC.SetBool("gotOnRamp1", true);
+                    else if (randomSlide == 2) _arms_AC.SetBool("gotOnRamp2", true);
+                }*/
+                rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 12.5f, ForceMode.Force);
+            }
+            else if (_isSliding)
+            {
+                isOnRamp = true;
+                rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 10f, ForceMode.Force);
+            }
+            else
+                isOnRamp = false;
                 rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 15f, ForceMode.Force);
-                //rb.AddForce(_moveDirection.normalized * _moveSpeed * 20f * _upgradeSpeedValue, ForceMode.Force);
         }
 
         else if (_isGrounded)
         {
+
             rb.AddForce(_moveDirection.normalized * _moveSpeed * 10f * _upgradeSpeedValue, ForceMode.Force);
         }
 
@@ -585,6 +619,8 @@ public class S_PlayerMovement : MonoBehaviour
             if (state == MovementState.air) return;
         }
 
+        if (Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.7f + _valueRaycast, _whatIsRamp)) return;
+
         _jumpCount++;
 
 
@@ -632,7 +668,8 @@ public class S_PlayerMovement : MonoBehaviour
             _exitingSlope = true;
             rb.velocity = new Vector3(rb.velocity.x, 0f, rb.velocity.z);
             //rb.velocity = new Vector3(rb.velocity.x, ??, rb.velocity.z);
-            rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
+            //rb.AddForce(transform.up * _jumpForce, ForceMode.Impulse);
+            rb.AddForce(transform.up * _jumpForce * 0.7f, ForceMode.Impulse);
         }
     }
 
