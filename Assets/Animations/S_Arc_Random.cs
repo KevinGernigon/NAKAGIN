@@ -45,7 +45,7 @@ public class S_Arc_Random : MonoBehaviour
             _arc_ACPoint2.Rebind();
             _arc_ACPoint2.Play("A_Test_Arc_electrique_mouvement");
 
-            yield return new WaitForSeconds(60f);
+            yield return new WaitForSeconds(120f);
 
             _animcanPlay = true;
 
