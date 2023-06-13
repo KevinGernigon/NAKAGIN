@@ -166,7 +166,8 @@ public class S_AffichageInfoTuto : MonoBehaviour
     {
         _infoTuto.SetActive(true);
 
-        _AnimInfoTuto.SetBool("IsOpen", true);                // _AnimInfoTuto.Play("A_TooltipOpen");
+        //_AnimInfoTuto.SetBool("IsOpen", true);
+        _AnimInfoTuto.Play("A_TooltipOpen");
 
         if (SO_TutoAffichage._nbrAction < 1)
             _simpleTextZone.SetActive(true);
@@ -179,7 +180,8 @@ public class S_AffichageInfoTuto : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
 
-        _AnimInfoTuto.SetBool("IsOpen", false);                // _AnimInfoTuto.Play("A_TooltipClose");
+        //_AnimInfoTuto.SetBool("IsOpen", false);               
+        _AnimInfoTuto.Play("A_TooltipClose");
 
         _simpleTextZone.SetActive(false);
         _textzone1act.SetActive(false);
