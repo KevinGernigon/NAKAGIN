@@ -59906,6 +59906,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1102040632}
     m_Modifications:
+    - target: {fileID: 5462120844683152513, guid: 99a64216103a1aa45a1d091e688892c8, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5822491894676924807, guid: 99a64216103a1aa45a1d091e688892c8, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
@@ -59993,24 +59997,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6632901021659995874, guid: 99a64216103a1aa45a1d091e688892c8, type: 3}
   m_PrefabInstance: {fileID: 1604836733}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1604836735 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5822491895942032724, guid: 99a64216103a1aa45a1d091e688892c8, type: 3}
-  m_PrefabInstance: {fileID: 1604836733}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1604836736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1604836735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c5ec54b088c0dd46bc7132f7bbc9830, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _managerRun: {fileID: 0}
 --- !u!1 &1606782996
 GameObject:
   m_ObjectHideFlags: 0
@@ -61921,7 +61907,6 @@ GameObject:
   - component: {fileID: 1650783402}
   - component: {fileID: 1650783401}
   - component: {fileID: 1650783400}
-  - component: {fileID: 1650783399}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -61944,19 +61929,6 @@ Transform:
   m_Father: {fileID: 1604836734}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1650783399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1650783397}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c5ec54b088c0dd46bc7132f7bbc9830, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _managerRun: {fileID: 0}
 --- !u!64 &1650783400
 MeshCollider:
   m_ObjectHideFlags: 0
