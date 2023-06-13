@@ -63,6 +63,7 @@ public class S_IALootYou : MonoBehaviour
     {
         StopLookPlayer();
 
+        _animDisableIA.Rebind();
         _animDisableIA.Play("");
         
     }

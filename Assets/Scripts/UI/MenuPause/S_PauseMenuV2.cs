@@ -37,8 +37,8 @@ public class S_PauseMenuV2 : MonoBehaviour
     private GameObject LastSelectButtonLeaderboard;
 
     public bool _isPaused = false;
-    private bool _isSetting = false;
-    private bool _isLeaderboard = false;
+    [SerializeField] private bool _isSetting = false;
+    [SerializeField] private bool _isLeaderboard = false;
     public bool _ischoose;
     public bool _IsRestart = false;
     public bool _inMenu;
@@ -104,6 +104,7 @@ public class S_PauseMenuV2 : MonoBehaviour
                     else
                     {
                         _isSetting = false;
+                        _isLeaderboard = false;
                         ResumeGame();    
                     }
                 }
@@ -398,6 +399,7 @@ public class S_PauseMenuV2 : MonoBehaviour
     {
         _pauseInterface.SetActive(true);
         _settingsInterface.SetActive(false);
+        _leaderboardInterface.SetActive(false);
     }
 
     public void Restart()
