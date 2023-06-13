@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class S_Anim_Jump_Idle : MonoBehaviour
 {
@@ -8,10 +9,11 @@ public class S_Anim_Jump_Idle : MonoBehaviour
     private S_PlayerMovement _playerMovement;
     [SerializeField]
     private Animator _arms_AC;
+    private bool _coroutineStarted;
 
-    private void Start()
+    private void OnEnable()
     {
-        StartCoroutine("countDownForJumpIdle");
+        StartCoroutine(countDownForJumpIdle());
     }
 
     public IEnumerator countDownForJumpIdle()
@@ -27,7 +29,6 @@ public class S_Anim_Jump_Idle : MonoBehaviour
 
             if (countdown >= 0.125f)
             {
-                Debug.Log("isInAir");
                 if (!_arms_AC.GetBool("dashing"))
                 {
                     _arms_AC.SetBool("isInAir", true);

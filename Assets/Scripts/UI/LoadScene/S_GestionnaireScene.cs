@@ -77,4 +77,9 @@ public class S_GestionnaireScene : MonoBehaviour
         _loadingScreen.SetActive(false);
         yield return null;
     }
+
+    public string getCurrentScene()
+    {
+        return SceneManager.GetActiveScene().name;
+    }
 }
