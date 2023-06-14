@@ -28499,6 +28499,7 @@ MonoBehaviour:
   _BatteryManager: {fileID: 1525915805904549653}
   _Jetpack: {fileID: 2579101206841898677}
   _eventSystem: {fileID: 1525915805904549654}
+  _infoTuto: {fileID: 3616151408036835041}
   FirstSelectButtonPause: {fileID: 15370605}
   FirstSelectButtonSetting: {fileID: 1226004187}
   FirstSelectButtonLeaderboard: {fileID: 47938291}
@@ -30823,6 +30824,7 @@ MonoBehaviour:
   _dashSpeed: 25
   _dashSpeedChangeFactor: 50
   _AerialSpeed: 3
+  _RampForceValue: 0
   _maxWalkSpeed: 55
   _incrementValMaxSpeed: 0.05
   _fallMultiplier: 1.5
@@ -32950,8 +32952,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1634caa98270f842944e56e71208175, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sceneToStart: MainMenu
-  categoryToDisplay: 15
+  sceneToStart: Run_1
+  categoryToDisplay: 19
 --- !u!114 &9026664326187928078
 MonoBehaviour:
   m_ObjectHideFlags: 0
