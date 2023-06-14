@@ -58,8 +58,8 @@ public class S_GestionnaireScene : MonoBehaviour
             }
             else
             {
-                _keyboardIMGQwerty.SetActive(true);
-                _keyboardIMGAzerty.SetActive(false);  
+                _keyboardIMGAzerty.SetActive(true);  
+                _keyboardIMGQwerty.SetActive(false);
             }
         }
         else
@@ -71,8 +71,8 @@ public class S_GestionnaireScene : MonoBehaviour
             }
             else
             {
-                _keyboardIMGQwerty.SetActive(true);
-                _keyboardIMGAzerty.SetActive(false);
+                _keyboardIMGQwerty.SetActive(false);
+                _keyboardIMGAzerty.SetActive(true);
             }
 
             _controlerIMG.SetActive(false);
