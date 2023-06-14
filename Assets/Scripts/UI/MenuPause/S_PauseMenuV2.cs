@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class S_PauseMenuV2 : MonoBehaviour
 {
@@ -50,6 +51,14 @@ public class S_PauseMenuV2 : MonoBehaviour
 
     [Header("Reset")]
     [SerializeField] private GameObject _player;
+
+
+    [Header("QwertMode")]
+    [SerializeField] private GameObject _qwertyKeyboardIMG;
+    [SerializeField] private GameObject _azertyKeyboardIMG;
+    public bool _qwertyMode;
+
+
 
     private void Awake()
     {
@@ -417,4 +426,19 @@ public class S_PauseMenuV2 : MonoBehaviour
 
     }
 
+    public void KeyModeSwitch()
+    {
+        _qwertyMode = !_qwertyMode;
+
+        if(_qwertyMode)
+        {
+            _qwertyKeyboardIMG.SetActive(true); ;
+            _azertyKeyboardIMG.SetActive(false);
+        }
+        else
+        {
+            _qwertyKeyboardIMG.SetActive(false);
+            _azertyKeyboardIMG.SetActive(true);
+        }
+    }
 }
