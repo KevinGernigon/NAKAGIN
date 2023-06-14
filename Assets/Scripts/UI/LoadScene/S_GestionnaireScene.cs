@@ -14,7 +14,8 @@ public class S_GestionnaireScene : MonoBehaviour
 
     [SerializeField] private GameObject DisablePlayer;
     [SerializeField] private GameObject _controlerIMG;
-    [SerializeField] private GameObject _keyboardIMG;
+    [SerializeField] private GameObject _keyboardIMGAzerty;
+    [SerializeField] private GameObject _keyboardIMGQwerty;
 
 
     public bool InMenu;
@@ -49,11 +50,31 @@ public class S_GestionnaireScene : MonoBehaviour
         if(_InputManager._playerInput.currentControlScheme == "Gamepad") 
         {
             _controlerIMG.SetActive(true);
-            _keyboardIMG.SetActive(false);
+
+            if (S_PauseMenuV2._qwertyMode)
+            {
+                _keyboardIMGAzerty.SetActive(false);
+                _keyboardIMGQwerty.SetActive(true);
+            }
+            else
+            {
+                _keyboardIMGQwerty.SetActive(true);
+                _keyboardIMGAzerty.SetActive(false);  
+            }
         }
         else
         {
-            _keyboardIMG.SetActive(true);
+            if (S_PauseMenuV2._qwertyMode)
+            {
+                _keyboardIMGAzerty.SetActive(false);
+                _keyboardIMGQwerty.SetActive(true);
+            }
+            else
+            {
+                _keyboardIMGQwerty.SetActive(true);
+                _keyboardIMGAzerty.SetActive(false);
+            }
+
             _controlerIMG.SetActive(false);
         }
 
