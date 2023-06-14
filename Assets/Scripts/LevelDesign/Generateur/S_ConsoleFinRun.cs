@@ -135,7 +135,8 @@ public class S_ConsoleFinRun : MonoBehaviour
                         }
                         _HUD_Interaction.SetActive(true);
                         if(_isOnSphereTrigger)
-                            _AnimInfoTuto.SetBool("IsOpen", true);                //  _AnimInfoTuto.Play("A_TooltipOpen");
+                            _AnimInfoTuto.Play("A_TooltipOpen");
+                            //_AnimInfoTuto.SetBool("IsOpen", true);               
                     }
                      _referenceInterface._InputManager.DesactiveJetpackInput();
                 }    
@@ -146,7 +147,8 @@ public class S_ConsoleFinRun : MonoBehaviour
                 if (!_consoleActive)
                     _HUD_Interaction.SetActive(false);
                 if (_isOnSphereTrigger)
-                    _AnimInfoTuto.SetBool("IsOpen", false);                //_AnimInfoTuto.Play("A_TooltipClose");
+                    _AnimInfoTuto.Play("A_TooltipClose");
+                    //_AnimInfoTuto.SetBool("IsOpen", false);                
 
                 _referenceInterface._InputManager.ActiveJetpackInput();
             }
@@ -168,7 +170,8 @@ public class S_ConsoleFinRun : MonoBehaviour
             _HUD_Interaction.SetActive(false);
 
             if (_isOnSphereTrigger)
-                _AnimInfoTuto.SetBool("IsOpen", false);                //_AnimInfoTuto.Play("A_TooltipClose");
+                _AnimInfoTuto.Play("A_TooltipClose");
+                //_AnimInfoTuto.SetBool("IsOpen", false);                
 
             _screenInfo.material = _actvMatInfo;
 

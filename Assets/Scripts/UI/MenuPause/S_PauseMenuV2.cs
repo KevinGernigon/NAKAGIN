@@ -29,6 +29,8 @@ public class S_PauseMenuV2 : MonoBehaviour
 
     [SerializeField] private EventSystem _eventSystem;
 
+    [SerializeField] private Animator _infoTuto;
+
     [SerializeField] private GameObject FirstSelectButtonPause;
     [SerializeField] private GameObject FirstSelectButtonSetting;
     [SerializeField] private GameObject FirstSelectButtonLeaderboard;
@@ -207,6 +209,9 @@ public class S_PauseMenuV2 : MonoBehaviour
     }
     public void PauseGame()
     {
+        _infoTuto.Rebind();
+        _infoTuto.Play("A_TooltipClose");
+
         S_InputManager.ActivePause();
 
         PlayerSound.PauseSound();
@@ -239,7 +244,7 @@ public class S_PauseMenuV2 : MonoBehaviour
     {
         if (!_ischoose)
         {
-            
+
             PlayerSound.UnPauseSound();
             StartCoroutine(waitcastchoose());
 
