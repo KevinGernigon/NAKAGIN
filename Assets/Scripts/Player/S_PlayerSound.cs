@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class S_PlayerSound : MonoBehaviour
 {
     [Header("Reference")]
-    private S_PlayerMovement PlayerMovement;
+    [SerializeField] private S_PlayerMovement PlayerMovement;
+    [SerializeField] private Animator _arms_AC;
 
     [Header("Audio")]
     [SerializeField] private AudioSource SoundManager;
     [SerializeField] private AudioSource WalkSoundManager;
     [SerializeField] private AudioSource SlideSoundManager;
-    [SerializeField] private AudioSource LandingSoundManager;
+    [SerializeField] public AudioSource LandingSoundManager;
     [SerializeField] private AudioSource PlatformSoundManager;
     [SerializeField] private AudioSource WallRunSoundManager;
     [SerializeField] private AudioSource SauvetageSoundManager;
@@ -34,6 +36,10 @@ public class S_PlayerSound : MonoBehaviour
     [SerializeField] private AudioClip SauvetageClip;
     [SerializeField] private AudioClip NoBatteryClip;
     [SerializeField] private AudioClip ValidationConsoleClip;
+    [SerializeField] public AudioSource NoiseSource;
+    [SerializeField] public AudioSource TutoMusic;
+    [SerializeField] private List<AudioClip> ClimbClips;
+    [SerializeField] private List<AudioClip> landingClips;
 
 
     [Header("Bool")]
@@ -42,6 +48,9 @@ public class S_PlayerSound : MonoBehaviour
     private bool _isPlayingPlatform = false;
     private bool _isPlayingWallRun = false;
     private bool _isPlayingSauvetage = false;
+    public bool isPlayingClimb = false;
+    private bool _landingSoundPlayed = false;
+    private bool _coroutineStarted = false;
 
     [Header("Timer")]
     private float timer = 2.56f;
@@ -50,12 +59,19 @@ public class S_PlayerSound : MonoBehaviour
     private float timerBetween = 2.56f;
     private float timerBetweenSauvetage = 1.38f;
 
+    private float _airTime;
 
     int i;
 
     private void Start()
     {
-        PlayerMovement = GetComponent<S_PlayerMovement>();
+        //PlayerMovement = GetComponent<S_PlayerMovement>();
+        //StartCoroutine(LandingSoundPlayer());
+    }
+
+    private void OnEnable()
+    {
+        StartCoroutine(LandingSoundPlayer());
     }
 
     ////////////////////
@@ -128,6 +144,47 @@ public class S_PlayerSound : MonoBehaviour
     public void ValidationConsoleSound()
     {
         SoundManager.PlayOneShot(ValidationConsoleClip);
+    }
+
+    /*public void ClickButton()
+    {
+        SoundManager.PlayOneShot()
+    }*/
+
+    public void Noise()
+    {
+        NoiseSource.Play();
+    }
+
+    public void PlayMusic()
+    {
+        TutoMusic.Play();
+    }
+
+    public IEnumerator ClimbSounds()
+    {
+        isPlayingClimb = true;
+        bool WaitABit = true;
+        while (true)
+        {
+            if (WaitABit)
+            {
+                WaitABit = false;
+                yield return new WaitForSeconds(0.1f);
+            }
+            if (_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name == "A_Arms_Climb")
+            {
+                var rand = Random.Range(0, 4);
+                SoundManager.PlayOneShot(ClimbClips[rand]);
+                yield return new WaitForSeconds(0.3f);
+            }
+            else
+            {
+                WaitABit = true;
+                isPlayingClimb = false;
+                break;
+            }
+        }
     }
 
     ////////////////////////
@@ -311,6 +368,40 @@ public class S_PlayerSound : MonoBehaviour
         SauvetageSoundManager.Play();
         yield return new WaitUntil(() => SauvetageSoundManager.isPlaying);
         _isPlayingSauvetage = false;
+    }
+
+    public IEnumerator LandingSoundPlayer()
+    {
+        while (true)
+        {
+            if (PlayerMovement.state == S_PlayerMovement.MovementState.air)
+            {
+                if (LandingSoundManager.volume < 1)
+                {
+                    LandingSoundManager.volume += 0.025f;
+                }
+            }
+            if (PlayerMovement.state == S_PlayerMovement.MovementState.climbing) LandingSoundManager.volume = 0;
+
+            if (PlayerMovement._isGrounded && !_landingSoundPlayed && PlayerMovement._lastState != S_PlayerMovement.MovementState.climbing)
+            {
+                if (LandingSoundManager.volume > 0.1f)
+                {
+                    _landingSoundPlayed = true;
+                    int rand = Random.Range(0, 3);
+                    LandingSoundManager.clip = landingClips[rand];
+                    LandingSound();
+                }
+            }
+            else if (!LandingSoundManager.isPlaying && PlayerMovement.state != S_PlayerMovement.MovementState.air) LandingSoundManager.volume = 0;
+
+
+            else if (!PlayerMovement._isGrounded)
+            {
+                _landingSoundPlayed = false;
+            }
+            yield return new WaitForSeconds(0.025f);
+        }
     }
 
     //////////////////////////////////////////////////////

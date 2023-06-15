@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class S_RunCheckPointManagerValidation : MonoBehaviour
 {
+    [SerializeField] private Animator[] _resteCheckPoint;
+
     public Transform _spawnRunCapsule;
     public Transform checkpointCapsule;
     [SerializeField]private S_Timer _Timer;
@@ -47,20 +49,25 @@ public class S_RunCheckPointManagerValidation : MonoBehaviour
     public void FintimerRespawn()
     { 
         _playerContent.position = _spawnRunCapsule.position;
-        _deathPlayer.RespawnPlayer(_playerContent);
+        _deathPlayer.RespawnPlayer(_spawnRunCapsule);
     }
 
 
     public void DeathRespawn()
     {
         _playerContent.position = checkpointCapsule.position;
-        _deathPlayer.RespawnPlayer(_playerContent);
+        _deathPlayer.RespawnPlayer(checkpointCapsule);
     }
 
 
     public void ResetSpawnPoint()
     {
         checkpointCapsule.position = _spawnRunCapsule.position;
+
+        for (int i = 0; i < _resteCheckPoint.Length; i++)
+        {
+            _resteCheckPoint[i].SetBool("IsOpen", false);
+        }
     }
 
     public void StartChrono()
@@ -100,6 +107,7 @@ public class S_RunCheckPointManagerValidation : MonoBehaviour
 
         if (checkpointCapsule.position == _spawnRunCapsule.position)
         {
+            checkpointCapsule.rotation = _spawnRunCapsule.rotation;
             _InfoScoreValidation._runStart = false;
             DeathRespawn();
             ResetChrono();

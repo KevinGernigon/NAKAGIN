@@ -10,11 +10,16 @@ public class S_GestionnaireScene : MonoBehaviour
     [SerializeField] private GameObject _loadingScreen;
     [SerializeField] private Image _loadingBarFill;
     [SerializeField] private S_PauseMenuV2 S_PauseMenuV2;
+    [SerializeField] private S_InputManager _InputManager;
 
     [SerializeField] private GameObject DisablePlayer;
+    [SerializeField] private GameObject _controlerIMG;
+    [SerializeField] private GameObject _keyboardIMGAzerty;
+    [SerializeField] private GameObject _keyboardIMGQwerty;
 
 
     public bool InMenu;
+    public bool DisIntroGame;
 
 
 
@@ -42,18 +47,54 @@ public class S_GestionnaireScene : MonoBehaviour
     IEnumerator LoadSceneAsync(int sceneId)
     {
         _loadingScreen.SetActive(true);
+        if(_InputManager._playerInput.currentControlScheme == "Gamepad") 
+        {
+            _controlerIMG.SetActive(true);
+
+            if (S_PauseMenuV2._qwertyMode)
+            {
+                _keyboardIMGAzerty.SetActive(false);
+                _keyboardIMGQwerty.SetActive(true);
+            }
+            else
+            {
+                _keyboardIMGAzerty.SetActive(true);  
+                _keyboardIMGQwerty.SetActive(false);
+            }
+        }
+        else
+        {
+            if (S_PauseMenuV2._qwertyMode)
+            {
+                _keyboardIMGAzerty.SetActive(false);
+                _keyboardIMGQwerty.SetActive(true);
+            }
+            else
+            {
+                _keyboardIMGQwerty.SetActive(false);
+                _keyboardIMGAzerty.SetActive(true);
+            }
+
+            _controlerIMG.SetActive(false);
+        }
 
         AsyncOperation operation1 = SceneManager.LoadSceneAsync(sceneId);
 
         if (sceneId == 3)
         {
             DisablePlayer.SetActive(false);
-            AsyncOperation operation2 = SceneManager.LoadSceneAsync("Asset_Scene", LoadSceneMode.Additive);
-            AsyncOperation operation3 = SceneManager.LoadSceneAsync("Light_Scene", LoadSceneMode.Additive);
 
-            while (!operation1.isDone || !operation2.isDone)
+            AsyncOperation operation2 = SceneManager.LoadSceneAsync("Run_1", LoadSceneMode.Additive);
+            AsyncOperation operation3 = SceneManager.LoadSceneAsync("Run_2_et_HUB", LoadSceneMode.Additive);
+            AsyncOperation operation4 = SceneManager.LoadSceneAsync("Run_3", LoadSceneMode.Additive);
+            AsyncOperation operation5 = SceneManager.LoadSceneAsync("Decor_Scene", LoadSceneMode.Additive);
+
+           // AsyncOperation operation2 = SceneManager.LoadSceneAsync("Asset_Scene", LoadSceneMode.Additive);
+           // AsyncOperation operation3 = SceneManager.LoadSceneAsync("Light_Scene", LoadSceneMode.Additive);
+
+            while (!operation1.isDone || !operation2.isDone || !operation3.isDone || !operation4.isDone || !operation5.isDone)
             {
-                float progressValue = Mathf.Clamp01(operation1.progress + operation2.progress + operation3.progress / 2.7f);
+                float progressValue = Mathf.Clamp01(operation1.progress + operation2.progress + operation3.progress + operation4.progress + operation5.progress / 5.4f);
                 _loadingBarFill.fillAmount = progressValue; 
             
                 yield return new WaitForSeconds(0.01f);
@@ -75,6 +116,13 @@ public class S_GestionnaireScene : MonoBehaviour
         }
 
         _loadingScreen.SetActive(false);
+
         yield return null;
     }
+    
+    public void DisalbleIntro()
+    {
+        DisIntroGame = true;
+    }
+
 }

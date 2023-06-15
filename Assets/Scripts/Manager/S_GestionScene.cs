@@ -17,6 +17,9 @@ public class S_GestionScene : MonoBehaviour
     private GameObject _camera;
     private S_PlayerCam _playerCam;
     private TMP_Text _textTimer;
+    private GameObject _infoTuto;
+    private Animator _animInfoTuto;
+
     private Color _savecolor;
     [SerializeField] private Transform _spawnPoint;
 
@@ -43,8 +46,13 @@ public class S_GestionScene : MonoBehaviour
         _camera = _referenceInterface._CameraGameObject;
         _playerCam = _camera.GetComponent<S_PlayerCam>();
 
+        _infoTuto = _referenceInterface.infoTuto;
+        _animInfoTuto = _referenceInterface.animInfo;
+
+
         _textTimer = _referenceInterface._timerText;
         _savecolor = _textTimer.color;
+
 
 
         
@@ -56,7 +64,12 @@ public class S_GestionScene : MonoBehaviour
     private void Start()
     {
         _InputManager.DesactivePause();
-  
+
+        _animInfoTuto.Rebind();
+        _animInfoTuto.SetBool("IsOpen", false);
+        _infoTuto.SetActive(false);
+
+
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = false;
 

@@ -8,6 +8,7 @@ public class S_ShowConsole : MonoBehaviour
     
     
     [SerializeField] private S_BatteryManager Battery;
+    [SerializeField] private S_GestionnaireScene GestionnaireScene;
     private bool _unlimitedBat;
 
 
@@ -28,7 +29,15 @@ public class S_ShowConsole : MonoBehaviour
         S_Debugger.UpdatableLog("Add Battery ","");
         S_Debugger.AddButton("Add Battery", Battery.GetOneBattery);
 
-       
+        S_Debugger.UpdatableLog("TP Tuto ", "");
+        S_Debugger.AddButton("Tuto", ChangeSceneTuto);
+
+        S_Debugger.UpdatableLog("TP HUB ", "");
+        S_Debugger.AddButton("Hub", ChangeSceneHUB);
+
+        S_Debugger.UpdatableLog("TP Fin ", "");
+        S_Debugger.AddButton("Fin", ChangeSceneFin);
+
     }
     private void Update()
     {
@@ -52,23 +61,21 @@ public class S_ShowConsole : MonoBehaviour
         }
     }
 
-    private void ChangeSceneMaxime()
+    private void ChangeSceneTuto()
     {
-        SceneManager.LoadScene("Scene_Industriel");
-    }
-    private void ChangeSceneGD()
-    {
-        SceneManager.LoadScene("TestGDScene");
+        GestionnaireScene.LoadNewScene(2);
     }
 
-    private void ChangeSceneLD()
+    private void ChangeSceneHUB()
     {
-        SceneManager.LoadScene("MAIN_Vertical_Slice");
+        GestionnaireScene.LoadNewScene(3);
+    }
+    private void ChangeSceneFin()
+    {
+        GestionnaireScene.LoadNewScene(4);
     }
 
-    private void ChangeSceneAsset()
-    {
-        SceneManager.LoadScene("Assets_Scene");
-    }
+    
+
 
 }

@@ -41,8 +41,6 @@ public class S_GenerateurEnergetique : MonoBehaviour
     private bool _isSoundRunning0Bat = false;
     //private TMP_Text _TextInteraction;
 
-
-
     private void Awake()
     {
         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
@@ -189,7 +187,16 @@ public class S_GenerateurEnergetique : MonoBehaviour
 
         if ( _referenceInterface._BatteryManager._nbrBattery < ChargeEnergetique )
         {
-            _referenceInterface._BatteryManager._nbrBattery = ChargeEnergetique;
+            //_referenceInterface._BatteryManager._nbrBattery = ChargeEnergetique;
+
+            PlayerSoundScript.AccessAcceptedSound();
+
+            for (int i = 0; i < ChargeEnergetique; i++)
+            {
+                _referenceInterface._BatteryManager.GetOneBattery();
+            }
+
+
         }
     }
 

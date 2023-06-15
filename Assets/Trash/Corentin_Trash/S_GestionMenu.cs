@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class S_GestionMenu : MonoBehaviour
 {
     private S_ReferenceInterface _referenceInterface;
+    private S_GestionnaireScene _GestionnaireScene;
     private S_InputManager _InputManager;
     private GameObject _disableManager;
     private GameObject _UI;
     private GameObject _loadingScreen;
+    [SerializeField]private Animator _animIntroGame;
 
         
     private void Awake()
@@ -18,7 +21,9 @@ public class S_GestionMenu : MonoBehaviour
         _disableManager = _referenceInterface.DisableManager;
         _UI = _referenceInterface._UICanvas;
         _loadingScreen = _referenceInterface._LoadingScreen;
+        _GestionnaireScene = _referenceInterface._GestionnaireScene;
     }
+
 
 
     private void Start()
@@ -28,8 +33,15 @@ public class S_GestionMenu : MonoBehaviour
 
         _loadingScreen.SetActive(false);
         _disableManager.SetActive(false);
+        _InputManager.ActivePause();
         //_InputManager.ActivePause();
 
+
+        if(!_GestionnaireScene.DisIntroGame)
+        {
+            _animIntroGame.Play("GamePres");
+            //_GestionnaireScene.DisIntroGame = true;
+        }
     }
 
     public void EndScene()
@@ -37,6 +49,7 @@ public class S_GestionMenu : MonoBehaviour
         _disableManager.SetActive(true);
        //_InputManager.DesactivePause();
         _UI.SetActive(true);
+
 
     }
 }

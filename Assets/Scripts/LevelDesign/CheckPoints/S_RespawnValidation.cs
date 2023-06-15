@@ -10,21 +10,21 @@ public class S_RespawnValidation : MonoBehaviour
 
     [SerializeField] private GameObject _managerRun;
     private S_RunCheckPointManagerValidation _runCheckPointManagerValidation;
-
+    private S_DeathPlayer _DeathPlayer;
 
     private void Awake()
     {
         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
 
         _runCheckPointManagerValidation = _managerRun.GetComponent<S_RunCheckPointManagerValidation>();
-
+        _DeathPlayer = _referenceInterface.deathPlayer;
 
     }
 
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.CompareTag("Player") && !_DeathPlayer.playerIsDead)
         {
             /////Start Death/////
 
