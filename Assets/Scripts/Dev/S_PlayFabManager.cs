@@ -22,6 +22,7 @@ public class S_PlayFabManager : MonoBehaviour
     public Transform rowsParent1;
     public Transform rowsParent2;
     public Transform rowsParent3;
+    public Transform rowsParent4;
 
     [Header("Windows")]
     public GameObject nameWindow;
@@ -30,6 +31,7 @@ public class S_PlayFabManager : MonoBehaviour
     [Header("Display name windows")]
     public TMP_InputField nameInput;
     public GameObject AlreadyUsed;
+    public GameObject InvalidName;
 
     [Header("Own rank")]
     public GameObject OwnRankText;
@@ -37,11 +39,18 @@ public class S_PlayFabManager : MonoBehaviour
     public Transform TransformOwnRank1;
     public Transform TransformOwnRank2;
     public Transform TransformOwnRank3;
+    public Transform TransformOwnRank4;
 
     [SerializeField] S_GestionnaireScene GestionnaireScene;
     
 
     string loggedInPlayFabId;
+
+    //ban words//
+    public TextAsset _bannedWordsText;
+    private string _bannedWords;
+    private string[] _bannedWordsList;
+    //fin ban words//
 
     public void Start(){
         if(name == null){
@@ -58,6 +67,11 @@ public class S_PlayFabManager : MonoBehaviour
                 GetPlayerProfile = true}
                 };
         PlayFabClientAPI.LoginWithCustomID(request, OnLoginSuccess, OnLoginFailure);
+
+        //ban words//
+        _bannedWords = _bannedWordsText.text;
+        _bannedWordsList = _bannedWords.Split(",");
+        //fin ban words//
     }
 
     public void Continue()
@@ -93,10 +107,35 @@ public class S_PlayFabManager : MonoBehaviour
         Debug.LogError(error.GenerateErrorReport());
     }
 
+    //ban words//
+    public bool CompareToBannedWords(string name)
+    {
+        name = name.ToLower();
+        for (int i = 0; i < _bannedWordsList.Length; i++)
+        {
+            if (name.Contains(_bannedWordsList[i]))
+            {
+                return false;
+            }
+        }
+        return true;
+    }
+    //fin ban words//
+
     public void SubmitNameButton(){
-        var request = new UpdateUserTitleDisplayNameRequest{
-            DisplayName = nameInput.text,
-        };
+        UpdateUserTitleDisplayNameRequest request;
+        if (CompareToBannedWords(nameInput.text))
+        {
+            request = new UpdateUserTitleDisplayNameRequest
+            {
+                DisplayName = nameInput.text,
+            };
+        }
+        else 
+        {
+            InvalidName.SetActive(true);
+            return; 
+        }
 
         PlayFabClientAPI.UpdateUserTitleDisplayName(request, OnDisplayNameUpdate, OnLoginFailure);
     }
@@ -104,6 +143,7 @@ public class S_PlayFabManager : MonoBehaviour
     void OnDisplayNameUpdate(UpdateUserTitleDisplayNameResult result){
         Debug.Log("Updated display name");
         AlreadyUsed.SetActive(false);
+        InvalidName.SetActive(false);
         nameWindow.SetActive(false);
 
     }
@@ -179,6 +219,17 @@ public class S_PlayFabManager : MonoBehaviour
         PlayFabClientAPI.GetLeaderboard(request, OnLeaderboardGet, OnLoginFailure);
     }
 
+    public void GetLeaderBoard4(){
+        var request = new GetLeaderboardRequest{
+            StatisticName = "Leaderboard34",
+            StartPosition = StartPositionValueExtend,
+            MaxResultsCount = 100
+        };
+        rowsParent = rowsParent4;
+        TransformOwnRank = TransformOwnRank4;
+        PlayFabClientAPI.GetLeaderboard(request, OnLeaderboardGet, OnLoginFailure);
+    }
+
     public void GetLeaderboardAroundPlayer1(){
         var request = new GetLeaderboardAroundPlayerRequest{
             StatisticName = "Leaderboard1",
@@ -203,6 +254,15 @@ public class S_PlayFabManager : MonoBehaviour
         PlayFabClientAPI.GetLeaderboardAroundPlayer(request, OnLeaderBoardAroundPlayerGet, OnLoginFailure);
     }
 
+    public void GetLeaderboardAroundPlayer4(){
+        var request = new GetLeaderboardAroundPlayerRequest{
+            StatisticName = "Leaderboard4",
+            MaxResultsCount = 3
+        };
+        PlayFabClientAPI.GetLeaderboardAroundPlayer(request, OnLeaderBoardAroundPlayerGet, OnLoginFailure);
+    }
+
+    
 
 
 #endregion
