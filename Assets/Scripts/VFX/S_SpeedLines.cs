@@ -52,9 +52,13 @@ public class S_SpeedLines : MonoBehaviour
         {
             _shaderMat.SetFloat("_SL_LineDensity", 0.3f);
         }*/
-        else
+        else if(_playerMovement._walkSpeed > 50.0f)
         {
             //_shaderMat.SetFloat("_SL_LineDensity", 0.45f / 2 * (playerVelocityx + playerVelocityy + playerVelocityz + 0.1f * _increaseSpeedLines));
+            _shaderMat.SetFloat("_SL_LineDensity", _playerMovement._walkSpeed/130);
+        }
+        else
+        {
             _shaderMat.SetFloat("_SL_LineDensity", 0);
         }
 
