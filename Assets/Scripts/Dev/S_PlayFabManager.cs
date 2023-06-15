@@ -22,6 +22,7 @@ public class S_PlayFabManager : MonoBehaviour
     public Transform rowsParent1;
     public Transform rowsParent2;
     public Transform rowsParent3;
+    public Transform rowsParent4;
 
     [Header("Windows")]
     public GameObject nameWindow;
@@ -38,6 +39,7 @@ public class S_PlayFabManager : MonoBehaviour
     public Transform TransformOwnRank1;
     public Transform TransformOwnRank2;
     public Transform TransformOwnRank3;
+    public Transform TransformOwnRank4;
 
     [SerializeField] S_GestionnaireScene GestionnaireScene;
     
@@ -217,6 +219,17 @@ public class S_PlayFabManager : MonoBehaviour
         PlayFabClientAPI.GetLeaderboard(request, OnLeaderboardGet, OnLoginFailure);
     }
 
+    public void GetLeaderBoard4(){
+        var request = new GetLeaderboardRequest{
+            StatisticName = "Leaderboard34",
+            StartPosition = StartPositionValueExtend,
+            MaxResultsCount = 100
+        };
+        rowsParent = rowsParent4;
+        TransformOwnRank = TransformOwnRank4;
+        PlayFabClientAPI.GetLeaderboard(request, OnLeaderboardGet, OnLoginFailure);
+    }
+
     public void GetLeaderboardAroundPlayer1(){
         var request = new GetLeaderboardAroundPlayerRequest{
             StatisticName = "Leaderboard1",
@@ -241,6 +254,15 @@ public class S_PlayFabManager : MonoBehaviour
         PlayFabClientAPI.GetLeaderboardAroundPlayer(request, OnLeaderBoardAroundPlayerGet, OnLoginFailure);
     }
 
+    public void GetLeaderboardAroundPlayer4(){
+        var request = new GetLeaderboardAroundPlayerRequest{
+            StatisticName = "Leaderboard4",
+            MaxResultsCount = 3
+        };
+        PlayFabClientAPI.GetLeaderboardAroundPlayer(request, OnLeaderBoardAroundPlayerGet, OnLoginFailure);
+    }
+
+    
 
 
 #endregion
