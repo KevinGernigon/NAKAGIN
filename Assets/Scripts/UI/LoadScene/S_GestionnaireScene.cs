@@ -88,13 +88,14 @@ public class S_GestionnaireScene : MonoBehaviour
             AsyncOperation operation3 = SceneManager.LoadSceneAsync("Run_2_et_HUB", LoadSceneMode.Additive);
             AsyncOperation operation4 = SceneManager.LoadSceneAsync("Run_3", LoadSceneMode.Additive);
             AsyncOperation operation5 = SceneManager.LoadSceneAsync("Decor_Scene", LoadSceneMode.Additive);
+            AsyncOperation operation6 = SceneManager.LoadSceneAsync("Run_Validation", LoadSceneMode.Additive);
 
            // AsyncOperation operation2 = SceneManager.LoadSceneAsync("Asset_Scene", LoadSceneMode.Additive);
            // AsyncOperation operation3 = SceneManager.LoadSceneAsync("Light_Scene", LoadSceneMode.Additive);
 
             while (!operation1.isDone || !operation2.isDone || !operation3.isDone || !operation4.isDone || !operation5.isDone)
             {
-                float progressValue = Mathf.Clamp01(operation1.progress + operation2.progress + operation3.progress + operation4.progress + operation5.progress / 5.4f);
+                float progressValue = Mathf.Clamp01(operation1.progress + operation2.progress + operation3.progress + operation4.progress + operation5.progress + operation6.progress / 6.48f);
                 _loadingBarFill.fillAmount = progressValue; 
             
                 yield return new WaitForSeconds(0.01f);
