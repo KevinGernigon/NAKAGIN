@@ -18,4 +18,6 @@ public class SO_TutoAffichage : ScriptableObject
 
     public bool _ImageMode;
 
+    public Sprite[] _ImageKeyboardQWERTY;
+
 };

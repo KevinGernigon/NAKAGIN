@@ -45,7 +45,7 @@ public class S_PauseMenuV2 : MonoBehaviour
     public bool _ischoose;
     public bool _IsRestart = false;
     public bool _inMenu;
-    
+    private int _sceneId;
 
     [SerializeField] private bool ControllerActive = true;
 
@@ -289,18 +289,15 @@ public class S_PauseMenuV2 : MonoBehaviour
             StartCoroutine(waitcastchoose());
 
             _IsRestart = false;
+
             Scene _scene = SceneManager.GetActiveScene();
+
             SceneManager.LoadScene("Manager_Scene");
 
-            SceneManager.LoadScene(_scene.name);
-            if(_scene.name == "Kilian_Scene")
-            {
-                SceneManager.LoadScene("Asset_Scene", LoadSceneMode.Additive);
-                SceneManager.LoadScene("Light_Scene", LoadSceneMode.Additive);
-            }
-                
-           
-          
+            _sceneId = _scene.buildIndex;
+
+            S_GestionnaireScene.LoadNewScene(_sceneId);
+
 
         }
     }
