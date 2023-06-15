@@ -10,6 +10,8 @@ public class S_AffichageInfoTuto : MonoBehaviour
      private S_ReferenceInterface _referenceInterface;
      [SerializeField] private SO_TutoAffichage SO_TutoAffichage;
 
+        private S_PauseMenuV2 _PauseMenuV2;
+
         private GameObject _infoTuto;
         private Animator _AnimInfoTuto;
         
@@ -41,6 +43,7 @@ public class S_AffichageInfoTuto : MonoBehaviour
         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
         _infoTuto = _referenceInterface.infoTuto;
         _AnimInfoTuto = _referenceInterface.animInfo;
+        _PauseMenuV2 = _referenceInterface._PauseMenuV2;
 
         _textzone1act = _referenceInterface.textzone1act;
         _textzone2act = _referenceInterface.textzone2act;
@@ -105,7 +108,15 @@ public class S_AffichageInfoTuto : MonoBehaviour
                             //_textPrefixe_InfoTuto1Action.text = SO_TutoAffichage._prefixTextAffiche;
                         
                             _imageGamepadGO1Action.SetActive(true);
+
+                        if (!_PauseMenuV2._qwertyMode)
                             _imageGamepad1Action.sprite = SO_TutoAffichage._ImageKeyboard[0];
+                        else
+                            _imageGamepad1Action.sprite = SO_TutoAffichage._ImageKeyboardQWERTY[0];
+
+
+
+
                             _textSuffixe_InfoTuto1Action.text = SO_TutoAffichage._suffixTextAffiche;
                             _text1Action.text = "";
 
@@ -145,9 +156,22 @@ public class S_AffichageInfoTuto : MonoBehaviour
 
                         //_textPrefixe_InfoTuto2Action.text = SO_TutoAffichage._prefixTextAffiche;
                         _images2Action.SetActive(true);
-                        _image1Gamepad2Action.sprite = SO_TutoAffichage._ImageKeyboard[0];
+
+                        if(!_PauseMenuV2._qwertyMode)
+                            _image1Gamepad2Action.sprite = SO_TutoAffichage._ImageKeyboard[0];
+                        else
+                            _image1Gamepad2Action.sprite = SO_TutoAffichage._ImageKeyboardQWERTY[0];
+
+
                         _textRadical_InfoTuto2Action.text = SO_TutoAffichage._radicalTextAffiche;
-                        _image2Gamepad2Action.sprite = SO_TutoAffichage._ImageKeyboard[1];
+
+
+                        if (!_PauseMenuV2._qwertyMode)
+                            _image1Gamepad2Action.sprite = SO_TutoAffichage._ImageKeyboard[1];
+                        else
+                            _image1Gamepad2Action.sprite = SO_TutoAffichage._ImageKeyboardQWERTY[1];
+
+
                         _textSuffixe_InfoTuto2Action.text = SO_TutoAffichage._suffixTextAffiche;
 
                         _text2Action.text = "";
