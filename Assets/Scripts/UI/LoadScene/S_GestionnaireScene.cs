@@ -54,11 +54,11 @@ public class S_GestionnaireScene : MonoBehaviour
             if (S_PauseMenuV2._qwertyMode)
             {
                 _keyboardIMGAzerty.SetActive(false);
-                _keyboardIMGQwerty.SetActive(true);
+                _keyboardIMGQwerty.SetActive(false);
             }
             else
             {
-                _keyboardIMGAzerty.SetActive(true);  
+                _keyboardIMGAzerty.SetActive(false);  
                 _keyboardIMGQwerty.SetActive(false);
             }
         }
