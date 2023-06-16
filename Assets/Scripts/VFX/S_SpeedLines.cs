@@ -23,6 +23,11 @@ public class S_SpeedLines : MonoBehaviour
         //StartCoroutine("incrementSpeedLines");
     }
 
+    private void OnEnable()
+    {
+        StartCoroutine("incrementSpeedLines");
+    }
+
     private void Update()
     {
         var playerVelocityx = _playerRb.velocity.normalized.x;
@@ -46,21 +51,21 @@ public class S_SpeedLines : MonoBehaviour
 
         if (_playerMovement.state == S_PlayerMovement.MovementState.dashing || _playerMovement.state == S_PlayerMovement.MovementState.air && _playerMovement._isGrappleActive)
         {
-            _shaderMat.SetFloat("_SL_LineDensity", 0.4f);
+            _shaderMat.SetFloat("_SL_LineDensity", 0.5f);
         }
         /*else if(_playerMovement.state == S_PlayerMovement.MovementState.air)
         {
             _shaderMat.SetFloat("_SL_LineDensity", 0.3f);
         }*/
-        else if(_playerMovement._walkSpeed > 50.0f)
+       /* else if(_playerMovement._walkSpeed > 50.0f)
         {
             //_shaderMat.SetFloat("_SL_LineDensity", 0.45f / 2 * (playerVelocityx + playerVelocityy + playerVelocityz + 0.1f * _increaseSpeedLines));
-            _shaderMat.SetFloat("_SL_LineDensity", _playerMovement._walkSpeed/130);
+            _shaderMat.SetFloat("_SL_LineDensity", _playerMovement._walkSpeed/150);
         }
         else
         {
             _shaderMat.SetFloat("_SL_LineDensity", 0);
-        }
+        }*/
 
         if(S_GestionnaireScene.InMenu)
         {
@@ -74,23 +79,30 @@ public class S_SpeedLines : MonoBehaviour
 
     }
 
-    /*IEnumerator incrementSpeedLines()
+    IEnumerator incrementSpeedLines()
     {
         while (true)
         {
-            if (S_InputManager._mouvementInput.x != 0 || S_InputManager._mouvementInput.y != 0)
+            if (_playerMovement.state != S_PlayerMovement.MovementState.dashing || _playerMovement.state != S_PlayerMovement.MovementState.air && !_playerMovement._isGrappleActive)
             {
-                if (_increaseSpeedLines < 1.0f)
+
+                if (_playerMovement._walkSpeed > 50.0f)
                 {
-                    _increaseSpeedLines += 0.001f;
+                    if (_shaderMat.GetFloat("_SL_LineDensity") < 0.4f)
+                    {
+                        _shaderMat.SetFloat("_SL_LineDensity", _shaderMat.GetFloat("_SL_LineDensity") + 0.001f);
+                    }
+                    else if (_shaderMat.GetFloat("_SL_LineDensity") > 0.4f) _shaderMat.SetFloat("_SL_LineDensity", _shaderMat.GetFloat("_SL_LineDensity") - 0.005f);
                 }
-            }
-            else
-            {
-                _increaseSpeedLines = 0.0f;
+                else if (_shaderMat.GetFloat("_SL_LineDensity") > 0 && _shaderMat.GetFloat("_SL_LineDensity") < 0.4)
+                {
+                    _shaderMat.SetFloat("_SL_LineDensity", _shaderMat.GetFloat("_SL_LineDensity") - 0.0025f);
+                }
+                else _shaderMat.SetFloat("_SL_LineDensity", 0);
             }
             yield return new WaitForSeconds(0.01f);
         }
         
-    }*/
+    }
+
 }
