@@ -8,7 +8,6 @@ public class S_IALootYou : MonoBehaviour
     private Transform Player;
 
     [SerializeField] private Transform _oeil;
-    [SerializeField] private Animator _animDisableIA;
     private bool _isTarget;
     private bool _IADisable;
     private Transform _defaultPlacement;
@@ -62,9 +61,6 @@ public class S_IALootYou : MonoBehaviour
     public void DisableIA()
     {
         StopLookPlayer();
-
-        _animDisableIA.Rebind();
-        _animDisableIA.Play("");
         
     }
 

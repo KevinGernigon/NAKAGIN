@@ -141,7 +141,6 @@ public class S_PlayFabManager : MonoBehaviour
     }
 
     void OnDisplayNameUpdate(UpdateUserTitleDisplayNameResult result){
-        Debug.Log("Updated display name");
         AlreadyUsed.SetActive(false);
         InvalidName.SetActive(false);
         nameWindow.SetActive(false);
@@ -177,6 +176,18 @@ public class S_PlayFabManager : MonoBehaviour
             Statistics = new List<StatisticUpdate> {
                 new StatisticUpdate{
                     StatisticName = "Leaderboard3Bis",
+                    Value = score
+                }
+            }
+        };
+        PlayFabClientAPI.UpdatePlayerStatistics(request, OnLeaderboardUpdate, OnLoginFailure);
+    }
+    
+    public void SendLeaderboardRun4(int score){
+        var request = new UpdatePlayerStatisticsRequest{
+            Statistics = new List<StatisticUpdate> {
+                new StatisticUpdate{
+                    StatisticName = "Leaderboard4",
                     Value = score
                 }
             }
@@ -221,7 +232,7 @@ public class S_PlayFabManager : MonoBehaviour
 
     public void GetLeaderBoard4(){
         var request = new GetLeaderboardRequest{
-            StatisticName = "Leaderboard34",
+            StatisticName = "Leaderboard4",
             StartPosition = StartPositionValueExtend,
             MaxResultsCount = 100
         };
@@ -350,8 +361,6 @@ public class S_PlayFabManager : MonoBehaviour
                 texts[1].text = item.DisplayName;
                 texts[2].text = Affichage;
                 
-                Debug.Log(string.Format("PLACE : {0} | ID: {1} | VALUE: {2}",
-                item.Position, item.DisplayName, Affichage));
                 StatValueSeconds = 0;
                 StatValueMinutes = 0;
             }
@@ -392,6 +401,5 @@ public class S_PlayFabManager : MonoBehaviour
     
     
     void OnLeaderboardUpdate(UpdatePlayerStatisticsResult result){
-        Debug.Log("Successfull leaderbord sent");
     }
 }

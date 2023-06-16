@@ -351,7 +351,6 @@ public class S_PlayerMovement : MonoBehaviour
 
         if (Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.7f + _valueRaycast, _whatIsRamp))
         {
-            Debug.Log("is on ramp");
             isOnRamp = true;
         }
 
@@ -535,7 +534,17 @@ public class S_PlayerMovement : MonoBehaviour
             _arms_AC.SetBool("gotOnRamp1", false);
             _arms_AC.SetBool("gotOnRamp2", false);
         }*/
-
+        if (Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.7f + _valueRaycast, _whatIsRamp) && _isSliding)
+        {
+                      isOnRamp = true;
+            /*int randomSlide = Random.Range(1, 3);
+            if (_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Arms_Left_Slide_Idle" || _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Arms_Right_Slide_Idle")
+            {
+                if (randomSlide == 1) _arms_AC.SetBool("gotOnRamp1", true);
+                else if (randomSlide == 2) _arms_AC.SetBool("gotOnRamp2", true);
+            }*/
+            rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * _RampForceValue, ForceMode.Force);
+        }
 
         //on slope
         if (OnSlope() && !_exitingSlope)
@@ -551,19 +560,7 @@ public class S_PlayerMovement : MonoBehaviour
                 rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 15f, ForceMode.Force);*/
             //rb.AddForce(_moveDirection.normalized * _moveSpeed * 20f * _upgradeSpeedValue, ForceMode.Force);
 
-            if (Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.7f + _valueRaycast, _whatIsRamp) && _isSliding)
-            {
-                Debug.Log("is on ramp");
-                isOnRamp = true;
-                /*int randomSlide = Random.Range(1, 3);
-                if (_arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Arms_Left_Slide_Idle" || _arms_AC.GetCurrentAnimatorClipInfo(0)[0].clip.name != "A_Arms_Right_Slide_Idle")
-                {
-                    if (randomSlide == 1) _arms_AC.SetBool("gotOnRamp1", true);
-                    else if (randomSlide == 2) _arms_AC.SetBool("gotOnRamp2", true);
-                }*/
-                rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * _RampForceValue, ForceMode.Force);
-            }
-            else if (_isSliding)
+            if (_isSliding && !Physics.Raycast(transform.position, Vector3.down, _playerHeight * 0.7f + _valueRaycast, _whatIsRamp))
             {
                 rb.AddForce(GetSlopeMoveDirection(_moveDirection) * _moveSpeed * 10f, ForceMode.Force);
             }

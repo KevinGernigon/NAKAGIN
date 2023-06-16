@@ -54,11 +54,11 @@ public class S_GestionnaireScene : MonoBehaviour
             if (S_PauseMenuV2._qwertyMode)
             {
                 _keyboardIMGAzerty.SetActive(false);
-                _keyboardIMGQwerty.SetActive(true);
+                _keyboardIMGQwerty.SetActive(false);
             }
             else
             {
-                _keyboardIMGAzerty.SetActive(true);  
+                _keyboardIMGAzerty.SetActive(false);  
                 _keyboardIMGQwerty.SetActive(false);
             }
         }
@@ -89,13 +89,14 @@ public class S_GestionnaireScene : MonoBehaviour
             AsyncOperation operation4 = SceneManager.LoadSceneAsync("Run_3", LoadSceneMode.Additive);
             AsyncOperation operation5 = SceneManager.LoadSceneAsync("Decor_Scene", LoadSceneMode.Additive);
             AsyncOperation operation6 = SceneManager.LoadSceneAsync("Run_Validation", LoadSceneMode.Additive);
+            AsyncOperation operation7 = SceneManager.LoadSceneAsync("Scene_IA_Fin", LoadSceneMode.Additive);
 
-           // AsyncOperation operation2 = SceneManager.LoadSceneAsync("Asset_Scene", LoadSceneMode.Additive);
-           // AsyncOperation operation3 = SceneManager.LoadSceneAsync("Light_Scene", LoadSceneMode.Additive);
+            // AsyncOperation operation2 = SceneManager.LoadSceneAsync("Asset_Scene", LoadSceneMode.Additive);
+            // AsyncOperation operation3 = SceneManager.LoadSceneAsync("Light_Scene", LoadSceneMode.Additive);
 
-            while (!operation1.isDone || !operation2.isDone || !operation3.isDone || !operation4.isDone || !operation5.isDone)
+            while (!operation1.isDone || !operation2.isDone || !operation3.isDone || !operation4.isDone || !operation5.isDone || !operation6.isDone || !operation7.isDone)
             {
-                float progressValue = Mathf.Clamp01(operation1.progress + operation2.progress + operation3.progress + operation4.progress + operation5.progress + operation6.progress / 6.48f);
+                float progressValue = Mathf.Clamp01(operation1.progress + operation2.progress + operation3.progress + operation4.progress + operation5.progress + operation6.progress + operation7.progress / 7.56f);
                 _loadingBarFill.fillAmount = progressValue; 
             
                 yield return new WaitForSeconds(0.01f);
