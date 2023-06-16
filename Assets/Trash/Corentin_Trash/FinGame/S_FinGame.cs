@@ -17,11 +17,15 @@ public class S_FinGame : MonoBehaviour
     private S_PlayerSound PlayerSoundScript;
     private S_GestionnaireScene _GestionnaireScene;
 
+    [SerializeField] private S_IALootYou _IALootYou;
+
     [SerializeField] private bool _consoleActive = false;
     [SerializeField] private Animator _animOuverture;
 
-    [SerializeField] private Animator _animCredit;
+    [SerializeField] private Animator _animCredit;  
     [SerializeField] private GameObject _Credit;
+
+    [SerializeField] private Animator _animOeil;
 
     [SerializeField] private LayerMask _whatIsInteractable;
     [SerializeField] private bool _isOnSphereTrigger;
@@ -114,10 +118,10 @@ public class S_FinGame : MonoBehaviour
     {
         _referenceInterface._InputManager._playerInput.DeactivateInput();
 
-        
+
         //Désactive l'ia qui eteint son oeil
-
-
+        _IALootYou.DisableIA();
+        _animOeil.Play("A_Oeil_IA_DEAD");
 
 
         yield return new WaitForSeconds(5f);

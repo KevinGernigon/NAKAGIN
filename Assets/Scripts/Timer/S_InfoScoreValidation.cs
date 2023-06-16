@@ -32,6 +32,8 @@ public class S_InfoScoreValidation : MonoBehaviour
     private bool _RunValidation;
     private bool _Run1IA;
     private bool _Run2IA;
+    private S_PlayFabManager PlayFabManager;
+
     [SerializeField] private TMP_Text _bestTimeTxt;
 
     public bool endRun = false;
@@ -47,7 +49,7 @@ public class S_InfoScoreValidation : MonoBehaviour
         _referenceInterface = S_GestionnaireManager.GetManager<S_ReferenceInterface>();
         _playerContent = _referenceInterface._playerTransform;
         S_PauseMenuV2 = _referenceInterface.EventSystem.GetComponent<S_PauseMenuV2>();
-
+        PlayFabManager = _referenceInterface.PlayFabManager;
     }
 
     private void Start()
@@ -238,15 +240,16 @@ public class S_InfoScoreValidation : MonoBehaviour
                     int _leaderboardValueMS = (int)_bestTimemilliseconds;
                     //PlayFabManager.SendLeaderboardRun2(_leaderboardValueMinutes + _leaderboardValueSeconds + _leaderboardValueMS);
                 }
-                else if (_RunValidation && timePlayer <= _level1Time)
+                */
+                if (_RunValidation && timePlayer <= _level1Time)
                 {
                     int _leaderboardValueMinutes = (int)_bestTimeminutes * 60000;
                     int _leaderboardValueSeconds = (int)_bestTimeseconds * 1000;
                     int _leaderboardValueMS = (int)_bestTimemilliseconds;
-                    //PlayFabManager.SendLeaderboardRun2(_leaderboardValueMinutes + _leaderboardValueSeconds + _leaderboardValueMS);
+                    PlayFabManager.SendLeaderboardRun4(_leaderboardValueMinutes + _leaderboardValueSeconds + _leaderboardValueMS);
                 }
                 
-                _RunValidation =_Run1IA = _Run2IA = false;*/
+                _RunValidation =_Run1IA = _Run2IA = false;
             }
 
 

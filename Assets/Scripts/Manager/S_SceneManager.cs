@@ -32,6 +32,7 @@ public class S_SceneManager : Manager
             SceneManager.LoadScene("Run_2_et_HUB", LoadSceneMode.Additive);
             SceneManager.LoadScene("Run_3", LoadSceneMode.Additive);
             SceneManager.LoadScene("Run_Validation", LoadSceneMode.Additive);
+            SceneManager.LoadScene("Scene_IA_Fin", LoadSceneMode.Additive);
             //ceneManager.LoadScene("Light_Scene", LoadSceneMode.Additive);
             //zSceneManager.LoadScene("Run_2", LoadSceneMode.Additive);
             SceneManager.LoadScene("Decor_Scene", LoadSceneMode.Additive);
